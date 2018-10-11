@@ -13,8 +13,7 @@ const App = () => {
       <div id="global-header" className="header-nav-top-level">
         <header className="header-nav-inner">
           <div id="craftsy-logo" className="header-site-logo">
-            Craftsy
-            <a href="/" aria-label="Craftsy" />
+            <a href="/" aria-label="Craftsy" >Craftsy </a>
           </div>
           <div className="header-search-div-wrapper">
             <div className="header-search-bar-outer">

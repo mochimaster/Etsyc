@@ -18,12 +18,14 @@ const Greeting = props => {
 
   const personalGreeting = () => {
     return (
-      <h1 className = "header-group">
-        <div className = "header-name">
-          Hi, {props.currentUser.username}
-        </div>
-        <button className='header-button' onClick={props.logout}> Logout</button>
-      </h1>
+      <React.Fragment>
+        <li>
+            Hi, {props.currentUser.username}
+        </li>
+        <li>
+          <button className='header-button' onClick={props.logout}> Logout</button>
+        </li>
+      </React.Fragment>
     )
   }
 
