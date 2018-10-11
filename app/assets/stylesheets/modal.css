@@ -9,15 +9,16 @@
 }
 
 .modal-child {
-  /* position: absolute; */
-  top: 50%;
-  left: 50%;
-  transform: translate(160%, 55%);
+  position: absolute;
+  top: 50vh; /* position */
+  left: 50vw ;
+  /* transform: translate(160%, 55%); */
+  /* transform: translate(50%, 55%); */
   width: 360px;
   height: 420px;
 
-  margin-top: -160px;
-  margin-left: -220px;
+  margin-top: -200px;
+  margin-left: -180px;
   width: 360px;
 
   /* background: #fff; */

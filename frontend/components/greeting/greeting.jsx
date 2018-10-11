@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import UserDropdownContainer from '../user_dropdown/user_dropdown_container';
 
 const Greeting = ({ currentUser, logout, openModal}) => {
 
@@ -14,6 +15,7 @@ const Greeting = ({ currentUser, logout, openModal}) => {
         <li id="sign-in-link" className= "sign-in-link">
           <button onClick={() => openModal('login')}>Sign In</button>
         </li>
+
       </React.Fragment>
     )
   }
@@ -23,6 +25,7 @@ const Greeting = ({ currentUser, logout, openModal}) => {
       <React.Fragment>
         <li>
             Hi, {currentUser.username}
+            <UserDropdownContainer />
         </li>
         <li>
           <button className='header-button' onClick={logout}> Logout</button>

@@ -252,19 +252,20 @@ li {
   color: #222;
 }
 
-.icon-cart > .fa-shopping-cart{
+.icon-img-cart > .fa-shopping-cart{
   /* border: 1px solid transparent; */
   font-size: 20px;
   margin-top: -10px;
   padding-bottom: 2px;
 }
 
-.icon-discover > .fa-briefcase {
+.icon-img-discover > .fa-briefcase {
   /* border: 1px solid transparent; */
   font-size: 20px;
   margin-top: -10px;
   padding-bottom: 2px;
   padding-left: 18px;
+
 }
 
 .account-nav a:not(:hover):not(:focus):not(:active)
@@ -309,18 +310,19 @@ li {
 
 
 
-/* [class*="icon-"] {
-  display: inline-block !important;
-  background-image: url("../../images/cart.png");
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  vertical-align: bottom;
-  overflow: hidden;
-  height: 0 !important;
-  width: 30px;
-  padding-top: 30px !important;
-}
-
-.icon-cart {
-  background-position: 0 0;
-} */
+// [class*="icon-"] {
+//   border: 5px solid red;
+//   display: inline-block !important;
+//   background-image: image-url("cart.png");
+//   background-size: 30px 30px;
+//   background-repeat: no-repeat;
+//   vertical-align: bottom;
+//   overflow: hidden;
+//   height: 100px !important;
+//   width: 30px;
+//   /* padding-top: 30px !important; */
+// }
+//
+// .icon-sell-etsy {
+//   background-position: 0 0;
+// }
