@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails_12factor'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -50,7 +50,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'jquery-rails'
+
 end
 
 group :test do
