@@ -3,13 +3,16 @@ import GreetingContainer from './greeting/greeting_container';
 import SessionForm from './session_form/session_form'
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
-import {Route} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom';
+import {AuthRoute} from '../util/route_util'
+import Modal from './modal/modal';
+
 
 
 const App = () => {
   return (
     <div>
+    <Modal />
       <div id="global-header" className="header-nav-top-level">
         <header className="header-nav-inner">
           <div id="craftsy-logo" className="header-site-logo">
@@ -20,7 +23,8 @@ const App = () => {
               <form id="nav-search" className="header-search-nav-form" method="" action="">
                 <div className="header-search-bar-inner">
                   <div className="header-search-bar-input-wrapper" >
-                    <input id="search-query" type="text" value="Search for items or shops"/>
+                    <input id="search-query" type="text"
+                    defaultValue="Search for items or shops"/>
                   </div>
                   <div className="header-search-button-wrapper">
                     <button className="btn btn-primary">Search</button>
@@ -41,13 +45,14 @@ const App = () => {
 
 
         </header>
+
       </div>
 
+      <Switch>
+        <AuthRoute exact path="/login" component={LogInFormContainer} />
+        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
 
-
-      <Route path="/login" component={LogInFormContainer} />
-      <Route path="/signup" component={SignUpFormContainer} />
-
+      </Switch>
     </div>
   )
 }

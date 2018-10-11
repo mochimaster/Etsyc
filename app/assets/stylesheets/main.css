@@ -240,7 +240,7 @@ li {
   border-right: 1px solid black;
 }
 
-.account-nav li a{
+.account-nav li a , .account-nav li button{
   /* border: 1px solid transparent; */
   height: auto;
   margin-top: 23px;
@@ -277,14 +277,15 @@ li {
     color: #222;
   } */
 
-.sign-in-link a {
+.sign-in-link button {
     border: 1px solid black;
     border-radius: 3px;
     margin-right: 12px;
+    text-decoration: underline;
 }
 
 
-.sign-in-link a:hover {
+.sign-in-link button:hover {
     text-decoration: none;
     background-color: #222;
     color: white;

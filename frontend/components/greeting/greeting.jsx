@@ -1,16 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Greeting = props => {
+const Greeting = ({ currentUser, logout, openModal}) => {
 
+  // <Link to="/signup">Register</Link>
+  // <Link to="/login">Sign In</Link>
   const sessionLinks = () => {
     return (
       <React.Fragment>
         <li>
-          <Link to="/signup">Register</Link>
+          <Link to="" onClick={() => openModal('signup')}>Register</Link>
         </li>
         <li id="sign-in-link" className= "sign-in-link">
-          <Link to="/login">Sign In</Link>
+          <button onClick={() => openModal('login')}>Sign In</button>
         </li>
       </React.Fragment>
     )
@@ -20,16 +22,16 @@ const Greeting = props => {
     return (
       <React.Fragment>
         <li>
-            Hi, {props.currentUser.username}
+            Hi, {currentUser.username}
         </li>
         <li>
-          <button className='header-button' onClick={props.logout}> Logout</button>
+          <button className='header-button' onClick={logout}> Logout</button>
         </li>
       </React.Fragment>
     )
   }
 
-  return props.currentUser ? personalGreeting() : sessionLinks()
+  return currentUser ? personalGreeting() : sessionLinks()
 }
 
 export default Greeting;
