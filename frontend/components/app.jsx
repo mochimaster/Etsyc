@@ -35,11 +35,20 @@ const App = () => {
           </div>
 
 
+
             <ul className="account-nav">
               <li><a href="">Sell on Etsy</a></li>
               <GreetingContainer />
-              <li><a href="">Discover</a></li>
-              <li><a href="">Cart</a></li>
+              <li>
+                <a href="" className="icon-discover">
+                  <i class="fas fa-briefcase"></i><br/>Discover
+                </a>
+              </li>
+              <li>
+                <a href="" className="icon-cart">
+                  <i class="fas fa-shopping-cart"></i><br/>Cart
+                </a>
+              </li>
             </ul>
 
 

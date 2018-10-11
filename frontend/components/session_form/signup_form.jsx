@@ -50,12 +50,11 @@ class SignUpForm extends React.Component {
 
       <div>
         <form onSubmit={this.handleSubmit.bind(this)} className = "login-form-modal">
-          <div onClick={this.props.closeModal} className="close-x"></div>
-
             <div className="modal-sign-in-container">
             {this.renderErrors()}
               <div className="modal-sign-in-h1">
                 <div>{headerMessage}</div>
+                <p>{headerSubMessage}</p>
               </div>
 
               <div>
@@ -68,6 +67,7 @@ class SignUpForm extends React.Component {
                 </label>
               </div>
 
+
               <div>
                 <label className="modal-email-password-title">Password
                   <input type="password"
@@ -79,10 +79,11 @@ class SignUpForm extends React.Component {
               </div>
 
               <div className="modal-button-action-container">
-                <button className="session-submit btn" type="submit" value='Sign In'>
-                  Sign In</button>
+                <button className="session-submit btn" type="submit" value="">
+                  Register</button>
               </div>
             </div>
+            <div onClick={this.props.closeModal} className="close-x"></div>
         </form>
       </div>
 

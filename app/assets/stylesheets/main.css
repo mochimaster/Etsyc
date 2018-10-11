@@ -252,6 +252,21 @@ li {
   color: #222;
 }
 
+.icon-cart > .fa-shopping-cart{
+  /* border: 1px solid transparent; */
+  font-size: 20px;
+  margin-top: -10px;
+  padding-bottom: 2px;
+}
+
+.icon-discover > .fa-briefcase {
+  /* border: 1px solid transparent; */
+  font-size: 20px;
+  margin-top: -10px;
+  padding-bottom: 2px;
+  padding-left: 18px;
+}
+
 .account-nav a:not(:hover):not(:focus):not(:active)
 
 #sign-in-link {
@@ -281,7 +296,7 @@ li {
     border: 1px solid black;
     border-radius: 3px;
     margin-right: 12px;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 
@@ -291,3 +306,21 @@ li {
     color: white;
     border-radius: 3px;
 }
+
+
+
+/* [class*="icon-"] {
+  display: inline-block !important;
+  background-image: url("../../images/cart.png");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  vertical-align: bottom;
+  overflow: hidden;
+  height: 0 !important;
+  width: 30px;
+  padding-top: 30px !important;
+}
+
+.icon-cart {
+  background-position: 0 0;
+} */
