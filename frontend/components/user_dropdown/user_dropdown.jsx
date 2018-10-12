@@ -30,7 +30,7 @@ class UserDropdown extends React.Component{
           </li>
 
           <li className="profile-dropdown-section2">
-            <a href="" className='header-button' onClick={this.props.logout}> Sign out</a>
+            <a  className='header-button' onClick={this.props.logout}> Sign out</a>
           </li>
 
         </ul>
