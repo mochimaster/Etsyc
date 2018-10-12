@@ -67,6 +67,7 @@
   line-height: 1.6;
   /* display: block; */
   text-align: left;
+  width: 100%;
 }
 
 .modal-email-address-title input, .modal-email-password-title input{

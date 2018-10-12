@@ -16,7 +16,7 @@ const Greeting = ({ currentUser, logout, openModal}) => {
           <button className="header-nav-signin" onClick={() => openModal('login')}>Sign In</button>
         </li>
         <li  id="demo-sign-in-link" className= "sign-in-link">
-          <button className="header-nav-signin" onClick={() => openModal('demo')}>Demo User</button>
+          <button className="header-nav-signin demo-sign-in-link" onClick={() => openModal('demo')}>Demo User</button>
         </li>
 
       </React.Fragment>

@@ -24,6 +24,15 @@ class DemoSessionForm extends React.Component {
   }
 
   renderErrors() {
+
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
     return(
       <ul>
         {this.props.errors.map((error, i) => (
@@ -64,20 +73,20 @@ class DemoSessionForm extends React.Component {
 
               <div>
                 <label className="modal-email-address-title">Email address
-                  <input  type="text"
+                  <input id="username-input" type="text"
                     value="demouser"
                     onChange={this.updateUsername.bind(this)}
-                    className= "login-input"
+                    className= "demo-login-input"
                   />
                 </label>
               </div>
 
               <div>
                 <label className="modal-email-password-title">Password
-                  <input  type="password"
-                    value="starwars"
+                  <input id="username-password" type="password"
+                    value="password"
                     onChange={this.updatePassword.bind(this)}
-                    className= "login-input"
+                    className= "demo-login-input"
                   />
                 </label>
               </div>
