@@ -11,6 +11,8 @@ import {connect} from 'react-redux';
 import { openModal } from '../actions/modal_actions'
 
 
+
+
 const App = ({currentUser,openModal}) => {
 
   // debugger
@@ -18,7 +20,9 @@ const App = ({currentUser,openModal}) => {
   if (currentUser){
     console.log("Inside with current user.")
     // navBar = <UserDropdownContainer />
-    navBar = <li><a onClick={() => openModal('profileDropdown')} className="profile-drop-down">Profile Img</a></li>
+    navBar = <li className="container-profile-picture"><a onClick={() => openModal('profileDropdown')}
+                className="icon-avatar">You</a>
+              </li>
   }else{
     console.log("no current user.")
     navBar = <GreetingContainer />
@@ -53,7 +57,7 @@ const App = ({currentUser,openModal}) => {
 
 
             <ul className="account-nav">
-              <li className = "icon-sell-etsy"><a href="">Sell on Etsy</a></li>
+              <li className = "icon-sell-etsy"><a className="text-sell-etsy" href="">Sell on Etsy</a></li>
               {navBar}
               <li>
                 <a href="" className="icon-img-discover">
@@ -72,14 +76,16 @@ const App = ({currentUser,openModal}) => {
       </div>
 
       <Switch>
-        <AuthRoute exact path="/login" component={LogInFormContainer} />
-        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+
+
 
       </Switch>
     </div>
   )
 }
 
+// <AuthRoute exact path="/login" component={LogInFormContainer} />
+// <AuthRoute exact path="/signup" component={SignUpFormContainer} />
 
 const mapStateToProps = state => {
   // debugger

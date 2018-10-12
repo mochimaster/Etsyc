@@ -1,31 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {signup} from '../../actions/session_actions';
+import {login} from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
-// import SessionForm from './session_form'
-import SignUpForm from './signup_form'
 
+import DemoSessionForm from './demo_session_form'
 
 const mapStateToProps = state => {
   return {
     session: state.session.id,
     errors: state.errors.session,
-    formType: 'signup',
-    navLink: <Link to="/login">Login instead.</Link>
+    formType: 'login',
+    navLink: <Link to="/signup">Signup instead</Link>
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user) => dispatch(signup(user)),
+    processForm: (user) => dispatch(login(user)),
     otherForm: (
-      <button  onClick={() => dispatch(openModal('login'))}>
-        Login
+      <button onClick={() => dispatch(openModal('signup'))}>
+        Signup
       </button>
     ),
     closeModal: () => dispatch(closeModal())
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps,mapDispatchToProps)(DemoSessionForm);

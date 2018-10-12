@@ -10,22 +10,27 @@ class UserDropdown extends React.Component{
   render() {
     // debugger
 
+    let username = ""
+    if (this.props.currentUser){
+      username = this.props.currentUser.username;
+    }
+
 
     return(
 
       <div className= "header-modal-profile">
-        <ul>
-          <li>
+        <ul className = "modal-profile-dropdown-container">
+          <li className= "profile-dropdown-section1">
             <div className="header-modal-profile-picture">
-              Profile Picture
+              <a className="icon-profile-picture"> </a>
             </div>
-            <div>
-              {this.p}
+            <div className="header-modal-username">
+              {username}
             </div>
           </li>
 
-          <li>
-            <button className='header-button' onClick={this.props.logout}> Logout</button>
+          <li className="profile-dropdown-section2">
+            <a href="" className='header-button' onClick={this.props.logout}> Sign out</a>
           </li>
 
         </ul>
@@ -38,4 +43,5 @@ class UserDropdown extends React.Component{
 
 }
 
+// <button className='header-button' onClick={this.props.logout}> Logout</button>
 export default UserDropdown;

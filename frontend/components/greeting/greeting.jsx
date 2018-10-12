@@ -10,10 +10,13 @@ const Greeting = ({ currentUser, logout, openModal}) => {
     return (
       <React.Fragment>
         <li>
-          <Link to="" onClick={() => openModal('signup')}>Register</Link>
+          <Link className="header-nav-register" to="" onClick={() => openModal('signup')}>Register</Link>
         </li>
-        <li id="sign-in-link" className= "sign-in-link">
-          <button onClick={() => openModal('login')}>Sign In</button>
+        <li  id="sign-in-link" className= "sign-in-link">
+          <button className="header-nav-signin" onClick={() => openModal('login')}>Sign In</button>
+        </li>
+        <li  id="demo-sign-in-link" className= "sign-in-link">
+          <button className="header-nav-signin" onClick={() => openModal('demo')}>Demo User</button>
         </li>
 
       </React.Fragment>

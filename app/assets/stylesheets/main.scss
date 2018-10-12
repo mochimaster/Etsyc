@@ -130,13 +130,16 @@
   line-height: 17px;
   height: 34px;
   padding: 7px 15px 8px;
-
 }
 
 .btn-primary{
  color: #FFF;
  border-color: rgba(0, 0, 0, 0.1);
  background-color: #222;
+}
+
+.btn-primary:hover, .header-nav-signin, .icon-avatar, .session-submit{
+  cursor: pointer;
 }
 
 
@@ -240,16 +243,28 @@ li {
   border-right: 1px solid black;
 }
 
+.text-sell-etsy {
+  margin-top: 28px !important;
+}
+
 .account-nav li a , .account-nav li button{
   /* border: 1px solid transparent; */
   height: auto;
-  margin-top: 23px;
+  margin-top: 14px;
   display: block;
   float: left;
   padding: 8px;
   line-height: 16px;
   font-size: 14px;
   color: #222;
+}
+
+.header-nav-register{
+  margin-top: 28px !important;
+}
+
+.header-nav-signin{
+  margin-top: 26px !important;
 }
 
 .icon-img-cart > .fa-shopping-cart{
@@ -307,6 +322,33 @@ li {
     color: white;
     border-radius: 3px;
 }
+
+// .profile-drop-down {
+
+
+
+[class*="avatar"] {
+
+ display: inline-block !important;
+ position: relative;
+ background-image: image-url("default_avatar.png");
+ background-size: 30px 30px;
+ background-repeat: no-repeat;
+ vertical-align: bottom;
+ overflow: hidden;
+ height: 40px !important;
+ width: 30px;
+ margin-bottom: 0px;
+ border-radius: 60%;
+ padding-top: 25px !important;
+
+}
+
+.icon-avatar {
+ background-position: 5px -5px;
+}
+
+
 
 
 
