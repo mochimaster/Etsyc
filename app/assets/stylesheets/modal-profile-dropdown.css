@@ -1,0 +1,107 @@
+.modal-clear-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50vh; /* position */
+  left: 50vw ;
+  /* transform: translate(160%, 55%); */
+  /* transform: translate(50%, 55%); */
+  width: 360px;
+  height: 420px;
+
+  margin-top: -200px;
+  margin-left: -180px;
+  width: 360px;
+
+  /* background: #fff; */
+  z-index: 3;
+  border-radius: 5px;
+  /* border: 1px solid #000; */
+
+}
+
+.login-form-modal{
+  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  padding: 1px 18px 18px 18px;
+  /* width: 360px; */
+  /* height: 395px; */
+  background: white;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+
+
+  /* transform: translate(-50%, -50%); */
+}
+
+.modal-sign-in-h1 > div{
+  font-size: 26px;
+  font-weight: 500 !important;
+  line-height: 1.4;
+  /* padding-bottom: 12px; */
+  /* display: block; */
+  margin: 0;
+}
+
+.modal-sign-in-h1 > p{
+  font-size: 14px;
+  font-weight: 300 !important;
+  line-height: 1.6;
+  padding-bottom: 13px;
+  /* display: block; */
+  margin: 0;
+
+}
+
+.modal-email-address-title, .modal-email-password-title{
+  margin-bottom: 6px;
+  font-weight: 500;
+  line-height: 1.6;
+  /* display: block; */
+  text-align: left;
+}
+
+.modal-email-address-title input, .modal-email-password-title input{
+  height: 48px;
+  font-size: 16px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  color: #222;
+  display: block;
+  outline: none;
+  padding: 9px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  background-color: white;
+}
+
+.modal-button-action-container {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+}
+
+.modal-button-action-container button{
+  margin-top: 15px;
+  background-color: #222;
+  width: 100%;
+  font-size: 16px;
+  height: 48px;
+  padding: 12px 28px;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #FFF;
+  display: inline-block;
+  font-weight: lighter;
+
+}

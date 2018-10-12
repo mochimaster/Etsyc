@@ -5,7 +5,9 @@ import App from './app';
 
 
 const Root = ({store}) => {
+
   return (
+
     <Provider store={store}>
       <HashRouter>
         <App />
@@ -13,5 +15,5 @@ const Root = ({store}) => {
     </Provider>
   )
 };
-
+// currentUserId={store.getState().session.id}
 export default Root;

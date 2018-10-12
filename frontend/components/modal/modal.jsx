@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import {connect} from 'react-redux';
 import LogInFormContainer from '../session_form/login_form_container';
 import SignUpFormContainer from '../session_form/signup_form_container';
+import UserDropdownContainer from '../user_dropdown/user_dropdown_container';
 
 function Modal({modal, closeModal}) {
   if(!modal) {
@@ -17,17 +18,45 @@ function Modal({modal, closeModal}) {
     case 'signup':
       component = <SignUpFormContainer />;
       break;
+    case 'profileDropdown':
+      component = <UserDropdownContainer />;
+      break;
+
     default:
       return null;
   }
+
+  // const darkBackground =
+  //     <div className="modal-background" onClick={closeModal}>
+  //       <div className="modal-child" onClick={e => e.stopPropagation()}>
+  //         { component }
+  //       </div>
+  //     </div>
+  //
+  // const clearBackground =
+  //     <div className="modal-background-clear" onClick={closeModal}>
+  //       <div className="modal-child" onClick={e => e.stopPropagation()}>
+  //         { component }
+  //       </div>
+  //     </div>
+  //
+  // let backGroundModal = ""
+  // if (modal = 'profileDropdown') {
+  //   backGroundModal = clearBackground
+  // } else {
+  //   backGroundModal = darkBackground
+  // }
+  // debugger
+  let backGroundModal = "";
+  // debugger
+  (modal === 'profileDropdown') ? backGroundModal = 'modal-clear-background' : backGroundModal = 'modal-background'
   return (
-    <div className="modal-background" onClick={closeModal}>
+    <div className={backGroundModal} onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
         { component }
       </div>
     </div>
   );
-
 }
 
 const mapStateToProps = state => {

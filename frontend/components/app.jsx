@@ -6,10 +6,26 @@ import LogInFormContainer from './session_form/login_form_container';
 import {Route, Switch, Link} from 'react-router-dom';
 import {AuthRoute} from '../util/route_util'
 import Modal from './modal/modal';
+import UserDropdownContainer from './user_dropdown/user_dropdown_container';
+import {connect} from 'react-redux';
+import { openModal } from '../actions/modal_actions'
+
+
+const App = ({currentUser,openModal}) => {
+
+  // debugger
+  let navBar = ""
+  if (currentUser){
+    console.log("Inside with current user.")
+    // navBar = <UserDropdownContainer />
+    navBar = <li><a onClick={() => openModal('profileDropdown')} className="profile-drop-down">Profile Img</a></li>
+  }else{
+    console.log("no current user.")
+    navBar = <GreetingContainer />
+  }
 
 
 
-const App = () => {
   return (
     <div>
     <Modal />
@@ -38,7 +54,7 @@ const App = () => {
 
             <ul className="account-nav">
               <li className = "icon-sell-etsy"><a href="">Sell on Etsy</a></li>
-              <GreetingContainer />
+              {navBar}
               <li>
                 <a href="" className="icon-img-discover">
                   <i class="fas fa-briefcase"></i><br/>Discover
@@ -50,8 +66,6 @@ const App = () => {
                 </a>
               </li>
             </ul>
-
-
 
         </header>
 
@@ -66,4 +80,29 @@ const App = () => {
   )
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  // debugger
+  let currentSession;
+  if (state.session.id) {
+    currentSession = state.session.id
+  } else {
+    currentSession = 0
+  }
+
+  return {
+    currentUser: state.entities.users[currentSession]
+  }
+}
+// currentUser: state.entities.users[state.session.id]
+// export default App;
+
+const mapDispatchToProps = dispatch => {
+  return {
+  openModal: (modal) => dispatch(openModal(modal))
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

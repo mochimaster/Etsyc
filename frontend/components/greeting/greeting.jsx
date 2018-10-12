@@ -20,21 +20,22 @@ const Greeting = ({ currentUser, logout, openModal}) => {
     )
   }
 
-  const personalGreeting = () => {
-    return (
-      <React.Fragment>
-        <li>
-            Hi, {currentUser.username}
-            <UserDropdownContainer />
-        </li>
-        <li>
-          <button className='header-button' onClick={logout}> Logout</button>
-        </li>
-      </React.Fragment>
-    )
-  }
+  // const personalGreeting = () => {
+  //   return (
+  //     <React.Fragment>
+  //       <li>
+  //           Hi, {currentUser.username}
+  //           <UserDropdownContainer />
+  //       </li>
+  //       <li>
+  //         <button className='header-button' onClick={logout}> Logout</button>
+  //       </li>
+  //     </React.Fragment>
+  //   )
+  // }
 
-  return currentUser ? personalGreeting() : sessionLinks()
+  // return currentUser ? personalGreeting() : sessionLinks()
+  return currentUser ? null : sessionLinks()
 }
 
 export default Greeting;
