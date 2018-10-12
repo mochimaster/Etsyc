@@ -1,37 +1,36 @@
-.modal-email-address-title .demo-login-input, .modal-email-password-title .demo-login-input {
-  width: 100%;
-}
 
-/* .demo-login-input {
+
+.demo-login-input {
   font-size: 20px;
-  animation: type 4s steps(60, end); */
+  animation: type 2s steps(60, end);
+  width:150px;
+}
   /* color: lime; */
   /* margin: 10px 0 0 10px; */
   /* white-space: nowrap; */
   /* overflow: hidden; */
   /* width: 30em; */
-/* } */
 
 
+/* 
 @keyframes type{
-  from { width: 0; }
-}
-
-/* @keyframes type2{
-  0%{width: 0;}
-  50%{width: 0;}
-  100%{ width: 100; }
-}
-
-@keyframes blink{
-  to{opacity: .0;}
+  from {
+    left: -100px;
+    width: 100%;
+  }
+  to {
+    left: 0;
+  }
 } */
+
+
+
 
 .demo-sign-in-link {
   background: black;
   /* -webkit-animation-iteration-count: infinite; */
-  animation: color-me-in 3s; /* other keywords like "infinite alternate" can be useful here */
-  animation-iteration-count: infinite;
+  animation: color-me-in 3s infinite; /* other keywords like "infinite alternate" can be useful here */
+  /* animation-iteration-count: infinite; */
 
 }
 

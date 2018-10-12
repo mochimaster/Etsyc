@@ -9,6 +9,26 @@ class DemoSessionForm extends React.Component {
 
   };
 
+  // componentDidMount(){
+  //   let that = this;
+  //
+  //   let i=0;
+  //   let inputField = document.getElementById('username-input');
+  //   let fillIn = () => {
+  //     // debugger
+  //     console.log('inside loop');
+  //     console.log('demouser'.slice(0,i));
+  //     if (i===8)
+  //       return
+  //     i++;
+  //
+  //     inputField.innerText = ('demouser'.slice(0,i));
+  //     setTimeout(fillIn, 500 );
+  //   }
+  //   fillIn();
+  //
+  // }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
@@ -73,9 +93,9 @@ class DemoSessionForm extends React.Component {
 
               <div>
                 <label className="modal-email-address-title">Email address
-                  <input id="username-input" type="text"
-                    value="demouser"
-                    onChange={this.updateUsername.bind(this)}
+                  <input onChange={this.updateUsername.bind(this)} value="demouser" id="username-input" type="text"
+
+
                     className= "demo-login-input"
                   />
                 </label>
@@ -85,7 +105,7 @@ class DemoSessionForm extends React.Component {
                 <label className="modal-email-password-title">Password
                   <input id="username-password" type="password"
                     value="password"
-                    onChange={this.updatePassword.bind(this)}
+
                     className= "demo-login-input"
                   />
                 </label>
