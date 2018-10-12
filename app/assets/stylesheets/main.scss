@@ -237,10 +237,12 @@ li {
   display: list-item;
 }
 
-.account-nav li:nth-child(4) a{
+.account-nav li:nth-last-child(2) a{
   /* background-color: green; */
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 1px solid #E1E3DF;
+  border-right: 1px solid #E1E3DF;
+
+
 }
 
 .text-sell-etsy {
@@ -329,23 +331,23 @@ li {
 
 [class*="avatar"] {
 
- display: inline-block !important;
+ // display: inline-block !important;
  position: relative;
- background-image: image-url("default_avatar.png");
+ background-image: url("default_avatar.png");
  background-size: 30px 30px;
  background-repeat: no-repeat;
  vertical-align: bottom;
  overflow: hidden;
- height: 40px !important;
+ height: 40px ;
  width: 30px;
  margin-bottom: 0px;
  border-radius: 60%;
- padding-top: 25px !important;
 
 }
 
-.icon-avatar {
+.container-profile-picture .icon-avatar {
  background-position: 5px -5px;
+ padding-top: 25px ;
 }
 
 

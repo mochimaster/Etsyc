@@ -29,5 +29,19 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# Reference: https://stackoverflow.com/questions/808547/fully-custom-validation-error-message-with-rails
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail address"
+        username: "Email address"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required"
+            username:
+              blank: "is required"

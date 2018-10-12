@@ -53,9 +53,15 @@ class SessionForm extends React.Component {
           <div onClick={this.props.closeModal} className="close-x"></div>
 
             <div className="modal-sign-in-container">
-            {this.renderErrors()}
+
               <div className="modal-sign-in-h1">
                 <div>{headerMessage}</div>
+              </div>
+
+              <div className="error-messages-container">
+                <div className="error-messages">
+                  {this.renderErrors()}
+                </div>
               </div>
 
               <div>
@@ -67,6 +73,8 @@ class SessionForm extends React.Component {
                   />
                 </label>
               </div>
+
+
 
               <div>
                 <label className="modal-email-password-title">Password

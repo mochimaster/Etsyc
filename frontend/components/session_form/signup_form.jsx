@@ -51,10 +51,16 @@ class SignUpForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit.bind(this)} className = "login-form-modal">
             <div className="modal-sign-in-container">
-            {this.renderErrors()}
+
               <div className="modal-sign-in-h1">
                 <div>{headerMessage}</div>
                 <p>{headerSubMessage}</p>
+              </div>
+
+              <div className="error-messages-container">
+                <div className="error-messages">
+                  {this.renderErrors()}
+                </div>
               </div>
 
               <div>

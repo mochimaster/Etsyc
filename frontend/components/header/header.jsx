@@ -10,14 +10,12 @@ class Header extends React.Component {
   render() {
     let navBar = "";
     if (this.props.currentUser){
-      console.log("Inside with current user.");
       // navBar = <UserDropdownContainer />
       navBar = <li className="container-profile-picture">
                   <a onClick={() => this.props.openModal('profileDropdown')}
                   className="icon-avatar">You</a>
                 </li>
     }else{
-      console.log("no current user.")
       navBar = <GreetingContainer />
     }
     return (
@@ -34,7 +32,7 @@ class Header extends React.Component {
                 <div className="header-search-bar-inner">
                   <div className="header-search-bar-input-wrapper" >
                     <input id="search-query" type="text"
-                    defaultValue="Search for items or shops"/>
+                    placeholder="Search for items or shops"/>
                   </div>
                   <div className="header-search-button-wrapper">
                     <button className="btn btn-primary">Search</button>
@@ -51,12 +49,12 @@ class Header extends React.Component {
             {navBar}
             <li>
               <a href="" className="icon-img-discover">
-                <i class="fas fa-briefcase"></i><br/>Discover
+                <i className="fas fa-briefcase"></i><br/>Discover
               </a>
             </li>
             <li>
               <a href="" className="icon-img-cart">
-                <i class="fas fa-shopping-cart"></i><br/>Cart
+                <i className="fas fa-shopping-cart"></i><br/>Cart
               </a>
             </li>
           </ul>

@@ -53,9 +53,13 @@ class DemoSessionForm extends React.Component {
           <div onClick={this.props.closeModal} className="close-x"></div>
 
             <div className="modal-sign-in-container">
-            {this.renderErrors()}
+
               <div className="modal-sign-in-h1">
                 <div>{headerMessage}</div>
+              </div>
+
+              <div className="error-messages-container">
+                <div className="error-messages"> {this.renderErrors()} </div>
               </div>
 
               <div>
@@ -80,7 +84,7 @@ class DemoSessionForm extends React.Component {
 
               <div className="modal-button-action-container">
                 <button className="session-submit btn" type="submit" value='Sign In'>
-                  Sign In</button>
+                  Sign in as demo user</button>
               </div>
             </div>
         </form>
