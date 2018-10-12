@@ -5,6 +5,7 @@ import LogInFormContainer from '../session_form/login_form_container';
 import SignUpFormContainer from '../session_form/signup_form_container';
 import DemoSessionFormContainer from '../session_form/demo_login_form_container';
 import UserDropdownContainer from '../user_dropdown/user_dropdown_container';
+import {clearErrors} from '../../actions/session_actions';
 
 function Modal({modal, closeModal}) {
   if(!modal) {
@@ -30,27 +31,7 @@ function Modal({modal, closeModal}) {
       return null;
   }
 
-  // const darkBackground =
-  //     <div className="modal-background" onClick={closeModal}>
-  //       <div className="modal-child" onClick={e => e.stopPropagation()}>
-  //         { component }
-  //       </div>
-  //     </div>
-  //
-  // const clearBackground =
-  //     <div className="modal-background-clear" onClick={closeModal}>
-  //       <div className="modal-child" onClick={e => e.stopPropagation()}>
-  //         { component }
-  //       </div>
-  //     </div>
-  //
-  // let backGroundModal = ""
-  // if (modal = 'profileDropdown') {
-  //   backGroundModal = clearBackground
-  // } else {
-  //   backGroundModal = darkBackground
-  // }
-  // debugger
+
   let backGroundModal = "";
   let childModalType = "";
   // debugger
@@ -73,8 +54,19 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => {
+     (dispatch(closeModal()))
+     dispatch(clearErrors())
+   }
+
+
+
   };
 };
+
+// closeModal: () => {
+//  console.dir(dispatch(closeModal()))
+//  dispatch(console.log())
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

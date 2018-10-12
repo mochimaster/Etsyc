@@ -34,8 +34,8 @@ export const login = (user) => {
 export const logout = () => {
   return dispatch => {
     return ApiUtil.logout().then(() => {
-      dispatch({type: LOGOUT_CURRENT_USER});
       dispatch({type: CLOSE_MODAL});
+      dispatch({type: LOGOUT_CURRENT_USER});
     });
   };
 };
