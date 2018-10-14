@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import { openModal } from '../actions/modal_actions';
 import Header from './header/header_container';
 import ListingIndexContainer from './listing_index/listing_index_container';
-
+import ListingShowContainer from './listing_show/listing_show_container';
 
 
 
@@ -31,13 +31,14 @@ const App = () => {
           when I have a component to render on "/" */}
         <Route exact path="/" render={() => null} />
         <Route exact path="/listings" component={ListingIndexContainer} />
-        <Redirect to="/" />
+        <Route path="/listings/:listingId" component={ListingShowContainer} />
       </Switch>
     </div>
   )
 }
+// <Redirect to="/" />
 
-// <Route path="/listings/:benchId" component={ListingShowContainer} />
+// <Route path="/listings/:listingId" component={ListingShowContainer} />
 export default App;
 
 // <AuthRoute exact path="/login" component={LogInFormContainer} />
