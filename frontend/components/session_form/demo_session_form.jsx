@@ -11,21 +11,22 @@ class DemoSessionForm extends React.Component {
 
   // componentDidMount(){
   //   let that = this;
-  //
+  //   let inputField = "";
   //   let i=0;
-  //   let inputField = document.getElementById('username-input');
-  //   let fillIn = () => {
-  //     // debugger
+  //   // debugger
+  //   let fillIn = (that) => {
+  //     // inputField = document.getElementById('username-input');
   //     console.log('inside loop');
   //     console.log('demouser'.slice(0,i));
   //     if (i===8)
   //       return
   //     i++;
+  //     debugger
   //
-  //     inputField.innerText = ('demouser'.slice(0,i));
+  //     document.getElementById('username-input').innerText = ('demouser'.slice(0,i));
   //     setTimeout(fillIn, 500 );
   //   }
-  //   fillIn();
+  //   fillIn(that);
   //
   // }
 

@@ -10,6 +10,7 @@ import UserDropdownContainer from './user_dropdown/user_dropdown_container';
 import {connect} from 'react-redux';
 import { openModal } from '../actions/modal_actions';
 import Header from './header/header_container';
+import ListingIndexContainer from './listing_index/listing_index_container';
 
 
 
@@ -29,13 +30,14 @@ const App = () => {
         {/* Good comment. The below line will be modified
           when I have a component to render on "/" */}
         <Route exact path="/" render={() => null} />
-
+        <Route exact path="/listings" component={ListingIndexContainer} />
         <Redirect to="/" />
       </Switch>
     </div>
   )
 }
 
+// <Route path="/listings/:benchId" component={ListingShowContainer} />
 export default App;
 
 // <AuthRoute exact path="/login" component={LogInFormContainer} />
