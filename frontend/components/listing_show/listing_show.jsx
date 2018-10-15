@@ -41,7 +41,7 @@ class ListingShow extends React.Component {
     // debugger;
 
     if (!this.props.listing) {
-      return <div>Loading...</div>;
+      return <div>Page Not Found.</div>;
     }
 
 
@@ -57,7 +57,11 @@ class ListingShow extends React.Component {
 
       deleteButton = <input className="btn btn-primary listing-show-delete-button"
         type="submit" value="Delete Listing"
-        onClick={() => this.props.deleteListing(this.props.listing.id)} />
+        onClick={() => this.props.deleteListing(this.props.listing.id)
+                          .then(()=>this.props.history.push("/listings"))
+
+        } />
+
 
     } else {
       console.log('im not author.');
@@ -108,7 +112,7 @@ class ListingShow extends React.Component {
               {this.props.listing.title}
             </div>
             <div className="listing-details listing-details-price">
-              $99.99
+              ${this.props.listing.price}
             </div>
             {/*
             <div className="listing-details listing-details-shipping">
@@ -128,6 +132,14 @@ class ListingShow extends React.Component {
                 Add to cart
               </button>
             </div>
+
+            <div className="listing-details listing-details-overview">
+              Overview
+              <div>
+                {this.props.listing.overview}
+              </div>
+            </div>
+
           </div>
 
 
@@ -153,4 +165,4 @@ class ListingShow extends React.Component {
 
 }
 
-export default withRouter(ListingShow);
+export default (ListingShow);

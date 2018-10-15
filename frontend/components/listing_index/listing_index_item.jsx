@@ -24,14 +24,17 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   //
   // }
 
-
+  debugger
   return (
     <li className="listing-item-wrapper">
       <div className="listing-item-image">
-        <Link to={`/listings/${listing.id}`}><img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" /></Link>
+        <Link to={`/listings/${listing.id}`}><img alt="test_image"
+          src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" />
+        </Link>
       </div>
       <div className="listing-item-title">
-        <Link className="listing-item-title-link"  to={`/listings/${listing.id}`}>{listing.title}</Link> <br/>
+        <Link className="listing-item-title-link"
+          to={`/listings/${listing.id}`}>{listing.title}</Link> <br/>
       </div>
       <div className="listing-item-author">
         Merchant Name: {listing.author_id} <br/>
@@ -41,7 +44,7 @@ const ListingIndexItem = ({listing, deleteListing}) => {
         --- review stars here --- (xx)
       </div>
       <div className="listing-item-price">
-        $00.11
+        $ {listing.price} 
       </div>
 
     </li>

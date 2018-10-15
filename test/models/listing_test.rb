@@ -10,6 +10,8 @@
 #  modified_by_userid :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  price              :float
+#  overview           :text
 #
 
 require 'test_helper'

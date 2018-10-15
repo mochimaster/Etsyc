@@ -33,7 +33,7 @@ const App = () => {
           when I have a component to render on "/" */}
         <Route exact path="/" render={() => null} />
         <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
-        <Route path ="/users/:user_id/listings" component={ListingIndexContainer} />
+        <Route path ="/users/:userId/listings" component={ListingIndexContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />

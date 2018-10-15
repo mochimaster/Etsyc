@@ -60,7 +60,8 @@ class Api::ListingsController < ApplicationController
     # debugger
     # params[:listing][:modified_by_userid] = params[:author_id]
     # debugger
-    params.require(:listing).permit(:title, :description, :author_id, :modified_by_userid)
+    params.require(:listing).permit(:title, :description, :author_id,
+      :modified_by_userid, :price, :overview)
   end
 
 

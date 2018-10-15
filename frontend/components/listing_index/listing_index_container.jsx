@@ -2,11 +2,19 @@ import React from 'react';
 import ListingIndex from './listing_index';
 import {getListings, deleteListing} from '../../actions/listing_actions';
 import {connect} from 'react-redux';
+import {selectListingsByAuthor} from '../../reducers/selectors';
 
-const mapStateToProps = state => {
-  // debugger
+const mapStateToProps = (state, ownProps) => {
+  debugger
+  let listingsByAuthor;
+  if (ownProps.match.params.userId){
+    listingsByAuthor = selectListingsByAuthor(state.entities, ownProps.match.params.userId);
+    debugger;
+  }
+
   return {
-    listings: Object.values(state.entities.listings)
+    listings: Object.values(state.entities.listings),
+    listingsByAuthor
   }
 }
 

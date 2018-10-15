@@ -28,7 +28,7 @@ class ListingForm extends React.Component{
   }
 
   updateOverview(e){
-
+    this.setState({overview: e.target.value})
   }
 
   updateDescription(e){
@@ -39,9 +39,8 @@ class ListingForm extends React.Component{
 
   }
 
-
   updatePrice(e){
-
+    this.setState({price: e.target.value})
   }
 
 
@@ -71,8 +70,10 @@ class ListingForm extends React.Component{
 
             <div className="create-listing-overview">
               <label>Overview:</label>
+              <label className="required"> * </label>
+
               <br/>
-              <textarea className="create-listing-overview-textarea"></textarea>
+              <textarea onChange={this.updateOverview.bind(this)} className="create-listing-overview-textarea"></textarea>
             </div>
 
             <div className="create-listing-description">
@@ -101,7 +102,7 @@ class ListingForm extends React.Component{
               <label className="required"> * </label>
               <label className="dollar-margin"> $</label>
               <input className="create-list-price-input" type="number" min="0.00" max="99999999.99"
-                step="0.01" value="0" />
+                step="0.01" onChange={this.updatePrice.bind(this)} value={this.state.price}/>
             </div>
 
             <div className="create-listing-submit-button">

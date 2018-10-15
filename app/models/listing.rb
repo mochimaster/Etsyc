@@ -10,11 +10,14 @@
 #  modified_by_userid :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  price              :float
+#  overview           :text
 #
 
 class Listing < ApplicationRecord
-  validates :title, :description, :author_id, presence: true
+  validates :title, :description, :author_id, :price, :overview,presence: true
   validates :title, uniqueness: true
+  validates :price, numericality: { greater_than: 0}
   attribute :modified_by_userid, :integer, default: :author_id
 
   has_one_attached :photo
