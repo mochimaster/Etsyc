@@ -1,0 +1,68 @@
+
+
+.index-wrapper{
+  padding: 0 40px 0 40px;
+  display: grid;
+  /* grid-template-columns: repeat(4, 1fr) */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto,
+    "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22.4px;
+  color: rgb(34, 34, 34);
+}
+
+/* .listing-item-wrapper{
+  display: grid;
+
+} */
+.listing-item-wrapper{
+  display: grid;
+  /* grid-template-rows: 30% 10% 10% 10% 10%; */
+  grid-template-rows: 6fr auto auto auto auto;
+}
+
+/* .listing-item-wrapper > .listing-item-image > a >img {
+  max-height: 30%;
+} */
+
+
+
+.index-wrapper > li{
+
+  list-style: none;
+  padding: 9px;
+  /* Row below is for minimum height */
+  grid-auto-rows: minmax(100px, auto);
+  max-height: 294px;
+
+  text-decoration: none;
+}
+
+.index-wrapper > li > div {
+  cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+
+.listing-item-title a{
+  text-decoration: none;
+  color: rgb(34, 34, 34);
+}
+
+.index-wrapper .listing-item-author {
+  font-size: 12px;
+  line-height: 19.2px;
+  color: rgb(89,89,89);
+}
+
+.index-wrapper .listing-item-price {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25.6px;
+}

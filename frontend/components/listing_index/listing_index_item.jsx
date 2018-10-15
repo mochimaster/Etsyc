@@ -4,13 +4,44 @@ import { Link } from 'react-router-dom';
 const ListingIndexItem = ({listing, deleteListing}) => {
   // debugger
   const url = `/listings/${listing.id}`
+  //
+  // const star = 4;
+  // const starHTML = "";
+  // const starLogic = (star) => {
+  //   return {
+  //     if (star>4.6){
+  //       starHTML = "<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>";
+  //     } else (star>=4.5){
+  //       starHTML = "<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>";
+  //     } else (star>4){
+  //       starHTML = "<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>";
+  //     } else  (star>3.5){
+  //       starHTML = "<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>";
+  //     } else (star>3){
+  //       starHTML = "<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>";
+  //     }
+  //   }
+  //
+  // }
+
+
   return (
-    <li>
-      <Link to={`/listings/${listing.id}`}><img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" /></Link>
-      <Link to={`/listings/${listing.id}`}>Title: {listing.title}</Link> <br/>
-      Description: {listing.description} <br/>
-      Created by: {listing.author_id} <br/>
-      <br/>
+    <li className="listing-item-wrapper">
+      <div className="listing-item-image">
+        <Link to={`/listings/${listing.id}`}><img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" /></Link>
+      </div>
+      <div className="listing-item-title">
+        <Link className="listing-item-title-link"  to={`/listings/${listing.id}`}>{listing.title}</Link> <br/>
+      </div>
+      <div className="listing-item-author">
+        Merchant Name: {listing.author_id} <br/>
+      </div>
+      <div className="listing-item-review">
+        --- review stars here --- (xx)
+      </div>
+      <div className="listing-item-price">
+        $00.11
+      </div>
 
     </li>
   )
@@ -18,3 +49,8 @@ const ListingIndexItem = ({listing, deleteListing}) => {
 }
 
 export default ListingIndexItem;
+
+
+// <div className="listing-item-description">
+// Description: {listing.description} <br/>
+// </div>

@@ -4,7 +4,7 @@ import SessionForm from './session_form/session_form'
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import {Route, Switch, Link, Redirect} from 'react-router-dom';
-import {AuthRoute} from '../util/route_util'
+import {AuthRoute, ProtectedRoute} from '../util/route_util'
 import Modal from './modal/modal';
 import UserDropdownContainer from './user_dropdown/user_dropdown_container';
 import {connect} from 'react-redux';
@@ -12,6 +12,7 @@ import { openModal } from '../actions/modal_actions';
 import Header from './header/header_container';
 import ListingIndexContainer from './listing_index/listing_index_container';
 import ListingShowContainer from './listing_show/listing_show_container';
+import ListingFormContainer from './listing_form/listing_form_container';
 
 
 
@@ -30,13 +31,14 @@ const App = () => {
         {/* Good comment. The below line will be modified
           when I have a component to render on "/" */}
         <Route exact path="/" render={() => null} />
+        <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
+        <Redirect to="/" />
       </Switch>
     </div>
   )
 }
-// <Redirect to="/" />
 
 // <Route path="/listings/:listingId" component={ListingShowContainer} />
 export default App;

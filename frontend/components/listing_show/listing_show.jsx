@@ -4,21 +4,48 @@ import { Link } from 'react-router-dom';
 
 class ListingShow extends React.Component {
 
-  constructor(props){
-    super(props);
-    // debugger
-  }
-
   componentDidMount(){
     // debugger
     // this.props.getListings();
     this.props.getListing(this.props.match.params.listingId);
   }
 
+  componentWillReceiveProps(nextProps){
+    // debugger
+    if (this.props.listing.id != nextProps.match.params.listingId) {
+      debugger
+      this.props.getListing(nextProps.match.params.listingId);
+    }
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.post.id != nextProps.match.params.postId) {
+  //     this.props.fetchPost(nextProps.match.params.postId);
+  //   }
+  // }
+
+  // constructor(props){
+  //   super(props);
+  //   debugger
+  // }
+
+  //   componentWillReceiveProps(nextProps) {
+  //   if (this.props.post.id != nextProps.match.params.postId) {
+  //     this.props.fetchPost(nextProps.match.params.postId);
+  //   }
+  // }
+
+
 
 
   render() {
     // debugger
+    // this.props.listing.id = 1;
+    // debugger;
+
+    if (!this.props.listing) {
+      return <div>Loading...</div>;
+    }
 
 
     if (this.props.listing.author_id === this.props.sessionId) {
@@ -32,11 +59,85 @@ class ListingShow extends React.Component {
       console.log('im not author.');
     }
 
+    let quantityDropdown;
+    // for(let i=0; i<100; i++){
+    //   quantityDropdown += "<option value="+ i + ">+i+</option>"
+    // }
+
+    // let quantityDropdown2 = new Element(() => {
+    //   return (
+    //
+    //
+    //
+    //   )
+    // })
+
+    // debugger;
+
     return (
-      <div>
-        Listing ID: {this.props.listing.id}
-        Listing Title: {this.props.listing.title}
-        Listing Description: {this.props.listing.description}
+      <div className="listing-show-content-wrapper">
+        <div className="listing-show-seller-header">
+          <div className="listing-header-seller-left">
+            <div className="listing-header-seller-name">
+              Merchant Name: {this.props.listing.author_id}
+            </div>
+            <div className="listing-header-seller-rating">
+              Rating in stars (xx)
+            </div>
+          </div>
+          <div className="listing-header-seller-thumbnails">
+            Other items in thumbnails...
+          </div>
+        </div>
+
+        <div className="listing-show-body-wrapper">
+          <div className="listing-image listing-left-half">
+            <img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" />
+          </div>
+
+          <div className="listing-details listing-right-half">
+            <div className="listing-details listing-details-title">
+              {this.props.listing.title}
+            </div>
+            <div className="listing-details listing-details-price">
+              $99.99
+            </div>
+            {/*
+            <div className="listing-details listing-details-shipping">
+              Shipping fee
+            </div>
+            */}
+            <div className="listing-details listing-details-quantity">
+              Quantity <br/>
+              <select className="select-custom">
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </div>
+
+            <div className="listing-details add-to-cart">
+              <button>
+                Add to cart
+              </button>
+            </div>
+          </div>
+
+
+
+          <div className="listing-description">
+            Description <br/>
+            <p>{this.props.listing.description}</p>
+          </div>
+          <div>
+          Seller other items index list by seller
+          </div>
+          <div className="listing-reviews">
+            Reviews component that returns li
+          </div>
+
+
+
+        </div>
       </div>
     )
   }

@@ -1,0 +1,117 @@
+.listing-show-content-wrapper {
+  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.listing-show-seller-header {
+  padding-left: 40px;
+  padding-right: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+}
+
+.listing-header-seller-thumbnails{
+  justify-self: end;
+}
+
+.listing-header-seller-left{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.listing-show-body-wrapper{
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  /* grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); */
+  /* [col-start] min-content [col-middle] max-content [col-end] */
+  margin-top: 48px;
+  padding: 0 40px 0 40px;
+  grid-column-gap: 24px;
+
+}
+
+
+
+.listing-details .listing-right-half {
+
+  font-size: 14px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(34, 34, 34);
+}
+
+.listing-details .listing-details-title{
+  font-family: Guardian-EgypTT, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  margin-bottom: 12px;
+  overflow-wrap: break-word;
+
+}
+
+.listing-details .listing-details-price{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.listing-details .listing-details-quantity{
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 3px;
+}
+
+.select-custom{
+  font-size: 11px;
+  height: 38px;
+  width: 63px;
+  margin-bottom: 12px;
+}
+
+.listing-details .add-to-cart > button{
+  display: block;
+  height: 38px;
+  border: 1px solid black;
+  background-color: black;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  line-height: 19.6px;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-bottom: 35px;
+
+}
+
+.listing-details .add-to-cart{
+  margin-bottom: 35px; /* 14 + 21*/
+  border-bottom: #E1E3DF 1px solid;
+
+}
+
+.listing-details .add-to-cart button:hover{
+  background-color: #3c3c3c;
+  border-color: rgba(0, 0, 0, 0.2);
+
+}
+
+.listing-description{
+  margin-top: 18px; /* 14 + 21*/
+  border-top: #E1E3DF 1px solid;
+  border-bottom: #E1E3DF 1px solid;
+  padding: 12px 0 12px 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.listing-description > p{
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 0px;
+
+  padding-top: 6px;
+}

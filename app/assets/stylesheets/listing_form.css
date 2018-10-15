@@ -1,0 +1,85 @@
+.create-listing-form-wrapper {
+  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  padding: 20px 40px 20px 40px;
+
+}
+
+.create-form-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 530px;
+  grid-column-gap: 10px;
+
+}
+
+.create-listing-left-side{
+
+  display: grid;
+  height: 100%;
+  width:  100%;
+  border: #E1E3DF 1px solid;
+  box-sizing: border-box;
+  margin: -10px;
+
+}
+
+.create-listing-photo-inner{
+  align-self: center;
+  justify-self: center;
+}
+
+.create-listing-title-input, .create-listing-overview-textarea, .create-listing-description-input, .create-list-price-input {
+  width: 100%;
+  border: 1px solid #CFCBC8;
+  background: #f9f9f8;
+  padding: 6px 10px;
+  box-shadow: inset 0 1px 2px #E9E9E8, 0 0 0 1000px #fbfbfa inset;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.create-listing-right-side > div{
+  margin-bottom: 10px;
+}
+
+.required{
+  color: red;
+  font-size: 15px;
+
+}
+
+.create-listing-title-input{
+  height: 34px;
+}
+
+.create-listing-overview-textarea{
+  height: 79px;
+}
+
+.create-listing-category .create-listing-category-dropdown{
+  width: auto;
+}
+
+.create-listing-description-input{
+  height: 139px;
+}
+
+.create-listing-category-dropdown, .create-list-price-input{
+  margin-left: 10px;
+}
+
+.create-listing-price .create-list-price-input{
+  width: 141px;
+  margin-left: 1px;
+}
+
+.dollar-margin{
+  margin-left: 10px;
+}
+
+.submit-button {
+  width: 100%;
+  /* height: 34px; */
+
+}

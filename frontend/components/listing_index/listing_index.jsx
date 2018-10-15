@@ -17,11 +17,11 @@ class ListingIndex extends React.Component {
   render() {
 
     // debugger
-    
+
 
     return (
-      <div>
-        <ul>
+      <div >
+        <ul className='index-wrapper'>
           {this.props.listings.map(listing => {
             return ( <ListingIndexItem key={listing.id} listing={listing} deleteListing={this.props.deleteListing} /> )
           })}
