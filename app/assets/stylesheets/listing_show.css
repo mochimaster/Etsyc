@@ -2,6 +2,18 @@
   font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
+.listing-show-author-buttons{
+  display: grid;
+  grid-gap: 10px;
+  padding: 20px 40px 20px 40px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.listing-show-author-buttons>.btn ,.listing-show-author-buttons.btn-primary{
+  width: 400px;
+  justify-self: center;
+}
+
 .listing-show-seller-header {
   padding-left: 40px;
   padding-right: 40px;
@@ -18,17 +30,24 @@
 .listing-header-seller-left{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 
 .listing-show-body-wrapper{
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 55fr 45fr;
   /* grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); */
   /* [col-start] min-content [col-middle] max-content [col-end] */
   margin-top: 48px;
   padding: 0 40px 0 40px;
   grid-column-gap: 24px;
 
+}
+
+.listing-show-body-wrapper .listing-image {
+  min-height: 0;
+  max-height: 760px;
+  overflow: hidden;
 }
 
 
@@ -96,7 +115,6 @@
 .listing-details .add-to-cart button:hover{
   background-color: #3c3c3c;
   border-color: rgba(0, 0, 0, 0.2);
-
 }
 
 .listing-description{

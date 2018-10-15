@@ -1,6 +1,6 @@
 import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
-
+import { Link } from 'react-router-dom'
 
 // openModal ,currentUser
 
@@ -23,7 +23,7 @@ class Header extends React.Component {
       <div id="global-header" className="header-nav-top-level">
         <header className="header-nav-inner">
           <div id="craftsy-logo" className="header-site-logo">
-            <a href="/" aria-label="Craftsy" >Atsy </a>
+            <Link to="/" aria-label="Craftsy" >Atsy </Link>
           </div>
 
           <div className="header-search-div-wrapper">
@@ -43,8 +43,8 @@ class Header extends React.Component {
           </div>
 
           <ul className="account-nav">
-            <li className = "icon-sell-etsy"><a className="text-sell-etsy"
-              href="">Sell on Atsy</a>
+            <li className = "icon-sell-etsy"><Link to={`/listings/new`} className="text-sell-etsy"
+              href="">Sell on Atsy</Link>
             </li>
             {navBar}
             <li>

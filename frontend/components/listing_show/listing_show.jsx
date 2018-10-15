@@ -1,6 +1,8 @@
 import React from 'react';
 import ListingShowContainer from './listing_show_container';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+
 
 class ListingShow extends React.Component {
 
@@ -48,12 +50,19 @@ class ListingShow extends React.Component {
     }
 
 
+    let editButton;
+    let deleteButton;
     if (this.props.listing.author_id === this.props.sessionId) {
       console.log('im author');
 
-      let editButton = ""
+      // debugger;
 
-      editButton = <Link to="">Edit Listing</Link>
+      editButton = <Link className="btn btn-primary listing-show-edit-button"
+        to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
+
+      deleteButton = <input className="btn btn-primary listing-show-delete-button"
+        type="submit" value="Delete Listing"
+        onClick={`this.props.deleteListing(${this.props.listing.id})`} />
 
     } else {
       console.log('im not author.');
@@ -76,6 +85,10 @@ class ListingShow extends React.Component {
 
     return (
       <div className="listing-show-content-wrapper">
+        <div className="listing-show-author-buttons">
+          {editButton}
+          {deleteButton}
+        </div>
         <div className="listing-show-seller-header">
           <div className="listing-header-seller-left">
             <div className="listing-header-seller-name">
@@ -145,4 +158,4 @@ class ListingShow extends React.Component {
 
 }
 
-export default ListingShow;
+export default withRouter(ListingShow);

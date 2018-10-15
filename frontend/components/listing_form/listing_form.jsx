@@ -1,13 +1,25 @@
 import ListingFormContainer from './listing_form_container';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 
 class ListingForm extends React.Component{
 
   constructor(props){
     super(props)
     this.state = this.props.listing
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state.author_id = this.props.sessionId
     debugger
+  }
+
+  handleSubmit(e) {
+    debugger
+    e.preventDefault();
+
+    this.props.action(this.state)
+      .then((listing) => this.props.history.push(`/`));
+      // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
   }
 
   updateTitle(e){
@@ -26,6 +38,7 @@ class ListingForm extends React.Component{
 
   }
 
+
   updatePrice(e){
 
   }
@@ -34,11 +47,11 @@ class ListingForm extends React.Component{
 
   render() {
 
-
-
+    //onSubmit={() => this.props.createListing(this.state)}
+    debugger
     return (
       <div className="create-listing-form-wrapper">
-        <form className="create-form-wrapper" onSubmit={() => this.props.createListing(this.state)}>
+        <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
           <div className="create-listing-photo create-listing-left-side">
             <p className="create-listing-photo-inner"> Add photo to server </p>
           </div>
@@ -65,7 +78,7 @@ class ListingForm extends React.Component{
               <br/>
               <textarea className="create-listing-description-input"
                 onChange={this.updateDescription.bind(this)}
-                >
+                >{this.state.description}
               </textarea>
             </div>
 
@@ -89,12 +102,10 @@ class ListingForm extends React.Component{
             </div>
 
             <div className="create-listing-submit-button">
-              <input className="submit-button btn-primary btn" type="submit" value="Submit Listing"/>
+              <input className="submit-button btn-primary btn" type="submit"
+                value={this.props.formType}  />
             </div>
-
           </div>
-
-
 
         </form>
 
@@ -104,4 +115,5 @@ class ListingForm extends React.Component{
   }
 }
 
-export default ListingForm;
+
+export default withRouter(ListingForm);
