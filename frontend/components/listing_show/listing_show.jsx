@@ -6,42 +6,37 @@ import { withRouter } from 'react-router';
 
 class ListingShow extends React.Component {
 
+  constructor(props){
+    super(props);
+
+    }
+
   componentDidMount(){
     // debugger
     // this.props.getListings();
     this.props.getListing(this.props.match.params.listingId);
   }
 
-  componentWillReceiveProps(nextProps){
-    // debugger
-    if (this.props.listing.id != nextProps.match.params.listingId) {
-      debugger
-      this.props.getListing(nextProps.match.params.listingId);
-    }
-  }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.post.id != nextProps.match.params.postId) {
-  //     this.props.fetchPost(nextProps.match.params.postId);
-  //   }
-  // }
-
-  // constructor(props){
-  //   super(props);
+  // componentWillReceiveProps(nextProps){
   //   debugger
-  // }
-
-  //   componentWillReceiveProps(nextProps) {
-  //   if (this.props.post.id != nextProps.match.params.postId) {
-  //     this.props.fetchPost(nextProps.match.params.postId);
+  //   if (this.props.listing.id != nextProps.match.params.listingId) {
+  //     debugger
+  //     this.props.getListing(nextProps.match.params.listingId);
   //   }
   // }
 
 
+
+  // The render() function should be pure, meaning that it does not modify
+  // component state, it returns the same result each time it’s invoked, and
+  // it does not directly interact with the browser.
+  //
+  // If you need to interact with the browser, perform your work in componentDidMount() or the other lifecycle methods instead. Keeping render() pure makes components easier to think about.
+  //
+  //
 
 
   render() {
-    // debugger
     // this.props.listing.id = 1;
     // debugger;
 
@@ -62,7 +57,7 @@ class ListingShow extends React.Component {
 
       deleteButton = <input className="btn btn-primary listing-show-delete-button"
         type="submit" value="Delete Listing"
-        onClick={`this.props.deleteListing(${this.props.listing.id})`} />
+        onClick={() => this.props.deleteListing(this.props.listing.id)} />
 
     } else {
       console.log('im not author.');

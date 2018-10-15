@@ -35,6 +35,7 @@ const ListingIndexItem = ({listing, deleteListing}) => {
       </div>
       <div className="listing-item-author">
         Merchant Name: {listing.author_id} <br/>
+        <Link to={`/users/${listing.author_id}/listings`} >Merchant's Store</Link>
       </div>
       <div className="listing-item-review">
         --- review stars here --- (xx)

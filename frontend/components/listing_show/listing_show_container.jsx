@@ -5,11 +5,11 @@ import ListingShow from './listing_show';
 
 const mapStateToProps = (state, ownProps) => {
   // debugger
-  return {
+  return ({
     listing: state.entities.listings[ownProps.match.params.listingId],
     sessionId: state.session.id
 
-  }
+  })
 }
 
 // const benchId = parseInt(match.params.benchId);

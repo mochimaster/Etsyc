@@ -17,8 +17,9 @@ class Listing < ApplicationRecord
   validates :title, uniqueness: true
   attribute :modified_by_userid, :integer, default: :author_id
 
+  has_one_attached :photo
 
-  belongs_to :listings,
+  belongs_to :user,
     primary_key: :id,
     foreign_key: :author_id,
     class_name: :User
@@ -34,5 +35,7 @@ class Listing < ApplicationRecord
       errors[:description] << "Description cannot be empty."
     end
   end
+
+
 
 end

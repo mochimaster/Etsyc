@@ -31,7 +31,7 @@ class Api::ListingsController < ApplicationController
   end
 
   def index
-
+    # debugger
     @listings = if params[:user_id]
                   Listing.where(author_id: params[:user_id])
                 else

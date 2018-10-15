@@ -4,7 +4,7 @@
   padding: 0 40px 0 40px;
   display: grid;
   /* grid-template-columns: repeat(4, 1fr) */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   font-family: "Graphik Webfont", -apple-system, system-ui, Roboto,
     "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;

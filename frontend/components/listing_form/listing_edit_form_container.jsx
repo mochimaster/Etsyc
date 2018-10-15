@@ -3,7 +3,7 @@ import {editListing} from '../../actions/listing_actions';
 import ListingForm from './listing_form';
 
 const mapStateToProps = (state,ownProps) => {
-  debugger;
+  // debugger;
   return {
     listing: state.entities.listings[ownProps.match.params.listingId],
     sessionId: state.session.id,

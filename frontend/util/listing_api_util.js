@@ -29,7 +29,7 @@ export const getListings = () => {
 };
 
 export const deleteListing = (id) => {
-  debugger
+
   return $.ajax({
     method: 'DELETE',
     url: `/api/listings/${id}`

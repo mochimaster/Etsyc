@@ -1,6 +1,7 @@
 import ListingFormContainer from './listing_form_container';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 
 class ListingForm extends React.Component{
@@ -47,8 +48,10 @@ class ListingForm extends React.Component{
 
   render() {
 
+
+
     //onSubmit={() => this.props.createListing(this.state)}
-    debugger
+    // debugger
     return (
       <div className="create-listing-form-wrapper">
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
