@@ -9,7 +9,7 @@ class ListingForm extends React.Component{
 
   constructor(props){
     super(props)
-    debugger;
+    // debugger;
     this.state = {
       title: (props.listing) ? props.listing.title : "",
       description: (props.listing) ? props.listing.description : "",
@@ -23,17 +23,21 @@ class ListingForm extends React.Component{
   // this.state.author_id = this.props.sessionId
   componentDidMount(){
 
-    debugger
+    // debugger
 
+    if(this.props.formType === 'Create Listing'){
 
-    this.props.getListing(this.props.match.params.listingId).then(() => {
-        console.log('calling setstate')
-        this.setState(
-          {...this.props.listing},
-          () => {debugger;}
-        )
+    } else {
 
-      })
+      this.props.getListing(this.props.match.params.listingId).then(() => {
+          console.log('calling setstate')
+          this.setState(
+            {...this.props.listing},
+            () => {}
+          )
+
+        })
+    }
     // this.setState({listing:this.props.listing});
     // if(this.props.formType === 'Edit Listing'){
     //   console.log("inside if statement.")
@@ -79,6 +83,8 @@ class ListingForm extends React.Component{
   // }
   //
 
+
+
   render() {
     // from Elliot,
 
@@ -89,15 +95,34 @@ class ListingForm extends React.Component{
     // Redirect user if logged in user is not the listing author.
 
     // explore try catch.
-    if(this.props.listing.author_id !== this.props.sessionId){
-      this.props.history.push(`/`);
-      return null
+    if (this.props.formType === 'Edit Listing'){
+      if(this.props.listing.author_id !== this.props.sessionId){
+        this.props.history.push(`/`);
+        return null
+      }
     }
+
+    // ----------------------------
+
+    // const reader = new FileReader();
+    // const file = e.currentTarget.files[0];
+    // reader.onloadend = () =>
+    //   this.setState({ imageUrl: reader.result, imageFile: file});
+    //
+    // if (file) {
+    //   reader.readAsDataURL(file);
+    // } else {
+    //   this.setState({ imageUrl: "", imageFile: null });
+    // }
+
+
+
+    // ----------------------------
 
 
 
     //onSubmit={() => this.props.createListing(this.state)}
-    debugger
+    // debugger
     return (
       <div className="create-listing-form-wrapper">
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
