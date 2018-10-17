@@ -14,6 +14,7 @@ import ListingIndexContainer from './listing_index/listing_index_container';
 import ListingShowContainer from './listing_show/listing_show_container';
 import ListingFormContainer from './listing_form/listing_form_container';
 import ListingEditFormContainer from './listing_form/listing_edit_form_container';
+import CartContainer from './cart/cart_container';
 
 
 
@@ -34,10 +35,10 @@ const App = () => {
         <Route exact path="/" render={() => null} />
         <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
         <Route path ="/users/:userId/listings" component={ListingIndexContainer} />
+        <Route path="/users/:userId/carts" component={CartContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
-
         <Redirect to="/" />
       </Switch>
     </div>

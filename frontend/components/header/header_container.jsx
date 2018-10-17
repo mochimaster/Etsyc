@@ -12,7 +12,8 @@ const mapStateToProps = state => {
   }
 
   return {
-    currentUser: state.entities.users[currentSession]
+    currentUser: state.entities.users[currentSession],
+
   }
 }
 // currentUser: state.entities.users[state.session.id]

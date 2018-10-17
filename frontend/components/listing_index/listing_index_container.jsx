@@ -5,16 +5,18 @@ import {connect} from 'react-redux';
 import {selectListingsByAuthor} from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   let listingsByAuthor;
-  if (ownProps.match.params.userId){
+  // if (ownProps.match.params.userId){
+    // listingsByAuthor = selectListingsByAuthor(state.entities, ownProps.match.params.userId);
     listingsByAuthor = selectListingsByAuthor(state.entities, ownProps.match.params.userId);
-    debugger;
-  }
+
+  // }
 
   return {
-    listings: Object.values(state.entities.listings),
-    listingsByAuthor
+    // listings: Object.values(state.entities.listings),
+    listings: listingsByAuthor
+    // listingsByAuthor
   }
 }
 

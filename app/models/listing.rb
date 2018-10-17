@@ -22,10 +22,15 @@ class Listing < ApplicationRecord
 
   has_one_attached :photo
 
-  belongs_to :user,
+  belongs_to :author,
     primary_key: :id,
     foreign_key: :author_id,
     class_name: :User
+
+  has_many :carts,
+    primary_key: :id,
+    foreign_key: :listing_id,
+    class_name: :Cart
 
   def title_validation
     if title.length >= 255
@@ -38,6 +43,7 @@ class Listing < ApplicationRecord
       errors[:description] << "Description cannot be empty."
     end
   end
+
 
 
 

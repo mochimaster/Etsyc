@@ -6,8 +6,11 @@ import Root from './components/root'
 import {signup, login, logout} from './actions/session_actions'
 // import {signup, login, logout} from './util/session_api_util'
 
-import {createListing, updateListing, getListing, getListings,deleteListing} from './actions/listing_actions';
-
+// import {createListing, updateListing, getListing, getListings,deleteListing} from './actions/listing_actions';
+// import {createListing, updateListing, getListing, getListings,deleteListing} from './actions/listing_actions';
+// import {createListing, updateListing, getListing, getListings,deleteListing} from './util/listing_api_util';
+// import {getCarts, getCart, updateCart, createCart,deleteCart} from './util/cart_api_util';
+import {getCarts, getCart, updateCart, createCart, deleteCart} from './actions/cart_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,11 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
-  window.createListing = createListing;
-  window.updateListing = updateListing;
-  window.getListing = getListing;
-  window.getListings = getListings;
-  window.deleteListing = deleteListing;
+  // window.createListing = createListing;
+  // window.updateListing = updateListing;
+  // window.getListing = getListing;
+  // window.getListings = getListings;
+  // window.deleteListing = deleteListing;
+
+  window.getCarts = getCarts;
+  window.getCart = getCart;
+  window.updateCart = updateCart;
+  window.createCart = createCart;
+  window.deleteCart = deleteCart;
 
 
 

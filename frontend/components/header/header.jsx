@@ -9,15 +9,25 @@ class Header extends React.Component {
 
   render() {
     let navBar = "";
+    let cartLink;
     if (this.props.currentUser){
       // navBar = <UserDropdownContainer />
       navBar = <li className="container-profile-picture">
                   <a onClick={() => this.props.openModal('profileDropdown')}
                   className="icon-avatar">You</a>
                 </li>
+
+      cartLink = <Link to={`/users/${this.props.currentUser.id}/carts`} className="icon-img-cart">
+                  <i className="fas fa-shopping-cart"></i><br/>Cart
+                 </Link>
     }else{
       navBar = <GreetingContainer />
+      cartLink = <Link to="" className="icon-img-cart">
+                  <i className="fas fa-shopping-cart"></i><br/>Cart
+                 </Link>
     }
+
+
     return (
 
       <div id="global-header" className="header-nav-top-level">
@@ -53,9 +63,8 @@ class Header extends React.Component {
               </a>
             </li>
             <li>
-              <a href="" className="icon-img-cart">
-                <i className="fas fa-shopping-cart"></i><br/>Cart
-              </a>
+              {cartLink}
+
             </li>
           </ul>
 
@@ -65,5 +74,8 @@ class Header extends React.Component {
   }
 
 }
+
+  // {cartLink}
+
 
 export default Header;

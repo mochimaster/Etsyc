@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {editListing} from '../../actions/listing_actions';
+import {editListing,getListing} from '../../actions/listing_actions';
 import ListingForm from './listing_form';
 
 const mapStateToProps = (state,ownProps) => {
@@ -14,7 +14,8 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: (listing) => dispatch(editListing(listing))
+    action: (listing) => dispatch(editListing(listing)),
+    getListing: (id) => dispatch(getListing(id))
   }
 }
 

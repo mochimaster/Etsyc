@@ -2,20 +2,50 @@ import ListingFormContainer from './listing_form_container';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
+// import ListingEditFormContainer from './listing_edit_form_container';
 
 
 class ListingForm extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = this.props.listing
+    debugger;
+    this.state = {
+      title: (props.listing) ? props.listing.title : "",
+      description: (props.listing) ? props.listing.description : "",
+      overview: (props.listing) ? props.listing.overview : "",
+      price: (props.listing) ? props.listing.price : ""
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state.author_id = this.props.sessionId
+  }
+  // removed  by Elliot
+  // this.state.author_id = this.props.sessionId
+  componentDidMount(){
+
     debugger
+
+
+    this.props.getListing(this.props.match.params.listingId).then(() => {
+        console.log('calling setstate')
+        this.setState(
+          {...this.props.listing},
+          () => {debugger;}
+        )
+
+      })
+    // this.setState({listing:this.props.listing});
+    // if(this.props.formType === 'Edit Listing'){
+    //   console.log("inside if statement.")
+    //   this.props.getListing(this.props.match.params.listingId)
+    // } else {
+    //   console.log("inside else.")
+    //   return null
+    // }
   }
 
   handleSubmit(e) {
-    debugger
+    // debugger
     e.preventDefault();
 
     this.props.action(this.state)
@@ -43,14 +73,31 @@ class ListingForm extends React.Component{
     this.setState({price: e.target.value})
   }
 
-
+  // debugger
+  // if(!this.state.listing){
+  //   return null
+  // }
+  //
 
   render() {
+    // from Elliot,
+
+    if(!this.props.listing){
+        return null
+      }
+
+    // Redirect user if logged in user is not the listing author.
+
+    // explore try catch.
+    if(this.props.listing.author_id !== this.props.sessionId){
+      this.props.history.push(`/`);
+      return null
+    }
 
 
 
     //onSubmit={() => this.props.createListing(this.state)}
-    // debugger
+    debugger
     return (
       <div className="create-listing-form-wrapper">
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
@@ -81,9 +128,8 @@ class ListingForm extends React.Component{
               <label className="required"> * </label>
               <br/>
               <textarea className="create-listing-description-input"
-                onChange={this.updateDescription.bind(this)}
-                >{this.state.description}
-              </textarea>
+                onChange={this.updateDescription.bind(this)} value={this.state.description}
+                />
             </div>
 
             <div className="create-listing-category">

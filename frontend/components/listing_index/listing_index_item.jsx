@@ -24,7 +24,7 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   //
   // }
 
-  debugger
+  // debugger
   return (
     <li className="listing-item-wrapper">
       <div className="listing-item-image">
@@ -44,7 +44,7 @@ const ListingIndexItem = ({listing, deleteListing}) => {
         --- review stars here --- (xx)
       </div>
       <div className="listing-item-price">
-        $ {listing.price} 
+        $ {listing.price}
       </div>
 
     </li>

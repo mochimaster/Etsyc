@@ -48,16 +48,16 @@ class ListingIndex extends React.Component {
 // match: {path: "/users/:userId/listings", url: "/users/1/listings", isExact: true, params: {…}}
 
 
-  componentWillReceiveProps(nextProps){
-
-    debugger
-    // if (!this.props.match.params){
-    if(nextProps.match.params.userId){
-      console.log("inside if condition of component will receive props.")
-      this.setState({[this.props.listings]:nextProps.listingsByAuthor});
-    }
-    debugger
-  }
+  // componentWillReceiveProps(nextProps){
+  //
+  //   debugger
+  //   // if (!this.props.match.params){
+  //   // if(nextProps.match.params.userId){
+  //     console.log("inside if condition of component will receive props.")
+  //     this.setState({[this.props.listings]: nextProps.listingsByAuthor});
+  //   // }
+  //   debugger
+  // }
 
   // componentWillReceiveProps(nextProps) {
   //   if (this.props.post.id != nextProps.match.params.postId) {
@@ -67,7 +67,7 @@ class ListingIndex extends React.Component {
 
   render() {
 
-    debugger
+    // debugger
 
 
     return (

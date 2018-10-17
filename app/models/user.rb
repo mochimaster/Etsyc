@@ -26,6 +26,11 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Listing
 
+  has_many :carts,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Cart
+
   attr_reader :password
 
   after_initialize :ensure_session_token
