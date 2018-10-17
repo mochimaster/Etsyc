@@ -25,7 +25,10 @@ const listingsReducer = (oldState={}, action) => {
       return newState2;
 
     case RECEIVE_CARTS:
-      // debugger
+      if(Object.keys(action.carts).length < 1){
+        return oldState
+      }
+      debugger
       let newState3 = merge({}, oldState);
       return action.carts.listings;
 

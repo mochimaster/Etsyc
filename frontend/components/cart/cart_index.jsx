@@ -47,7 +47,8 @@ class CartIndex extends React.Component {
       <div>
         <ul>
           {this.props.carts.map(cart => {
-            return (<CartIndexItem key={cart.id} cart={cart} />)
+            return (<CartIndexItem key={cart.id} cart={cart}
+                deleteCart={this.props.deleteCart} updateCart={this.props.updateCart} />)
           })}
 
         </ul>

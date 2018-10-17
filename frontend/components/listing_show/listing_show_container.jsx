@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getListing, updateListing, deleteListing,getListings} from '../../actions/listing_actions';
 import ListingShow from './listing_show';
+import {createCart} from '../../actions/cart_actions';
 
 const mapStateToProps = (state, ownProps) => {
   // debugger
@@ -28,7 +29,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getListing: (id) => dispatch(getListing(id)),
     updateListing: (listing) => dispatch(updateListing(listing)),
-    deleteListing: (id) => dispatch(deleteListing(id))
+    deleteListing: (id) => dispatch(deleteListing(id)),
+    createCart: (cart) => dispatch(createCart(cart))
+
   }
 }
 

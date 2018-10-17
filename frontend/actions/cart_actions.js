@@ -7,7 +7,7 @@ export const REMOVE_CART = 'REMOVE_CART';
 export const createCart = cart => {
   return dispatch => {
     return ApiUtil.createCart(cart).then( cart => {
-      debugger
+      // debugger
       dispatch({type: RECEIVE_CART, cart});
     });
   };
@@ -35,7 +35,8 @@ export const getCarts = (user_id) => {
 
 export const deleteCart = (cart) => {
   return dispatch => {
-    return ApiUtil.deleteCart(cart).then( (cart) => {
+    return ApiUtil.deleteCart(cart).then( () =>
+    {
       dispatch({type: REMOVE_CART, cart: cart});
     } );
   };

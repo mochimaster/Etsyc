@@ -34,6 +34,7 @@ export const getCarts = (user_id) => {
 export const deleteCart = (cart) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/users/${cart.user_id}/carts/${cart.id}`
+    url: `/api/users/${cart.user_id}/carts/${cart.id}`,
+    data: {cart: cart}
   });
 };

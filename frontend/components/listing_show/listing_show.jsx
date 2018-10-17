@@ -8,8 +8,18 @@ class ListingShow extends React.Component {
 
   constructor(props){
     super(props);
-
+    // debugger
+    this.state = {
+      quantity: 1
     }
+
+  }
+
+  updateQuantity(e){
+    // debugger
+    this.setState({quantity: parseInt(e.target.value)})
+
+  }
 
   componentDidMount(){
     // debugger
@@ -121,14 +131,19 @@ class ListingShow extends React.Component {
             */}
             <div className="listing-details listing-details-quantity">
               Quantity <br/>
-              <select className="select-custom">
+              <select onChange={this.updateQuantity.bind(this)} className="select-custom">
                 <option value="1">1</option>
                 <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
 
             <div className="listing-details add-to-cart">
-              <button>
+              <button onClick={()=>this.props.createCart({quantity: this.state.quantity,
+                listing_id: this.props.listing.id, user_id: this.props.sessionId })
+                              .then(() => this.props.history.push(`/users/${this.props.sessionId}/carts`))}>
                 Add to cart
               </button>
             </div>

@@ -9,18 +9,23 @@ const cartsReducer = (oldState={}, action) => {
       return merge(newState, {[action.cart.id]: action.cart});
 
     case RECEIVE_CARTS:
-      // debugger
+      debugger
       // let carts = {};
       // action.carts.forEach(cart => {
       //   carts[cart.id] = cart;
       // });
       // return carts;
+      if(Object.keys(action.carts).length<1){
+        return oldState;
+      }
+
 
       return action.carts.cart_item;
 
     case REMOVE_CART:
+
       let newState2 = merge({}, oldState);
-      delete newState2[action.cartId];
+      delete newState2[action.cart.id];
       return newState2;
 
     default:

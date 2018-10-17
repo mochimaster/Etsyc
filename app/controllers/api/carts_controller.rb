@@ -1,6 +1,7 @@
 class Api::CartsController < ApplicationController
 
   def create
+    # debugger
     @cart = Cart.new(cart_params)
 
     if @cart.save
@@ -12,7 +13,7 @@ class Api::CartsController < ApplicationController
   end
 
   def update
-    debugger
+    # debugger
     @cart = Cart.find_by(id: params[:id])
 
     if @cart && @cart.update_attributes(cart_params)
@@ -37,8 +38,10 @@ class Api::CartsController < ApplicationController
 
   def destroy
     @cart = Cart.find_by(id: params[:id])
+
     if @cart
       @cart.destroy
+
     else
       render ['Cart cannot be destroyed.']
     end
@@ -56,8 +59,8 @@ class Api::CartsController < ApplicationController
 
   private
   def cart_params
-    # debugger
-    params.require(:cart).permit(:quantity, :listing_id, :user_id)
+      # debugger
+      params.require(:cart).permit(:quantity, :listing_id, :user_id)
   end
 
 

@@ -14,7 +14,8 @@ class ListingForm extends React.Component{
       title: (props.listing) ? props.listing.title : "",
       description: (props.listing) ? props.listing.description : "",
       overview: (props.listing) ? props.listing.overview : "",
-      price: (props.listing) ? props.listing.price : ""
+      price: (props.listing) ? props.listing.price : "",
+      photo: (props.listing) ? props.listing.photo : ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,9 +53,37 @@ class ListingForm extends React.Component{
     // debugger
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append('listing[title]', this.state.title);
+    if(this.state.photoFile){
+      formData.append('listing[photo]', this.state.photoFile);
+    }
+
+    $.ajax({
+      url: '/api/listings',
+      method: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false
+    });
+
+
     this.props.action(this.state)
       .then((listing) => this.props.history.push(`/`));
       // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
+  }
+
+  imagePreview(e){
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, imageFile: file});
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
   }
 
   updateTitle(e){
@@ -128,6 +157,8 @@ class ListingForm extends React.Component{
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
           <div className="create-listing-photo create-listing-left-side">
             <p className="create-listing-photo-inner"> Add photo to server </p>
+
+
           </div>
 
           <div className="create-listing-right-side">
