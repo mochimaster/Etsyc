@@ -31,6 +31,12 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Cart
 
+  # has_many :saved_listings,
+  #   through: :carts,
+  #   source: :listing
+
+
+
   attr_reader :password
 
   after_initialize :ensure_session_token

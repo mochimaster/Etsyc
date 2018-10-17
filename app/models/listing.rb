@@ -32,6 +32,10 @@ class Listing < ApplicationRecord
     foreign_key: :listing_id,
     class_name: :Cart
 
+  has_many :saved_listings,
+    through: :carts,
+    source: :listing
+
   def title_validation
     if title.length >= 255
       errors[:title] << "Title is too long."

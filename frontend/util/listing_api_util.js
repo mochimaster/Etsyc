@@ -28,6 +28,14 @@ export const getListings = () => {
   });
 };
 
+export const getSavedListings = (listing_ids) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/listings`,
+    data: {cart_listing_ids: listing_ids}
+  });
+};
+
 export const deleteListing = (id) => {
 
   return $.ajax({

@@ -1,6 +1,10 @@
 export const asArray = (carts) => {
 
-  // debugger
+  if(!carts){
+    return null;
+  }
+
+
   let dup_carts = carts;
 
   if(Object.keys(dup_carts).length === 0){

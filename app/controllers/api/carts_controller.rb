@@ -27,8 +27,11 @@ class Api::CartsController < ApplicationController
 
   def index
     # debugger
+
+
     @carts = Cart.where(user_id: params[:user_id])
 
+    # debugger
     render :index
   end
 

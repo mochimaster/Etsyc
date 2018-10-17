@@ -10,11 +10,13 @@ const cartsReducer = (oldState={}, action) => {
 
     case RECEIVE_CARTS:
       // debugger
-      let carts = {};
-      action.carts.forEach(cart => {
-        carts[cart.id] = cart;
-      });
-      return carts;
+      // let carts = {};
+      // action.carts.forEach(cart => {
+      //   carts[cart.id] = cart;
+      // });
+      // return carts;
+
+      return action.carts.cart_item;
 
     case REMOVE_CART:
       let newState2 = merge({}, oldState);

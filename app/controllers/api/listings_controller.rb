@@ -24,6 +24,7 @@ class Api::ListingsController < ApplicationController
   end
 
   def show
+    # debugger
     @listing = Listing.find_by(id: params[:id])
     if @listing
       render :show
@@ -32,6 +33,13 @@ class Api::ListingsController < ApplicationController
 
   def index
     # debugger
+    # @listings = if params[:listingIds]
+    #               Listing.where(id: params[:listingIds])
+    #             elsif params[:user_id]
+    #               Listing.where(author_id: params[:user_id])
+    #             elsif
+    #               Listing.all
+    #             end
     @listings = if params[:user_id]
                   Listing.where(author_id: params[:user_id])
                 else

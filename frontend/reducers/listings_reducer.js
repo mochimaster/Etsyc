@@ -1,4 +1,5 @@
 import {RECEIVE_LISTING, RECEIVE_LISTINGS, REMOVE_LISTING} from '../actions/listing_actions';
+import {RECEIVE_CARTS,RECEIVE_CART} from '../actions/cart_actions';
 import merge from 'lodash/merge';
 
 const listingsReducer = (oldState={}, action) => {
@@ -22,6 +23,17 @@ const listingsReducer = (oldState={}, action) => {
       let newState2 = merge({}, oldState);
       delete newState2[action.listingId];
       return newState2;
+
+    case RECEIVE_CARTS:
+      // debugger
+      let newState3 = merge({}, oldState);
+      return action.carts.listings;
+
+    // case RECEIVE_CART:
+    //   debugger
+    //   let newState4 = merge({}, oldState);
+    //   delete newState4[action.carts.listings];
+    //   return newState4;
 
     default:
       return oldState;
