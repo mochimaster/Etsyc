@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     end
     resources :listings, defaults: {format: :json}
     resource :session, only: [:create, :destroy]
+    resource :reviews, defaults: {format: :json}
   end
-
-
-
 end

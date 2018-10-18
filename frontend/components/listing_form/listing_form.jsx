@@ -9,22 +9,26 @@ class ListingForm extends React.Component{
 
   constructor(props){
     super(props)
-    // debugger;
+    debugger;
     this.state = {
       title: (props.listing) ? props.listing.title : "",
       description: (props.listing) ? props.listing.description : "",
       overview: (props.listing) ? props.listing.overview : "",
       price: (props.listing) ? props.listing.price : "",
-      photo: (props.listing) ? props.listing.photo : ""
+      photo: (props.listing) ? props.listing.photo : "",
+      imageUrl: null,
+      merchantName: (props.merchantName) ? props.merchantName: "",
+
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.imagePreview = this.imagePreview.bind(this);
   }
   // removed  by Elliot
   // this.state.author_id = this.props.sessionId
   componentDidMount(){
 
-    // debugger
+    debugger
 
     if(this.props.formType === 'Create Listing'){
 
@@ -50,31 +54,28 @@ class ListingForm extends React.Component{
   }
 
   handleSubmit(e) {
-    // debugger
+    debugger
     e.preventDefault();
-
     const formData = new FormData();
     formData.append('listing[title]', this.state.title);
-    if(this.state.photoFile){
-      formData.append('listing[photo]', this.state.photoFile);
+    formData.append('listing[overview]', this.state.overview);
+    formData.append('listing[price]', this.state.price);
+    formData.append('listing[description]', this.state.description);
+    formData.append('listing[author_id]', this.props.sessionId);
+    formData.append('listing[merchant_name]', this.props.merchant_name);
+
+    if(!!this.state.imageUrl){
+      formData.append('listing[photo]', this.state.imageFile);
     }
-
-    $.ajax({
-      url: '/api/listings',
-      method: 'POST',
-      data: formData,
-      contentType: false,
-      processData: false
-    });
-
-
-    this.props.action(this.state)
-      .then((listing) => this.props.history.push(`/`));
+    this.props.action(formData)
+      .then((listing) => {debugger});
+      // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
       // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
   }
 
   imagePreview(e){
     const reader = new FileReader();
+    debugger
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
       this.setState({ imageUrl: reader.result, imageFile: file});
@@ -106,11 +107,46 @@ class ListingForm extends React.Component{
     this.setState({price: e.target.value})
   }
 
+  updateMerchantName(e){
+    this.setState({merchant_name: e.target.value})
+  }
+
   // debugger
   // if(!this.state.listing){
   //   return null
   // }
   //
+
+  renderErrors(){
+    debugger
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+
+  }
+
+  merchantExist(){
+    let name;
+    debugger
+    if(!this.props.merchantName){
+      name =        (<div><label className="required"> * </label>
+                    <br/>
+                    <input className="create-listing-merchant-input"
+                      onChange={this.updateMerchantName.bind(this)} value={this.state.merchant_name}
+                      type="text"/></div>)
+
+
+    } else {
+      name = <p>{this.state.merchantName}</p>
+    }
+    return name
+  }
 
 
 
@@ -148,20 +184,29 @@ class ListingForm extends React.Component{
 
     // ----------------------------
 
-
+    const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
 
     //onSubmit={() => this.props.createListing(this.state)}
     // debugger
     return (
       <div className="create-listing-form-wrapper">
+        {this.renderErrors()}
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
           <div className="create-listing-photo create-listing-left-side">
-            <p className="create-listing-photo-inner"> Add photo to server </p>
+            <p className="create-listing-photo-inner"> Image uploader </p>
+            <input className="create-listing-photo-intake" type="file" onChange={this.imagePreview} value="" />
+
+            {preview}
 
 
           </div>
 
           <div className="create-listing-right-side">
+            <div className="create-listing-merchant_name">
+              <label>Merchant Name:</label>
+              {this.merchantExist()}
+            </div>
+
             <div className="create-listing-title">
               <label>Product Name:</label>
               <label className="required"> * </label>

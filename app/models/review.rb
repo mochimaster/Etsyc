@@ -1,33 +1,29 @@
 # == Schema Information
 #
-# Table name: carts
+# Table name: reviews
 #
 #  id         :bigint(8)        not null, primary key
-#  quantity   :integer          not null
-#  listing_id :integer          not null
+#  body       :text             not null
+#  rating     :integer          not null
 #  user_id    :integer          not null
+#  listing_id :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Cart < ApplicationRecord
+class Review < ApplicationRecord
 
-  validates :quantity, :listing_id, :user_id, presence: true
+  validates :body, :rating, presence: true
 
-  belongs_to :listing,
+  belongs_to :listings,
     primary_key: :id,
     foreign_key: :listing_id,
     class_name: :Listing
 
-  belongs_to :user,
+  belongs_to  :author,
     primary_key: :id,
     foreign_key: :user_id,
     class_name: :User
-
-  has_one :listing_photo,
-    through: :listing,
-    source: :photo
-
 
 
 

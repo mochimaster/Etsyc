@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {editListing,getListing} from '../../actions/listing_actions';
+import {updateListing, getListing} from '../../actions/listing_actions';
 import ListingForm from './listing_form';
 
 const mapStateToProps = (state,ownProps) => {
@@ -7,7 +7,8 @@ const mapStateToProps = (state,ownProps) => {
   return {
     listing: state.entities.listings[ownProps.match.params.listingId],
     sessionId: state.session.id,
-    formType: 'Edit Listing'
+    formType: 'Edit Listing',
+    errors: state.errors.listing
 
   }
 }

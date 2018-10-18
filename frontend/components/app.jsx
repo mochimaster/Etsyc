@@ -32,19 +32,19 @@ const App = () => {
       <Switch>
         {/* Good comment. The below line will be modified
           when I have a component to render on "/" */}
-        <Route exact path="/" render={() => null} />
+
         <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
         <Route path ="/users/:userId/listings" component={ListingIndexContainer} />
         <Route path="/users/:userId/carts" component={CartContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
-        <Redirect to="/" />
+        <Redirect to="/listings" />
       </Switch>
     </div>
   )
 }
-
+// <Route exact path="/" render={() => null} />
 // <Route path="/listings/:listingId" component={ListingShowContainer} />
 export default App;
 

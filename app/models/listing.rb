@@ -12,10 +12,11 @@
 #  updated_at         :datetime         not null
 #  price              :float
 #  overview           :text
+#  merchant_name      :string
 #
 
 class Listing < ApplicationRecord
-  validates :title, :description, :author_id, :price, :overview,presence: true
+  validates :description, :author_id, :price, :overview,presence: true
   validates :title, uniqueness: true
   validates :price, numericality: { greater_than: 0}
   attribute :modified_by_userid, :integer, default: :author_id
@@ -35,6 +36,12 @@ class Listing < ApplicationRecord
   has_many :saved_listings,
     through: :carts,
     source: :listing
+
+  has_many :reviews,
+    primary_key: :id,
+    foreign_key: :listing_id,
+    class_name: :Review
+
 
   def title_validation
     if title.length >= 255

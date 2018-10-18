@@ -1,13 +1,15 @@
 class Api::ListingsController < ApplicationController
 
   def create
+    debugger
     @listing = Listing.new(listing_params)
+
 
     @listing.modified_by_userid = @listing.author_id
     if @listing.save
       render :show
     else
-      render @listing.errors.full_messages, status: 401
+      render json: @listing.errors.full_messages, status: 401
     end
   end
 
@@ -70,7 +72,7 @@ class Api::ListingsController < ApplicationController
     # params[:listing][:modified_by_userid] = params[:author_id]
     # debugger
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo )
+      :modified_by_userid, :price, :overview, :photo, :merchant_name )
   end
 
 

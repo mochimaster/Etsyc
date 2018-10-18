@@ -77,11 +77,13 @@ class ListingShow extends React.Component {
       console.log('im not author.');
     }
 
-    let quantityDropdown;
+    // let quantityDropdown="";
     // for(let i=0; i<100; i++){
     //   quantityDropdown += "<option value="+ i + ">+i+</option>"
     // }
-
+    //
+    // quantityDropdown = quantityDropdown.slice(7,-8);
+    //
     // let quantityDropdown2 = new Element(() => {
     //   return (
     //
@@ -90,8 +92,8 @@ class ListingShow extends React.Component {
     //   )
     // })
 
-    // debugger;
 
+    debugger
     return (
       <div className="listing-show-content-wrapper">
         <div className="listing-show-author-buttons">
@@ -102,6 +104,7 @@ class ListingShow extends React.Component {
           <div className="listing-header-seller-left">
             <div className="listing-header-seller-name">
               Merchant Name: {this.props.listing.author_id}
+              {this.props.listing.merchant_name}
             </div>
             <div className="listing-header-seller-rating">
               Rating in stars (xx)
@@ -114,7 +117,8 @@ class ListingShow extends React.Component {
 
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
-            <img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" />
+          <img src={this.props.listing.photoUrl} />
+
           </div>
 
           <div className="listing-details listing-right-half">
@@ -130,13 +134,13 @@ class ListingShow extends React.Component {
             </div>
             */}
             <div className="listing-details listing-details-quantity">
-              Quantity <br/>
+              Quantity  <br/>
               <select onChange={this.updateQuantity.bind(this)} className="select-custom">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
               </select>
             </div>
 
@@ -179,5 +183,8 @@ class ListingShow extends React.Component {
 
 
 }
+// {<option dangerouslySetInnerHTML={{ __html: quantityDropdown}} />}
+
+// <img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" />
 
 export default (ListingShow);

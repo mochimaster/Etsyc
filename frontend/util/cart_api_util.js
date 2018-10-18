@@ -8,7 +8,7 @@ export const createCart = cart => {
 };
 
 export const updateCart = cart => {
-  debugger
+  // debugger
   return $.ajax({
     method: 'PATCH',
     url: `/api/users/${cart.user_id}/carts/${cart.id}`,

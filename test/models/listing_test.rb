@@ -12,6 +12,7 @@
 #  updated_at         :datetime         not null
 #  price              :float
 #  overview           :text
+#  merchant_name      :string
 #
 
 require 'test_helper'

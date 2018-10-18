@@ -20,7 +20,6 @@ export const asArray = (carts) => {
 
 export const selectListingsByAuthor = ({listings}, authorId) => {
 
-  // debugger;
   // const listingsArray = [];
 
 

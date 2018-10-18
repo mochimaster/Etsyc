@@ -28,17 +28,19 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   return (
     <li className="listing-item-wrapper">
       <div className="listing-item-image">
-        <Link to={`/listings/${listing.id}`}><img alt="test_image"
-          src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" />
+        <Link to={`/listings/${listing.id}`}>
+          <img src={listing.photoUrl} />
         </Link>
+
+
+
       </div>
       <div className="listing-item-title">
         <Link className="listing-item-title-link"
           to={`/listings/${listing.id}`}>{listing.title}</Link> <br/>
       </div>
       <div className="listing-item-author">
-        Merchant Name: {listing.author_id} <br/>
-        <Link to={`/users/${listing.author_id}/listings`} >Merchant's Store</Link>
+        <Link to={`/users/${listing.author_id}/listings`} >{listing.author_id}</Link>
       </div>
       <div className="listing-item-review">
         --- review stars here --- (xx)

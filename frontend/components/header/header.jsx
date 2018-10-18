@@ -58,9 +58,9 @@ class Header extends React.Component {
             </li>
             {navBar}
             <li>
-              <a href="" className="icon-img-discover">
+              <Link to="/" className="icon-img-discover">
                 <i className="fas fa-briefcase"></i><br/>Discover
-              </a>
+              </Link>
             </li>
             <li>
               {cartLink}

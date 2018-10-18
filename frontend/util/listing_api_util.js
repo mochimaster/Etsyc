@@ -2,7 +2,9 @@ export const createListing = (listing) => {
   return $.ajax({
     method: 'POST',
     url: '/api/listings',
-    data: {listing:listing}
+    data: listing,
+    contentType: false,
+    processData: false
   });
 };
 

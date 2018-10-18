@@ -8,6 +8,7 @@
 #  password_digest :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  merchant_name   :string
 #
 
 class User < ApplicationRecord
@@ -34,6 +35,11 @@ class User < ApplicationRecord
   # has_many :saved_listings,
   #   through: :carts,
   #   source: :listing
+
+  has_many  :reviews,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Review
 
 
 

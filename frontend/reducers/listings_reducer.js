@@ -28,7 +28,7 @@ const listingsReducer = (oldState={}, action) => {
       if(Object.keys(action.carts).length < 1){
         return oldState
       }
-      debugger
+      // debugger
       let newState3 = merge({}, oldState);
       return action.carts.listings;
 

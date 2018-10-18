@@ -1,0 +1,151 @@
+.cart-index-page-container{
+  display: grid;
+  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  margin-bottom: 40px;
+  background-color: rgb(245, 245, 241);
+  margin-top: -7px;
+}
+
+.sub-header-container{
+  display: grid;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 51px;
+  font-weight: 500;
+  font-size: 26px;
+  margin-left: 185px;
+  margin-right: 185px;
+  width: 992px;
+}
+
+.keep-shopping-link {
+  justify-self: end;
+  font-size: 12px;
+
+  width: 150px;
+  height: 28px;
+
+}
+
+.cart-item-count{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.cart-index-section-wrapper{
+  margin-left: 185px;
+  margin-right: 185px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  background-color: #FFF;
+  border: 1px solid #E1E3DF;
+  border-bottom-color: #CBCCC9;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+
+}
+
+.cart-index-item-photo{
+  margin-right: 15px;
+  width: 150px;
+  height: 120px;
+}
+
+.cart-index-section-wrapper > .cart-index-wrapper {
+  list-style-type: none;
+}
+
+.cart-index-wrapper {
+  padding: 18px;
+
+}
+
+.cart-index-item{
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.cart-left-section-middle-section-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+}
+
+.cart-index-item .cart-index-merchant-name{
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+.cart-index-merchant-name-link{
+  color: black;
+  text-decoration: none;
+
+}
+
+.cart-index-merchant-name-link:hover{
+  text-decoration: underline;
+}
+
+.cart-index-item-price{
+  justify-self: end;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.cart-index-item-title a{
+  text-decoration: none;
+  color: black;
+  line-height: 19.6px;
+  font-size: 17px;
+
+}
+
+.cart-index-item-title a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+
+
+}
+
+
+
+.cart-index-right-side{
+  display: grid;
+  grid-template-rows: 2fr;
+
+}
+
+.cart-index-checkout{
+  padding: 18px;
+  border-left: 1px solid #E1E3DF;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.cart-index-item{
+  justify-self: center;
+  font-size: 12px;
+  border-bottom: 1px solid #E1E3DF;
+  margin-bottom: 25px;
+}
+
+#quantityText{
+  margin-left: 6px;
+  padding-left: 10px;
+  margin-top: -10px;
+}
+
+.total-amount{
+  margin-bottom: 20px;
+
+}
+
+.remove-link:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  text-shadow: 5px;
+}
