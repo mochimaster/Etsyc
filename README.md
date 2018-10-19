@@ -20,4 +20,16 @@ This project was built within a 10 days timeframe. I do plan on implementing new
     - Cart quantity can be updated. Price in cart recalculates based on listings in cart.
   4. User can write reviews on listing.
     - Reviews that belong to a site is displayed on the listing page.
+    
+  Signup page
+  ![signup](images/signup.png)
   
+  
+  Create Listing page
+  ![createlisting](images/create_listing.png)
+  
+  Cart page
+  ![cart](cart.png)
+  
+  Comment
+  ![comment](comment.png)
