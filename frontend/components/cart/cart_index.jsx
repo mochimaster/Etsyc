@@ -83,7 +83,7 @@ class CartIndex extends React.Component {
             <div className="cart-index-checkout">
               <div className="total-amount">Item(s) total: ${sum}</div>
 
-              <button className="checkout-button btn btn-primary"> Proceed to checkout (TBD)</button>
+              <button  className="checkout-button btn btn-primary"> Proceed to checkout (TBD)</button>
             </div>
 
 
