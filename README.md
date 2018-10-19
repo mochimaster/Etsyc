@@ -29,7 +29,7 @@ This project was built within a 10 days timeframe. I do plan on implementing new
   ![createlisting](images/create_listing.png)
   
   Cart page
-  ![cart](cart.png)
+  ![cart](images/cart.png)
   
   Comment
-  ![comment](comment.png)
+  ![comment](images/comment.png)
