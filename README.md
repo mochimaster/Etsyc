@@ -1,24 +1,10 @@
-# README
+Atsy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Atsy is an ecommerce website for craft. It is inspired by Etsy. It is built on Rails and PostgreSQL backend with React and Redux frontend.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project was built within a 10 days timeframe. I do plan on implementing new features on this project over time. Features for planned release:
+  1. Search
+  2. Categories
+  3. User / Profile page
+  
+  
