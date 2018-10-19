@@ -9,10 +9,11 @@ import {signup, login, logout} from './actions/session_actions'
 // import {createListing, updateListing, getListing, getListings,deleteListing} from './actions/listing_actions';
 // import {createListing, updateListing, getListing, getListings,deleteListing} from './actions/listing_actions';
 // import {createListing, updateListing, getListing, getListings,deleteListing} from './util/listing_api_util';
-// import {getCarts, getCart, updateCart, createCart,deleteCart} from './util/cart_api_util';
+import {getCarts, getCart, updateCart, createCart,deleteCart} from './util/cart_api_util';
 // import {getCarts, getCart, updateCart, createCart, deleteCart} from './actions/cart_actions';
 // import {getSavedListings} from './util/listing_api_util';
-import {createReview, updateReview, getReview, getReviews,deleteReview} from './util/review_api_util';
+// import {createReview, updateReview, getReview, getReviews,deleteReview} from './util/review_api_util';
+import {createReview, updateReview, getReview, getReviews,deleteReview} from './actions/review_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,12 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.getListings = getListings;
   // window.deleteListing = deleteListing;
 
-  window.getCarts = getCarts;
-  window.getCart = getCart;
-  window.updateCart = updateCart;
+  // window.getCarts = getCarts;
+  // window.getCart = getCart;
+  // window.updateCart = updateCart;
   window.createCart = createCart;
-  window.deleteCart = deleteCart;
-  window.getSavedListings = getSavedListings;
+  // window.deleteCart = deleteCart;
+  // window.getSavedListings = getSavedListings;
+
+  window.createReview = createReview;
+  window.updateReview = updateReview;
+  window.getReview = getReview;
+  window.getReviews = getReviews;
+  window.deleteReview = deleteReview;
 
 
 

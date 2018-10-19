@@ -40,10 +40,10 @@ const ListingIndexItem = ({listing, deleteListing}) => {
           to={`/listings/${listing.id}`}>{listing.title}</Link> <br/>
       </div>
       <div className="listing-item-author">
-        <Link to={`/users/${listing.author_id}/listings`} >{listing.author_id}</Link>
+        <Link className="listing-item-link" to={`/users/${listing.author_id}/listings`} >{listing.merchant_name}</Link>
       </div>
       <div className="listing-item-review">
-        --- review stars here --- (xx)
+        
       </div>
       <div className="listing-item-price">
         $ {listing.price}

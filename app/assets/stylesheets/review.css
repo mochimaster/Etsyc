@@ -1,0 +1,19 @@
+.review-index{
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+}
+
+.review-left-side{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-self: center;
+}
+
+.review-index{
+  border-bottom: #E1E3DF 1px solid;
+  margin-top: 15px;
+}
+
+.review-header{
+  margin-top: 10px;
+}

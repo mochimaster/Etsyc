@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {createListing,getListing} from '../../actions/listing_actions';
 import ListingForm from './listing_form';
+import {createReview} from '../review/review_create_form_container';
 
 const mapStateToProps = state => {
   debugger;
@@ -16,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: (listing) => dispatch(createListing(listing))
+    action: (listing) => dispatch(createListing(listing)),
+    createReview: (review) => dispatch(createReview(review))
 
   }
 }

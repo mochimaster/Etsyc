@@ -3,5 +3,4 @@ json.array! @listings do |listing|
   if (listing.photo.attached?)
     json.photoUrl url_for(listing.photo)
   end
-  json.merchant_name listing.author.merchant_name
 end

@@ -21,8 +21,22 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+
   /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
 }
+
+.listing-header-seller-name a{
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+
+.listing-header-seller-name a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 
 .listing-header-seller-thumbnails{
   justify-self: end;
@@ -68,6 +82,10 @@
   margin-bottom: 12px;
   overflow-wrap: break-word;
 
+}
+
+.input-quantity .input-quantity-input{
+  padding-left: 10px;
 }
 
 .listing-details .listing-details-price{
@@ -133,4 +151,22 @@
   margin-top: 0px;
 
   padding-top: 6px;
+}
+
+.listing-reviews{
+
+}
+
+.review-form-wrapper{
+  margin-top: 15px;
+}
+
+.review-form-input{
+  width: 300px;
+  height: 120px;
+}
+
+.review-input-title{
+  justify-self: top;
+
 }

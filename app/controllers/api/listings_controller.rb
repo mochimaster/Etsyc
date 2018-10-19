@@ -1,7 +1,7 @@
 class Api::ListingsController < ApplicationController
 
   def create
-    debugger
+
     @listing = Listing.new(listing_params)
 
 

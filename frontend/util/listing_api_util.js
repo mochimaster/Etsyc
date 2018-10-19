@@ -8,18 +8,26 @@ export const createListing = (listing) => {
   });
 };
 
-export const updateListing = (listing) => {
+// Became formData - need to use getAll('listing[id]')
+export const updateListing = (formData) => {
+  let listingId = formData.getAll('listing[id]');
+
+  debugger
+
+
   return $.ajax({
     method: 'PATCH',
-    url: `/api/listings/${listing.id}`,
-    data: {listing: listing}
+    url: `/api/listings/${formData.getAll('listing[id]')}`,
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 
 export const getListing = (id) => {
   return $.ajax({
     method: 'GET',
-    url: `api/listings/${id}`,
+    url: `api/listings/${id}`
   });
 };
 

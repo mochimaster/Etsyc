@@ -15,7 +15,7 @@ class Review < ApplicationRecord
 
   validates :body, :rating, presence: true
 
-  belongs_to :listings,
+  belongs_to :listing,
     primary_key: :id,
     foreign_key: :listing_id,
     class_name: :Listing

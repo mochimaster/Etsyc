@@ -2,7 +2,7 @@ export const createReview = (review) => {
   return $.ajax({
     method: 'POST',
     url: '/api/reviews',
-    data: review
+    data: {review:review}
   });
 };
 
@@ -21,10 +21,10 @@ export const getReview = (id) => {
   });
 };
 
-export const getReviews = () => {
+export const getReviews = (listing) => {
   return $.ajax({
     method: 'GET',
-    url: `/api/reviews/`
+    url: `/api/listings/${listing.id}/reviews`
   });
 };
 

@@ -20,7 +20,7 @@ class ListingIndex extends React.Component {
   }
 
   componentDidMount(){
-    // debugger
+    debugger
     this.props.getListings();
   }
 
@@ -67,14 +67,16 @@ class ListingIndex extends React.Component {
 
   render() {
 
-    // debugger
+    debugger
 
 
     return (
       <div >
+
         <ul className='index-wrapper'>
           {this.props.listings.map(listing => {
-            return ( <ListingIndexItem key={listing.id} listing={listing} deleteListing={this.props.deleteListing} /> )
+            return ( <ListingIndexItem key={listing.id} listing={listing}
+              deleteListing={this.props.deleteListing} merchantName={this.props.merchantName} /> )
           })}
         </ul>
       </div>

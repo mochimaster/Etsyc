@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 // import ListingEditFormContainer from './listing_edit_form_container';
+import {createReview} from '../../actions/review_actions';
 
 
 class ListingForm extends React.Component{
@@ -62,15 +63,34 @@ class ListingForm extends React.Component{
     formData.append('listing[price]', this.state.price);
     formData.append('listing[description]', this.state.description);
     formData.append('listing[author_id]', this.props.sessionId);
-    formData.append('listing[merchant_name]', this.props.merchant_name);
+    formData.append('listing[merchant_name]', this.props.merchantName);
+
+    if(this.props.match.params.listingId){
+      formData.append('listing[id]', this.props.match.params.listingId)
+    }
 
     if(!!this.state.imageUrl){
       formData.append('listing[photo]', this.state.imageFile);
     }
-    this.props.action(formData)
-      .then((listing) => {debugger});
+    this.props.action(formData).then(()=> this.props.history.push('/listings/'))
       // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
       // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
+  }
+
+  loadPreview(e){
+    const reader = new FileReader();
+    debugger
+    // const file = e.currentTarget.files[0];
+
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, imageFile: file});
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
+
   }
 
   imagePreview(e){
@@ -108,7 +128,7 @@ class ListingForm extends React.Component{
   }
 
   updateMerchantName(e){
-    this.setState({merchant_name: e.target.value})
+    this.setState({merchantName: e.target.value})
   }
 
   // debugger
@@ -138,7 +158,7 @@ class ListingForm extends React.Component{
       name =        (<div><label className="required"> * </label>
                     <br/>
                     <input className="create-listing-merchant-input"
-                      onChange={this.updateMerchantName.bind(this)} value={this.state.merchant_name}
+                      onChange={this.updateMerchantName.bind(this)} value={this.state.merchantName}
                       type="text"/></div>)
 
 
@@ -184,13 +204,20 @@ class ListingForm extends React.Component{
 
     // ----------------------------
 
-    const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
+    // const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
+    let preview="";
+    if (this.props.formType === 'Edit Listing'){
+      preview = <img src={this.props.listing.photoUrl} />
+    } else {
+      preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
+    }
 
     //onSubmit={() => this.props.createListing(this.state)}
     // debugger
     return (
       <div className="create-listing-form-wrapper">
         {this.renderErrors()}
+
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
           <div className="create-listing-photo create-listing-left-side">
             <p className="create-listing-photo-inner"> Image uploader </p>
@@ -221,7 +248,7 @@ class ListingForm extends React.Component{
               <label className="required"> * </label>
 
               <br/>
-              <textarea onChange={this.updateOverview.bind(this)} className="create-listing-overview-textarea"></textarea>
+              <textarea onChange={this.updateOverview.bind(this)} className="create-listing-overview-textarea">{this.state.overview}</textarea>
             </div>
 
             <div className="create-listing-description">
@@ -233,6 +260,7 @@ class ListingForm extends React.Component{
                 />
             </div>
 
+            {/*
             <div className="create-listing-category">
               <label>Category:</label><label className="required"> * </label>
 
@@ -243,6 +271,7 @@ class ListingForm extends React.Component{
                 <option value="vintage">Vintage</option>
               </select>
             </div>
+            */}
 
             <div className="create-listing-price">
               <label >Price: </label>

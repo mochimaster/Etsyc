@@ -7,8 +7,10 @@ Rails.application.routes.draw do
       resources :listings, only: [:index]
       resources :carts, except: [:new]
     end
-    resources :listings, defaults: {format: :json}
+    resources :listings, defaults: {format: :json} do
+      resources :reviews, only: [:index]
+    end
+    resources :reviews, except: [:new, :index],defaults: {format: :json}
     resource :session, only: [:create, :destroy]
-    resource :reviews, defaults: {format: :json}
   end
 end

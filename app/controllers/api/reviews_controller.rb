@@ -1,4 +1,4 @@
-class Api::ReviewController < ApplicationController
+class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
@@ -30,11 +30,13 @@ class Api::ReviewController < ApplicationController
   end
 
   def index
-    @reviews = if params[:user_id]
-                Review.where(:user_id: params[:user_id])
+    @reviews = if params[:listing_id]
+                Review.where(listing_id: params[:listing_id])
               else
                 Review.all
               end
+    # @reviews = Review.all
+
     render :index
   end
 
@@ -52,7 +54,7 @@ class Api::ReviewController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:body, :rating)
+    params.require(:review).permit(:body, :rating, :author_id, :listing_id,:user_id)
   end
 
 

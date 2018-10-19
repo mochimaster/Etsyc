@@ -2,6 +2,9 @@ import React from 'react';
 import ListingShowContainer from './listing_show_container';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import ReviewIndexContainer from '../review/review_index_container';
+import ReviewForm from '../review/review_create_form_container';
+import {createReview} from '../../actions/review_actions';
 
 
 class ListingShow extends React.Component {
@@ -93,7 +96,7 @@ class ListingShow extends React.Component {
     // })
 
 
-    debugger
+
     return (
       <div className="listing-show-content-wrapper">
         <div className="listing-show-author-buttons">
@@ -103,15 +106,14 @@ class ListingShow extends React.Component {
         <div className="listing-show-seller-header">
           <div className="listing-header-seller-left">
             <div className="listing-header-seller-name">
-              Merchant Name: {this.props.listing.author_id}
-              {this.props.listing.merchant_name}
+              <Link className="listing-seller-name" to={`/users/${this.props.listing.author_id}/listings`}>{this.props.listing.merchantName}</Link>
             </div>
             <div className="listing-header-seller-rating">
-              Rating in stars (xx)
+              {/*Rating in stars (xx)*/}
             </div>
           </div>
           <div className="listing-header-seller-thumbnails">
-            Other items in thumbnails...
+            {/*Other items in thumbnails...*/}
           </div>
         </div>
 
@@ -135,13 +137,7 @@ class ListingShow extends React.Component {
             */}
             <div className="listing-details listing-details-quantity">
               Quantity  <br/>
-              <select onChange={this.updateQuantity.bind(this)} className="select-custom">
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-              </select>
+              <input className="input-quantity input-quantity-input" onChange={this.updateQuantity.bind(this)} className="select-custom"></input>
             </div>
 
             <div className="listing-details add-to-cart">
@@ -167,11 +163,22 @@ class ListingShow extends React.Component {
             Description <br/>
             <p>{this.props.listing.description}</p>
           </div>
+
           <div>
-          Seller other items index list by seller
+
           </div>
+          <div>
+            <ReviewForm listingId={this.props.listing.id}/>
+          </div>
+          <div>
+
+          </div>
+
           <div className="listing-reviews">
-            Reviews component that returns li
+            <ReviewIndexContainer createReview={this.props.createReview}
+            listing={this.props.listing} sessionId={this.props.sessionId}
+            listingId={this.props.listing.listingId}/>
+
           </div>
 
 
