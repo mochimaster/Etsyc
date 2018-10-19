@@ -20,7 +20,6 @@ class ListingIndex extends React.Component {
   }
 
   componentDidMount(){
-    debugger
     this.props.getListings();
   }
 
@@ -66,8 +65,6 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
-
-    debugger
 
 
     return (

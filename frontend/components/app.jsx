@@ -42,6 +42,7 @@ const App = () => {
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
         <Redirect to="/listings" />
+        <Redirect to="/" />
       </Switch>
     </div>
   )

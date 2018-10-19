@@ -5,10 +5,11 @@ import ListingShow from './listing_show';
 import {createCart} from '../../actions/cart_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   return ({
     listing: state.entities.listings[ownProps.match.params.listingId],
     sessionId: state.session.id,
-    merchantName: state.entities.users[state.session.id].merchant_name
+    merchantName: state.session.id ? state.entities.users[state.session.id].merchant_name : ""
 
   })
 }

@@ -16,7 +16,14 @@
   font-size: 26px;
   margin-left: 185px;
   margin-right: 185px;
-  width: 992px;
+  /* width: 992px; */
+  width: 100%;
+
+}
+
+.cart-item-count{
+  padding-left: 185px;
+  padding-right: 185px;
 }
 
 .keep-shopping-link {
@@ -148,4 +155,8 @@
   cursor: pointer;
   text-decoration: underline;
   text-shadow: 5px;
+}
+
+.cart-left-section-middle-section-wrapper .cart-index-item-photo{
+  overflow: hidden;
 }
