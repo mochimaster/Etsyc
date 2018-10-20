@@ -17,3 +17,9 @@
 .review-header{
   margin-top: 10px;
 }
+
+.review-index .delete-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 75px;
+}

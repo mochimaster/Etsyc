@@ -58,9 +58,13 @@
   height: 34px;
 }
 
-.create-listing-overview-textarea{
+.create-listing-overview .create-listing-overview-textarea{
   height: 79px;
+  white-space: pre-wrap;
+
 }
+
+
 
 .create-listing-category .create-listing-category-dropdown{
   width: auto;

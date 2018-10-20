@@ -41,8 +41,9 @@ export const updateReview = (review) => {
 
 
 export const deleteReview = (review) => {
+  debugger
   return dispatch => {
-    return ApiUtil.deleteReview(review).then( () => {
+    return ApiUtil.deleteReview(review.id).then( () => {
       dispatch({type: REMOVE_REVIEW, review});
     });
   };

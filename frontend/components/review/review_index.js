@@ -4,8 +4,10 @@ import ReviewIndexItem from './review_index_item';
 class ReviewIndex extends React.Component{
   constructor(props){
     super(props);
+    debugger
     this.state = {
-      reviews: props.reviews ? props.reviews : ""
+      reviews: props.reviews ? props.reviews : "",
+      // sessionId: this.state.session.id
     };
   }
 
@@ -39,7 +41,9 @@ class ReviewIndex extends React.Component{
 
           <div className="review-body">
             {this.props.reviews.map( review => {
-              return (<ReviewIndexItem review={review}/>)
+              return (<ReviewIndexItem review={review}
+                deleteReview={this.props.deleteReview}
+                listing={this.props.listing} sessionId={this.props.sessionId}/>);
             })}
           </div>
 

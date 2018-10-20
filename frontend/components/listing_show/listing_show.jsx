@@ -49,22 +49,16 @@ class ListingShow extends React.Component {
   //
 
 
-  render() {
-    // this.props.listing.id = 1;
-    // debugger;
 
+
+  render() {
     if (!this.props.listing) {
       return <div>Page Not Found.</div>;
     }
 
-
     let editButton;
     let deleteButton;
     if (this.props.listing.author_id === this.props.sessionId) {
-      console.log('im author');
-
-      // debugger;
-
       editButton = <Link className="btn btn-primary listing-show-edit-button"
         to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
 
@@ -72,10 +66,7 @@ class ListingShow extends React.Component {
         type="submit" value="Delete Listing"
         onClick={() => this.props.deleteListing(this.props.listing.id)
                           .then(()=>this.props.history.push("/listings"))
-
         } />
-
-
     } else {
       console.log('im not author.');
     }
@@ -94,6 +85,14 @@ class ListingShow extends React.Component {
     //
     //   )
     // })
+
+    let reviewComponent;
+    if(this.props.sessionId){
+      <p>You must be signed in to leave a review.</p>
+    } else {
+      reviewComponent = <ReviewForm listingId={this.props.listing.id}/>
+
+    }
 
 
 
