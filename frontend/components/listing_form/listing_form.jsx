@@ -10,7 +10,6 @@ class ListingForm extends React.Component{
 
   constructor(props){
     super(props)
-    debugger;
     this.state = {
       title: (props.listing) ? props.listing.title : "",
       description: (props.listing) ? props.listing.description : "",
@@ -28,9 +27,6 @@ class ListingForm extends React.Component{
   // removed  by Elliot
   // this.state.author_id = this.props.sessionId
   componentDidMount(){
-
-    debugger
-
     if(this.props.formType === 'Create Listing'){
 
     } else {
@@ -55,7 +51,6 @@ class ListingForm extends React.Component{
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('listing[title]', this.state.title);
@@ -79,7 +74,6 @@ class ListingForm extends React.Component{
 
   loadPreview(e){
     const reader = new FileReader();
-    debugger
     // const file = e.currentTarget.files[0];
 
     reader.onloadend = () =>
@@ -95,7 +89,7 @@ class ListingForm extends React.Component{
 
   imagePreview(e){
     const reader = new FileReader();
-    debugger
+
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
       this.setState({ imageUrl: reader.result, imageFile: file});
@@ -131,14 +125,8 @@ class ListingForm extends React.Component{
     this.setState({merchantName: e.target.value})
   }
 
-  // debugger
-  // if(!this.state.listing){
-  //   return null
-  // }
-  //
 
   renderErrors(){
-    debugger
     return(
       <ul>
         {this.props.errors.map((error, i) => (
@@ -160,25 +148,18 @@ class ListingForm extends React.Component{
                     <input className="create-listing-merchant-input"
                       onChange={this.updateMerchantName.bind(this)} value={this.state.merchantName}
                       type="text"/></div>)
-
-
     } else {
       name = <p>{this.state.merchantName}</p>
     }
     return name
   }
 
-
-
   render() {
-    // from Elliot,
-
     if(!this.props.listing){
         return null
       }
 
     // Redirect user if logged in user is not the listing author.
-
     // explore try catch.
     if (this.props.formType === 'Edit Listing'){
       if(this.props.listing.author_id !== this.props.sessionId){
@@ -200,8 +181,6 @@ class ListingForm extends React.Component{
     //   this.setState({ imageUrl: "", imageFile: null });
     // }
 
-
-
     // ----------------------------
 
     // const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
@@ -213,7 +192,6 @@ class ListingForm extends React.Component{
     }
 
     //onSubmit={() => this.props.createListing(this.state)}
-    // debugger
     return (
       <div className="create-listing-form-wrapper">
         {this.renderErrors()}
@@ -224,8 +202,6 @@ class ListingForm extends React.Component{
             <input className="create-listing-photo-intake" type="file" onChange={this.imagePreview} value="" />
 
             {preview}
-
-
           </div>
 
           <div className="create-listing-right-side">

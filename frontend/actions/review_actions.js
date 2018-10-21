@@ -5,7 +5,6 @@ export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';
 
 export const createReview = review => {
-  debugger
   return dispatch => {
     return ApiUtil.createReview(review).then( review => {
       dispatch({type: RECEIVE_REVIEW, review});
@@ -41,7 +40,6 @@ export const updateReview = (review) => {
 
 
 export const deleteReview = (review) => {
-  debugger
   return dispatch => {
     return ApiUtil.deleteReview(review.id).then( () => {
       dispatch({type: REMOVE_REVIEW, review});

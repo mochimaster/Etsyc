@@ -85,6 +85,16 @@
 
 }
 
+.cart-index-item-quantity{
+  display: grid;
+  grid-template-rows: 1fr 1fr
+}
+
+.cart-index-item-quantity-collapse{
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
 .cart-index-merchant-name-link{
   color: black;
   text-decoration: none;

@@ -59,8 +59,10 @@ class CartIndexItem extends React.Component {
           </div>
 
           <div className="cart-index-item-quantity">
-            Quantity:
-            <input id="quantityText" value={this.props.cart.quantity} onChange={this.updateQuantity.bind(this)} className="select-custom" />
+            <div className="cart-index-item-quantity-collapse">
+              <p>Quantity:</p>
+              <input id="quantityText" value={this.props.cart.quantity} onChange={this.updateQuantity.bind(this)} className="select-custom" />
+            </div>
 
             <div className="cart-index-item-remove">
               <a className="remove-link" onClick={()=>this.props.deleteCart(this.props.cart)}>Remove</a>

@@ -12,9 +12,6 @@ export const createListing = (listing) => {
 export const updateListing = (formData) => {
   let listingId = formData.getAll('listing[id]');
 
-  debugger
-
-
   return $.ajax({
     method: 'PATCH',
     url: `/api/listings/${formData.getAll('listing[id]')}`,
