@@ -1,0 +1,24 @@
+._developer-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#_linkedin-link{
+  background-image: url("./images/linked-in.png"); /* image provided by Linked-In is under copywrite law */
+  background-size: cover;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  margin-top: 10px;
+  top: 0;
+}
+
+#_github-link{
+  background-image: url("./images/github.png"); /* image provided by Github is under copywrite law */
+  background-size: cover;
+  height: 25px;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 25px;
+  top: 0;
+}

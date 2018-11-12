@@ -355,7 +355,30 @@ li {
 }
 
 
+.developer-links {
+  display: flex;
+  justify-content: flex-end;
+}
 
+.linkedin-link{
+  background-image: url("linked-in.png"); /* image provided by Linked-In is under copywrite law */
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  margin-top: 10px;
+  top: 0;
+}
+
+.github-link{
+  background-image: url("github.png"); /* image provided by Github is under copywrite law */
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+  margin-right: 10px;
+  top: 0;
+}
 
 
 // [class*="icon-"] {

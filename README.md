@@ -33,3 +33,18 @@ Cart page
 
 Comment
 ![comment](images/comment.png)
+
+# Implementations
+
+## 1. User model validations
+
+Validations to enforce mandatory fields for username and password. Passwords are salted and hashed using BCrypt before it is stored in database. This ensures sensitive data like passwords are not stored as plain text. Besides that, custom error messages is displayed to user if minimum requirement is not met.
+
+![user modal validation](images/user_model_validation.png)
+
+## 2. Reusing components
+
+The form component is shared and used for both create listing and edit listing. For create listing, if no existing form props are received, fields are populated with empty fields.
+For edit listing, if existing form props are receiving, the fields are pre-populated with existing values.
+
+![component reuseability](images/form_component_reuse.png)
