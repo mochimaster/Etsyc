@@ -61,9 +61,15 @@
 .create-listing-overview .create-listing-overview-textarea{
   height: 79px;
   white-space: pre-wrap;
-
 }
 
+.listing-description{
+  white-space: pre-wrap;
+}
+
+.listing-details{
+  white-space: pre-wrap;
+}
 
 
 .create-listing-category .create-listing-category-dropdown{

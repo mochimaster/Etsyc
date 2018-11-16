@@ -27,6 +27,7 @@ const App = () => {
 
   return (
     <div>
+      
       <Modal />
       <Header />
 
