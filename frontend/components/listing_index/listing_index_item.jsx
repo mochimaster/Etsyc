@@ -25,11 +25,20 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   // }
 
   // debugger
+
+  let displayImage;
+  if (listing.photoUrl) {
+    displayImage = <img src={listing.photoUrl} />;
+  } else if (listing.photoUrls) {
+    displayImage = <img src={listing.photoUrls[0]} />;
+  } 
+
   return (
     <li className="listing-item-wrapper">
       <div className="listing-item-image">
         <Link to={`/listings/${listing.id}`}>
-          <img src={listing.photoUrl} />
+          {/* <img src={listing.photoUrl} /> */}
+          {displayImage}
         </Link>
 
 

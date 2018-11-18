@@ -1,11 +1,12 @@
 class Api::ListingsController < ApplicationController
 
   def create
-
+    # debugger
     @listing = Listing.new(listing_params)
 
 
     @listing.modified_by_userid = @listing.author_id
+    # debugger
     if @listing.save
       render :show
     else
@@ -27,7 +28,9 @@ class Api::ListingsController < ApplicationController
 
   def show
     # debugger
-    @listing = Listing.find_by(id: params[:id])
+    # @listing = Listing.find_by(id: params[:id])
+
+    @listing = Listing.with_attached_photos.find_by(id: params[:id])
     if @listing
       render :show
     end
@@ -42,10 +45,13 @@ class Api::ListingsController < ApplicationController
     #             elsif
     #               Listing.all
     #             end
+
     @listings = if params[:user_id]
-                  Listing.where(author_id: params[:user_id])
+                  # Listing.where(author_id: params[:user_id])
                 else
-                  Listing.all
+                  # Listing.all
+                  # Listing.all.limit(10)
+                  Listing.with_attached_photos
                 end
 
     render :index
@@ -68,15 +74,14 @@ class Api::ListingsController < ApplicationController
 
   private
   def listing_params
-    # debugger
+    debugger
     # params[:listing][:modified_by_userid] = params[:author_id]
     # debugger
+
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo, :merchant_name )
+      :modified_by_userid, :price, :overview, :photo, :merchant_name, photos: [] )
+
+    # params.require(:listing).permit(:title, :description, :author_id,
+    #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)
   end
-
-
-
-
-
 end

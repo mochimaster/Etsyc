@@ -4,7 +4,6 @@ import ReviewIndexItem from './review_index_item';
 class ReviewIndex extends React.Component{
   constructor(props){
     super(props);
-    debugger
     this.state = {
       reviews: props.reviews ? props.reviews : "",
       // sessionId: this.state.session.id

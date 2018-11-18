@@ -61,8 +61,8 @@
 
 .listing-show-body-wrapper .listing-image {
   min-height: 0;
-  max-height: 760px;
-  overflow: hidden;
+  /* max-height: 760px; */
+  /* overflow: hidden; */
 }
 
 

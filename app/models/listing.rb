@@ -21,7 +21,9 @@ class Listing < ApplicationRecord
   validates :price, numericality: { greater_than: 0}
   attribute :modified_by_userid, :integer, default: :author_id
 
-  has_one_attached :photo
+  has_many_attached :photos # to support multiple picture upload
+  has_one_attached :photo # to support previous single upload
+
 
   belongs_to :author,
     primary_key: :id,

@@ -86,16 +86,23 @@ class ListingShow extends React.Component {
     //   )
     // })
 
-    let reviewComponent;
-    if(this.props.sessionId){
-      <p>You must be signed in to leave a review.</p>
-    } else {
-      reviewComponent = <ReviewForm listingId={this.props.listing.id}/>
+    // let reviewComponent;
+    // if(this.props.sessionId){
+    //   <p>You must be signed in to leave a review.</p>
+    // } else {
+    //   reviewComponent = <ReviewForm listingId={this.props.listing.id}/>
 
-    }
+    // }
 
-
-
+    let displayImages=[];
+    if(this.props.listing.photoUrl){
+      displayImages.push(<img src={this.props.listing.photoUrl} />)
+    } else if (this.props.listing.photoUrls) {
+      for(let i=0; i<this.props.listing.photoUrls.length; i++){
+        displayImages.push(<img src={this.props.listing.photoUrls[i]} />)
+      }
+    } 
+    
     return (
       <div className="listing-show-content-wrapper">
         <div className="listing-show-author-buttons">
@@ -118,8 +125,9 @@ class ListingShow extends React.Component {
 
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
-          <img src={this.props.listing.photoUrl} />
-
+          {/* <img src={this.props.listing.photoUrl} /> */}
+          {displayImages}
+  
           </div>
 
           <div className="listing-details listing-right-half">
@@ -148,7 +156,7 @@ class ListingShow extends React.Component {
             </div>
 
             <div className="listing-details listing-details-overview">
-              Overview
+              <label className="title-label">Overview</label>
               <div>
                 {this.props.listing.overview}
               </div>
@@ -159,7 +167,7 @@ class ListingShow extends React.Component {
 
 
           <div className="listing-description">
-            Description <br/>
+            <label className="title-label">Description</label> <br/>
             <p>{this.props.listing.description}</p>
           </div>
 

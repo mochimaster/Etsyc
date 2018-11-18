@@ -71,6 +71,13 @@
   white-space: pre-wrap;
 }
 
+.title-label{
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  margin-bottom: 12px;
+}
+
 
 .create-listing-category .create-listing-category-dropdown{
   width: auto;

@@ -4,7 +4,6 @@ import ListingForm from './listing_form';
 import {createReview} from '../review/review_create_form_container';
 
 const mapStateToProps = state => {
-  debugger;
   return {
     listing: {title: "", description: "", category: "", price:null,
               photo:null, author_id:null},
