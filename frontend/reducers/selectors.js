@@ -30,7 +30,7 @@ export const selectListingsByAuthor = ({listings}, authorId) => {
   //     return listings[key];
   //   }
   // });
-  debugger
+
   if (authorId) {
 
     let filteredKeys = Object.keys(listings).filter(key =>

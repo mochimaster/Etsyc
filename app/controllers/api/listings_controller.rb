@@ -74,7 +74,6 @@ class Api::ListingsController < ApplicationController
 
   private
   def listing_params
-    debugger
     # params[:listing][:modified_by_userid] = params[:author_id]
     # debugger
 
