@@ -311,7 +311,7 @@ class ListingForm extends React.Component {
 
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
           <div className="create-listing-photo create-listing-left-side">
-            <p className="create-listing-photo-inner"> Image uploader </p>
+            <p className="create-listing-photo-inner"> Multiple Images uploader</p>
             <input
               className="create-listing-photo-intake"
               type="file"

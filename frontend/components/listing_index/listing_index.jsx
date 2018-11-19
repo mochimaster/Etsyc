@@ -17,6 +17,7 @@ class ListingIndex extends React.Component {
 
   constructor(props){
     super(props);
+    
   }
 
   componentDidMount(){
@@ -65,8 +66,9 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
+    // debugger;
 
-    if(this.props.listings.length == 0){
+    if(this.props.match.path=="/search" && this.props.listings.length == 0){
       return <div>
           No search result found. Search query is case sensitive. <p>
             Try searching for "bed", "lamp", "couch"
@@ -79,7 +81,7 @@ class ListingIndex extends React.Component {
         <ul className='index-wrapper'>
           {this.props.listings.map(listing => {
             return ( <ListingIndexItem key={listing.id} listing={listing}
-              deleteListing={this.props.deleteListing} merchantName={this.props.merchantName} /> )
+              deleteListing={this.props.deleteListing} /> )
           })}
         </ul>
       </div>
