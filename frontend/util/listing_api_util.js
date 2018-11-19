@@ -51,6 +51,16 @@ export const deleteListing = (id) => {
   });
 };
 
+export const listingSearch = (title) => {
+  // debugger
+  return $.ajax({
+    method: 'GET',
+    url: '/api/search',
+    // data: {search: title}
+    data: {search: title}
+  })
+}
+
 // {entities: {…}, session: {…}, errors: {…}, ui: {…}}
 //   entities:
 //     users: {id: null}

@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {openModal} from '../../actions/modal_actions';
 import Header from './header'
+import {searchListing} from '../../actions/listing_actions';
 
 const mapStateToProps = state => {
   // debugger
@@ -21,7 +22,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-  openModal: (modal) => dispatch(openModal(modal))
+  openModal: (modal) => dispatch(openModal(modal)),
+  searchListing: (title) => dispatch(searchListing(title))
   }
 }
 

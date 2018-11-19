@@ -58,3 +58,12 @@ export const deleteListing = (id) => {
 export const clearErrors = () => ({
   type: CLEAR_LISTING_ERRORS
 });
+
+export const searchListing = (title) => {
+  return dispatch => {
+    return ApiUtil.listingSearch(title).then(listings => {
+      dispatch({type: RECEIVE_LISTINGS, listings})
+    });
+  };
+};
+

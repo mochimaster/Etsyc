@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     end
     resources :reviews, except: [:new, :index],defaults: {format: :json}
     resource :session, only: [:create, :destroy]
+    resources :search, only: [:index]
   end
 end

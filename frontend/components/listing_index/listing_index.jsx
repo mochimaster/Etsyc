@@ -66,9 +66,16 @@ class ListingIndex extends React.Component {
 
   render() {
 
+    if(this.props.listings.length == 0){
+      return <div>
+          No search result found. Search query is case sensitive. <p>
+            Try searching for "bed", "lamp", "couch"
+          </p>
+        </div>;
+    }
+
     return (
       <div >
-
         <ul className='index-wrapper'>
           {this.props.listings.map(listing => {
             return ( <ListingIndexItem key={listing.id} listing={listing}

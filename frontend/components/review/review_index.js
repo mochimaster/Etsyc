@@ -40,7 +40,7 @@ class ReviewIndex extends React.Component{
 
           <div className="review-body">
             {this.props.reviews.map( review => {
-              return (<ReviewIndexItem review={review}
+              return (<ReviewIndexItem key={review.id} review={review}
                 deleteReview={this.props.deleteReview}
                 listing={this.props.listing} sessionId={this.props.sessionId}/>);
             })}

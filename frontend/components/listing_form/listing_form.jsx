@@ -9,7 +9,6 @@ import {createReview} from '../../actions/review_actions';
 class ListingForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.state = {
       title: props.listing ? props.listing.title : "",
       description: props.listing ? props.listing.description : "",
@@ -68,7 +67,6 @@ class ListingForm extends React.Component {
 
 
     // multiple
-    debugger
     if (!!this.state.photos){
 
       for (let i = 0; i < this.state.photos.length; i++) {

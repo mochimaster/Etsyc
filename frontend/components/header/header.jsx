@@ -1,6 +1,7 @@
 import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Search from '../search/search';
 
 // openModal ,currentUser
 
@@ -33,22 +34,12 @@ class Header extends React.Component {
       <div id="global-header" className="header-nav-top-level">
         <header className="header-nav-inner">
           <div id="craftsy-logo" className="header-site-logo">
-            <Link to="/listings/" aria-label="Craftsy" >Atsy </Link>
+            <Link to="/" aria-label="Craftsy" >Atsy </Link>
           </div>
 
           <div className="header-search-div-wrapper">
             <div className="header-search-bar-outer">
-              <form id="nav-search" className="header-search-nav-form" method="" action="">
-                <div className="header-search-bar-inner">
-                  <div className="header-search-bar-input-wrapper" >
-                    <input id="search-query" type="text"
-                    placeholder="Search for items or shops"/>
-                  </div>
-                  <div className="header-search-button-wrapper">
-                    <button className="btn btn-primary">Search</button>
-                  </div>
-                </div>
-              </form>
+              <Search search={this.props.searchListing}/>
             </div>
           </div>
 

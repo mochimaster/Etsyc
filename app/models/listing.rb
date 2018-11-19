@@ -57,7 +57,14 @@ class Listing < ApplicationRecord
     end
   end
 
+  def self.search_result(query_params)
+    # debugger
+    return Listing.all if query_params == ""
 
+    query_params = '%'+query_params+'%'
+
+    @listings = Listing.where('LOWER(title) LIKE LOWER(?)', query_params)
+  end
 
 
 end
