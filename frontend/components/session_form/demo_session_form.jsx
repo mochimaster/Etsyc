@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {withRouter} from 'react-router-dom';
 
 class DemoSessionForm extends React.Component {
   constructor(props){
@@ -33,7 +33,10 @@ class DemoSessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
+    this.props.processForm(user).then( () => {
+      this.props.closeModal();
+      this.props.history.push("/");
+    });
   }
 
   updateUsername(e){
@@ -125,4 +128,4 @@ class DemoSessionForm extends React.Component {
 
 }
 
-export default DemoSessionForm;
+export default withRouter(DemoSessionForm);

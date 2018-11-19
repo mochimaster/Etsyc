@@ -23,7 +23,7 @@ class Header extends React.Component {
                  </Link>
     }else{
       navBar = <GreetingContainer />
-      cartLink = <Link to="" className="icon-img-cart">
+      cartLink = <Link to="/error" className="icon-img-cart">
                   <i className="fas fa-shopping-cart"></i><br/>Cart
                  </Link>
     }

@@ -1,11 +1,17 @@
 import React from 'react';
-
+import {withRouter} from 'react-router-dom';
 
 class UserDropdown extends React.Component{
 
   // currentUser: {id: 5, username: "kee4"}
   // logout: ƒ logout()
   // openModal: ƒ openModal(modal)
+
+  handleSubmit(e){
+    this.props.logout().then(()=> {
+      this.props.history.push("/")
+    })
+  }
 
   render() {
     // debugger
@@ -14,7 +20,6 @@ class UserDropdown extends React.Component{
     if (this.props.currentUser){
       username = this.props.currentUser.username;
     }
-
 
     return(
 
@@ -30,7 +35,7 @@ class UserDropdown extends React.Component{
           </li>
 
           <li className="profile-dropdown-section2">
-            <a  className='header-button' onClick={this.props.logout}> Sign out</a>
+            <a  className='header-button' onClick={this.handleSubmit.bind(this)}> Sign out</a>
           </li>
 
         </ul>
@@ -44,4 +49,4 @@ class UserDropdown extends React.Component{
 }
 
 // <button className='header-button' onClick={this.props.logout}> Logout</button>
-export default UserDropdown;
+export default withRouter(UserDropdown);

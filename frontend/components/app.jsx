@@ -15,7 +15,7 @@ import ListingShowContainer from './listing_show/listing_show_container';
 import ListingFormContainer from './listing_form/listing_form_container';
 import ListingEditFormContainer from './listing_form/listing_edit_form_container';
 import CartContainer from './cart/cart_container';
-
+import ErrorShow from './error/error';
 
 
 
@@ -25,30 +25,30 @@ const App = () => {
   // debugger
 
 
-  return (
-    <div>
-      
+  return <div>
       <Modal />
       <Header />
-
 
       <Switch>
         {/* Good comment. The below line will be modified
           when I have a component to render on "/" */}
 
         <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
-        <Route path ="/users/:userId/listings" component={ListingIndexContainer} />
-        <Route path="/users/:userId/carts" component={CartContainer} />
+        <Route path="/users/:userId/listings" component={ListingIndexContainer} />
+        <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
-        <Route path = "/search" component={ListingIndexContainer}/>
+        <Route path="/search" component={ListingIndexContainer} />
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
+        <Route exact path="/error" component={ErrorShow} />
         <Redirect to="/listings" />
         <Redirect to="/" />
       </Switch>
-    </div>
-  )
+    </div>;
 }
+
+// <Route path="/users/:userId/carts" component={CartContainer} />
+
 // <Route exact path="/" render={() => null} />
 // <Route path="/listings/:listingId" component={ListingShowContainer} />
 export default App;
