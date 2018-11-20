@@ -10,7 +10,8 @@
 
 .modal-child-profile-dropdown {
   position: absolute;
-  top: 55vh; /* position */
+  // top: 55vh; /* position */
+  top: 63.5vh; /* position */
   left: 80vw ;
   /* transform: translate(160%, 55%); */
   /* transform: translate(50%, 55%); */
@@ -39,10 +40,10 @@
   width: 100%;
   margin: 0;
   margin-left: -10px;
-
-
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
   /* transform: translate(-50%, -50%); */
+  position: fixed;
+  top: 81px;
 }
 
 .header-modal-profile ul{

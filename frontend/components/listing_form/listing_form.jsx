@@ -67,8 +67,8 @@ class ListingForm extends React.Component {
 
 
     // multiple
+ 
     if (!!this.state.photos){
-
       for (let i = 0; i < this.state.photos.length; i++) {
         // formData.append("listing[photo][]", this.state.photos[i]);
         formData.append("listing[photos][]", this.state.photos[i]);
@@ -160,8 +160,9 @@ class ListingForm extends React.Component {
 
   imagePreview(e) {
     let preview = document.querySelector("#preview");
-
-    if (e.currentTarget.files) {
+    // debugger
+    // if (e.currentTarget.files) {
+    if (e) {
       // debugger
       console.log(e.currentTarget.files);
 
@@ -174,6 +175,8 @@ class ListingForm extends React.Component {
       console.log("Before this.state.photos")
       console.log(this.state.photos);
       console.log(this.state.imageFile);
+    } else if (this.props.listing.photoUrls) {
+      [].forEach.call(this.props.listing.photoUrls, readAndPreview.bind(this));
     }
 
     function readAndPreview(file) {
@@ -202,12 +205,20 @@ class ListingForm extends React.Component {
           image.title = file.name;
           image.src = this.result;
           preview.appendChild(image);
+          // debugger
 
         },
         false
       );
 
       reader.readAsDataURL(file);
+
+      // if (typeof(file) == "string"){
+      //   // console.log(file);
+      //   // return (<img src = {file} />);
+      // } else {
+      //   reader.readAsDataURL(file);
+      // }
     }
   }
 
@@ -265,6 +276,7 @@ class ListingForm extends React.Component {
   }
 
   render() {
+    // debugger
     if (!this.props.listing) {
       return null;
     }
@@ -277,6 +289,11 @@ class ListingForm extends React.Component {
         return null;
       }
     }
+
+    // check if it has single or multiple images
+    // if (this.props.listing.photoUrls){
+    //   this.imagePreview();
+    // }
 
     // ----------------------------
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ListingIndexContainer from './listing_index_container';
 import ListingIndexItem from './listing_index_item';
+import ReactLoading from "react-loading";
 
 
 class ListingIndex extends React.Component {
@@ -74,6 +75,9 @@ class ListingIndex extends React.Component {
             Try searching for "bed", "lamp", "couch"
           </p>
         </div>;
+    } else if (this.props.listings == 0) {
+      // return <div className="loading-page">Loading...</div>
+      return <ReactLoading className="react-loading" type="bubbles" color="black"  />
     }
 
     return (

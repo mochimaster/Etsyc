@@ -51,9 +51,11 @@ class Api::ListingsController < ApplicationController
     @listings = if params[:user_id]
                   # Listing.where(author_id: params[:user_id])
                 else
+                  # debugger
                   # Listing.all
                   # Listing.all.limit(10)
-                  Listing.with_attached_photos
+                  # Listing.with_attached_photos.all
+                  Listing.all
                 end
 
     render :index

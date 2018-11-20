@@ -37,7 +37,7 @@ const App = () => {
         <Route path="/users/:userId/listings" component={ListingIndexContainer} />
         <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
-        <Route path="/search" component={ListingIndexContainer} />
+        <Route exact path="/search" component={ListingIndexContainer} />
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
         <Route exact path="/error" component={ErrorShow} />

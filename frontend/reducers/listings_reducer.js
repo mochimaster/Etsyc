@@ -7,6 +7,7 @@ const listingsReducer = (oldState={}, action) => {
 
   switch (action.type) {
     case RECEIVE_LISTINGS:
+      debugger
       // return action.listings;
       const listings = {};
       action.listings.forEach(listing => {

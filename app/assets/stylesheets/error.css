@@ -1,0 +1,21 @@
+.error-page, .loading-page{
+    line-height: 16px;
+    font-size: 15px;
+    color: #222;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,
+  "Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;    position: fixed;
+    left: 40%;
+    margin-top: 12px;
+}
+
+.loading-page{
+    left: 47%;
+}
+
+.react-loading{
+    fill: black;
+    height: 10%;
+    width: 10%;
+    left: 45vw;
+    position: fixed;
+}

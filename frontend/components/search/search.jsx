@@ -18,12 +18,14 @@ class Search extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.search({title: this.state.title}).then((listings) => {
-            if (this.state.title == ""){
-                this.props.history.push("/listings");
-            }else {
-                this.props.history.push("/search");
-                this.setState({title: ""});
-            }
+            this.setState({ title: "" });
+            this.props.history.push("/search");
+            // if (this.state.title == ""){
+            //     this.props.history.push("/listings");
+            // }else {
+            //     this.setState({title: ""});
+            //     this.props.history.push("/search");
+            // }
         })
     }
 
