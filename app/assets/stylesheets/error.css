@@ -1,4 +1,4 @@
-.error-page, .loading-page, .no-result{
+.error-page, .loading-page, .no-result, .cart-empty{
     line-height: 16px;
     font-size: 15px;
     color: #222;
@@ -14,6 +14,10 @@
 
 .no-result{
     left: 35%;
+}
+
+.cart-empty{
+    left: 45%;
 }
 
 .react-loading{

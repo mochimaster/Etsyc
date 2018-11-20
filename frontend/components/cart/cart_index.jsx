@@ -38,10 +38,9 @@ class CartIndex extends React.Component {
   // || Object.keys(this.props.entities.listings).length < 1
 
   render() {
-    // debugger
 
     if(!this.props.carts ){
-      return null
+      return <div className="cart-empty">Your cart is empty.</div>;
     }
 
     let sum=0;

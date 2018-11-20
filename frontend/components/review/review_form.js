@@ -33,17 +33,22 @@ class ReviewForm extends React.Component{
 
   render(){
 
-    return (
-      <div className="review-form-wrapper">
+    let reviewButton;
+    if (this.props.sessionId){
+      reviewButton = <button className="btn btn-primary">Submit</button>
+    } else {
+      reviewButton = <div>You must be signed in to submit a review.</div>
+    }
+
+    return <div className="review-form-wrapper">
         <form onSubmit={this.handleSubmit}>
           <div className="review-input-title">
-            Your review: <br/>
-            <textarea onChange={this.updateBody.bind(this)} className="review-form-input"  />
+            Your review: <br />
+            <textarea onChange={this.updateBody.bind(this)} className="review-form-input" />
           </div>
-          <button className="btn btn-primary">Submit</button>
+          {reviewButton}
         </form>
-      </div>
-    );
+      </div>;
   }
 
 

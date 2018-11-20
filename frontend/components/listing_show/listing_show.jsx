@@ -71,6 +71,13 @@ class ListingShow extends React.Component {
       console.log('im not author.');
     }
 
+    let reviewForm;
+    if (this.props.sessionId){
+      reviewForm = <ReviewForm listingId={this.props.listing.id} />
+    } else {
+      reviewForm = <div className="review-input">Please sign in to leave a review.</div>
+    }
+
     // let quantityDropdown="";
     // for(let i=0; i<100; i++){
     //   quantityDropdown += "<option value="+ i + ">+i+</option>"
