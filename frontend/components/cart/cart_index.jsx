@@ -15,13 +15,14 @@ class CartIndex extends React.Component {
     this.state = {
       listings: props.listings ? props.listings : "",
       carts: props.carts ? props.carts : ""
+      
     }
   }
 
   componentDidMount(){
     // debugger
     this.props.getCarts(this.props.currentUserId).then(() => {
-      // console.log('calling setstate')
+      console.log('calling setstate')
       // debugger
       this.setState({
         carts: this.props.carts,
@@ -53,7 +54,7 @@ class CartIndex extends React.Component {
 
     let itemCountDisplay;
     if (itemCount < 1) {
-      itemCountDisplay=<p></p>
+      itemCountDisplay=<p>Your cart is empty.</p>
     } else if (itemCount === 1){
       itemCountDisplay = <p>1 item in your cart</p>
     } else {

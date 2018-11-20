@@ -105,6 +105,7 @@
   height: 38px;
   width: 63px;
   margin-bottom: 12px;
+  padding-left: 10px;
 }
 
 .listing-details .add-to-cart > button{

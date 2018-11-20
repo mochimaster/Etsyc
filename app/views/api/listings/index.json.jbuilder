@@ -4,10 +4,8 @@ json.array! @listings do |listing|
 
   if (listing.photo.attached?)
     json.photoUrl url_for(listing.photo)
-  end
-
-  if (listing.photos.attached?)
-    json.photoUrls listing.photos.map { |file| url_for(file) }
+  elsif (listing.photos.attached?)
+    json.photoUrls listing.photos.map { |photo| url_for(photo) }
   end
   
 

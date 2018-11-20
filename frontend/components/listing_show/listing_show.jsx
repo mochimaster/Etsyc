@@ -151,7 +151,8 @@ class ListingShow extends React.Component {
             */}
             <div className="listing-details listing-details-quantity">
               Quantity  <br/>
-              <input className="input-quantity input-quantity-input" onChange={this.updateQuantity.bind(this)} className="select-custom"></input>
+              <input className="input-quantity input-quantity-input" onChange={this.updateQuantity.bind(this)} className="select-custom"
+              placeholder="1"></input>
             </div>
 
             <div className="listing-details add-to-cart">
