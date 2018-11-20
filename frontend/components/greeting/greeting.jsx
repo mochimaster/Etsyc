@@ -7,20 +7,23 @@ const Greeting = ({ currentUser, logout, openModal}) => {
   // <Link to="/signup">Register</Link>
   // <Link to="/login">Sign In</Link>
   const sessionLinks = () => {
-    return (
-      <React.Fragment>
+    return <React.Fragment>
         <li>
-          <Link className="header-nav-register" to="" onClick={() => openModal('signup')}>Register</Link>
+          <button className="header-nav-register" onClick={() => openModal("signup")}>
+            Register
+          </button>
         </li>
-        <li  id="sign-in-link" className= "sign-in-link">
-          <button className="header-nav-signin" onClick={() => openModal('login')}>Sign In</button>
+        <li id="sign-in-link" className="sign-in-link">
+          <button className="header-nav-signin" onClick={() => openModal("login")}>
+            Sign In
+          </button>
         </li>
-        <li  id="demo-sign-in-link" className= "sign-in-link">
-          <button className="header-nav-signin demo-sign-in-link" onClick={() => openModal('demo')}>Demo User</button>
+        <li id="demo-sign-in-link" className="sign-in-link">
+          <button className="header-nav-signin demo-sign-in-link" onClick={() => openModal("demo")}>
+            Demo User
+          </button>
         </li>
-
-      </React.Fragment>
-    )
+      </React.Fragment>;
   }
 
   // const personalGreeting = () => {

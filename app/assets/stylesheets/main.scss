@@ -380,6 +380,15 @@ li {
   top: 0;
 }
 
+.header-nav-register{
+  border: none;
+}
+
+.header-nav-register:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 
 // [class*="icon-"] {
 //   border: 5px solid red;
