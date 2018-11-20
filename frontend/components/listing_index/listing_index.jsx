@@ -22,6 +22,10 @@ class ListingIndex extends React.Component {
   }
 
   componentDidMount(){
+    // prevent getListings firing again after search result is returned
+    if (this.props.match.path == "/search"){
+      return null
+    }
     this.props.getListings();
   }
 
@@ -67,8 +71,6 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
-    // debugger;
-
     if(this.props.match.path=="/search" && this.props.listings.length == 0){
       return <div className="no-result">
         <p>No search result found. Try searching for "bed", "lamp", "table".
