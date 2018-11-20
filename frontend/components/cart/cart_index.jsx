@@ -21,7 +21,7 @@ class CartIndex extends React.Component {
   componentDidMount(){
     // debugger
     this.props.getCarts(this.props.currentUserId).then(() => {
-      console.log('calling setstate')
+      // console.log('calling setstate')
       // debugger
       this.setState({
         carts: this.props.carts,

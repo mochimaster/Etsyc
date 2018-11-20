@@ -68,12 +68,12 @@ class ListingShow extends React.Component {
                           .then(()=>this.props.history.push("/listings"))
         } />
     } else {
-      console.log('im not author.');
+      // console.log('im not author.');
     }
 
     let reviewForm;
     if (this.props.sessionId){
-      reviewForm = <ReviewForm listingId={this.props.listing.id} />
+      reviewForm = <ReviewForm  listingId={this.props.listing.id} />
     } else {
       reviewForm = <div className="review-input">Please sign in to leave a review.</div>
     }

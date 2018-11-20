@@ -29,7 +29,7 @@ class ListingForm extends React.Component {
     if (this.props.formType === "Create Listing") {
     } else {
       this.props.getListing(this.props.match.params.listingId).then(() => {
-        console.log("calling setstate");
+        // console.log("calling setstate");
         this.setState({ ...this.props.listing }, () => {});
       });
     }
@@ -164,17 +164,17 @@ class ListingForm extends React.Component {
     // if (e.currentTarget.files) {
     if (e) {
       // debugger
-      console.log(e.currentTarget.files);
+      // console.log(e.currentTarget.files);
 
       this.setState({ imageFile: e.currentTarget.files },
-        console.log("Finish set state of imagefile"));
+        console.log());
 
       [].forEach.call(e.currentTarget.files, readAndPreview.bind(this));
 
 
-      console.log("Before this.state.photos")
-      console.log(this.state.photos);
-      console.log(this.state.imageFile);
+      // console.log("Before this.state.photos")
+      // console.log(this.state.photos);
+      // console.log(this.state.imageFile);
     } else if (this.props.listing.photoUrls) {
       [].forEach.call(this.props.listing.photoUrls, readAndPreview.bind(this));
     }
