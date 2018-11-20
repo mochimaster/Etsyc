@@ -165,9 +165,9 @@ class ListingShow extends React.Component {
 
             <div className="listing-details listing-details-overview">
               <label className="title-label">Overview</label>
-              <div>
+              <p className="overview">
                 {this.props.listing.overview}
-              </div>
+              </p>
             </div>
 
           </div>

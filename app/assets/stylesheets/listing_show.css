@@ -171,3 +171,11 @@
   justify-self: top;
 
 }
+
+.overview{
+  font-size: 14px;
+}
+
+.title-label{
+  font-weight: 500;
+}
