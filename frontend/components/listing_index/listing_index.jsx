@@ -70,9 +70,9 @@ class ListingIndex extends React.Component {
     // debugger;
 
     if(this.props.match.path=="/search" && this.props.listings.length == 0){
-      return <div>
+      return <div className="no-result">
           No search result found. Search query is case sensitive. <p>
-            Try searching for "bed", "lamp", "couch"
+            Try searching for "bed", "lamp", "couch".
           </p>
         </div>;
     } else if (this.props.listings == 0) {

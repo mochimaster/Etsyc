@@ -1,4 +1,4 @@
-.error-page, .loading-page{
+.error-page, .loading-page, .no-result{
     line-height: 16px;
     font-size: 15px;
     color: #222;
@@ -10,6 +10,10 @@
 
 .loading-page{
     left: 47%;
+}
+
+.no-result{
+    left: 35%;
 }
 
 .react-loading{

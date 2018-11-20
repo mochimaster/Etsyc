@@ -7,7 +7,7 @@ class ErrorShow extends React.Component {
 
     render() {
         return (
-            <div className="error-page">Please login to use this feature.</div>
+            <div className="error-page">Please sign in to use this feature.</div>
         )
     }
 
