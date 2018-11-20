@@ -13,7 +13,6 @@ import {asArray} from '../../reducers/selectors';
 //       9: {id: 9, title: "My fancy listing 6"}
 
 const mapStateToProps = state => {
-  // debugger
   return {
     currentUserId: state.session.id,
     carts: asArray(state.entities.carts),

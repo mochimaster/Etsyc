@@ -42,8 +42,6 @@ class CartIndexItem extends React.Component {
 
     // <img src={this.props.listing.photoUrl} />
 
-
-
     return (
       <li className="cart-index-item">
         <div className="cart-index-merchant-name">

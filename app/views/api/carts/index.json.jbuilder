@@ -10,6 +10,9 @@
       if(cart_item.listing.photo.attached?)
         json.photoUrl url_for(cart_item.listing.photo)
       end
+      if(cart_item.listing.photos.attached?)
+        json.photoUrl url_for(cart_item.listing.photos[0])
+      end
     end
   end
 
