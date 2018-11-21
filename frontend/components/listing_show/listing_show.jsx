@@ -53,7 +53,7 @@ class ListingShow extends React.Component {
 
   render() {
     if (!this.props.listing) {
-      return <div>Page Not Found.</div>;
+      return <div className="error-page">Page Not Found.</div>;
     }
 
     let editButton;

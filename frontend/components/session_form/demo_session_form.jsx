@@ -34,8 +34,10 @@ class DemoSessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then( () => {
-      this.props.closeModal();
-      this.props.history.push("/");
+    this.props.closeModal();
+    this.props.history.push("/");
+  
+
     });
   }
 
