@@ -48,7 +48,13 @@ Validations to enforce mandatory fields for username and password. Passwords are
 
 ![user modal validation](images/user_model_validation.png)
 
-## 3. Reusing components
+## 3. Search in multiple columns
+
+Search query using wildcard to search for merchant name and listing title across two separate columns. Search query is also made case insensitive to return relevant result.
+
+![search implementation](images/search.png)
+
+## 4. Reusing components
 
 The form component is shared and used for both create listing and edit listing. For create listing, if no existing form props are received, fields are populated with empty fields.
 For edit listing, if existing form props are receiving, the fields are pre-populated with existing values.
