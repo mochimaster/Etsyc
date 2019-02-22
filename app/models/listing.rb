@@ -66,7 +66,7 @@ class Listing < ApplicationRecord
 
     words = query_params.split
     myarray_with_percentage_signs = words.map {|word| "%#{word}%"}
-    @listings_title = Listing.where("title ILIKE ANY (array[?])", myarray_with_percentage_signs )
+    @listings_title = Listing.where("title ILIKE ALL (array[?])", myarray_with_percentage_signs )
 
 
     # @listings_title = Listing.where('LOWER(title) LIKE LOWER(?)', query_params)
