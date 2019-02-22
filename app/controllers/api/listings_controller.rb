@@ -34,13 +34,14 @@ class Api::ListingsController < ApplicationController
   end
 
   def index
-    @listings = if params[:user_id]
-                  # Listing.where(author_id: params[:user_id])
-                else
-                  # debugger
-                  # Listing.all.limit(10)
-                  Listing.includes(:author).with_attached_photos.with_attached_photo
-                end
+    # @listings = if params[:user_id]
+    #               # Listing.where(author_id: params[:user_id])
+    #             else
+    #               # debugger
+    #               # Listing.all.limit(10)
+    #               Listing.all.includes(:author).with_attached_photos.with_attached_photo
+    #             end
+    @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo
     render :index
   end
 

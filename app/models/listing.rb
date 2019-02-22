@@ -62,9 +62,14 @@ class Listing < ApplicationRecord
     return Listing.all if query_params == ""
 
     # add SQL wildcard
-    query_params = '%'+query_params+'%'
+    # query_params = '%'+query_params+'%'
 
-    @listings_title = Listing.where('LOWER(title) LIKE LOWER(?)', query_params)
+    words = query_params.split
+    myarray_with_percentage_signs = words.map {|word| "%#{word}%"}
+    @listings_title = Listing.where("title ILIKE ANY (array[?])", myarray_with_percentage_signs )
+
+
+    # @listings_title = Listing.where('LOWER(title) LIKE LOWER(?)', query_params)
     @listings_merchant_name = Listing.where('LOWER(merchant_name) LIKE LOWER(?)', query_params)
 
     return @listings_title + @listings_merchant_name
