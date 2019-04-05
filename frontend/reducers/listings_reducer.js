@@ -3,13 +3,15 @@ import {RECEIVE_CARTS,RECEIVE_CART} from '../actions/cart_actions';
 import merge from 'lodash/merge';
 
 const listingsReducer = (oldState={}, action) => {
+
   Object.freeze(oldState);
 
   switch (action.type) {
     case RECEIVE_LISTINGS:
-      // debugger
+      debugger
       // return action.listings;
       const listings = {};
+      // action.listings.listings.forEach(listing => {
       action.listings.forEach(listing => {
         listings[listing.id] = listing;
       });
@@ -18,7 +20,6 @@ const listingsReducer = (oldState={}, action) => {
 
     case RECEIVE_LISTING:
       let newState = merge({}, oldState);
-      // debugger
       return merge(newState, {[action.listing.id]: action.listing});
 
     case REMOVE_LISTING:

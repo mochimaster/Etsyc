@@ -2,7 +2,7 @@ import React from 'react';
 import ListingIndexContainer from './listing_index_container';
 import ListingIndexItem from './listing_index_item';
 import ReactLoading from "react-loading";
-
+import { Pagination } from 'semantic-ui-react';
 
 class ListingIndex extends React.Component {
 
@@ -71,6 +71,8 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
+  
+    console.log("listing_index this.props:", this.props)
     if(this.props.match.path=="/search" && this.props.listings.length == 0){
       return <div className="no-result">
         <p>No search result found. Try searching for "bed", "lamp", "table".
@@ -90,6 +92,7 @@ class ListingIndex extends React.Component {
               deleteListing={this.props.deleteListing} /> )
           })}
         </ul>
+        <Pagination size="mini" siblingRange="6"/>
       </div>
     )
   }
