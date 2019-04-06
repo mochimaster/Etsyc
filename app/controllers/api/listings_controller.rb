@@ -42,7 +42,12 @@ class Api::ListingsController < ApplicationController
     #               Listing.all.includes(:author).with_attached_photos.with_attached_photo
     #             end
     # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])
-    # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])
+    # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])     
+
+    if params[:page] == "NaN"
+      params[:page]=1
+    end
+
     @listings = Listing.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     # @listings = Listing.paginate(:page => params[:page])
 
