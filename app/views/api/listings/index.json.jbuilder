@@ -1,4 +1,4 @@
-debugger
+
 if (@listings.length >1)
   json.page @listings.current_page 
   json.pages @listings.total_pages
