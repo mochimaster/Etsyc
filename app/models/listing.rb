@@ -49,7 +49,7 @@ class Listing < ApplicationRecord
     foreign_key: :listing_id,
     class_name: :Review
 
-  self.per_page = 25
+  self.per_page = 24
 
   def title_validation
     if title.length >= 255
