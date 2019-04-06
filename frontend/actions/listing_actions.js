@@ -39,9 +39,9 @@ export const getListing = (id) => {
   };
 };
 
-export const getListings = () => {
+export const getListings = (page=1) => {
   return dispatch => {
-    return ApiUtil.getListings().then( listings => {
+    return ApiUtil.getListings(page).then( listings => {
       dispatch({type: RECEIVE_LISTINGS, listings});
     });
   };

@@ -8,11 +8,11 @@ const listingsReducer = (oldState={}, action) => {
 
   switch (action.type) {
     case RECEIVE_LISTINGS:
-      debugger
       // return action.listings;
       const listings = {};
-      // action.listings.listings.forEach(listing => {
-      action.listings.forEach(listing => {
+      
+      action.listings.listings.forEach(listing => {
+      // action.listings.forEach(listing => {
         listings[listing.id] = listing;
       });
 

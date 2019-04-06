@@ -28,12 +28,13 @@ export const getListing = (id) => {
   });
 };
 
-export const getListings = () => {
+export const getListings = (page=1) => {
   return $.ajax({
     method: 'GET',
-    url: `/api/listings/`,
+    url: `/api/listings?page=${page}`,
   });
 };
+
 
 export const getSavedListings = (listing_ids) => {
   return $.ajax({

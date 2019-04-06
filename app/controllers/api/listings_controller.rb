@@ -41,21 +41,19 @@ class Api::ListingsController < ApplicationController
     #               # Listing.all.limit(10)
     #               Listing.all.includes(:author).with_attached_photos.with_attached_photo
     #             end
-
     # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])
     # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])
     @listings = Listing.all.includes(:author).with_attached_photos.paginate(:page => params[:page])
 
-    render :index    
-    # render json: {
-    #   listings: @listings,
-    #   page: @listings.current_page,
-    #   pages: @listings.total_pages
-    # }
+    # render :index    
+    render json: {
+      listings: @listings,
+      page: @listings.current_page,
+      pages: @listings.total_pages
+    }
   end
 
   def destroy
-
     @listing = Listing.find_by(id: params[:id])
     if @listing
       @listing.destroy
@@ -69,10 +67,9 @@ class Api::ListingsController < ApplicationController
   private
   def listing_params
     # params[:listing][:modified_by_userid] = params[:author_id]
-    debugger
 
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo, :merchant_name, photos: [] )
+      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, photos: [] )
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)

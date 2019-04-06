@@ -24,7 +24,7 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   //
   // }
 
-  // debugger
+
 
   let displayImage;
   if (listing.photoUrl) {

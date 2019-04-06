@@ -18,15 +18,32 @@ class ListingIndex extends React.Component {
 
   constructor(props){
     super(props);
-    
+    this.state = {
+      loading: true,
+      listings: [],
+      page: undefined,
+      pages: undefined
+    }
+    this.handlePage = this.handlePage.bind(this)
   }
 
   componentDidMount(){
+
     // prevent getListings firing again after search result is returned
     if (this.props.match.path == "/search"){
       return null
     }
-    this.props.getListings();
+
+    const pageParams = this.props.location.search
+    const pageNum = parseInt(pageParams.slice(6))
+
+    this.props.getListings(pageNum).then(response => {
+      this.setState({
+        listings: this.props.listings,
+        page: this.props.page,
+        pages: this.props.pages
+      });
+    });
   }
 
   // componentWillReceiveProps(newProps){
@@ -70,9 +87,22 @@ class ListingIndex extends React.Component {
   //   }
   // }
 
+  handlePage(e, {activePage}){
+    let goToPage = { activePage }
+    let pageNum = goToPage.activePage
+    // let pageString = pageNum.toString()
+
+
+
+    this.props.history.push({
+      pathname: "/listings",
+      search: `?page=${pageNum}`
+    });
+    this.props.getListings(pageNum);
+
+  }
+
   render() {
-  
-    console.log("listing_index this.props:", this.props)
     if(this.props.match.path=="/search" && this.props.listings.length == 0){
       return <div className="no-result">
         <p>No search result found. Try searching for "bed", "lamp", "table".
@@ -92,7 +122,12 @@ class ListingIndex extends React.Component {
               deleteListing={this.props.deleteListing} /> )
           })}
         </ul>
-        <Pagination size="mini" siblingRange="6"/>
+
+        <Pagination size="mini" siblingRange="6"
+          onPageChange={this.handlePage}
+          defaultActivePage={this.state.page}
+          totalPages={this.state.pages} 
+        />
       </div>
     )
   }
