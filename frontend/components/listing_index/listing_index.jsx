@@ -121,7 +121,7 @@ class ListingIndex extends React.Component {
           })}
         </ul>
         <div className="pagination-wrapper">
-          <Pagination siblingRange="6" onPageChange={this.handlePage} defaultActivePage={this.state.page} totalPages={this.state.pages} />
+          <Pagination ellipsisItem={null} boundaryRange={6} siblingRange={6} onPageChange={this.handlePage} defaultActivePage={this.state.page} totalPages={this.state.pages} />
         </div>
       </div>;
   }
