@@ -1,5 +1,8 @@
-json.page @listings.current_page 
-json.pages @listings.total_pages
+debugger
+if (@listings.length >1)
+  json.page @listings.current_page 
+  json.pages @listings.total_pages
+end
 
 json.listings @listings do |listing|
   json.extract! listing, :id, :title, :description, :author_id,:price, :merchant_name

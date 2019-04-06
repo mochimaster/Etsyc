@@ -2,6 +2,7 @@ class Api::SearchController < ApplicationController
 
     def index
         @listings = Listing.search_result(search_params[:title])
+        debugger
         render 'api/listings/index'
     end
 
