@@ -21,7 +21,7 @@ class ListingIndex extends React.Component {
     this.state = {
       loading: true,
       listings: [],
-      page: undefined,
+      page: 1,
       pages: undefined
     }
     this.handlePage = this.handlePage.bind(this)
