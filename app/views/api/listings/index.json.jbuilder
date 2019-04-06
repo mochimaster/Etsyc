@@ -1,7 +1,10 @@
 
-if (@listings.length >1)
+if (defined? @listings.page)
   json.page @listings.current_page 
   json.pages @listings.total_pages
+elsif
+  json.page 1
+  json.total_pages 1
 end
 
 json.listings @listings do |listing|
