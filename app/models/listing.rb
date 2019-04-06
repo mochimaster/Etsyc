@@ -22,7 +22,7 @@ class Listing < ApplicationRecord
   attribute :modified_by_userid, :integer, default: :author_id
 
   has_many_attached :photos # to support multiple picture upload
-  # has_one_attached :photo # to support previous single upload
+  has_one_attached :photo # to support previous single upload
 
   # scope :with_eager_loaded_photo, -> { eager_load(photo: :blob) }
   # scope :with_preloaded_photo, -> { preload(photo: :blob) }
@@ -49,7 +49,7 @@ class Listing < ApplicationRecord
     foreign_key: :listing_id,
     class_name: :Review
 
-  self.per_page = 25
+  self.per_page = 5
 
   def title_validation
     if title.length >= 255

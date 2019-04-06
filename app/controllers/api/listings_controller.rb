@@ -43,14 +43,15 @@ class Api::ListingsController < ApplicationController
     #             end
     # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])
     # @listings = Listing.all.includes(:author).with_attached_photos.with_attached_photo.paginate(:page => params[:page])
-    @listings = Listing.all.includes(:author).with_attached_photos.paginate(:page => params[:page])
+    @listings = Listing.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+    # @listings = Listing.paginate(:page => params[:page])
 
-    # render :index    
-    render json: {
-      listings: @listings,
-      page: @listings.current_page,
-      pages: @listings.total_pages
-    }
+    render :index    
+    # render json: {
+    #   listings: @listings,
+    #   page: @listings.current_page,
+    #   pages: @listings.total_pages
+    # }
   end
 
   def destroy
