@@ -23,4 +23,10 @@
     user-select: none;
     white-space: nowrap;
     padding: 8px 12px;
+    cursor: pointer;
+}
+
+.pagination-wrapper a.active{
+    background-color: #f0f0ec;
+    border-color: rgba(0, 0, 0, 0.5);
 }
