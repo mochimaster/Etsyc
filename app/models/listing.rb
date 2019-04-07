@@ -49,7 +49,7 @@ class Listing < ApplicationRecord
     foreign_key: :listing_id,
     class_name: :Review
 
-  self.per_page = 20
+  self.per_page = 3
 
   def title_validation
     if title.length >= 255
@@ -74,9 +74,10 @@ class Listing < ApplicationRecord
     @listings_title = Listing.where("title ILIKE ALL (array[?])", myarray_with_percentage_signs )
 
     # @listings_title = Listing.where('LOWER(title) LIKE LOWER(?)', query_params)
-    @listings_merchant_name = Listing.where('LOWER(merchant_name) LIKE LOWER(?)', 
-    myarray_with_percentage_signs)
+    @listings_merchant_name = Listing.where('LOWER(merchant_name) LIKE LOWER(?)', myarray_with_percentage_signs)
+    # @listings_merchant_name = Listing.where('merchant_name ILIKE LOWER(?)', myarray_with_percentage_signs)
 
+    # return @listings_title + @listings_merchant_name
     return @listings_title + @listings_merchant_name
   end
 
