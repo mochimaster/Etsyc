@@ -45,7 +45,7 @@ class Header extends React.Component {
 
           <ul className="account-nav">
             <li className = "icon-sell-etsy"><Link to={`/listings/new`} className="text-sell-etsy"
-              href="">Sell on Castle & Chair</Link>
+              href="">Sell on here</Link>
             </li>
             {navBar}
             <li>
