@@ -34,7 +34,7 @@ class Header extends React.Component {
       <div id="global-header" className="header-nav-top-level">
         <header className="header-nav-inner">
           <div id="craftsy-logo" className="header-site-logo">
-            <Link to="/" aria-label="Craftsy" >Castle & Chair </Link>
+            <Link to="/" aria-label="Craftsy" >C & C</Link>
           </div>
 
           <div className="header-search-div-wrapper">
@@ -45,7 +45,7 @@ class Header extends React.Component {
 
           <ul className="account-nav">
             <li className = "icon-sell-etsy"><Link to={`/listings/new`} className="text-sell-etsy"
-              href="">Sell on Atsy</Link>
+              href="">Sell on Castle & Chair</Link>
             </li>
             {navBar}
             <li>
