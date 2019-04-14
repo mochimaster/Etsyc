@@ -28,6 +28,7 @@ export const getCarts = (user_id) => {
   // debugger
   return dispatch => {
     return ApiUtil.getCarts(user_id).then( carts => {
+      debugger
       dispatch({type: RECEIVE_CARTS, carts });
     });
   };

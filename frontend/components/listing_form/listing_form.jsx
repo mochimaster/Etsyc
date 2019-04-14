@@ -17,9 +17,11 @@ class ListingForm extends React.Component {
       photo: props.listing ? props.listing.photo : "",
       imageUrl: null,
       merchantName: props.merchantName ? props.merchantName : "",
-      photos: []
+      photos: [],
+      // category: props.listing ? props.listing.category.split(",") : []
+      category: props.listing ? props.listing.category : []
+,
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.imagePreview = this.imagePreview.bind(this);
   }
@@ -30,6 +32,7 @@ class ListingForm extends React.Component {
     } else {
       this.props.getListing(this.props.match.params.listingId).then(() => {
         // console.log("calling setstate");
+        
         this.setState({ ...this.props.listing }, () => {});
       });
     }
@@ -44,7 +47,6 @@ class ListingForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append("listing[title]", this.state.title);
@@ -53,6 +55,8 @@ class ListingForm extends React.Component {
     formData.append("listing[description]", this.state.description);
     formData.append("listing[author_id]", this.props.sessionId);
     formData.append("listing[merchant_name]", this.props.merchantName);
+    formData.append("listing[category]", this.state.category);
+    formData.append("category[category]", this.state.category);
 
     if (this.props.match.params.listingId) {
       formData.append("listing[id]", this.props.match.params.listingId);
@@ -61,10 +65,6 @@ class ListingForm extends React.Component {
     // if (!!this.state.imageUrl) {
     //   formData.append("listing[photo]", this.state.imageFile);
     // }
-
-
-    
-
 
     // multiple
  
@@ -75,11 +75,11 @@ class ListingForm extends React.Component {
       }
     }
 
-
-
     this.props
       .action(formData)
-      .then(() => this.props.history.push("/listings/"));
+      .then(() => this.props.match.params.listingId ? 
+        this.props.history.push(`/listings/${this.props.match.params.listingId}`) :
+        this.props.history.push("/listings/"));
     // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
     // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
   }
@@ -137,7 +137,6 @@ class ListingForm extends React.Component {
   // }
 
   imagePreview2(e) {
-    // debugger
     if (e.currentTarget.files) {
       let numFiles = e.currentTarget.files.length;
 
@@ -160,10 +159,8 @@ class ListingForm extends React.Component {
 
   imagePreview(e) {
     let preview = document.querySelector("#preview");
-    // debugger
     // if (e.currentTarget.files) {
     if (e) {
-      // debugger
       // console.log(e.currentTarget.files);
 
       this.setState({ imageFile: e.currentTarget.files },
@@ -180,7 +177,6 @@ class ListingForm extends React.Component {
     }
 
     function readAndPreview(file) {
-      // debugger
       let reader = new FileReader();
       // console.log("this.state.photos: "+ this.state.photos);
       // console.log(file);
@@ -205,7 +201,6 @@ class ListingForm extends React.Component {
           image.title = file.name;
           image.src = this.result;
           preview.appendChild(image);
-          // debugger
 
         },
         false
@@ -234,14 +229,36 @@ class ListingForm extends React.Component {
     this.setState({ description: e.target.value });
   }
 
-  updateCategory(e) {}
-
   updatePrice(e) {
     this.setState({ price: e.target.value });
   }
 
   updateMerchantName(e) {
     this.setState({ merchantName: e.target.value });
+  }
+
+  updateCategory(e){
+    let oldCategory = this.state.category
+    
+    if(oldCategory === ""){
+      oldCategory = []
+    }
+
+    if(typeof oldCategory === "string"){
+      oldCategory = oldCategory.split(",")
+    }
+    
+    if(oldCategory.includes(e.target.value)){
+      oldCategory = oldCategory.filter(function(value, index, arr){
+        return value !== e.target.value
+      })
+    }else {
+      oldCategory.push(e.target.value)
+    }
+
+    console.log("oldCategory before setState: ", oldCategory)
+    
+    this.setState({ category: oldCategory });
   }
 
   renderErrors() {
@@ -322,6 +339,8 @@ class ListingForm extends React.Component {
 
     //onSubmit={() => this.props.createListing(this.state)}
     // { preview }
+
+
     return (
       <div className="create-listing-form-wrapper">
         {this.renderErrors()}
@@ -382,8 +401,8 @@ class ListingForm extends React.Component {
               />
             </div>
 
-            {/*
-            <div className="create-listing-category">
+            
+            {/* <div className="create-listing-category">
               <label>Category:</label><label className="required"> * </label>
 
               <select className="create-listing-category-dropdown select-custom">
@@ -392,8 +411,23 @@ class ListingForm extends React.Component {
                 <option value="art-collectibles">Art & Collectibles</option>
                 <option value="vintage">Vintage</option>
               </select>
+            </div> */}
+            
+            <div className="create-listing-category">
+              <label>Category:</label><label className="required"> * </label>
+
+              <div className="create-listing-category-radio">
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="1" name='Sofa & Sectional' checked={this.state.category.includes("1") ? true : false} />Sofa & Sectional
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="2" name='Seating' checked={this.state.category.includes("2") ? true : false} />Seating
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="3" name='Bedroom' checked={this.state.category.includes("3") ? true : false}/>Bedroom
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="4" name='Console & Cabinet' checked={this.state.category.includes("4") ? true : false}/>Console & Cabinet
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="5" name='Dining' checked={this.state.category.includes("5") ? true : false}/>Dining
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="6" name='Outdoor' checked={this.state.category.includes("6") ? true : false}/>Outdoor
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="7" name='Miscellaneous' checked={this.state.category.includes("7") ? true : false}/>Miscellaneous
+                <input onChange={this.updateCategory.bind(this)} type='checkbox' value="8" name='Special' checked={this.state.category.includes("8") ? true : false}/>Special
+              </div>
             </div>
-            */}
+           
 
             <div className="create-listing-price">
               <label>Price: </label>

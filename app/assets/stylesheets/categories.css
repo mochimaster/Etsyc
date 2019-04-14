@@ -1,0 +1,28 @@
+.categories-wrapper{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    border-bottom: 1px solid #E1E3DF;
+    margin: 0px;   
+    padding: 0px;
+}
+
+.categories-wrapper > li {
+  margin: 9px 12px 15px 12px;
+}
+
+
+.categories-wrapper > li > a{
+  text-decoration: none;
+  line-height: 19.6px;
+  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  cursor: pointer;
+  font-weight: 350;
+  font-size: 14px;
+
+}
+
+.categories-wrapper > li > a:visited {
+  text-decoration: none;
+  color: black;
+}

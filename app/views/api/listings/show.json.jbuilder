@@ -10,3 +10,6 @@ if (@listing.photos.attached?)
   json.photoUrls @listing.photos.map { |file| url_for(file) }
 end
 
+json.category do
+  json.array! @listing.categories.map{|category| category.category.to_s }
+end

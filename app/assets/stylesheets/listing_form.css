@@ -79,15 +79,19 @@
 } */
 
 
-.create-listing-category .create-listing-category-dropdown{
+.create-listing-category .create-listing-category-radio{
   width: auto;
 }
 
-.create-listing-description-input{
+.create-listing-category-radio > input:not(:first-child) {
+  margin-left: 10px;
+}
+
+.create-listing-description-input {
   height: 139px;
 }
 
-.create-listing-category-dropdown, .create-list-price-input{
+.create-listing-category-radio, .create-list-price-input{
   margin-left: 10px;
 }
 

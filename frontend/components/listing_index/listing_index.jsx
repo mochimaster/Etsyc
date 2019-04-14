@@ -91,9 +91,7 @@ class ListingIndex extends React.Component {
     let goToPage = { activePage }
     let pageNum = goToPage.activePage
     // let pageString = pageNum.toString()
-
-
-
+    
     this.props.history.push({
       pathname: "/listings",
       search: `?page=${pageNum}`
