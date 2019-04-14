@@ -16,8 +16,9 @@ import ListingFormContainer from './listing_form/listing_form_container';
 import ListingEditFormContainer from './listing_form/listing_edit_form_container';
 import CartContainer from './cart/cart_container';
 import ErrorShow from './error/error';
-
-
+import CategoryIndexContainer from './category/category_index_container'
+import CategoryShowContainer from './category/category_show_container'
+import { Pagination } from "semantic-ui-react";
 
 
 const App = () => {
@@ -28,12 +29,13 @@ const App = () => {
   return <div>
       <Modal />
       <Header />
-
+      <CategoryIndexContainer />
       <Switch>
         {/* Good comment. The below line will be modified
           when I have a component to render on "/" */}
 
         <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
+        <Route path="/categories/:categoryId" component={CategoryShowContainer} />
         <Route path="/users/:userId/listings" component={ListingIndexContainer} />
         <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
@@ -44,6 +46,10 @@ const App = () => {
         <Redirect to="/listings" />
         <Redirect to="/" />
       </Switch>
+      {/* <Switch>
+        <Route path={["/search", "/categories"]}
+        component={Pagination}/>
+      </Switch> */}
     </div>;
 }
 

@@ -1,12 +1,13 @@
 import {RECEIVE_LISTING, RECEIVE_LISTINGS, REMOVE_LISTING} from '../actions/listing_actions';
 import {RECEIVE_CARTS,RECEIVE_CART} from '../actions/cart_actions';
+import {RECEIVE_CATEGORIES} from '../actions/category_actions';
 import merge from 'lodash/merge';
 
 const listingsReducer = (oldState={}, action) => {
 
   Object.freeze(oldState);
-
   switch (action.type) {
+    
     case RECEIVE_LISTINGS:
       // return action.listings;
       const listings = {};

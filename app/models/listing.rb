@@ -30,6 +30,8 @@ class Listing < ApplicationRecord
   scope :with_eager_loaded_photos, -> { eager_load(photos: :blob) }
   scope :with_preloaded_photos, -> { preload(photos: :blob) }
 
+  after_save :update_category
+
   belongs_to :author,
     primary_key: :id,
     foreign_key: :author_id,
@@ -48,6 +50,11 @@ class Listing < ApplicationRecord
     primary_key: :id,
     foreign_key: :listing_id,
     class_name: :Review
+
+  has_many :categories,
+    primary_key: :id,
+    foreign_key: :listing_id,
+    class_name: :Category
 
   self.per_page = 20
 
@@ -80,6 +87,24 @@ class Listing < ApplicationRecord
     # return @listings_title + @listings_merchant_name
     return @listings_title + @listings_merchant_name
   end
+
+  private
+
+    def update_category
+
+      # if(self.categories.length > 0)
+      #   Category.delete({:listing_id = self.id})
+      # end
+
+      # Category.where("listing_id = ?", self.id).destroy
+      Category.where(:listing_id => self.id).destroy_all
+
+      
+      self.category.split(',').each do |cat|
+        category = Category.new({:listing_id => self.id, :category => cat})
+        category.save!
+      end
+    end
 
 
 end

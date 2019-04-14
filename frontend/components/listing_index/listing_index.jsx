@@ -91,9 +91,7 @@ class ListingIndex extends React.Component {
     let goToPage = { activePage }
     let pageNum = goToPage.activePage
     // let pageString = pageNum.toString()
-
-
-
+    
     this.props.history.push({
       pathname: "/listings",
       search: `?page=${pageNum}`
@@ -113,23 +111,28 @@ class ListingIndex extends React.Component {
       // return <div className="loading-page">Loading...</div>
       return <ReactLoading className="react-loading" type="bubbles" color="black"  />
     }
-    
+
+    let paginate;
+    if(!(this.props.match.path === "/search")){
+      paginate = <div className="pagination-wrapper">
+        <Pagination
+          ellipsisItem={null}
+          boundaryRange={2}
+          siblingRange={2}
+          onPageChange={this.handlePage}
+          defaultActivePage={this.state.page}
+          totalPages={this.state.pages}
+        />
+      </div>
+    }
+        
     return <div>
         <ul className="index-wrapper">
           {this.props.listings.map(listing => {
             return <ListingIndexItem key={listing.id} listing={listing} deleteListing={this.props.deleteListing} />;
           })}
         </ul>
-        <div className="pagination-wrapper">
-          <Pagination 
-            ellipsisItem={null} 
-            boundaryRange={2}  
-            siblingRange={2}
-            onPageChange={this.handlePage} 
-            defaultActivePage={this.state.page} 
-            totalPages={this.state.pages} 
-          />
-        </div>
+        {paginate}
       </div>;
   }
 

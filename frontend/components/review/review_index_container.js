@@ -1,4 +1,3 @@
-import React from 'react';
 import ReviewIndex from './review_index';
 import {getReviews, updateReview, deleteReview} from '../../actions/review_actions';
 import {connect} from 'react-redux';

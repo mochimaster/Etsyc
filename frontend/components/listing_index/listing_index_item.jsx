@@ -24,8 +24,6 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   //
   // }
 
-
-
   let displayImage;
   if (listing.photoUrl) {
     displayImage = <img src={listing.photoUrl} />;
