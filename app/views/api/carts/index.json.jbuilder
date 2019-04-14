@@ -1,5 +1,4 @@
 @carts.each do |cart_item|
-  debugger
   json.cart_item do
     json.set! cart_item.id do
       json.extract! cart_item, :id, :quantity, :listing_id, :user_id
@@ -24,5 +23,3 @@
     end
   end
 end
-
-debugger

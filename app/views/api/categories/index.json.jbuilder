@@ -1,6 +1,4 @@
-debugger
 @categories.each do |category_item|
-    debugger
     json.category_item do 
         json.set! category_item.id do
             json.extract! category_item, :id, :listing_id
