@@ -19,7 +19,7 @@
   cursor: pointer;
   font-weight: 350;
   font-size: 14px;
-
+  color: black;
 }
 
 .categories-wrapper > li > a:visited {
