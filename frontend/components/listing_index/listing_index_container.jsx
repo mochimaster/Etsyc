@@ -1,4 +1,3 @@
-import React from 'react';
 import ListingIndex from './listing_index';
 import { getListings, deleteListing, getListingsPage} from '../../actions/listing_actions';
 import {connect} from 'react-redux';

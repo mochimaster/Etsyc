@@ -5,7 +5,7 @@ class Search extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            title: ""
+            title: props.location.search.slice(7)
         }
         this.updateTitle = this.updateTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,8 +18,8 @@ class Search extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.search({title: this.state.title}).then((listings) => {
-            this.setState({ title: "" });
-            this.props.history.push("/search");
+            this.props.history.push(`/search?query=${this.state.title}`);
+            // this.setState({ title: "" });
             // if (this.state.title == ""){
             //     this.props.history.push("/listings");
             // }else {

@@ -18,13 +18,10 @@ import CartContainer from './cart/cart_container';
 import ErrorShow from './error/error';
 import CategoryIndexContainer from './category/category_index_container'
 import CategoryShowContainer from './category/category_show_container'
-import { Pagination } from "semantic-ui-react";
+import PaginationAll from '../components/pagination/pagination_container'
 
 
 const App = () => {
-
-  // debugger
-
 
   return <div>
       <Modal />
@@ -39,17 +36,16 @@ const App = () => {
         <Route path="/users/:userId/listings" component={ListingIndexContainer} />
         <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
         <Route exact path="/listings" component={ListingIndexContainer} />
-        <Route exact path="/search" component={ListingIndexContainer} />
+        <Route path="/search" component={ListingIndexContainer} />
         <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
         <Route path="/listings/:listingId" component={ListingShowContainer} />
         <Route exact path="/error" component={ErrorShow} />
         <Redirect to="/listings" />
         <Redirect to="/" />
       </Switch>
-      {/* <Switch>
-        <Route path={["/search", "/categories"]}
-        component={Pagination}/>
-      </Switch> */}
+      <Switch>
+        {/* <Route path={["/search", "/categories"]} component={PaginationAll} /> */}
+      </Switch>
     </div>;
 }
 

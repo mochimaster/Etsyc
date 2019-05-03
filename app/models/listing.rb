@@ -56,7 +56,7 @@ class Listing < ApplicationRecord
     foreign_key: :listing_id,
     class_name: :Category
 
-  self.per_page = 20
+  self.per_page = 2
 
   def title_validation
     if title.length >= 255
@@ -75,14 +75,20 @@ class Listing < ApplicationRecord
 
     # add SQL wildcard
     # query_params = '%'+query_params+'%'
-
+    
     words = query_params.split
     myarray_with_percentage_signs = words.map {|word| "%#{word}%"}
+
+    # if params[:page] == "NaN"
+    #   params[:page]=1
+    # end
+
+    # @listings_title = Listing.paginate(:page => params[:page]).where("title ILIKE ALL (array[?])", myarray_with_percentage_signs )
     @listings_title = Listing.where("title ILIKE ALL (array[?])", myarray_with_percentage_signs )
 
     # @listings_title = Listing.where('LOWER(title) LIKE LOWER(?)', query_params)
-    # @listings_merchant_name = Listing.where('LOWER(merchant_name) LIKE LOWER(?)', myarray_with_percentage_signs)
-    @listings_merchant_name = Listing.where('merchant_name ILIKE ALL (array[?])', myarray_with_percentage_signs)
+    @listings_merchant_name = Listing.where('LOWER(merchant_name) LIKE LOWER(?)', myarray_with_percentage_signs)
+    # @listings_merchant_name = Listing.paginate(:page => params[:page]).where('merchant_name ILIKE ALL (array[?])', myarray_with_percentage_signs)
 
     # return @listings_title + @listings_merchant_name
     return @listings_title + @listings_merchant_name

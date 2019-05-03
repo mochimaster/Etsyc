@@ -28,7 +28,6 @@ class ListingIndex extends React.Component {
   }
 
   componentDidMount(){
-
     // prevent getListings firing again after search result is returned
     if (this.props.match.path == "/search"){
       return null

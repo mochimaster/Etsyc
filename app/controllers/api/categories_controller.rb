@@ -1,7 +1,6 @@
 class Api::CategoriesController < ApplicationController
 
     def create
-        debugger
         @category = Category.new(category_params)
 
         if @category.save
@@ -12,7 +11,6 @@ class Api::CategoriesController < ApplicationController
     end
 
     def update
-        debugger
         @category = Review.where(listing_id: params[:listing_id])
 
         if @category && @category.update_attributes(category_params)
@@ -31,18 +29,19 @@ class Api::CategoriesController < ApplicationController
                     else
                         Category.all
                     end
-  
-        
         render :index
     end 
 
     def show
-        @categories = Category.includes(:listing).where(category: params[:id])
+        if params[:page] == "NaN"
+        params[:page]=1
+        end
+
+        @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id])
 
         @listings = @categories.map do |category| 
             category.listing 
         end
-
         render '/api/listings/index'
         # render :index 
     end
@@ -51,7 +50,6 @@ class Api::CategoriesController < ApplicationController
 
     private
     def category_params
-        debugger
         params.require(:category).permit(:category, :listing_id)
     end
 

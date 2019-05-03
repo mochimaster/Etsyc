@@ -52,13 +52,15 @@ export const deleteListing = (id) => {
   });
 };
 
-export const listingSearch = (title) => {
-  // debugger
+export const listingSearch = (title, page=1) => {
   return $.ajax({
     method: 'GET',
     url: '/api/search',
     // data: {search: title}
-    data: {search: title}
+    data: {
+      search: title, 
+      page: page
+    }
   })
 }
 

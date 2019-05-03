@@ -15,4 +15,7 @@ class Category < ApplicationRecord
         primary_key: :id,
         foreign_key: :listing_id,
         class_name: :Listing
+
+    self.per_page = 3
+        
 end

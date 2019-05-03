@@ -33,6 +33,7 @@ class Api::ListingsController < ApplicationController
   end
 
   def index
+  
     # @listings = if params[:user_id]
     #               # Listing.where(author_id: params[:user_id])
     #             else
@@ -48,7 +49,6 @@ class Api::ListingsController < ApplicationController
 
     @listings = Listing.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     # @listings = Listing.paginate(:page => params[:page])
-
     render :index    
     # render json: {
     #   listings: @listings,

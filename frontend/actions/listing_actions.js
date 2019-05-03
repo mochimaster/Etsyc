@@ -59,9 +59,9 @@ export const clearErrors = () => ({
   type: CLEAR_LISTING_ERRORS
 });
 
-export const searchListing = (title) => {
+export const searchListing = (title, page=1) => {
   return dispatch => {
-    return ApiUtil.listingSearch(title).then(listings => {
+    return ApiUtil.listingSearch(title, page).then(listings => {
       dispatch({type: RECEIVE_LISTINGS, listings})
     });
   };
