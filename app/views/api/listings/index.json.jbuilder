@@ -1,4 +1,4 @@
-
+debugger
 if (defined? @listings.current_page )
   json.page @listings.current_page 
   json.pages @listings.total_pages

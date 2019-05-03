@@ -33,6 +33,7 @@ class Api::CategoriesController < ApplicationController
     end 
 
     def show
+
         if params[:page] == "NaN"
         params[:page]=1
         end
@@ -40,8 +41,10 @@ class Api::CategoriesController < ApplicationController
         @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id])
 
         @listings = @categories.map do |category| 
-            category.listing 
+            category.listing
         end
+        @listings = @listings.compact
+        debugger
         render '/api/listings/index'
         # render :index 
     end
