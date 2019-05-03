@@ -44,7 +44,6 @@ class Api::CategoriesController < ApplicationController
             category.listing
         end
         @listings = @listings.compact
-        debugger
         render '/api/listings/index'
         # render :index 
     end
