@@ -14,7 +14,7 @@
 
 .categories-wrapper > li:hover {
   border-bottom: 3px solid #F56400;
-  margin-bottom: -3px;
+  margin-bottom: -1px;
 }
 
 
