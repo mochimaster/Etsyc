@@ -16,7 +16,7 @@ class CategoryShow extends React.Component{
         this.props.getListingsByCategory(this.props.category).then((listings) => 
             this.setState({
                 listings: listings 
-            }), console.log("after calling set state. this.state: ", this.state))
+            }))
     }
 
     render(){

@@ -43,7 +43,16 @@ class Api::CategoriesController < ApplicationController
         @listings = @categories.map do |category| 
             category.listing
         end
+
+
         @listings = @listings.compact
+        # debugger
+        # @listings.push(:total_pages => @categories.total_pages)
+        # @listings.push(:current_page => @categories.current_page)
+
+
+        @total = [@categories, @listings]
+
         render '/api/listings/index'
         # render :index 
     end

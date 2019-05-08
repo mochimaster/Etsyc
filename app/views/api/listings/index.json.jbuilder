@@ -1,6 +1,9 @@
 if (defined? @listings.current_page )
   json.page @listings.current_page 
-  json.pages @listings.total_pages
+  json.total_pages @listings.total_pages
+elsif (defined? @categories.current_page )
+  json.page @categories.current_page 
+  json.total_pages @categories.total_pages
 elsif
   json.page 1
   json.total_pages 1
@@ -21,6 +24,5 @@ json.listings @listings do |listing|
   
   json.merchant_name listing.author.merchant_name
 end
-
 
 

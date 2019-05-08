@@ -1,4 +1,4 @@
-debugger
+
 @categories.each do |category_item|
     json.category_item do 
         json.set! category_item.id do

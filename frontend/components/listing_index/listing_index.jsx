@@ -17,14 +17,15 @@ class ListingIndex extends React.Component {
 
 
   constructor(props){
+    
     super(props);
     this.state = {
       loading: true,
       listings: [],
-      page: 1,
-      pages: undefined
+      // page: props.location.search ? props.location.search.slice(6) : undefined,
+      // pages: undefined
     }
-    this.handlePage = this.handlePage.bind(this)
+    // this.handlePage = this.handlePage.bind(this)
   }
 
   componentDidMount(){
@@ -33,16 +34,16 @@ class ListingIndex extends React.Component {
       return null
     }
 
-    const pageParams = this.props.location.search
-    const pageNum = parseInt(pageParams.slice(6))
+    // const pageParams = this.props.location.search
+    // const pageNum = parseInt(pageParams.slice(6))
 
-    this.props.getListings(pageNum).then(response => {
-      this.setState({
-        listings: this.props.listings,
-        page: this.props.page,
-        pages: this.props.pages
-      });
-    });
+    // this.props.getListings(pageNum).then(response => {
+      // this.setState({
+      //   listings: this.props.listings,
+      //   page: this.props.page,
+      //   pages: this.props.pages
+      // });
+    // });
   }
 
   // componentWillReceiveProps(newProps){
@@ -86,18 +87,18 @@ class ListingIndex extends React.Component {
   //   }
   // }
 
-  handlePage(e, {activePage}){
-    let goToPage = { activePage }
-    let pageNum = goToPage.activePage
-    // let pageString = pageNum.toString()
+  // handlePage(e, {activePage}){
+  //   let goToPage = { activePage }
+  //   let pageNum = goToPage.activePage
+  //   // let pageString = pageNum.toString()
     
-    this.props.history.push({
-      pathname: "/listings",
-      search: `?page=${pageNum}`
-    });
-    this.props.getListings(pageNum);
+  //   this.props.history.push({
+  //     pathname: "/listings",
+  //     search: `?page=${pageNum}`
+  //   });
+  //   this.props.getListings(pageNum);
 
-  }
+  // }
 
   render() {
     if(this.props.match.path=="/search" && this.props.listings.length == 0){
@@ -111,19 +112,19 @@ class ListingIndex extends React.Component {
       return <ReactLoading className="react-loading" type="bubbles" color="black"  />
     }
 
-    let paginate;
-    if(!(this.props.match.path === "/search")){
-      paginate = <div className="pagination-wrapper">
-        <Pagination
-          ellipsisItem={null}
-          boundaryRange={2}
-          siblingRange={2}
-          onPageChange={this.handlePage}
-          defaultActivePage={this.state.page}
-          totalPages={this.state.pages}
-        />
-      </div>
-    }
+    // let paginate;
+    // if(!(this.props.match.path === "/search")){
+    //   paginate = <div className="pagination-wrapper">
+    //     <Pagination
+    //       ellipsisItem={null}
+    //       boundaryRange={2}
+    //       siblingRange={2}
+    //       onPageChange={this.handlePage}
+    //       defaultActivePage={this.state.page}
+    //       totalPages={this.state.pages}
+    //     />
+    //   </div>
+    // }
         
     return <div>
         <ul className="index-wrapper">
@@ -131,9 +132,9 @@ class ListingIndex extends React.Component {
             return <ListingIndexItem key={listing.id} listing={listing} deleteListing={this.props.deleteListing} />;
           })}
         </ul>
-        {paginate}
       </div>;
   }
+  // {paginate}
 
 
 }

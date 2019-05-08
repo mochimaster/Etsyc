@@ -163,8 +163,7 @@ class ListingForm extends React.Component {
     if (e) {
       // console.log(e.currentTarget.files);
 
-      this.setState({ imageFile: e.currentTarget.files },
-        console.log());
+      this.setState({ imageFile: e.currentTarget.files });
 
       [].forEach.call(e.currentTarget.files, readAndPreview.bind(this));
 
@@ -255,8 +254,6 @@ class ListingForm extends React.Component {
     }else {
       oldCategory.push(e.target.value)
     }
-
-    console.log("oldCategory before setState: ", oldCategory)
     
     this.setState({ category: oldCategory });
   }
