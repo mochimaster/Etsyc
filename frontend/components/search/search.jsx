@@ -5,7 +5,7 @@ class Search extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            title: props.location.search.slice(7)
+            title: props.location.search.slice(7).replace(/%20/, ' ')
         }
         this.updateTitle = this.updateTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

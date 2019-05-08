@@ -73,6 +73,8 @@ class Listing < ApplicationRecord
   def self.search_result(query_params)
     return Listing.all if query_params == ""
 
+    query_params.gsub! '%20', ' '
+
     # add SQL wildcard
     # query_params = '%'+query_params+'%'
 
