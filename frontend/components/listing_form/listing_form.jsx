@@ -9,6 +9,7 @@ import {createReview} from '../../actions/review_actions';
 class ListingForm extends React.Component {
   constructor(props) {
     super(props);
+    // debugger
     this.state = {
       title: props.listing ? props.listing.title : "",
       description: props.listing ? props.listing.description : "",

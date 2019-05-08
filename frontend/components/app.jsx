@@ -44,7 +44,8 @@ const App = () => {
         <Redirect to="/" />
       </Switch>
       <Switch>
-        <Route path={["/listings","/search", "/categories"]} component={PaginationAll} />
+        <Route path={["/search", "/categories"]} component={PaginationAll} />
+        <Route exact path={["/listings"]} component={PaginationAll} />
       </Switch>
     </div>;
 }
