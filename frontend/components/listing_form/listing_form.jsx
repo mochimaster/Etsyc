@@ -9,7 +9,6 @@ import {createReview} from '../../actions/review_actions';
 class ListingForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.state = {
       title: props.listing ? props.listing.title : "",
       description: props.listing ? props.listing.description : "",
@@ -18,8 +17,8 @@ class ListingForm extends React.Component {
       photo: props.listing ? props.listing.photo : "",
       imageUrl: null,
       merchantName: props.merchantName ? props.merchantName : "",
-      // photos: [],
-      photos: props.listing ? props.listing.photoUrls : "",
+      photos: [],
+      // photos: props.listing ? props.listing.photoUrls : "",
       // category: props.listing ? props.listing.category.split(",") : []
       category: props.listing ? props.listing.category : []
 ,
@@ -81,7 +80,7 @@ class ListingForm extends React.Component {
       .action(formData)
       .then(() => this.props.match.params.listingId ? 
         this.props.history.push(`/listings/${this.props.match.params.listingId}`) :
-        this.props.history.push("/listings/"));
+        this.props.history.push("/listings"));
     // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
     // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
   }

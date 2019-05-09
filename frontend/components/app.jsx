@@ -19,6 +19,7 @@ import ErrorShow from './error/error';
 import CategoryIndexContainer from './category/category_index_container'
 import CategoryShowContainer from './category/category_show_container'
 import PaginationAll from '../components/pagination/pagination_container'
+import Footer from './footer/footer';
 
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
         <Route path={["/search", "/categories"]} component={PaginationAll} />
         <Route exact path={["/listings"]} component={PaginationAll} />
       </Switch>
+
     </div>;
 }
 
