@@ -52,13 +52,10 @@ class PaginationAll extends React.Component{
                   
             this.props.getListings(this.state.page).then(response => 
                 {
-                    console.log("getListings response: ", response)
                     this.setState({
                     listings: this.props.listings,
                     page: this.props.page,
                     pages: this.props.pages
-                }, ()=> {
-                    console.log("this.state callback: ", this.state)
                 })}
             )
 

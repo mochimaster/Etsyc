@@ -12,12 +12,12 @@ class CategoryShow extends React.Component{
         }
     }
 
-    componentDidMount(){
-        this.props.getListingsByCategory(this.props.category).then((listings) => 
-            this.setState({
-                listings: listings 
-            }))
-    }
+    // componentDidMount(){
+    //     this.props.getListingsByCategory(this.props.category).then((listings) => 
+    //         this.setState({
+    //             listings: listings 
+    //         }))
+    // }
 
     render(){
         return <div>

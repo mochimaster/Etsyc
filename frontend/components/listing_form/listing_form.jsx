@@ -9,7 +9,7 @@ import {createReview} from '../../actions/review_actions';
 class ListingForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
+    debugger
     this.state = {
       title: props.listing ? props.listing.title : "",
       description: props.listing ? props.listing.description : "",
@@ -18,7 +18,8 @@ class ListingForm extends React.Component {
       photo: props.listing ? props.listing.photo : "",
       imageUrl: null,
       merchantName: props.merchantName ? props.merchantName : "",
-      photos: [],
+      // photos: [],
+      photos: props.listing ? props.listing.photoUrls : "",
       // category: props.listing ? props.listing.category.split(",") : []
       category: props.listing ? props.listing.category : []
 ,
@@ -137,25 +138,14 @@ class ListingForm extends React.Component {
   //   }
   // }
 
-  imagePreview2(e) {
-    if (e.currentTarget.files) {
-      let numFiles = e.currentTarget.files.length;
-
-      for (let i = 0; i < numFiles; i++) {
-        let reader = new FileReader();
-
-        let files = e.currentTarget.files[0];
-
-        reader.onload = () =>
-          this.setState({ imageUrl: reader.result, imageFile: files });
-
-        if (files) {
-          reader.readAsDataURL(files);
-        } else {
-          this.setState({ imageUrl: "", imageFile: null });
-        }
-      }
+  loadExisting(imageUrls) {
+    debugger
+    function readAndPreview(file) {
+      let reader = new FileReader()
     }
+
+    [].forEach.call(imageUrls, readAndPreview.bind(this));
+
   }
 
   imagePreview(e) {
