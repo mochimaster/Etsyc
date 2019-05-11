@@ -16,6 +16,6 @@ class Category < ApplicationRecord
         foreign_key: :listing_id,
         class_name: :Listing
 
-    self.per_page = 3
+    self.per_page = 20
         
 end
