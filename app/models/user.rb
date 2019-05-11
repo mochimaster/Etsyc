@@ -9,6 +9,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  merchant_name   :string
+#  phone_number    :string
 #
 
 class User < ApplicationRecord

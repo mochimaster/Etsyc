@@ -7,6 +7,7 @@ elsif(@listing.photos.attached?)
 end
 
 json.merchantName @listing.author.merchant_name
+json.phoneNumber @listing.author.phone_number
 
 #if (@listing.photos.attached?)
 #  json.photoUrls @listing.photos.map { |file| url_for(file) }

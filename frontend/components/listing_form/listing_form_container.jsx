@@ -6,9 +6,10 @@ import {createReview} from '../review/review_create_form_container';
 const mapStateToProps = state => {
   return {
     listing: {title: "", description: "", category: "", price:null,
-              photo:null, author_id:null},
+              photo:null, author_id:null, phoneNumber: ""},
     sessionId: state.session.id,
     merchantName: state.entities.users[state.session.id].merchant_name,
+    phoneNumber: state.entities.users[state.session.id].phone_number,
     formType: 'Create Listing',
     errors: state.errors.listing
   }

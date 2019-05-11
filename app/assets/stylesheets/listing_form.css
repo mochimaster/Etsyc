@@ -34,7 +34,7 @@
   font-size: 20px;
 }
 
-.create-listing-title-input, .create-listing-overview-textarea, .create-listing-description-input, .create-list-price-input, .create-listing-merchant-input {
+.create-listing-title-input, .create-listing-overview-textarea, .create-listing-description-input, .create-list-price-input, .create-listing-merchant-input, .create-listing-phone-number-input {
   width: 100%;
   border: 1px solid #CFCBC8;
   background: #f9f9f8;
@@ -54,7 +54,7 @@
 
 }
 
-.create-listing-title-input, .create-listing-merchant-input{
+.create-listing-title-input, .create-listing-merchant-input, {
   height: 34px;
 }
 

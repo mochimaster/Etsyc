@@ -9,6 +9,7 @@ import {createReview} from '../../actions/review_actions';
 class ListingForm extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       title: props.listing ? props.listing.title : "",
       description: props.listing ? props.listing.description : "",
@@ -20,7 +21,8 @@ class ListingForm extends React.Component {
       photos: [],
       // photos: props.listing ? props.listing.photoUrls : "",
       // category: props.listing ? props.listing.category.split(",") : []
-      category: props.listing ? props.listing.category : []
+      category: props.listing ? props.listing.category : [],
+      phoneNumber: props.phoneNumber ? props.phoneNumber : ""
 ,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +33,7 @@ class ListingForm extends React.Component {
   componentDidMount() {
     if (this.props.formType === "Create Listing") {
     } else {
-      this.props.getListing(this.props.match.params.listingId).then(() => {
+      this.props.getListing(this.props.match.params.listingId).then((listing) => {
         // console.log("calling setstate");
         
         this.setState({ ...this.props.listing }, () => {});
@@ -49,6 +51,7 @@ class ListingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
     const formData = new FormData();
     formData.append("listing[title]", this.state.title);
     formData.append("listing[overview]", this.state.overview);
@@ -58,6 +61,8 @@ class ListingForm extends React.Component {
     formData.append("listing[merchant_name]", this.props.merchantName);
     formData.append("listing[category]", this.state.category);
     formData.append("category[category]", this.state.category);
+    formData.append("user[phone_number]", this.state.phoneNumber);
+
 
     if (this.props.match.params.listingId) {
       formData.append("listing[id]", this.props.match.params.listingId);
@@ -138,7 +143,7 @@ class ListingForm extends React.Component {
   // }
 
   loadExisting(imageUrls) {
-    debugger
+    
     function readAndPreview(file) {
       let reader = new FileReader()
     }
@@ -185,8 +190,10 @@ class ListingForm extends React.Component {
       reader.addEventListener(
         "load",
         function() {
+          // let image = new Image(320 , 416	);
           let image = new Image();
-          // image.height = 100;
+          // image.height = 200;
+          // image.width = 100;
           image.title = file.name;
           image.src = this.result;
           preview.appendChild(image);
@@ -226,6 +233,10 @@ class ListingForm extends React.Component {
     this.setState({ merchantName: e.target.value });
   }
 
+  updatePhoneNumber(e) {
+    this.setState({ phoneNumber: e.target.value });
+  }
+
   updateCategory(e){
     let oldCategory = this.state.category
     
@@ -259,6 +270,7 @@ class ListingForm extends React.Component {
   }
 
   merchantExist() {
+
     let name;
     if (!this.props.merchantName) {
       name = (
@@ -278,6 +290,24 @@ class ListingForm extends React.Component {
     }
     return name;
   }
+
+  // phoneNumberExist(){
+  //   let phoneNumber;
+  //   debugger
+
+  //   if(!this.props.phoneNumber){
+  //     phoneNumber = (
+  //       <div>
+  //         <input 
+  //           className="create-listing-phone-number"
+  //           onChange={this.updatePhoneNumber.bind(this)}
+  //           value={this.state.phoneNumber}
+  //           type="text"
+  //         />
+  //       </div>
+  //     )
+  //   }
+  // }
 
   render() {
     // debugger
@@ -327,8 +357,8 @@ class ListingForm extends React.Component {
     //onSubmit={() => this.props.createListing(this.state)}
     // { preview }
 
-
-    return (
+  
+    return (  
       <div className="create-listing-form-wrapper">
         {this.renderErrors()}
 
@@ -350,6 +380,17 @@ class ListingForm extends React.Component {
             <div className="create-listing-merchant_name">
               <label>Merchant Name:</label>
               {this.merchantExist()}
+            </div>
+
+            <div className="create-listing-phone-number">
+              <label>Phone Number:</label>
+                <br/>
+                <input
+                  className="create-listing-phone-number-input"
+                  onChange={this.updatePhoneNumber.bind(this)}
+                  value={this.state.phoneNumber}
+                  type="text"
+                />
             </div>
 
             <div className="create-listing-title">

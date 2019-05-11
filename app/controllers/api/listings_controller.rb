@@ -15,8 +15,8 @@ class Api::ListingsController < ApplicationController
 
   def update
     @listing = Listing.find_by(id: params[:id])
-
-    if @listing && @listing.update_attributes(listing_params)
+    
+    if @listing && @listing.update_attributes(listing_params) && @listing.author.update_attributes(user_params)
       render :show
     elsif !@listing
       render json: ['Listing cannot be found.'], status: 400
@@ -78,4 +78,10 @@ class Api::ListingsController < ApplicationController
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)
   end
+  
+  def user_params
+    params.require(:user).permit(:phone_number)
+  end
+
+
 end

@@ -49,7 +49,15 @@ class ListingShow extends React.Component {
   //
 
 
-
+  phoneNumberExist(){
+    if(this.props.listing.phoneNumber){
+      return (
+        <div className="listing-seller-phone-number">
+          ☎️ : {this.props.listing.phoneNumber}
+        </div>
+      );
+    }
+  }
 
   render() {
     if (!this.props.listing) {
@@ -119,11 +127,18 @@ class ListingShow extends React.Component {
         <div className="listing-show-seller-header">
           <div className="listing-header-seller-left">
             <div className="listing-header-seller-name">
-              <Link className="listing-seller-name" to={`/users/${this.props.listing.author_id}/listings`}>{this.props.listing.merchantName}</Link>
+              <Link
+                className="listing-seller-name"
+                to={`/users/${this.props.listing.author_id}/listings`}
+              >
+                {this.props.listing.merchantName}
+              </Link>
+
+              {this.phoneNumberExist()}
             </div>
-            <div className="listing-header-seller-rating">
+            {/* <div className="listing-header-seller-rating"> */}
               {/*Rating in stars (xx)*/}
-            </div>
+            {/* </div> */}
           </div>
           <div className="listing-header-seller-thumbnails">
             {/*Other items in thumbnails...*/}
@@ -132,9 +147,8 @@ class ListingShow extends React.Component {
 
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
-          {/* <img src={this.props.listing.photoUrl} /> */}
-          {displayImages}
-  
+            {/* <img src={this.props.listing.photoUrl} /> */}
+            {displayImages}
           </div>
 
           <div className="listing-details listing-right-half">
@@ -150,57 +164,63 @@ class ListingShow extends React.Component {
             </div>
             */}
             <div className="listing-details listing-details-quantity">
-              Quantity  <br/>
-              <input className="input-quantity input-quantity-input" onChange={this.updateQuantity.bind(this)} className="select-custom"
-              placeholder="1"></input>
+              Quantity <br />
+              <input
+                className="input-quantity input-quantity-input"
+                onChange={this.updateQuantity.bind(this)}
+                className="select-custom"
+                placeholder="1"
+              />
             </div>
 
             <div className="listing-details add-to-cart">
-              <button onClick={()=>this.props.createCart({quantity: this.state.quantity,
-                listing_id: this.props.listing.id, user_id: this.props.sessionId })
-                              .then(() => this.props.history.push(`/users/${this.props.sessionId}/carts`))}>
+              <button
+                onClick={() =>
+                  this.props
+                    .createCart({
+                      quantity: this.state.quantity,
+                      listing_id: this.props.listing.id,
+                      user_id: this.props.sessionId
+                    })
+                    .then(() =>
+                      this.props.history.push(
+                        `/users/${this.props.sessionId}/carts`
+                      )
+                    )
+                }
+              >
                 Add to cart
               </button>
             </div>
 
             <div className="listing-details listing-details-overview">
               <label className="title-label">Overview</label>
-              <p className="overview">
-                {this.props.listing.overview}
-              </p>
+              <p className="overview">{this.props.listing.overview}</p>
             </div>
-
           </div>
 
-
-
           <div className="listing-description">
-            <label className="title-label">Description</label> <br/>
+            <label className="title-label">Description</label> <br />
             <p>{this.props.listing.description}</p>
           </div>
 
+          <div />
           <div>
-
+            <ReviewForm listingId={this.props.listing.id} />
           </div>
-          <div>
-            <ReviewForm listingId={this.props.listing.id}/>
-          </div>
-          <div>
-
-          </div>
+          <div />
 
           <div className="listing-reviews">
-            <ReviewIndexContainer createReview={this.props.createReview}
-            listing={this.props.listing} sessionId={this.props.sessionId}
-            listingId={this.props.listing.listingId}/>
-
+            <ReviewIndexContainer
+              createReview={this.props.createReview}
+              listing={this.props.listing}
+              sessionId={this.props.sessionId}
+              listingId={this.props.listing.listingId}
+            />
           </div>
-
-
-
         </div>
       </div>
-    )
+    );
   }
 
 

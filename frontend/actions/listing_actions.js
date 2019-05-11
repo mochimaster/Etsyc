@@ -20,7 +20,6 @@ export const createListing = (listing) => {
 
 export const updateListing = (listing) => {
   return dispatch => {
-    // debugger
     return ApiUtil.updateListing(listing).then( listing => {
       dispatch({type: RECEIVE_LISTING, listing});
     },

@@ -44,7 +44,7 @@
 
 .listing-header-seller-left{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   overflow: hidden;
 }
 
