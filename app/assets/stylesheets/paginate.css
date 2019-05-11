@@ -30,3 +30,9 @@
     background-color: #f0f0ec;
     border-color: rgba(0, 0, 0, 0.5);
 }
+
+a[type="ellipsisItem"]:hover {
+    cursor: default;
+    border-color:5px solid red;
+
+}

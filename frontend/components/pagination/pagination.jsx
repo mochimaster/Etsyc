@@ -142,7 +142,7 @@ class PaginationAll extends React.Component{
         
         if (this.props.listings.length){
             return <div className="pagination-wrapper">
-                <Pagination ellipsisItem={null} boundaryRange={2} siblingRange={2} onPageChange={this.handlePage} defaultActivePage={this.state.page} totalPages={this.state.pages} />
+                <Pagination ellipsisItem={'...'}  onPageChange={this.handlePage} defaultActivePage={this.state.page} totalPages={this.state.pages} />
             </div>;
         } else {
             return <div></div>
