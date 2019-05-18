@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import ReviewIndexContainer from '../review/review_index_container';
 import ReviewForm from '../review/review_create_form_container';
 import {createReview} from '../../actions/review_actions';
+import Slider from '../slider/slider'
 
 
 class ListingShow extends React.Component {
@@ -113,13 +114,18 @@ class ListingShow extends React.Component {
     // }
 
     let displayImages=[];
+    let images=[];
     if(this.props.listing.photoUrl){
       displayImages.push(<img src={this.props.listing.photoUrl} />)
+      images.push(this.props.listing.photoUrl)
     } else if (this.props.listing.photoUrls) {
       for(let i=0; i<this.props.listing.photoUrls.length; i++){
         displayImages.push(<img src={this.props.listing.photoUrls[i]} />)
+        images.push(this.props.listing.photoUrls[i]);
       }
-    } 
+    }
+
+
     
     return (
       <div className="listing-show-content-wrapper">
@@ -140,7 +146,7 @@ class ListingShow extends React.Component {
               {this.phoneNumberExist()}
             </div>
             {/* <div className="listing-header-seller-rating"> */}
-              {/*Rating in stars (xx)*/}
+            {/*Rating in stars (xx)*/}
             {/* </div> */}
           </div>
           <div className="listing-header-seller-thumbnails">
@@ -151,6 +157,7 @@ class ListingShow extends React.Component {
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
             {/* <img src={this.props.listing.photoUrl} /> */}
+            <Slider images={images} />
             {displayImages}
           </div>
 
