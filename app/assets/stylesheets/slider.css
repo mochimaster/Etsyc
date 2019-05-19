@@ -1,0 +1,30 @@
+/* .slider{
+    position: relative
+} */
+
+.listing-left-half{
+    position: relative
+}
+
+.slider-image{
+    overflow: hidden
+}
+
+.nextArrow{
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 20%;
+    opacity: 0.7;
+    background-color: #757575;
+}
+
+.backArrow{
+    position: absolute; 
+    z-index: 2; 
+    left: 0; 
+    top: 20%;
+    opacity: 0.7;
+    background-color: #757575;
+}
+

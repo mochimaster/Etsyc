@@ -32,6 +32,16 @@
   color: black;
 }
 
+.listing-header-seller-name a{
+  color: #757575;
+  font-size: 14px;
+}
+
+.listing-seller-phone-number > a{
+  color: black;
+  font-size: 14px;
+}
+
 .listing-header-seller-name a:hover{
   cursor: pointer;
   text-decoration: underline;
@@ -65,6 +75,11 @@
   /* overflow: hidden; */
 }
 
+
+.listing-left-half{
+    overflow: hidden;
+    height: 80vh;
+}
 
 
 .listing-details .listing-right-half {
