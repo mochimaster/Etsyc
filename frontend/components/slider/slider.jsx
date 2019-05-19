@@ -104,7 +104,7 @@ class Slider extends React.Component{
 
         const sliderThumbnails = <div className="slider-thumbnails-wrapper">
             {this.state.images.map( (image, index) => {
-                return <img onClick={()=>this.goToSlide(index)} className="slider-thumbnails" src={image}/> 
+                return <img onClick={() => this.goToSlide(index)} onMouseEnter={()=>this.goToSlide(index)} className="slider-thumbnails" src={image}/> 
             })}
 
         </div>
