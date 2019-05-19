@@ -14,6 +14,7 @@ class Slider extends React.Component{
         this.goNextSlide = this.goNextSlide.bind(this)
         this.goPrevSlide = this.goPrevSlide.bind(this)
         this.handleKeyDown = this.handleKeyDown.bind(this)
+        this.goToSlide = this.goToSlide.bind(this)
     }
 
     componentDidMount(){
@@ -50,7 +51,12 @@ class Slider extends React.Component{
         this.setState({
           currentIndex: this.state.currentIndex - 1,
         //   translateValue: this.state.translateValue + this.slideWidth()
-        });    }
+        });    
+    }
+
+    goToSlide(index){
+        this.setState({currentIndex: index})
+    }
 
     slideWidth(){
         return document.querySelector(".slide").clientWidth
@@ -96,6 +102,13 @@ class Slider extends React.Component{
             );
         }
 
+        const sliderThumbnails = <div className="slider-thumbnails-wrapper">
+            {this.state.images.map( (image, index) => {
+                return <img onClick={()=>this.goToSlide(index)} className="slider-thumbnails" src={image}/> 
+            })}
+
+        </div>
+
         return (
           <div className="slider">
                 <LeftArrow 
@@ -107,6 +120,7 @@ class Slider extends React.Component{
             >
                 <img className='slider-image' src={this.state.images[this.state.currentIndex]} />
             </div>
+                {sliderThumbnails}
           </div>
         );
     }
