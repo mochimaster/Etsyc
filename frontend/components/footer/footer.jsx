@@ -3,13 +3,19 @@ import React from 'react';
 
 class Footer extends React.Component{
     render(){
-        return <div className="footer-wrapper">
-            <div className="header-site-logo logo">Castle and Chair</div>
-            <div className="contact-info">
-              Keith <br />
-              510-936-1639 <br />
+        return (
+          <div className="footer-wrapper">
+            <div className="footer-left-pane">
+              <div className="header-site-logo logo">
+                Castle and Chair
+              </div>
+              <div className="contact-info" />
             </div>
-          </div>;
+            <div className="footer-right-pane">
+              © 2019 Castle and Chair, Inc.
+            </div>
+          </div>
+        );
     }
 }
 
