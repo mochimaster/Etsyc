@@ -8,14 +8,14 @@
 }
 
 .body{
-    min-height: 97vh;
-    padding-bottom: 125px;
+    min-height: 91vh;
+    padding-bottom: 10%;
 }
 
 .footer-wrapper {
    position:absolute;
    bottom:0;
-   width:100%;
+   width:95%;
 
    /* background:#6cf; */
 }
