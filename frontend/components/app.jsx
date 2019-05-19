@@ -24,30 +24,32 @@ import Footer from './footer/footer';
 
 const App = () => {
 
-  return <div>
+  return <div className='app-container'>
       <Modal />
       <Header />
-      <CategoryIndexContainer />
-      <Switch>
-        {/* Good comment. The below line will be modified
-          when I have a component to render on "/" */}
+      <div className='body'>
+        <CategoryIndexContainer />
+        <Switch>
+          {/* Good comment. The below line will be modified
+            when I have a component to render on "/" */}
 
-        <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
-        <Route path="/categories/:categoryId" component={CategoryShowContainer} />
-        <Route path="/users/:userId/listings" component={ListingIndexContainer} />
-        <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
-        <Route exact path="/listings" component={ListingIndexContainer} />
-        <Route path="/search" component={ListingIndexContainer} />
-        <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
-        <Route path="/listings/:listingId" component={ListingShowContainer} />
-        <Route exact path="/error" component={ErrorShow} />
-        <Redirect to="/listings" />
-        <Redirect to="/" />
-      </Switch>
-      <Switch>
-        <Route path={["/search", "/categories"]} component={PaginationAll} />
-        <Route exact path={["/listings"]} component={PaginationAll} />
-      </Switch>
+          <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
+          <Route path="/categories/:categoryId" component={CategoryShowContainer} />
+          <Route path="/users/:userId/listings" component={ListingIndexContainer} />
+          <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
+          <Route exact path="/listings" component={ListingIndexContainer} />
+          <Route path="/search" component={ListingIndexContainer} />
+          <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
+          <Route path="/listings/:listingId" component={ListingShowContainer} />
+          <Route exact path="/error" component={ErrorShow} />
+          <Redirect to="/listings" />
+          <Redirect to="/" />
+        </Switch>
+        <Switch>
+          <Route path={["/search", "/categories"]} component={PaginationAll} />
+          <Route exact path={["/listings"]} component={PaginationAll} />
+        </Switch>
+      </div>
       <Footer />
     </div>;
 }

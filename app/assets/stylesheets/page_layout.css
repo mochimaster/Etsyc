@@ -1,0 +1,21 @@
+.app-container{
+    min-height: 100%;
+    position: relative;
+}
+
+#global-header{
+
+}
+
+.body{
+    min-height: 97vh;
+    padding-bottom: 125px;
+}
+
+.footer-wrapper {
+   position:absolute;
+   bottom:0;
+   width:100%;
+
+   /* background:#6cf; */
+}
