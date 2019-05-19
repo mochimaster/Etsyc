@@ -48,7 +48,7 @@ const App = () => {
         <Route path={["/search", "/categories"]} component={PaginationAll} />
         <Route exact path={["/listings"]} component={PaginationAll} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </div>;
 }
 

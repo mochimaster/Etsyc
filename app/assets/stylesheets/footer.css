@@ -1,3 +1,22 @@
 .footer-wrapper{
-    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 18px 24px 40px 24px;
+    font-family: "Baskerville Old Face";
+    border-top: 1px solid #E1E3DF;
+    cursor: default;
+    font-family: "Baskerville Old Face";
 }
+
+.footer-left-pane{
+    color: #f45800;
+    font-size: 25px;
+}
+
+.footer-right-pane{
+    color: #595959;
+    font-size: 85.71%;
+    text-align: right;
+    padding-top: 10px;
+}
+
