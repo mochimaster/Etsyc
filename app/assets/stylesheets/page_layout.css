@@ -3,13 +3,9 @@
     position: relative;
 }
 
-#global-header{
-
-}
-
 .body{
     min-height: 90vh;
-    padding-bottom: 5%;
+    padding-bottom: 96px;
 }
 
 .footer-wrapper {
