@@ -64,10 +64,10 @@
 
 .listing-show-body-wrapper{
   display: grid;
-  grid-template-columns: 55fr 45fr;
+  grid-template-columns: 65fr 35fr;
   /* grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); */
   /* [col-start] min-content [col-middle] max-content [col-end] */
-  margin-top: 48px;
+  margin-top: 35px;
   padding: 0 40px 0 40px;
   grid-column-gap: 24px;
 
@@ -82,7 +82,7 @@
 
 .listing-left-half{
     overflow: hidden;
-    height: 60vh;
+    height: 70vh;
 }
 
 

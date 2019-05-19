@@ -105,22 +105,24 @@ class Slider extends React.Component{
         const sliderThumbnails = <div className="slider-thumbnails-wrapper">
             {this.state.images.map( (image, index) => {
                 return <img onClick={() => this.goToSlide(index)} onMouseEnter={()=>this.goToSlide(index)} className="slider-thumbnails" src={image}/> 
+                // return <div onClick={() => this.goToSlide(index)} onMouseEnter={() => this.goToSlide(index)} className="slider-thumbnails" style={{background:`url(${image})`}}/> 
             })}
 
         </div>
 
         return (
           <div className="slider">
-                <LeftArrow 
-                goPrevSlide={this.goPrevSlide} />
-                <RightArrow 
-                goNextSlide={this.goNextSlide} />
-            <div className='slider-wrapper'
-                
-            >
-                <img className='slider-image' src={this.state.images[this.state.currentIndex]} />
+            <div className="slider-wrapper">
+                <LeftArrow goPrevSlide={this.goPrevSlide} />
+                <RightArrow goNextSlide={this.goNextSlide} />
+              {/* <div
+                className="slider-image"
+                style={{background: `url(${this.state.images[this.state.currentIndex]})`}}
+              /> */}
+              <img className="slider-image" src={this.state.images[this.state.currentIndex]} />
+
             </div>
-                {sliderThumbnails}
+            {sliderThumbnails}
           </div>
         );
     }

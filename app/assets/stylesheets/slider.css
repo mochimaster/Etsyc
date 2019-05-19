@@ -6,19 +6,19 @@
     position: relative
 }
 
-.slider-image{
-    overflow: hidden;
-    /* height: 70vh; */
-    height: 50vh;
-}
 
 .nextArrow{
     position: absolute;
     z-index: 2;
     right: 0;
     top: 36%;
+    /* top: 9vh; */
     opacity: 0.7;
     background-color: #757575;
+}
+
+.backArrow:hover,.nextArrow:hover{
+    opacity: 0.9;
 }
 
 .backArrow{
@@ -26,9 +26,21 @@
     z-index: 2; 
     left: 0; 
     top: 36%;
+    /* top: 9vh; */
     opacity: 0.7;
     background-color: #757575;
 }
+
+.slider-image{
+    overflow: hidden;
+    /* height: 70vh; */
+    height: 60vh;
+    width: 100%;
+    object-fit: contain;
+    /* object-position: 50% 0%; */
+    max-height: 600px;
+}
+
 
 .slider-thumbnails-wrapper{
     display: grid;
