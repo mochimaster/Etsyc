@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import ReviewIndexContainer from '../review/review_index_container';
 import ReviewForm from '../review/review_create_form_container';
 import {createReview} from '../../actions/review_actions';
+import Slider from '../slider/slider'
 
 
 class ListingShow extends React.Component {
@@ -67,19 +68,25 @@ class ListingShow extends React.Component {
       return <div className="error-page">Page Not Found.</div>;
     }
 
-    let editButton;
-    let deleteButton;
+    let displayAuthorButton
     if (this.props.listing.author_id === this.props.sessionId) {
-      editButton = <Link className="btn btn-primary listing-show-edit-button"
-        to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
+      displayAuthorButton = <div className="listing-show-author-buttons">
+        <Link className="btn btn-primary listing-show-edit-button"
+          to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
+        <input className="btn btn-primary listing-show-delete-button"
+          type="submit" value="Delete Listing"
+          onClick={() => this.props.deleteListing(this.props.listing.id)
+            .then(() => this.props.history.push("/listings"))
+          } />
+      </div>
+      // editButton = <Link className="btn btn-primary listing-show-edit-button"
+      //   to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
 
-      deleteButton = <input className="btn btn-primary listing-show-delete-button"
-        type="submit" value="Delete Listing"
-        onClick={() => this.props.deleteListing(this.props.listing.id)
-                          .then(()=>this.props.history.push("/listings"))
-        } />
-    } else {
-      // console.log('im not author.');
+      // deleteButton = <input className="btn btn-primary listing-show-delete-button"
+      //   type="submit" value="Delete Listing"
+      //   onClick={() => this.props.deleteListing(this.props.listing.id)
+      //                     .then(()=>this.props.history.push("/listings"))
+      //   } />
     }
 
     let reviewForm;
@@ -113,34 +120,24 @@ class ListingShow extends React.Component {
     // }
 
     let displayImages=[];
+    let images=[];
     if(this.props.listing.photoUrl){
       displayImages.push(<img src={this.props.listing.photoUrl} />)
+      images.push(this.props.listing.photoUrl)
     } else if (this.props.listing.photoUrls) {
       for(let i=0; i<this.props.listing.photoUrls.length; i++){
         displayImages.push(<img src={this.props.listing.photoUrls[i]} />)
+        images.push(this.props.listing.photoUrls[i]);
       }
-    } 
-    
+    }    
+
     return (
       <div className="listing-show-content-wrapper">
-        <div className="listing-show-author-buttons">
-          {editButton}
-          {deleteButton}
-        </div>
+          {displayAuthorButton}
         <div className="listing-show-seller-header">
           <div className="listing-header-seller-left">
-            <div className="listing-header-seller-name">
-              <Link
-                className="listing-seller-name"
-                to={`/users/${this.props.listing.author_id}/listings`}
-              >
-                {this.props.listing.merchantName}
-              </Link>
-
-              {this.phoneNumberExist()}
-            </div>
             {/* <div className="listing-header-seller-rating"> */}
-              {/*Rating in stars (xx)*/}
+            {/*Rating in stars (xx)*/}
             {/* </div> */}
           </div>
           <div className="listing-header-seller-thumbnails">
@@ -151,10 +148,20 @@ class ListingShow extends React.Component {
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
             {/* <img src={this.props.listing.photoUrl} /> */}
-            {displayImages}
+            <Slider images={images} />
+            {/* {displayImages} */}
           </div>
 
           <div className="listing-details listing-right-half">
+            <div className="listing-header-seller-name">
+              <Link
+                className="listing-seller-name"
+                to={`/users/${this.props.listing.author_id}/listings`}
+              >
+                {this.props.listing.merchantName}
+              </Link>
+              <div className="listing-seller-phone">{this.phoneNumberExist()}</div>
+            </div>
             <div className="listing-details listing-details-title">
               {this.props.listing.title}
             </div>

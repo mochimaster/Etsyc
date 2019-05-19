@@ -1,0 +1,46 @@
+/* .slider{
+    position: relative
+} */
+
+.listing-left-half{
+    position: relative
+}
+
+.slider-image{
+    overflow: hidden;
+    height: 70vh;
+}
+
+.nextArrow{
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 36%;
+    opacity: 0.7;
+    background-color: #757575;
+}
+
+.backArrow{
+    position: absolute; 
+    z-index: 2; 
+    left: 0; 
+    top: 36%;
+    opacity: 0.7;
+    background-color: #757575;
+}
+
+.slider-thumbnails-wrapper{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 3px;
+
+}
+
+.slider-thumbnails{
+    height: 50px;
+    width: 50px;
+}
+
+.nextArrow, .backArrow, .slider-thumbnails:hover{
+    cursor: pointer;
+}
