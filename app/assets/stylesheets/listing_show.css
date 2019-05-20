@@ -70,8 +70,9 @@
   margin-top: 35px;
   padding: 0 40px 0 40px;
   grid-column-gap: 24px;
-  max-width: 1272px;
 }
+
+
 
 .listing-show-body-wrapper .listing-image {
   min-height: 0;
