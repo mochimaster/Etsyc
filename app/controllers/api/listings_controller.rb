@@ -16,7 +16,17 @@ class Api::ListingsController < ApplicationController
   def update
     @listing = Listing.find_by(id: params[:id])
     
+    photo_hash = listing_params[:photo_hash]
+    params[:listing].delete :photo_hash
+    
     if @listing && @listing.update_attributes(listing_params) && @listing.author.update_attributes(user_params)
+      if photo_hash
+        photo_hash.each_with_index { |truth, index|
+        if truth == "false"
+          @listing.photos[index].purge
+        end
+      }
+    end
       render :show
     elsif !@listing
       render json: ['Listing cannot be found.'], status: 400
@@ -71,9 +81,8 @@ class Api::ListingsController < ApplicationController
   private
   def listing_params
     # params[:listing][:modified_by_userid] = params[:author_id]
-
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, photos: [])
+      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, photo_hash:[], photos: [])
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)
