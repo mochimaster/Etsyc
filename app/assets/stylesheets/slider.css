@@ -6,7 +6,6 @@
     position: relative
 }
 
-
 .nextArrow{
     position: absolute;
     z-index: 2;
@@ -41,17 +40,21 @@
     max-height: 430px;
 }
 
-
 .slider-thumbnails-wrapper{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-gap: 3px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(999, 1fr); */
+    /* grid-template-columns: repeat(50px, minmax(50px, 1fr)); */
+    /* grid-gap: 3px; */
+    display: relative;
 
 }
 
 .slider-thumbnails{
     height: 50px;
     width: 50px;
+    display: absolute;
+    margin-left: 5px;
+    
 }
 
 .nextArrow, .backArrow, .slider-thumbnails:hover{

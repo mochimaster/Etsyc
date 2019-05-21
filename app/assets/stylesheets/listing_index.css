@@ -27,6 +27,9 @@
   max-height: 30%;
 } */
 
+.listing-item-image > a > img{
+  height: 100%;
+}
 
 
 .index-wrapper > li{
