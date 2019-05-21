@@ -23,7 +23,9 @@ class ListingForm extends React.Component {
       // photos: props.listing ? props.listing.photoUrls : "",
       // category: props.listing ? props.listing.category.split(",") : []
       category: props.listing ? props.listing.category : [],
-      phoneNumber: props.phoneNumber ? props.phoneNumber : ""
+      phoneNumber: props.phoneNumber ? props.phoneNumber : "",
+      photoCounter: 0,
+      photoHash: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.imagePreview = this.imagePreview.bind(this);
@@ -34,11 +36,24 @@ class ListingForm extends React.Component {
   componentDidMount() {
     if (this.props.formType === "Create Listing") {
     } else {
+      
       this.props.getListing(this.props.match.params.listingId).then(listing => {
         // console.log("calling setstate");
+        this.setState({ ...this.props.listing }, () => {
 
-        this.setState({ ...this.props.listing }, () => {});
+          if (this.props.listing && this.props.listing.photoUrls) {
+            let photoHash = {}
+            this.props.listing.photoUrls.forEach(( _, index) => {
+              photoHash[index] = true
+            })
+            this.setState({ photoHash: photoHash });
+          }
+
+        });
       });
+
+      
+     
     }
     // this.setState({listing:this.props.listing});
     // if(this.props.formType === 'Edit Listing'){
@@ -61,6 +76,7 @@ class ListingForm extends React.Component {
     formData.append("listing[author_id]", this.props.sessionId);
     formData.append("listing[merchant_name]", this.props.merchantName);
     formData.append("listing[category]", this.state.category);
+    // formData.append("listing[photo_hash][]", this.state.photoHash);
     formData.append("category[category]", this.state.category);
     formData.append("user[phone_number]", this.state.phoneNumber);
 
@@ -81,17 +97,23 @@ class ListingForm extends React.Component {
       }
     }
 
+    if (!!this.state.photoHash){
+      for(let i=0; i < Object.keys(this.state.photoHash).length ;i ++){
+        formData.append("listing[photo_hash][]", this.state.photoHash[i])
+      }
+    }
+
+  
     this.props
       .action(formData)
       .then(() =>
-        this.props.match.params.listingId
-          ? this.props.history.push(
-              `/listings/${this.props.match.params.listingId}`
-            )
-          : this.props.history.push("/listings")
+        {
+          this.props.history.push(
+            `/listings/${this.props.match.params.listingId}`
+          )
+          location.reload()
+        }
       );
-    // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
-    // .then((listing) => this.props.history.push(`/listings/${listing.id}`));
   }
 
   // loadPreview(e){
@@ -146,13 +168,13 @@ class ListingForm extends React.Component {
   //   }
   // }
 
-  loadExisting(imageUrls) {
-    function readAndPreview(file) {
-      let reader = new FileReader();
-    }
+  // loadExisting(imageUrls) {
+  //   function readAndPreview(file) {
+  //     let reader = new FileReader();
+  //   }
 
-    [].forEach.call(imageUrls, readAndPreview.bind(this));
-  }
+  //   [].forEach.call(imageUrls, readAndPreview.bind(this));
+  // }
 
   imagePreview(e) {
     let preview = document.querySelector("#preview");
@@ -206,48 +228,48 @@ class ListingForm extends React.Component {
     }
   }
 
-  previewExistingPhoto(photo) {
-    let preview = document.querySelector("#preview");
-    let button = document.createElement("button");
+  previewExistingPhoto(photo, index) {
+    if (this.state.photoHash[index]) {
 
-    preview.appendChild(button);
-    // debugger
-    button.addEventListener(
-      "click", 
-      function(){
-        this.deleteImage(photo)
-      }.bind(this)
-    );
-    
-    button.innerText='X'
-    button.type = "button"
+      let preview = document.querySelector("#preview");
+      let button = document.createElement("button");
 
-    let image = document.createElement("img")
-    image.src = photo
-    image.id = photo
-    preview.appendChild(
-      image
-    )
+      preview.appendChild(button);
+      // debugger
+      button.addEventListener(
+        "click", 
+        function(){
+          this.deleteImage(index);
+        }.bind(this)
+      );
+
+      button.innerText='X'
+      button.type = "button"
+      button.className = `photo photo-${index}`
+
+      let image = document.createElement("img")
+      image.src = photo
+      image.id = photo
+      image.className = `photo photo-${index}`;
+      preview.appendChild(
+        image
+      )
+    }
   }
 
-  deleteImage(photo){
-    // debugger
-    const deleteAt = this.state.photoUrls.indexOf(photo)
-    const copyOfPhotos = this.state.photoUrls
-    copyOfPhotos.splice(deleteAt, 1);
-    // this.state.photoUrls = updatedPhotos;
-    this.setState({ photoUrls: copyOfPhotos}, console.log("after setState: ", this.state.photoUrls))
-    // this.setState(prevState => ({
-    //   photoUrls: updatedPhotos
-    // }));
-    document.getElementById(photo).remove();
+  deleteImage(index){
+    while (document.querySelector(`.photo-${index}`)){
+      let deleteImage = document.querySelector(`.photo-${index}`);
+      deleteImage.parentNode.removeChild(deleteImage)
+    }
 
+    const copyPhotoHash = this.state.photoHash
+    copyPhotoHash[index] = false
 
-
+    this.setState({ photoHash: copyPhotoHash})
   }
 
   updateTitle(e) {
-    debugger
     this.setState({ title: e.target.value });
   }
 
@@ -391,13 +413,18 @@ class ListingForm extends React.Component {
     // { preview }
 
     if (this.state.photoUrls) {
-      // debugger
-      [].forEach.call(
-        this.state.photoUrls,
-        this.previewExistingPhoto.bind(this)
-      );
-      // this.previewExistingPhoto().bind(this);
-      
+      let preview = document.querySelector("#preview");
+      preview.innerHTML = "";
+
+      // [].forEach.call(
+      //   this.state.photoUrls,
+      //   this.previewExistingPhoto.bind(this)
+      // );
+      let photoHash = {};
+      for(let i=0; i<this.state.photoUrls.length; i++){
+        this.previewExistingPhoto(this.state.photoUrls[i], i)
+        photoHash[i] = true
+      }      
     }
 
     return (
