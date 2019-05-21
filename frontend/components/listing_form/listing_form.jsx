@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 // import ListingEditFormContainer from './listing_edit_form_container';
 import {createReview} from '../../actions/review_actions';
-import { Button } from 'semantic-ui-react';
 
 
 class ListingForm extends React.Component {
@@ -76,7 +75,6 @@ class ListingForm extends React.Component {
     formData.append("listing[author_id]", this.props.sessionId);
     formData.append("listing[merchant_name]", this.props.merchantName);
     formData.append("listing[category]", this.state.category);
-    // formData.append("listing[photo_hash][]", this.state.photoHash);
     formData.append("category[category]", this.state.category);
     formData.append("user[phone_number]", this.state.phoneNumber);
 
@@ -166,14 +164,6 @@ class ListingForm extends React.Component {
   //       }
   //     }
   //   }
-  // }
-
-  // loadExisting(imageUrls) {
-  //   function readAndPreview(file) {
-  //     let reader = new FileReader();
-  //   }
-
-  //   [].forEach.call(imageUrls, readAndPreview.bind(this));
   // }
 
   imagePreview(e) {
