@@ -23,7 +23,6 @@ class ListingForm extends React.Component {
       // category: props.listing ? props.listing.category.split(",") : []
       category: props.listing ? props.listing.category : [],
       phoneNumber: props.phoneNumber ? props.phoneNumber : "",
-      photoCounter: 0,
       photoHash: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -179,9 +178,11 @@ class ListingForm extends React.Component {
       // console.log("Before this.state.photos")
       // console.log(this.state.photos);
       // console.log(this.state.imageFile);
-    } else if (this.props.listing.photoUrls) {
-      [].forEach.call(this.props.listing.photoUrls, readAndPreview.bind(this));
-    }
+    } 
+    
+    // else if (this.props.listing.photoUrls) {
+    //   [].forEach.call(this.props.listing.photoUrls, readAndPreview.bind(this));
+    // }
 
     function readAndPreview(file) {
       // debugger;
@@ -198,7 +199,7 @@ class ListingForm extends React.Component {
 
       this.setState(prevState => ({
         photos: [...prevState.photos, file]
-      }));
+      }), () => {debugger});
 
       reader.addEventListener(
         "load",
@@ -216,6 +217,7 @@ class ListingForm extends React.Component {
       );
       reader.readAsDataURL(file);
     }
+    
   }
 
   previewExistingPhoto(photo, index) {
@@ -235,12 +237,12 @@ class ListingForm extends React.Component {
 
       button.innerText='X'
       button.type = "button"
-      button.className = `photo photo-${index}`
+      button.className = `photo photo-${index} photo-x`
 
       let image = document.createElement("img")
       image.src = photo
       image.id = photo
-      image.className = `photo photo-${index}`;
+      image.className = `photo photo-${index} photo-x`;
       preview.appendChild(
         image
       )
@@ -416,6 +418,7 @@ class ListingForm extends React.Component {
         photoHash[i] = true
       }      
     }
+    
 
     return (
       <div className="create-listing-form-wrapper">

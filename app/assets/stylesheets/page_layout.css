@@ -5,11 +5,11 @@
 
 .body{
     min-height: 92vh;
-    padding-bottom: 96px;
+    /* padding-bottom: 96px; */
 }
 
 .footer-wrapper {
-   position:absolute;
+
    bottom:0;
    width:95%;
 

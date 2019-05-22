@@ -199,3 +199,10 @@
 .title-label{
   font-weight: 500;
 }
+
+.photo-x{
+  float: right;
+  font-size: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+}
