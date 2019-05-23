@@ -2,14 +2,19 @@ import React from 'react'
 import Slide from './slide'
 import LeftArrow from './left_arrow'
 import RightArrow from './right_arrow'
+import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+
 
 class Slider extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-                images: props.images,
+                // props from listing_show or app state in modal
+                images: props.images || props.listing || props.listing.photoUrls || props.listing.photoUrl,
                 currentIndex: 0,
-                translateValue: 0
+                translateValue: 0,
+                modal: Boolean(props.modal)
               }
         this.goNextSlide = this.goNextSlide.bind(this)
         this.goPrevSlide = this.goPrevSlide.bind(this)
@@ -93,23 +98,40 @@ class Slider extends React.Component{
     //     );
     // }
     render(){
+
+        let additionalClassName = ""
+        if (this.state.modal) {
+            additionalClassName = "modal-child-photo"
+        }
+
+        
         if(this.state.images.length <=1){
             return (
               <img
-                className="slider-image"
+                className={`slider-image ${additionalClassName}`}
                 src={this.state.images[0]}
+                onClick={()=>{this.props.openModal('slider')}}
               />
             );
         }
 
+        // if(this.state.images)
         const sliderThumbnails = <div className="slider-thumbnails-wrapper">
+            <div className='slider-thumbnail-inner-wrapper'>
             {this.state.images.map( (image, index) => {
-                return <img onClick={() => this.goToSlide(index)} onMouseEnter={()=>this.goToSlide(index)} className="slider-thumbnails" src={image}/> 
+                return (
+                    <img
+                      className="slider-thumbnails"
+                      onClick={() => this.goToSlide(index)}
+                      onMouseEnter={() => this.goToSlide(index)}
+                      src={image}
+                    />
+                );
                 // return <div onClick={() => this.goToSlide(index)} onMouseEnter={() => this.goToSlide(index)} className="slider-thumbnails" style={{background:`url(${image})`}}/> 
             })}
-
+            </div>
         </div>
-
+        
         return (
           <div className="slider">
             <div className="slider-wrapper">
@@ -119,7 +141,7 @@ class Slider extends React.Component{
                 className="slider-image"
                 style={{background: `url(${this.state.images[this.state.currentIndex]})`}}
               /> */}
-              <img className="slider-image" src={this.state.images[this.state.currentIndex]} />
+            <img className={`slider-image ${additionalClassName}`} src={this.state.images[this.state.currentIndex]} onClick={()=>{this.props.openModal('slider')}} />
 
             </div>
             {sliderThumbnails}
@@ -128,5 +150,22 @@ class Slider extends React.Component{
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+      listing:
+        ownProps.images ||
+        state.entities.listings[parseInt(ownProps.location.pathname.slice(10))]
+          .photoUrls ||
+            [state.entities.listings[parseInt(ownProps.location.pathname.slice(10))]
+                .photoUrl] ||
+                [Object.values(state.entities.listings)[0].photoUrl],
+      modal: state.ui.modal
+    };
+};
 
-export default Slider;
+
+// export default Slider;
+export default withRouter(connect(
+  mapStateToProps,
+  null
+)(Slider));

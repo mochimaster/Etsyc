@@ -109,3 +109,19 @@
   font-weight: lighter;
 
 }
+
+
+.modal-child-slider{
+    top: 3vh;
+    left: 20vw;
+    height: 90vh;
+    width: 80vw;
+    background: white;
+    margin-top: 15px;
+}
+
+.slider-image.modal-child-photo{
+  height: 80vh;
+  max-height: 80vh;
+  margin-top: 10px;
+}

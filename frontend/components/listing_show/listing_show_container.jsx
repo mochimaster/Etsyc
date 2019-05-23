@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {getListing, updateListing, deleteListing,getListings} from '../../actions/listing_actions';
 import ListingShow from './listing_show';
 import {createCart} from '../../actions/cart_actions';
+import { openModal } from "../../actions/modal_actions";
+
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -24,11 +26,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getListing: (id) => dispatch(getListing(id)),
-    updateListing: (listing) => dispatch(updateListing(listing)),
-    deleteListing: (id) => dispatch(deleteListing(id)),
-    createCart: (cart) => dispatch(createCart(cart))
-  }
+    getListing: id => dispatch(getListing(id)),
+    updateListing: listing => dispatch(updateListing(listing)),
+    deleteListing: id => dispatch(deleteListing(id)),
+    createCart: cart => dispatch(createCart(cart)),
+    openModal: modal => dispatch(openModal(modal))
+  };
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(ListingShow);

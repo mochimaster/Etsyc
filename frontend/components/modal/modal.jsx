@@ -6,12 +6,15 @@ import SignUpFormContainer from '../session_form/signup_form_container';
 import DemoSessionFormContainer from '../session_form/demo_login_form_container';
 import UserDropdownContainer from '../user_dropdown/user_dropdown_container';
 import {clearErrors} from '../../actions/session_actions';
+import Slider from '../slider/slider'
+// import { withRouter } from "react-router-dom";
+
 
 function Modal({modal, closeModal}) {
   if(!modal) {
     return null;
   }
-
+  
   let component;
   switch (modal) {
     case 'login':
@@ -26,6 +29,9 @@ function Modal({modal, closeModal}) {
     case 'profileDropdown':
       component = <UserDropdownContainer />;
       break;
+    case 'slider':
+      component = <Slider />;
+      break;
 
     default:
       return null;
@@ -37,6 +43,11 @@ function Modal({modal, closeModal}) {
   // debugger
   (modal === 'profileDropdown') ? backGroundModal = 'modal-clear-background' : backGroundModal = 'modal-background';
   (modal === 'profileDropdown') ? childModalType = 'modal-child-profile-dropdown' : childModalType = 'modal-child';
+  
+  if (modal === 'slider') {
+    backGroundModal = 'modal-background modal-background-slider';
+    childModalType = 'modal-child modal-child-slider';
+  }
   return (
     <div className={backGroundModal} onClick={closeModal}>
       <div className={childModalType} onClick={e => e.stopPropagation()}>
@@ -46,9 +57,11 @@ function Modal({modal, closeModal}) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    // state: state.entities.listings,
+    // location: ownProps.location.pathname
   };
 };
 
@@ -69,4 +82,5 @@ const mapDispatchToProps = dispatch => {
 //  dispatch(console.log())
 // }
 
+// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
