@@ -133,7 +133,7 @@ class ListingShow extends React.Component {
 
     return (
       <div className="listing-show-content-wrapper">
-          {displayAuthorButton}
+        {displayAuthorButton}
         <div className="listing-show-seller-header">
           <div className="listing-header-seller-left">
             {/* <div className="listing-header-seller-rating"> */}
@@ -148,7 +148,7 @@ class ListingShow extends React.Component {
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
             {/* <img src={this.props.listing.photoUrl} /> */}
-            <Slider images={images} />
+            <Slider images={images} openModal={this.props.openModal} />
             {/* {displayImages} */}
           </div>
 
@@ -160,7 +160,9 @@ class ListingShow extends React.Component {
               >
                 {this.props.listing.merchantName}
               </Link>
-              <div className="listing-seller-phone">{this.phoneNumberExist()}</div>
+              <div className="listing-seller-phone">
+                {this.phoneNumberExist()}
+              </div>
             </div>
             <div className="listing-details listing-details-title">
               {this.props.listing.title}
