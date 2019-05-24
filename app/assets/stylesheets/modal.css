@@ -129,21 +129,23 @@
 
 .modal-child-slider {
   position: absolute;
-  top: 28vh; /* position */
-  left: 28vw ;
+  top: 30px; /* position */
+  left: 100px;
   /* transform: translate(160%, 55%); */
   /* transform: translate(50%, 55%); */
   width: 90vw;
   height: 90vh;
   background: white;
   max-height: 900px;
-  max-width: 1000px;
+  max-width: 1200px;
 
-  margin-top: -200px;
-  margin-left: -180px;
+  /* margin-top: -200px;
+  margin-left: -180px; */
   /* background: #fff; */
   z-index: 3;
   border-radius: 5px;
+  margin-top: 0px;
+  margin-left: 0px;
   /* border: 1px solid #000; */
 }
 
