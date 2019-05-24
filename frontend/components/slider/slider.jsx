@@ -77,6 +77,9 @@ class Slider extends React.Component{
           case 'ArrowLeft':
             this.goPrevSlide();
             break;
+          case 'Escape':
+            this.props.closeModal()
+            break;
         }
     }
 
