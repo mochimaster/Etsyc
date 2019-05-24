@@ -112,11 +112,13 @@ class Slider extends React.Component{
         
         if(this.state.images.length <=1){
             return (
-              <img
+              <div><img
                 className={`slider-image ${additionalClassName}`}
                 src={this.state.images[0]}
                 onClick={()=>{this.props.openModal('slider')}}
               />
+              {modalX}
+              </div>
             );
         }
 
