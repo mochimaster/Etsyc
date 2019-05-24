@@ -70,3 +70,7 @@
 .slider-thumbnail-inner-wrapper{
     display: flex;
 }
+
+.slider-thumbnail-inner-wrapper{
+    justify-content: center;
+}

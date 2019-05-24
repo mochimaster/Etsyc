@@ -112,11 +112,11 @@
 
 
 .modal-child-slider{
-    top: 3vh;
+    /* top: 3vh;
     left: 20vw;
     height: 90vh;
     width: 80vw;
-    background: white;
+    background: white; */
     margin-top: 15px;
 }
 
@@ -124,4 +124,37 @@
   height: 80vh;
   max-height: 80vh;
   margin-top: 10px;
+  cursor: default;
+}
+
+.modal-child-slider {
+  position: absolute;
+  top: 28vh; /* position */
+  left: 28vw ;
+  /* transform: translate(160%, 55%); */
+  /* transform: translate(50%, 55%); */
+  width: 90vw;
+  height: 90vh;
+  background: white;
+  max-height: 900px;
+  max-width: 1000px;
+
+  margin-top: -200px;
+  margin-left: -180px;
+  /* background: #fff; */
+  z-index: 3;
+  border-radius: 5px;
+  /* border: 1px solid #000; */
+}
+
+.far.fa-window-close{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.far.fa-window-close:hover{
+  opacity: 0.9;
 }

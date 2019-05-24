@@ -131,6 +131,12 @@ class ListingShow extends React.Component {
       }
     }    
 
+    let itemNumber = this.props.match.url.slice(10);
+    while(itemNumber.length <= 4){
+      itemNumber = "0" + itemNumber
+    }
+
+    
     return (
       <div className="listing-show-content-wrapper">
         {displayAuthorButton}
@@ -165,7 +171,7 @@ class ListingShow extends React.Component {
               </div>
             </div>
             <div className="listing-details listing-details-title">
-              {this.props.listing.title}
+              {this.props.listing.title} {`  (${itemNumber})`}
             </div>
             <div className="listing-details listing-details-price">
               ${this.props.listing.price}

@@ -4,6 +4,8 @@ import LeftArrow from './left_arrow'
 import RightArrow from './right_arrow'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import { closeModal } from '../../actions/modal_actions';
+
 
 
 class Slider extends React.Component{
@@ -100,8 +102,11 @@ class Slider extends React.Component{
     render(){
 
         let additionalClassName = ""
+        let modalX = ""
         if (this.state.modal) {
             additionalClassName = "modal-child-photo"
+            modalX = <i class="far fa-window-close fa-3x" onClick={this.props.closeModal} />
+            ;
         }
 
         
@@ -121,7 +126,7 @@ class Slider extends React.Component{
             {this.state.images.map( (image, index) => {
                 return (
                     <img
-                      className="slider-thumbnails"
+                      className="slider-thumbnails modal-thumbnails"
                       onClick={() => this.goToSlide(index)}
                       onMouseEnter={() => this.goToSlide(index)}
                       src={image}
@@ -142,7 +147,7 @@ class Slider extends React.Component{
                 style={{background: `url(${this.state.images[this.state.currentIndex]})`}}
               /> */}
             <img className={`slider-image ${additionalClassName}`} src={this.state.images[this.state.currentIndex]} onClick={()=>{this.props.openModal('slider')}} />
-
+            {modalX}
             </div>
             {sliderThumbnails}
           </div>
@@ -163,9 +168,17 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return{
+        closeModal: () => {
+            dispatch(closeModal())
+        }
+    }
+}
+
 
 // export default Slider;
 export default withRouter(connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Slider));
