@@ -63,6 +63,13 @@ class ListingShow extends React.Component {
     }
   }
 
+  confirmDelete() {
+    const confirmed = confirm('Are you sure you want to delete this listing?')
+    if (confirmed) {
+      this.props.deleteListing(this.props.listing.id)
+      .then(this.props.history.push("/listings"))
+    }
+}
   render() {
     if (!this.props.listing) {
       return <div className="error-page">Page Not Found.</div>;
@@ -75,10 +82,10 @@ class ListingShow extends React.Component {
           to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
         <input className="btn btn-primary listing-show-delete-button"
           type="submit" value="Delete Listing"
-          onClick={() => this.props.deleteListing(this.props.listing.id)
-            .then(() => this.props.history.push("/listings"))
-          } />
+          onClick={this.confirmDelete.bind(this)} 
+        />
       </div>
+
       // editButton = <Link className="btn btn-primary listing-show-edit-button"
       //   to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
 
