@@ -101,17 +101,16 @@ class ListingForm extends React.Component {
       }
     }
 
-  
-    this.props
-      .action(formData)
-      .then(() =>
-        {
-          this.props.history.push(
-            `/listings/${this.props.match.params.listingId}`
-          )
-          location.reload()
-        }
-      );
+    if (this.props.formType === "Create Listing"){
+      this.props.action(formData).then(this.props.history.push('/'))
+    } else {
+      this.props.action(formData).then(() => {
+        this.props.history.push(
+          `/listings/${this.props.match.params.listingId}`
+        );
+        location.reload();
+      });
+    }
   }
 
   // loadPreview(e){
