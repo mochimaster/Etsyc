@@ -54,7 +54,12 @@ Search query using wildcard to search for merchant name and listing title across
 
 ![search implementation](images/search.png)
 
-## 4. Reusing components
+## 4. Categories
+
+Each listing can belong to multiple categories. For example, a coffee table can belong to table category and living room category. 
+
+
+## 5. Reusing components
 
 The form component is shared and used for both create listing and edit listing. For create listing, if no existing form props are received, fields are populated with empty fields.
 For edit listing, if existing form props are receiving, the fields are pre-populated with existing values.
