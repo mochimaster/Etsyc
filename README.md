@@ -60,7 +60,7 @@ Each listing can belong to multiple categories. For example, a coffee table can 
 
 
 ## 5. Reusing components
-
+ 
 The form component is shared and used for both create listing and edit listing. For create listing, if no existing form props are received, fields are populated with empty fields.
 For edit listing, if existing form props are receiving, the fields are pre-populated with existing values.
 
