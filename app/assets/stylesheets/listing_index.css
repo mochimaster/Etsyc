@@ -28,7 +28,7 @@
 } */
 
 .listing-item-image > a > img{
-  height: 100%;
+  height: auto;
 }
 
 .listing-item-image{
