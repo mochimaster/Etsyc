@@ -20,6 +20,7 @@ import CategoryIndexContainer from './category/category_index_container'
 import CategoryShowContainer from './category/category_show_container'
 import PaginationAll from '../components/pagination/pagination_container'
 import Footer from './footer/footer';
+import SortDropDownContainer from './sort/sort_container'
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
       <Header />
       <div className='body'>
         <CategoryIndexContainer />
+        <Route exact path={["/listings", "/categories/:categoryId"]} component={SortDropDownContainer}/>
         <Switch>
           {/* Good comment. The below line will be modified
             when I have a component to render on "/" */}

@@ -1,36 +1,31 @@
-import React from 'react';
-import ListingIndexContainer from './listing_index_container';
-import ListingIndexItem from './listing_index_item';
-import ReactLoading from "react-loading";
-import { Pagination } from 'semantic-ui-react';
+import React from 'react'
+import ListingIndexContainer from './listing_index_container'
+import ListingIndexItem from './listing_index_item'
+import ReactLoading from 'react-loading'
+import { Pagination } from 'semantic-ui-react'
 
 class ListingIndex extends React.Component {
-
   // need to arrive here from Index all.
-    // can filter down from all listings to where authorid
-
+  // can filter down from all listings to where authorid
 
   // need to arrive here from User Profile page.
-    // in user Profile, i have own props match params id.
+  // in user Profile, i have own props match params id.
 
-
-
-
-  constructor(props){
-    
-    super(props);
+  constructor(props) {
+    super(props)
     this.state = {
       loading: true,
-      listings: [],
+      listings: []
+
       // page: props.location.search ? props.location.search.slice(6) : undefined,
       // pages: undefined
     }
     // this.handlePage = this.handlePage.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // prevent getListings firing again after search result is returned
-    if (this.props.match.path == "/search"){
+    if (this.props.match.path == '/search') {
       return null
     }
 
@@ -38,12 +33,20 @@ class ListingIndex extends React.Component {
     // const pageNum = parseInt(pageParams.slice(6))
 
     // this.props.getListings(pageNum).then(response => {
-      // this.setState({
-      //   listings: this.props.listings,
-      //   page: this.props.page,
-      //   pages: this.props.pages
-      // });
+    // this.setState({
+    //   listings: this.props.listings,
+    //   page: this.props.page,
+    //   pages: this.props.pages
     // });
+    // });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { page, sortOption } = this.props
+
+    if (sortOption !== prevProps.sortOption) {
+      this.props.getListings(page, sortOption)
+    }
   }
 
   // componentWillReceiveProps(newProps){
@@ -56,19 +59,16 @@ class ListingIndex extends React.Component {
   //
   // }
 
+  //listingsByAuthor = (9) [{…}, {…}, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
 
-//listingsByAuthor = (9) [{…}, {…}, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
-
-
-// {match: {…}, location: {…}, history: {…}, staticContext: undefined, listings: Array(9), …}
-// deleteListing: ƒ deleteListing(id)
-// getListings: ƒ getListings()
-// history: {length: 50, action: "PUSH", location: {…}, createHref: ƒ, push: ƒ, …}
-// listings: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-// listingsByAuthor: (9) [{…}, {…}, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
-// location: {pathname: "/users/1/listings", search: "", hash: "", state: undefined}
-// match: {path: "/users/:userId/listings", url: "/users/1/listings", isExact: true, params: {…}}
-
+  // {match: {…}, location: {…}, history: {…}, staticContext: undefined, listings: Array(9), …}
+  // deleteListing: ƒ deleteListing(id)
+  // getListings: ƒ getListings()
+  // history: {length: 50, action: "PUSH", location: {…}, createHref: ƒ, push: ƒ, …}
+  // listings: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+  // listingsByAuthor: (9) [{…}, {…}, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+  // location: {pathname: "/users/1/listings", search: "", hash: "", state: undefined}
+  // match: {path: "/users/:userId/listings", url: "/users/1/listings", isExact: true, params: {…}}
 
   // componentWillReceiveProps(nextProps){
   //
@@ -91,7 +91,7 @@ class ListingIndex extends React.Component {
   //   let goToPage = { activePage }
   //   let pageNum = goToPage.activePage
   //   // let pageString = pageNum.toString()
-    
+
   //   this.props.history.push({
   //     pathname: "/listings",
   //     search: `?page=${pageNum}`
@@ -101,15 +101,19 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
-    if(this.props.match.path=="/search" && this.props.listings.length == 0){
-      return <div className="no-result">
-        <p>No search result found. Try searching for "bed", "lamp", "table".
-            
+    if (this.props.match.path == '/search' && this.props.listings.length == 0) {
+      return (
+        <div className="no-result">
+          <p>
+            No search result found. Try searching for "bed", "lamp", "table".
           </p>
-        </div>;
-    } else if (this.props.listings == 0) {
+        </div>
+      )
+    } else if (!this.props.listings || this.props.listings == 0) {
       // return <div className="loading-page">Loading...</div>
-      return <ReactLoading className="react-loading" type="bubbles" color="black"  />
+      return (
+        <ReactLoading className="react-loading" type="bubbles" color="black" />
+      )
     }
 
     // let paginate;
@@ -125,18 +129,24 @@ class ListingIndex extends React.Component {
     //     />
     //   </div>
     // }
-        
-    return <div>
+
+    return (
+      <div>
         <ul className="index-wrapper">
           {this.props.listings.map(listing => {
-            return <ListingIndexItem key={listing.id} listing={listing} deleteListing={this.props.deleteListing} />;
+            return (
+              <ListingIndexItem
+                key={listing.id}
+                listing={listing}
+                deleteListing={this.props.deleteListing}
+              />
+            )
           })}
         </ul>
-      </div>;
+      </div>
+    )
   }
   // {paginate}
-
-
 }
 
-export default ListingIndex;
+export default ListingIndex
