@@ -1,31 +1,29 @@
-import {RECEIVE_LISTING, RECEIVE_LISTINGS, REMOVE_LISTING} from '../actions/listing_actions';
-import {RECEIVE_CARTS,RECEIVE_CART} from '../actions/cart_actions';
-import {RECEIVE_CATEGORIES} from '../actions/category_actions';
+import { RECEIVE_LISTING, RECEIVE_LISTINGS, REMOVE_LISTING } from '../actions/listing_actions';
+import { RECEIVE_CARTS, RECEIVE_CART } from '../actions/cart_actions';
+import { RECEIVE_CATEGORIES } from '../actions/category_actions';
 import merge from 'lodash/merge';
 
-const listingsReducer = (oldState={}, action) => {
+const listingsReducer = (oldState = {}, action) => {
 
   Object.freeze(oldState);
   switch (action.type) {
-    
-    case RECEIVE_LISTINGS:
-      // return action.listings;
-      // const listings = {}
-      const listings = []
-      
-      action.listings.listings.forEach(listing => {
-      // action.listings.forEach(listing => {
-        // listings[listing.id.toString()] = listing;
-        // listings.set(listing.id, listing)
 
-        listings.push({ [listing.id]: listing})
+    case RECEIVE_LISTINGS:
+      const listings = []
+      const listingIds = []
+
+      action.listings.listings.forEach(listing => {
+        if (listingIds.indexOf(listing.id) === -1) {
+          listingIds.push(listing.id)
+          listings.push({ [listing.id]: listing })
+        }
       });
 
       return listings;
 
     case RECEIVE_LISTING:
       let newState = merge({}, oldState);
-      return merge(newState, {[action.listing.id]: action.listing});
+      return merge(newState, { [action.listing.id]: action.listing });
 
     case REMOVE_LISTING:
       let newState2 = merge({}, oldState);
@@ -33,7 +31,7 @@ const listingsReducer = (oldState={}, action) => {
       return newState2;
 
     case RECEIVE_CARTS:
-      if(Object.keys(action.carts).length < 1){
+      if (Object.keys(action.carts).length < 1) {
         return oldState
       }
       // debugger
