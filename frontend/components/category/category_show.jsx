@@ -1,4 +1,6 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
+
 import ListingIndexItem from '../listing_index/listing_index_item'
 import ListingIndex from '../listing_index/listing_index_container'
 
@@ -28,7 +30,7 @@ class CategoryShow extends React.Component {
   }
 
   render() {
-    if (!this.props.listings) return 'loading'
+    if (!this.props.listings) return <Redirect to="/" />
     return (
       <div>
         <ul className="index-wrapper">
