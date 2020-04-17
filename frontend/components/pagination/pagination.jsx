@@ -37,7 +37,6 @@ class PaginationAll extends React.Component {
     //     return null
     // }
 
-    let action = undefined
     if (this.props.match.url === '/categories') {
       const categoryId = this.props.location.pathname.slice(12)
       const pageParams = this.props.location.search

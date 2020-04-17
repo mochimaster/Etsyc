@@ -5,14 +5,16 @@ import CategoryIndex from './category_index'
 const mapStateToProps = (state) => {
   return {
     currentUserId: state.session.id,
-    listings: state.entities.listings
+    listings: state.entities.listings,
+    page: state.entities.pagination.page,
+    sortOption: state.entities.sortOption
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getListingsByCategory: (categoryId) =>
-      dispatch(getListingsByCategory(categoryId))
+    getListingsByCategory: (categoryId, page, sortOption) =>
+      dispatch(getListingsByCategory(categoryId, page, sortOption))
   }
 }
 
