@@ -10,11 +10,15 @@ const listingsReducer = (oldState={}, action) => {
     
     case RECEIVE_LISTINGS:
       // return action.listings;
-      const listings = {};
+      // const listings = {}
+      const listings = []
       
       action.listings.listings.forEach(listing => {
       // action.listings.forEach(listing => {
-        listings[listing.id] = listing;
+        // listings[listing.id.toString()] = listing;
+        // listings.set(listing.id, listing)
+
+        listings.push({ [listing.id]: listing})
       });
 
       return listings;

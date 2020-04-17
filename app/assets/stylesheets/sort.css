@@ -1,0 +1,22 @@
+.sort-container {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+  margin-top: 14px;
+  line-height: 16px;
+  font-size: 14px;
+  color: #222;
+  line-height: 19.6px;
+  font-weight: 350;
+  position: relative;
+  height: 16px;
+  margin-right: 16px;
+}
+
+.sort-inner-container {
+  position: absolute;
+  right: 0;
+}
+
+#sortParamOrder{
+    font-size: 12px;
+}

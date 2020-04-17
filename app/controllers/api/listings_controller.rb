@@ -56,7 +56,23 @@ class Api::ListingsController < ApplicationController
       params[:page]=1
     end
 
-    @listings = Listing.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+    sort_option = params[:sort]
+
+    if sort_option == 'priceDesc'
+      sort_param = :price
+      sort_order = 'desc'
+    elsif sort_option == 'priceAsc'
+      sort_param = :price
+      sort_order = 'asc'
+    else
+      sort_param = :id
+    end
+
+    if sort_order == 'asc'
+      @listings = Listing.order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+    else
+      @listings = Listing.order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+    end
     # @listings = Listing.paginate(:page => params[:page])
     
     render :index    
@@ -90,6 +106,10 @@ class Api::ListingsController < ApplicationController
   
   def user_params
     params.require(:user).permit(:phone_number)
+  end
+
+  def sort_params
+    params.require(:sort).permit(:sort_option)
   end
 
 

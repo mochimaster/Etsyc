@@ -28,10 +28,11 @@ export const getListing = (id) => {
   });
 };
 
-export const getListings = (page=1) => {
+export const getListings = (page = 1, sort_option = "newest") => {
   return $.ajax({
     method: 'GET',
     url: `/api/listings?page=${page}`,
+    data: { sort: sort_option }
   });
 };
 
@@ -40,7 +41,7 @@ export const getSavedListings = (listing_ids) => {
   return $.ajax({
     method: 'GET',
     url: `/api/listings`,
-    data: {cart_listing_ids: listing_ids}
+    data: { cart_listing_ids: listing_ids }
   });
 };
 
@@ -52,13 +53,12 @@ export const deleteListing = (id) => {
   });
 };
 
-export const listingSearch = (title, page=1) => {
+export const listingSearch = (title, page = 1) => {
   return $.ajax({
     method: 'GET',
     url: '/api/search',
-    // data: {search: title}
     data: {
-      search: title, 
+      search: title,
       page: page
     }
   })
