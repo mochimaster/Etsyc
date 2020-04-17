@@ -4,6 +4,7 @@ import {
   deleteListing,
   getListingsPage
 } from '../../actions/listing_actions'
+import { getListingsByCategory } from '../../actions/category_actions'
 import { connect } from 'react-redux'
 import { selectListingsByAuthor } from '../../reducers/selectors'
 
@@ -27,10 +28,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getListings: (page = '', sortOption) =>
-      dispatch(getListings(page, sortOption))
+      dispatch(getListings(page, sortOption)),
+    getListingsByCategory: (category, page, sortOption) =>
+      dispatch(getListingsByCategory(category, page, sortOption))
     // deleteListing: id => dispatch(deleteListing(id)),
     // getListingsPage: page => dispatch(getListingsPage(page))
   }

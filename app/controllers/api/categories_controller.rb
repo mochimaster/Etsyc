@@ -33,12 +33,33 @@ class Api::CategoriesController < ApplicationController
     end 
 
     def show
-
+        
         if params[:page] == "NaN"
-        params[:page]=1
+            params[:page]=1
         end
 
-        @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id])
+        sort_option = params[:sort]
+
+        if sort_option == 'priceDesc'
+            sort_param = :price
+            sort_order = 'desc'
+        elsif sort_option == 'priceAsc'
+            sort_param = :price
+            sort_order = 'asc'
+        else
+            sort_param = :id
+        end
+
+        if sort_order == 'asc' &&  sort_param == :price
+            print 'first condition'
+            @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id]).order('listings.price')
+        elsif sort_order == 'desc' &&  sort_param == :price
+            print 'second condition'
+            @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id]).order('listings.price DESC')
+        else
+            print 'third condition'
+            @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id]).order('listings.id')
+        end
 
         @listings = @categories.map do |category| 
             category.listing
@@ -64,4 +85,7 @@ class Api::CategoriesController < ApplicationController
         params.require(:category).permit(:category, :listing_id)
     end
 
+    def sort_params
+        params.require(:sort).permit(:sort_option)
+    end
 end

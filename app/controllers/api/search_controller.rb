@@ -14,7 +14,6 @@ class Api::SearchController < ApplicationController
     end
 
     def search_params
-        debugger
         params.require(:search).permit(:title)
     end
 

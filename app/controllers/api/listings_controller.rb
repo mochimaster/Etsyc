@@ -109,7 +109,6 @@ class Api::ListingsController < ApplicationController
   end
 
   def sort_params
-    byebug
     params.require(:sort).permit(:sort_option)
   end
 

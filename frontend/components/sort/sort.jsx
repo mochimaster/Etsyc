@@ -23,18 +23,20 @@ class SortDropDownList extends React.Component {
 
   render() {
     return (
-      <div>
-        <label for="sortParamOrder">Sort by: </label>
+      <div className="sort-container">
+        <div className="sort-inner-container">
+          <label for="sortParamOrder">Sort by: </label>
 
-        <select
-          id="sortParamOrder"
-          value={this.state.sortParamOrder}
-          onChange={this.handleSortChange}
-        >
-          <option value="priceAsc">Lowest Price</option>
-          <option value="priceDesc">Highest Price</option>
-          <option value="newest">Most Recent</option>
-        </select>
+          <select
+            id="sortParamOrder"
+            value={this.state.sortParamOrder}
+            onChange={this.handleSortChange}
+          >
+            <option value="priceAsc">Lowest Price</option>
+            <option value="priceDesc">Highest Price</option>
+            <option value="newest">Most Recent</option>
+          </select>
+        </div>
       </div>
     )
   }

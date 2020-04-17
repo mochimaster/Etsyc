@@ -28,23 +28,12 @@ class ListingIndex extends React.Component {
     if (this.props.match.path == '/search') {
       return null
     }
-
-    // const pageParams = this.props.location.search
-    // const pageNum = parseInt(pageParams.slice(6))
-
-    // this.props.getListings(pageNum).then(response => {
-    // this.setState({
-    //   listings: this.props.listings,
-    //   page: this.props.page,
-    //   pages: this.props.pages
-    // });
-    // });
   }
 
   componentDidUpdate(prevProps) {
-    const { page, sortOption } = this.props
+    const { page, sortOption, match, location } = this.props
 
-    if (sortOption !== prevProps.sortOption) {
+    if (match.url === 'listings' && sortOption !== prevProps.sortOption) {
       this.props.getListings(page, sortOption)
     }
   }
@@ -101,7 +90,11 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
-    if (this.props.match.path == '/search' && this.props.listings.length == 0) {
+    if (
+      this.props.match.path == '/search' &&
+      this.props.listings &&
+      this.props.listings.length == 0
+    ) {
       return (
         <div className="no-result">
           <p>
@@ -133,7 +126,7 @@ class ListingIndex extends React.Component {
     return (
       <div>
         <ul className="index-wrapper">
-          {this.props.listings.map(listing => {
+          {this.props.listings.map((listing) => {
             return (
               <ListingIndexItem
                 key={listing.id}
