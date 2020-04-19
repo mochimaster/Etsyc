@@ -10,7 +10,7 @@ elsif
 end
 
 json.listings @listings do |listing|
-  json.extract! listing, :id, :title, :description, :author_id,:price, :merchant_name
+  json.extract! listing, :id, :title, :description, :author_id,:price, :merchant_name, :status
 
   if (listing.photo.attached?)
     json.photoUrl url_for(listing.photo)

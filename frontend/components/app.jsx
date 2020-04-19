@@ -21,6 +21,7 @@ import CategoryShowContainer from './category/category_show_container'
 import PaginationAll from '../components/pagination/pagination_container'
 import Footer from './footer/footer';
 import SortDropDownContainer from './sort/sort_container'
+import HomeIndexContainer from './home_index/home_index_container'
 
 
 const App = () => {
@@ -37,7 +38,7 @@ const App = () => {
 
           <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
           <Route path="/categories/:categoryId" component={CategoryShowContainer} />
-          <Route path="/users/:userId/listings" component={ListingIndexContainer} />
+          <ProtectedRoute path="/users/:userId/home" component={HomeIndexContainer} />
           <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
           <Route exact path="/listings" component={ListingIndexContainer} />
           <Route path="/search" component={ListingIndexContainer} />
