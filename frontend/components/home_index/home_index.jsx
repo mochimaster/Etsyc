@@ -17,8 +17,6 @@ class HomeIndex extends React.Component {
   render() {
     if (!this.props.userId) return
 
-    console.log('this.props.disabledListings: ', this.props.disabledListings)
-
     return (
       <div>
         <ListingIndex
