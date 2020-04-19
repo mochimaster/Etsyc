@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 class UserDropdown extends React.Component{
 
@@ -14,33 +14,36 @@ class UserDropdown extends React.Component{
   }
 
   render() {
-    // debugger
-
     let username = ""
     if (this.props.currentUser){
       username = this.props.currentUser.username;
     }
 
-    return(
-
-      <div className= "header-modal-profile">
-        <ul className = "modal-profile-dropdown-container">
-          <li className= "profile-dropdown-section1">
+    return (
+      <div className="header-modal-profile">
+        <ul className="modal-profile-dropdown-container">
+          <li className="profile-dropdown-section1">
             <div className="header-modal-profile-picture">
               <a className="icon-profile-picture"> </a>
             </div>
-            <div className="header-modal-username">
-              {username}
-            </div>
+            <div className="header-modal-username">{username}</div>
           </li>
 
           <li className="profile-dropdown-section2">
-            <a  className='header-button' onClick={this.handleSubmit.bind(this)}> Sign out</a>
+            <Link
+              className="header-button"
+              to={`/users/${this.props.currentUser.id}/home`}
+            >
+              {' '}
+              Manage listings
+            </Link>
+            <a className="header-button" onClick={this.handleSubmit.bind(this)}>
+              {' '}
+              Sign out
+            </a>
           </li>
-
         </ul>
       </div>
-
     )
   }
 

@@ -51,14 +51,11 @@ class Api::CategoriesController < ApplicationController
         end
 
         if sort_order == 'asc' &&  sort_param == :price
-            print 'first condition'
-            @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id]).order('listings.price')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true]}).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price')
         elsif sort_order == 'desc' &&  sort_param == :price
-            print 'second condition'
-            @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id]).order('listings.price DESC')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true]}).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price DESC')
         else
-            print 'third condition'
-            @categories = Category.paginate(:page => params[:page]).includes(:listing).where(category: params[:id]).order('listings.id')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true]}).paginate(:page => params[:page]).where(category: params[:id]).order('listings.id')
         end
 
         @listings = @categories.map do |category| 

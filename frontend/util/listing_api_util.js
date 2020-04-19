@@ -10,15 +10,37 @@ export const createListing = (listing) => {
 
 // Became formData - need to use getAll('listing[id]')
 export const updateListing = (formData) => {
-  let listingId = formData.getAll('listing[id]');
+  // const listingId = formData.getAll('listing[id]') || formData;
 
-  return $.ajax({
-    method: 'PATCH',
-    url: `/api/listings/${formData.getAll('listing[id]')}`,
-    data: formData,
-    contentType: false,
-    processData: false
-  });
+  // return $.ajax({
+  //   method: 'PATCH',
+  //   url: `/api/listings/${formData.getAll('listing[id]')}`,
+  //   data: formData,
+  //   contentType: false,
+  //   processData: false
+  // });
+
+  // update through formData
+  if (formData.getAll) {
+    return $.ajax({
+      method: 'PATCH',
+      url: `/api/listings/${formData.getAll('listing[id]')}`,
+      data: formData,
+      contentType: false,
+      processData: false
+    });
+  } else {
+    const { id, status } = formData
+
+    return $.ajax({
+      method: 'PATCH',
+      url: `/api/listings/${id}`,
+      data: { listing: { status } }
+    })
+  }
+
+
+
 };
 
 export const getListing = (id) => {

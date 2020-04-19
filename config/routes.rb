@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show] do
       resources :listings, only: [:index]
       resources :carts, except: [:new]
+      resources :home, only: [:index]
     end
     resources :listings, defaults: {format: :json} do
       resources :reviews, only: [:index]

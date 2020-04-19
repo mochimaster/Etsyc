@@ -90,10 +90,34 @@ class ListingIndex extends React.Component {
   // }
 
   render() {
+    const currentUrl = this.props.match.url
+    const rootUrl = currentUrl.split('/')[1]
+
+    if (rootUrl === 'users') {
+      if (this.props.disabledListings.length) {
+        return (
+          <div>
+            <ul className="index-wrapper">
+              {this.props.disabledListings.map((disabledListing) => {
+                return (
+                  <ListingIndexItem
+                    key={disabledListing.id}
+                    listing={disabledListing}
+                  />
+                )
+              })}
+            </ul>
+          </div>
+        )
+      } else {
+        return <div className="body">You have no disabled listings.</div>
+      }
+    }
+
     if (
       this.props.match.path == '/search' &&
-      this.props.listings &&
-      this.props.listings.length == 0
+      this.props.listings === 0
+      // this.props.listings.length == 0
     ) {
       return (
         <div className="no-result">
@@ -102,7 +126,10 @@ class ListingIndex extends React.Component {
           </p>
         </div>
       )
-    } else if (!this.props.listings || this.props.listings == 0) {
+    } else if (
+      (rootUrl !== 'users' && !this.props.listings) ||
+      this.props.listings == 0
+    ) {
       // return <div className="loading-page">Loading...</div>
       return (
         <ReactLoading className="react-loading" type="bubbles" color="black" />

@@ -23,7 +23,9 @@ const listingsReducer = (oldState = {}, action) => {
 
     case RECEIVE_LISTING:
       let newState = merge({}, oldState);
+
       return merge(newState, { [action.listing.id]: action.listing });
+      // return action.listing
 
     case REMOVE_LISTING:
       let newState2 = merge({}, oldState);

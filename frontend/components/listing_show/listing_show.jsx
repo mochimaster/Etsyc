@@ -1,34 +1,32 @@
-import React from 'react';
-import ListingShowContainer from './listing_show_container';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
-import ReviewIndexContainer from '../review/review_index_container';
-import ReviewForm from '../review/review_create_form_container';
-import {createReview} from '../../actions/review_actions';
+import React from 'react'
+import ListingShowContainer from './listing_show_container'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import ReviewIndexContainer from '../review/review_index_container'
+import ReviewForm from '../review/review_create_form_container'
+import { createReview } from '../../actions/review_actions'
 import Slider from '../slider/slider'
 
-
 class ListingShow extends React.Component {
-
-  constructor(props){
-    super(props);
+  constructor(props) {
+    super(props)
     // debugger
     this.state = {
       quantity: 1
     }
 
+    this.toggleListingStatus = this.toggleListingStatus.bind(this)
   }
 
-  updateQuantity(e){
+  updateQuantity(e) {
     // debugger
-    this.setState({quantity: parseInt(e.target.value)})
-
+    this.setState({ quantity: parseInt(e.target.value) })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // debugger
     // this.props.getListings();
-    this.props.getListing(this.props.match.params.listingId);
+    this.props.getListing(this.props.match.params.listingId)
   }
 
   // componentWillReceiveProps(nextProps){
@@ -39,8 +37,6 @@ class ListingShow extends React.Component {
   //   }
   // }
 
-
-
   // The render() function should be pure, meaning that it does not modify
   // component state, it returns the same result each time it’s invoked, and
   // it does not directly interact with the browser.
@@ -49,42 +45,73 @@ class ListingShow extends React.Component {
   //
   //
 
-
-  phoneNumberExist(){
-    if(this.props.listing.phoneNumber){
+  phoneNumberExist() {
+    if (this.props.listing.phoneNumber) {
       return (
         <div className="listing-seller-phone-number">
-          ☎️ : {' '}
-          <a href={"tel: ".concat(this.props.listing.phoneNumber)}>
-             {this.props.listing.phoneNumber}
+          ☎️ :{' '}
+          <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
+            {this.props.listing.phoneNumber}
           </a>
         </div>
-      );
+      )
     }
   }
 
   confirmDelete() {
     const confirmed = confirm('Are you sure you want to delete this listing?')
     if (confirmed) {
-      this.props.deleteListing(this.props.listing.id)
-      .then(this.props.history.push("/listings"))
+      this.props
+        .deleteListing(this.props.listing.id)
+        .then(this.props.history.push('/listings'))
     }
-}
+  }
+
+  getListingDisplayStatus(listingStatus) {
+    if (listingStatus === false) {
+      return 'Available'
+    }
+
+    return 'Not Available'
+  }
+
+  toggleListingStatus(listingStatus) {
+    const newStatus = listingStatus ? false : true
+
+    this.props.updateListing({ id: this.props.listing.id, status: newStatus })
+  }
+
   render() {
     if (!this.props.listing) {
-      return <div className="error-page">Page Not Found.</div>;
+      return <div className="error-page">Page Not Found.</div>
     }
+
+    const listingStatus = this.props.listing.status
 
     let displayAuthorButton
     if (this.props.listing.author_id === this.props.sessionId) {
-      displayAuthorButton = <div className="listing-show-author-buttons">
-        <Link className="btn btn-primary listing-show-edit-button"
-          to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
-        <input className="btn btn-primary listing-show-delete-button"
-          type="submit" value="Delete Listing"
-          onClick={this.confirmDelete.bind(this)} 
-        />
-      </div>
+      displayAuthorButton = (
+        <div className="listing-show-author-buttons">
+          <Link
+            className="btn btn-primary listing-show-edit-button"
+            to={`/listings/${this.props.listing.id}/edit`}
+          >
+            Edit Listing
+          </Link>
+          <input
+            className="btn btn-primary listing-toggle-listing-status-button"
+            type="submit"
+            value={`Mark as ${this.getListingDisplayStatus(listingStatus)}`}
+            onClick={() => this.toggleListingStatus(listingStatus)}
+          />
+          <input
+            className="btn btn-primary listing-show-delete-button"
+            type="submit"
+            value="Delete Listing"
+            onClick={this.confirmDelete.bind(this)}
+          />
+        </div>
+      )
 
       // editButton = <Link className="btn btn-primary listing-show-edit-button"
       //   to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
@@ -96,11 +123,13 @@ class ListingShow extends React.Component {
       //   } />
     }
 
-    let reviewForm;
-    if (this.props.sessionId){
-      reviewForm = <ReviewForm  listingId={this.props.listing.id} />
+    let reviewForm
+    if (this.props.sessionId) {
+      reviewForm = <ReviewForm listingId={this.props.listing.id} />
     } else {
-      reviewForm = <div className="review-input">Please sign in to leave a review.</div>
+      reviewForm = (
+        <div className="review-input">Please sign in to leave a review.</div>
+      )
     }
 
     // let quantityDropdown="";
@@ -125,25 +154,25 @@ class ListingShow extends React.Component {
     //   reviewComponent = <ReviewForm listingId={this.props.listing.id}/>
 
     // }
+  
 
-    let displayImages=[];
-    let images=[];
-    if(this.props.listing.photoUrl){
+    let displayImages = []
+    let images = []
+    if (this.props.listing.photoUrl) {
       displayImages.push(<img src={this.props.listing.photoUrl} />)
       images.push(this.props.listing.photoUrl)
     } else if (this.props.listing.photoUrls) {
-      for(let i=0; i<this.props.listing.photoUrls.length; i++){
+      for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
         displayImages.push(<img src={this.props.listing.photoUrls[i]} />)
-        images.push(this.props.listing.photoUrls[i]);
+        images.push(this.props.listing.photoUrls[i])
       }
-    }    
-
-    let itemNumber = this.props.match.url.slice(10);
-    while(itemNumber.length <= 4){
-      itemNumber = "0" + itemNumber
     }
 
-    
+    let itemNumber = this.props.match.url.slice(10)
+    while (itemNumber.length <= 4) {
+      itemNumber = '0' + itemNumber
+    }
+
     return (
       <div className="listing-show-content-wrapper">
         {displayAuthorButton}
@@ -245,13 +274,11 @@ class ListingShow extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
-
-
 }
 // {<option dangerouslySetInnerHTML={{ __html: quantityDropdown}} />}
 
 // <img alt="test_image" src="https://i.etsystatic.com/17442787/r/il/6f8689/1640702720/il_570xN.1640702720_56of.jpg" />
 
-export default (ListingShow);
+export default ListingShow

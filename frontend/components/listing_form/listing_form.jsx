@@ -108,7 +108,7 @@ class ListingForm extends React.Component {
         this.props.history.push(
           `/listings/${this.props.match.params.listingId}`
         );
-        location.reload();
+      window.location.reload(false)
       });
     }
   }
@@ -199,7 +199,7 @@ class ListingForm extends React.Component {
 
       this.setState(prevState => ({
         photos: [...prevState.photos, file]
-      }), () => {debugger});
+      }), () => {});
 
       reader.addEventListener(
         "load",

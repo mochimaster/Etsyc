@@ -33,6 +33,8 @@ export const selectListingsByAuthor = ({ listings }, authorId) => {
 
   if (!isEmpty(listings) && authorId) {
 
+    if (!Array.isArray(listings)) listings = [listings]
+
     const formattedListings = listings.map(listing => Object.values(listing)[0])
 
     const matchedAuthorListings = formattedListings.filter(listing => listing.author_id == authorId)

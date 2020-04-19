@@ -65,4 +65,3 @@ export const searchListing = (title, page = 1) => {
     });
   };
 };
-

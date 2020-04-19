@@ -6,7 +6,7 @@ class Api::SearchController < ApplicationController
             params[:page]=1
         end
 
-        @listings = Listing.includes(:author).with_attached_photo.with_attached_photos.search_result(search_params[:title]).paginate(:page => params[:page])
+        @listings = Listing.where(status: [nil, true]).includes(:author).with_attached_photo.with_attached_photos.search_result(search_params[:title]).paginate(:page => params[:page])
 
         # @listings = Listing.search_result(search_params[:title])
 

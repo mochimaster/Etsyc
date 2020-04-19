@@ -23,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
     listings: listingsByAuthor,
     page: state.entities.pagination.page,
     pages: state.entities.pagination.pages,
-    sortOption: state.entities.sortOption
+    sortOption: state.entities.sortOption,
+    disabledListings: state.entities.disabledListings
     // listingsByAuthor
   }
 }

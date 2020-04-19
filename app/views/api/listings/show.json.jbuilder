@@ -1,4 +1,4 @@
-json.extract! @listing, :id, :title, :description, :author_id, :overview, :price, :merchant_name
+json.extract! @listing, :id, :title, :description, :author_id, :overview, :price, :merchant_name, :status
 
 if (@listing.photo.attached?)
   json.photoUrl url_for(@listing.photo)
