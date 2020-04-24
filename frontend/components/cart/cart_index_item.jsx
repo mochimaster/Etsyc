@@ -10,8 +10,6 @@ const CartIndexItem = (props) => {
     })
   }
 
-  // <img src={props.listing.photoUrl} />
-
   return (
     <li className="cart-index-item">
       <div className="cart-index-merchant-name">
