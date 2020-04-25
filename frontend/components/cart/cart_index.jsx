@@ -55,10 +55,6 @@ const CartIndex = (props) => {
             <div className="total-amount">Item(s) total: ${sum}</div>
 
             <button className="checkout-button btn btn-primary">
-              <div class="tool-tip-text">
-                Online checkout is not currently available. Please call to
-                arrange for in-person pick up or delivery.
-              </div>
               Proceed to checkout (TBD)
             </button>
           </div>
