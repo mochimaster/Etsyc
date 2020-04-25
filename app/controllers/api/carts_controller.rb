@@ -27,12 +27,8 @@ class Api::CartsController < ApplicationController
   end
 
   def index
-    # debugger
+    @carts = Cart.where(user_id: params[:user_id]).includes(:listing).where(listings: { status: true })
 
-
-    @carts = Cart.where(user_id: params[:user_id])
-
-    # debugger
     render :index
   end
 
