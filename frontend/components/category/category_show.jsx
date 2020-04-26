@@ -3,32 +3,29 @@ import React, { useEffect, useState } from 'react'
 import ListingIndexItem from '../listing_index/listing_index_item'
 
 const CategoryShow = (props) => {
-  const [listings] = useState(props.listings)
-
   const {
     sortOption,
     page,
-    location: { pathname }
+    match: {
+      params: { categoryId }
+    }
   } = props
-  const category = pathname.split('/categories/')[1]
 
   useEffect(() => {
-    props.getListingsByCategory(category, page, sortOption)
-  }, [listings, props.sortOption])
+    props.getListingsByCategory(categoryId, page, sortOption)
+  }, [props.sortOption])
 
   if (!props.listings) return 'No items in this category.'
   return (
     <div>
       <ul className="index-wrapper">
-        {props.listings.map((listing) => {
-          return (
-            <ListingIndexItem
-              key={listing.id}
-              listing={listing}
-              deleteListing={props.deleteListing}
-            />
-          )
-        })}
+        {props.listings.map((listing) => (
+          <ListingIndexItem
+            key={listing.id}
+            listing={listing}
+            deleteListing={props.deleteListing}
+          />
+        ))}
       </ul>
     </div>
   )
