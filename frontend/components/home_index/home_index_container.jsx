@@ -4,7 +4,7 @@ import HomeIndex from './home_index'
 
 import { getDisabledListingsByUserId } from '../../actions/home_actions'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     userId: state.session.id,
     disabledListings: state.entities.disabledListings

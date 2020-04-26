@@ -1,31 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ListingIndex from '../listing_index/listing_index_container'
 
-class HomeIndex extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      disabledListings: []
-    }
-  }
+const HomeIndex = (props) => {
+  useEffect(() => {
+    props.getDisabledListingsByUserId(props.userId)
+  }, [])
 
-  componentDidMount() {
-    this.props.getDisabledListingsByUserId(this.props.userId)
-  }
-
-  render() {
-    if (!this.props.userId) return
-
-    return (
-      <div>
-        <ListingIndex
-          listings={this.props.disabledListings}
-          match={this.props.match}
-        />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <ListingIndex listings={props.disabledListings} match={props.match} />
+    </div>
+  )
 }
 
 export default HomeIndex
