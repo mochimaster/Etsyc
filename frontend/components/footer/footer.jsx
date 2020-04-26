@@ -1,22 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-
-class Footer extends React.Component{
-    render(){
-        return (
-          <div className="footer-wrapper">
-            <div className="footer-left-pane">
-              <div className="header-site-logo logo">
-                Castle and Chair
-              </div>
-              <div className="contact-info" />
-            </div>
-            <div className="footer-right-pane">
-              © 2019 Castle and Chair, Inc.
-            </div>
-          </div>
-        );
-    }
-}
+const Footer = () => (
+  <div className="footer-wrapper">
+    <div className="footer-left-pane">
+      <div className="header-site-logo logo">Castle and Chair</div>
+      <div className="contact-info" />
+    </div>
+    <div className="footer-right-pane">© 2019 Castle and Chair, Inc.</div>
+  </div>
+)
 
 export default Footer

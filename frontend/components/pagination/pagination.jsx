@@ -42,7 +42,9 @@ class PaginationAll extends React.Component {
       const pageParams = this.props.location.search
       const pageNum = parseInt(pageParams.slice(6))
 
-      this.props.getListingsByCategory(categoryId, pageNum)
+      // commented on 4/25 9.40pm
+      // this.props.getListingsByCategory(categoryId, pageNum)
+
       // .then(response => {
       //     this.setState({
       //         listings: this.props.listings,

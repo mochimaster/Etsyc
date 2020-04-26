@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-import { getListingsByCategory } from '../../actions/category_actions'
+
 import CategoryIndex from './category_index'
+
+import { getListingsByCategory } from '../../actions/category_actions'
 
 const mapStateToProps = (state) => {
   return {
-    currentUserId: state.session.id,
-    listings: state.entities.listings,
     page: state.entities.pagination.page,
     sortOption: state.entities.sortOption
   }

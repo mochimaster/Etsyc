@@ -1,59 +1,37 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 
 import ListingIndexItem from '../listing_index/listing_index_item'
-import ListingIndex from '../listing_index/listing_index_container'
 
-class CategoryShow extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      listings: []
-    }
-  }
+const CategoryShow = (props) => {
+  const [listings] = useState(props.listings)
 
-  // componentDidMount(){
-  //     this.props.getListingsByCategory(this.props.category).then((listings) =>
-  //         this.setState({
-  //             listings: listings
-  //         }))
-  // }
+  const {
+    sortOption,
+    page,
+    location: { pathname }
+  } = props
+  const category = pathname.split('/categories/')[1]
 
-  componentDidUpdate(prevProps) {
-    const { sortOption, page, location } = this.props
-    const { pathname } = location
-    const category = pathname.split('/categories/')[1]
+  useEffect(() => {
+    props.getListingsByCategory(category, page, sortOption)
+  }, [listings, props.sortOption])
 
-    if (sortOption !== prevProps.sortOption || page !== prevProps.page) {
-      this.props.getListingsByCategory(category, page, sortOption)
-    }
-  }
-
-  render() {
-    if (!this.props.listings) return <Redirect to="/" />
-    return (
-      <div>
-        <ul className="index-wrapper">
-          {this.props.listings.map((listing) => {
-            return (
-              <ListingIndexItem
-                key={listing.id}
-                listing={listing}
-                deleteListing={this.props.deleteListing}
-              />
-            )
-          })}
-        </ul>
-      </div>
-    )
-    // return <div>
-    //       <ul className="index-wrapper">
-    //         {this.props.listings.map(listing => {
-    //           return <ListingIndex key={listing.id} listing={listing} deleteListing={this.props.deleteListing} />;
-    //         })}
-    //       </ul>
-    //     </div>
-  }
+  if (!props.listings) return 'No items in this category.'
+  return (
+    <div>
+      <ul className="index-wrapper">
+        {props.listings.map((listing) => {
+          return (
+            <ListingIndexItem
+              key={listing.id}
+              listing={listing}
+              deleteListing={props.deleteListing}
+            />
+          )
+        })}
+      </ul>
+    </div>
+  )
 }
 
 export default CategoryShow

@@ -1,18 +1,11 @@
-import {connect} from 'react-redux';
-import {updateCart, deleteCart,getCarts } from '../../actions/cart_actions';
-import CartIndex from './cart_index';
-import {asArray} from '../../reducers/selectors';
-// import {getListings} from '../../actions/listing_actions';
+import { connect } from 'react-redux'
 
-// carts: Array(7)
-//   0:
-//     cart_item:
-//       2: {id: 2, quantity: 4, listing_id: 9, user_id: 2, price: 23}
-//       __proto__: Object
-//     listings:
-//       9: {id: 9, title: "My fancy listing 6"}
+import CartIndex from './cart_index'
 
-const mapStateToProps = state => {
+import { updateCart, deleteCart, getCarts } from '../../actions/cart_actions'
+import { asArray } from '../../reducers/selectors'
+
+const mapStateToProps = (state) => {
   return {
     currentUserId: state.session.id,
     carts: asArray(state.entities.carts),
@@ -20,7 +13,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getCarts: (user_id) => dispatch(getCarts(user_id)),
     updateCart: (cart) => dispatch(updateCart(cart)),
@@ -30,4 +23,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(CartIndex)
