@@ -404,6 +404,15 @@ class ListingForm extends React.Component {
     //onSubmit={() => this.props.createListing(this.state)}
     // { preview }
 
+    // debugger
+
+    if(this.state.photoUrl){
+      let preview = document.querySelector('#preview')
+      preview.innerHTML = ''
+      this.previewExistingPhoto(this.state.photoUrl, 0)
+
+    }
+
     if (this.state.photoUrls) {
       let preview = document.querySelector("#preview");
       preview.innerHTML = "";

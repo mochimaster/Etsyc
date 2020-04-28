@@ -154,14 +154,15 @@ class ListingShow extends React.Component {
     //   reviewComponent = <ReviewForm listingId={this.props.listing.id}/>
 
     // }
-  
 
     let displayImages = []
     let images = []
     if (this.props.listing.photoUrl) {
       displayImages.push(<img src={this.props.listing.photoUrl} />)
       images.push(this.props.listing.photoUrl)
-    } else if (this.props.listing.photoUrls) {
+    }
+
+    if (this.props.listing.photoUrls) {
       for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
         displayImages.push(<img src={this.props.listing.photoUrls[i]} />)
         images.push(this.props.listing.photoUrls[i])
