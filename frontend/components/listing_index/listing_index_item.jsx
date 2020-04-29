@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ListingIndexItem = ({listing, deleteListing}) => {
+const ListingIndexItem = ({ listing, deleteListing }) => {
   // debugger
   const url = `/listings/${listing.id}`
   //
@@ -24,12 +24,12 @@ const ListingIndexItem = ({listing, deleteListing}) => {
   //
   // }
 
-  let displayImage;
-  if (listing.photoUrl) {
-    displayImage = <img src={listing.photoUrl} />;
-  } else if (listing.photoUrls) {
-    displayImage = <img src={listing.photoUrls[0]} />;
-  } 
+  let displayImage
+  if (listing.photoUrls) {
+    displayImage = <img src={listing.photoUrls[0]} />
+  } else if (listing.photoUrl) {
+    displayImage = <img src={listing.photoUrl} />
+  }
 
   return (
     <li className="listing-item-wrapper">
@@ -38,31 +38,31 @@ const ListingIndexItem = ({listing, deleteListing}) => {
           {/* <img src={listing.photoUrl} /> */}
           {displayImage}
         </Link>
-
-
-
       </div>
       <div className="listing-item-title">
-        <Link className="listing-item-title-link"
-          to={`/listings/${listing.id}`}>{listing.title}</Link> <br/>
+        <Link
+          className="listing-item-title-link"
+          to={`/listings/${listing.id}`}
+        >
+          {listing.title}
+        </Link>{' '}
+        <br />
       </div>
       <div className="listing-item-author">
-        <Link className="listing-item-link" to={`/users/${listing.author_id}/listings`} >{listing.merchant_name}</Link>
+        <Link
+          className="listing-item-link"
+          to={`/users/${listing.author_id}/listings`}
+        >
+          {listing.merchant_name}
+        </Link>
       </div>
-      <div className="listing-item-review">
-        
-      </div>
-      <div className="listing-item-price">
-        $ {listing.price}
-      </div>
-
+      <div className="listing-item-review"></div>
+      <div className="listing-item-price">$ {listing.price}</div>
     </li>
   )
-
 }
 
-export default ListingIndexItem;
-
+export default ListingIndexItem
 
 // <div className="listing-item-description">
 // Description: {listing.description} <br/>

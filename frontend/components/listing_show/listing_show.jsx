@@ -155,18 +155,15 @@ class ListingShow extends React.Component {
 
     // }
 
-    let displayImages = []
     let images = []
-    if (this.props.listing.photoUrl) {
-      displayImages.push(<img src={this.props.listing.photoUrl} />)
-      images.push(this.props.listing.photoUrl)
-    }
-
     if (this.props.listing.photoUrls) {
       for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
-        displayImages.push(<img src={this.props.listing.photoUrls[i]} />)
         images.push(this.props.listing.photoUrls[i])
       }
+    }
+
+    if (this.props.listing.photoUrl) {
+      images.push(this.props.listing.photoUrl)
     }
 
     let itemNumber = this.props.match.url.slice(10)
