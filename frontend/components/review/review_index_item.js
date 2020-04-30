@@ -1,61 +1,34 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react'
 
-class ReviewIndexItem extends React.Component {
-  constructor(props){
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      review: props.review
-    }
+const ReviewIndexItem = (props) => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    props.deleteReview(props.review)
   }
 
-  isReviewAuthor(){
-    if(this.props.review.user_id === this.props.sessionId){
-      return true
-    } else {
-      return false
-    }
-  }
+  const isAuthor = props.review.user_id === props.sessionId ? true : false
+  const deleteButton = isAuthor ? (
+    <button onClick={handleSubmit} className="btn btn-primary delete-button">
+      Delete
+    </button>
+  ) : (
+    <p></p>
+  )
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.deleteReview(this.props.review)
-  }
+  return (
+    <div className="review-index">
+      <div className="review-left-side">
+        <div className="review-avatar"></div>
 
-  // deleteButton = <button onSubmit={() => this.props.deleteReview(this.props.review.id)}>Delete</button>
-
-  render(){
-    let isAuthor = this.isReviewAuthor();
-    let deleteButton;
-
-    if (isAuthor){
-      deleteButton = <button onClick={this.handleSubmit} className="btn btn-primary delete-button">Delete</button>
-    } else {
-      deleteButton = <p></p>
-    }
-    return (
-      <div className="review-index">
-        <div className="review-left-side">
-          <div className="review-avatar">
-          </div>
-
-          <div>
-            {this.props.review.username}
-          </div>
-        </div>
-
-        <div>
-
-          <li>{this.props.review.body}</li>
-          {deleteButton}
-        </div>
+        <div>{props.review.username}</div>
       </div>
 
-    );
-  }
-
-
+      <div>
+        <li>{props.review.body}</li>
+        {deleteButton}
+      </div>
+    </div>
+  )
 }
 
-export default ReviewIndexItem;
+export default ReviewIndexItem

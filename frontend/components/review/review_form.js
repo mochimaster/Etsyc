@@ -1,58 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react'
 
-class ReviewForm extends React.Component{
+const ReviewForm = (props) => {
+  const [body, setBody] = useState('')
 
-  constructor(props){
-    super(props);
-    this.state = {
-      body: "",
-      listing_id: props.listingId,
+  const updateBody = (e) => {
+    setBody(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    props.action({
+      body,
       rating: 5,
+      listing_id: props.listingId,
       user_id: props.sessionId
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-
+    })
+    setBody('')
   }
 
-  componentDidMount(){
-    if(this.props.formType === 'Create Review'){
+  const reviewButton = props.sessionId ? (
+    <button className="btn btn-primary">Submit</button>
+  ) : (
+    <div>You must be signed in to submit a review.</div>
+  )
 
-    } else {
-      this.props.getReview(this.props.match.params.listingId);
-    }
-  }
-
-  updateBody(e){
-    this.setState({body: e.target.value});
-  }
-
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.action(this.state);
-  }
-
-  render(){
-
-    let reviewButton;
-    if (this.props.sessionId){
-      reviewButton = <button className="btn btn-primary">Submit</button>
-    } else {
-      reviewButton = <div>You must be signed in to submit a review.</div>
-    }
-
-    return <div className="review-form-wrapper">
-        <form onSubmit={this.handleSubmit}>
-          <div className="review-input-title">
-            Your review: <br />
-            <textarea onChange={this.updateBody.bind(this)} className="review-form-input" />
-          </div>
-          {reviewButton}
-        </form>
-      </div>;
-  }
-
-
-
+  return (
+    <div className="review-form-wrapper">
+      <form onSubmit={handleSubmit}>
+        <div className="review-input-title">
+          Your review: <br />
+          <textarea
+            onChange={updateBody}
+            value={body}
+            className="review-form-input"
+          ></textarea>
+        </div>
+        {reviewButton}
+      </form>
+    </div>
+  )
 }
 
-export default ReviewForm;
+export default ReviewForm
