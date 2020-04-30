@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
-import { createReview } from '../../actions/review_actions'
-import Slider from '../slider/slider'
+import Slider from '../slider/slider_container'
 
 class ListingShow extends React.Component {
   constructor(props) {
@@ -188,7 +187,7 @@ class ListingShow extends React.Component {
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
             {/* <img src={this.props.listing.photoUrl} /> */}
-            <Slider images={images} openModal={this.props.openModal} />
+            <Slider images={images}  />
             {/* {displayImages} */}
           </div>
 

@@ -3,7 +3,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 // import ListingEditFormContainer from './listing_edit_form_container';
-import {createReview} from '../../actions/review_actions';
 
 
 
@@ -102,15 +101,17 @@ class ListingForm extends React.Component {
     }
 
     if (this.props.formType === "Create Listing"){
-      this.props.action(formData).then(this.props.history.push('/'))
+      this.props.action(formData).then(this.props.history.push('/listings'))
     } else {
       this.props.action(formData).then(() => {
         this.props.history.push(
           `/listings/${this.props.match.params.listingId}`
         );
-      window.location.reload(false)
+        window.location.reload(false)
       });
+
     }
+
   }
 
   // loadPreview(e){
