@@ -31,11 +31,10 @@ class Api::ReviewsController < ApplicationController
 
   def index
     @reviews = if params[:listing_id]
-                Review.where(listing_id: params[:listing_id])
+                Review.where(listing_id: params[:listing_id]).order('id DESC')
               else
-                Review.all
+                Review.all.order
               end
-    # @reviews = Review.all
 
     render :index
   end

@@ -1,86 +1,77 @@
-import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
-import {connect} from 'react-redux';
-import LogInFormContainer from '../session_form/login_form_container';
-import SignUpFormContainer from '../session_form/signup_form_container';
-import DemoSessionFormContainer from '../session_form/demo_login_form_container';
-import UserDropdownContainer from '../user_dropdown/user_dropdown_container';
-import {clearErrors} from '../../actions/session_actions';
-import Slider from '../slider/slider'
-// import { withRouter } from "react-router-dom";
+import React from 'react'
+import { connect } from 'react-redux'
 
+import { MODAL_TYPE } from '../../../utils/constants'
 
-function Modal({modal, closeModal}) {
-  if(!modal) {
-    return null;
+import LogInFormContainer from '../session_form/login_form_container'
+import SignUpFormContainer from '../session_form/signup_form_container'
+import UserDropdownContainer from '../user_dropdown/user_dropdown_container'
+import DemoSessionFormContainer from '../session_form/demo_login_form_container'
+import Slider from '../slider/slider_container'
+
+import { closeModal } from '../../actions/modal_actions'
+import { clearErrors } from '../../actions/session_actions'
+
+const Modal = ({ modal, closeModal }) => {
+  if (!modal) {
+    return null
   }
-  
-  let component;
+
+  let modalComponent
   switch (modal) {
-    case 'login':
-      component = <LogInFormContainer />;
-      break;
-    case 'signup':
-      component = <SignUpFormContainer />;
-      break;
-    case 'demo':
-      component = <DemoSessionFormContainer />;
-      break;
-    case 'profileDropdown':
-      component = <UserDropdownContainer />;
-      break;
-    case 'slider':
-      component = <Slider />;
-      break;
+    case MODAL_TYPE.LOGIN:
+      modalComponent = <LogInFormContainer />
+      break
+    case MODAL_TYPE.SIGN_UP:
+      modalComponent = <SignUpFormContainer />
+      break
+    case MODAL_TYPE.DEMO:
+      modalComponent = <DemoSessionFormContainer />
+      break
+    case MODAL_TYPE.PROFILE_DROPDOWN:
+      modalComponent = <UserDropdownContainer />
+      break
+    case MODAL_TYPE.SLIDER:
+      modalComponent = <Slider />
+      break
 
     default:
-      return null;
+      return null
   }
 
+  let backGroundModal = 'modal-background'
+  let childModalType = 'modal-child'
 
-  let backGroundModal = "";
-  let childModalType = "";
-  // debugger
-  (modal === 'profileDropdown') ? backGroundModal = 'modal-clear-background' : backGroundModal = 'modal-background';
-  (modal === 'profileDropdown') ? childModalType = 'modal-child-profile-dropdown' : childModalType = 'modal-child';
-  
-  if (modal === 'slider') {
-    backGroundModal = 'modal-background modal-background-slider';
-    childModalType = 'modal-child modal-child-slider';
+  if (modal === MODAL_TYPE.PROFILE_DROPDOWN) {
+    backGroundModal = 'modal-clear-background'
+    childModalType = 'modal-child-profile-dropdown'
+  } else if (modal === MODAL_TYPE.SLIDER) {
+    backGroundModal = 'modal-background modal-background-slider'
+    childModalType = 'modal-child modal-child-slider'
   }
+
   return (
     <div className={backGroundModal} onClick={closeModal}>
-      <div className={childModalType} onClick={e => e.stopPropagation()}>
-        { component }
+      <div className={childModalType} onClick={(e) => e.stopPropagation()}>
+        {modalComponent}
       </div>
     </div>
-  );
+  )
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    modal: state.ui.modal,
-    // state: state.entities.listings,
-    // location: ownProps.location.pathname
-  };
-};
+    modal: state.ui.modal
+  }
+}
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => {
-     (dispatch(closeModal()))
-     dispatch(clearErrors())
-   }
+      dispatch(closeModal())
+      dispatch(clearErrors())
+    }
+  }
+}
 
-
-
-  };
-};
-
-// closeModal: () => {
-//  console.dir(dispatch(closeModal()))
-//  dispatch(console.log())
-// }
-
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)
