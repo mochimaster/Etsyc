@@ -32,11 +32,12 @@ const Header = (props) => {
   return (
     <div id="global-header" className="header-nav-top-level">
       <header className="header-nav-inner">
-        <div id="craftsy-logo" className="header-site-logo">
-          <Link to="/" aria-label="Craftsy">
-            C&C
-          </Link>
-        </div>
+        <Link
+          to="/"
+          id="craftsy-logo"
+          className="header-site-logo"
+          aria-label="Craftsy"
+        ></Link>
 
         <div className="header-search-div-wrapper">
           <div className="header-search-bar-outer">

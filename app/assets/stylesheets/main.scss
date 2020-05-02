@@ -1,19 +1,18 @@
-.header-nav-inner{
-
+.header-nav-inner {
 }
 
- .header-nav-top-level{
-   width: 100%;
-   margin-left: 0;
-   margin-right: 0;
-   border-bottom: 1px solid #E1E3DF;
-   box-shadow: none;
-   background-color: #FFFFFF;
-   position: relative;
-   min-width: 100%;
-   box-sizing: border-box;
-   display: inline-block;
- }
+.header-nav-top-level {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  border-bottom: 1px solid #e1e3df;
+  box-shadow: none;
+  background-color: #ffffff;
+  position: relative;
+  min-width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+}
 
 .header-nav-inner {
   width: auto;
@@ -27,109 +26,108 @@
   float: none;
   position: relative;
   display: block;
-
 }
 
- #craftsy-logo {
-   position: relative;
-   height: 80px;
-   float: left;
-   width:7%;
-   margin-right: 20px;
-   color: #f45800;
-   box-sizing: border-box;
-   display: block;
+#craftsy-logo {
+  position: relative;
+  float: left;
+  width: 7%;
+  margin-right: 20px;
+  color: #f45800;
+  box-sizing: border-box;
+  display: block;
   //  font-weight: 525;
-   font-weight: 300;
+  font-weight: 300;
+  background-image: image-url('logo_transparent.png');
+  background-size: 110px;
+  width: 100px;
+  height: 80px;
+  background-repeat: no-repeat;
+  top: -14px;
+}
 
- }
-
- #craftsy-logo a{
-   background: none;
-   display: block;
-   position: absolute;
-   top: 23%;
-   width: 100%;
-   height: 100%;
-   color: #f45800;
-   /* margin-top: 2px; */
-   text-decoration: none;
-   overflow: hidden;
-   font-family: "Baskerville Old Face";
-   padding: 0;
+#craftsy-logo a {
+  background: none;
+  display: block;
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  height: 100%;
+  color: #f45800;
+  /* margin-top: 2px; */
+  text-decoration: none;
+  overflow: hidden;
+  font-family: 'Baskerville Old Face';
+  padding: 0;
   font-size: 34px;
- }
+}
 
- .header-search-div-wrapper{
-   margin: 0;
-   display: block;
- }
+.header-search-div-wrapper {
+  margin: 0;
+  display: block;
+}
 
- .header-search-bar-outer{
-   position: relative;
-   float: left;
-   width: 35%;
-   display: block;
-   text-align: left;
-   font-size: 14px;
-   line-height: 1.4;
- }
+.header-search-bar-outer {
+  position: relative;
+  float: left;
+  width: 35%;
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+}
 
+.header-search-nav-form {
+  position: relative;
+  float: left;
+  width: 100%;
+  display: block;
+  height: 80px;
+}
 
- .header-search-nav-form{
-   position: relative;
-   float: left;
-   width: 100%;
-   display: block;
-   height: 80px;
- }
+.header-search-bar-inner {
+  position: absolute;
+  display: table;
+  width: 100%;
+  top: 30%;
+  height: 34px;
+  box-sizing: border-box;
+  margin: 0;
+}
 
- .header-search-bar-inner{
-   position: absolute;
-   display: table;
-   width: 100%;
-   top: 30%;
-   height: 34px;
-   box-sizing: border-box;
-   margin: 0;
- }
+.header-search-bar-input-wrapper {
+  white-space: nowrap;
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+  margin: 0;
+}
 
- .header-search-bar-input-wrapper{
-   white-space: nowrap;
-   display: table-cell;
-   vertical-align: top;
-   width: 100%;
-   margin: 0;
- }
+#search-query {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 34px;
+  width: 100%;
+  top: 50%;
+  border: 1px solid #cfcbc8;
+  background: #f9f9f8;
+  padding: 6px 10px;
+  margin-left: 0;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 2px #e9e9e8, 0 0 0 1000px #fbfbfa inset;
+  font-size: 14px;
+}
 
- #search-query{
-   position: relative;
-   margin-top: 0;
-   margin-bottom: 0;
-   border-right: none;
-   border-top-right-radius: 0;
-   border-bottom-right-radius: 0;
-   height: 34px;
-   width: 100%;
-   top: 50%;
-   border:  1px solid #CFCBC8;
-   background: #f9f9f8;
-   padding: 6px 10px;
-   margin-left: 0;
-   box-sizing: border-box;
-   box-shadow: inset 0 1px 2px #E9E9E8, 0 0 0 1000px #fbfbfa inset;
-   font-size: 14px;
+#global-header {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+}
 
- }
-
- #global-header{
-   font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,
-   "Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
- }
-
-
-
-.header-search-button-wrapper .btn-primary{
+.header-search-button-wrapper .btn-primary {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   line-height: 17px;
@@ -137,18 +135,20 @@
   padding: 7px 15px 8px;
 }
 
-.btn-primary{
- color: #FFF;
- border-color: rgba(0, 0, 0, 0.1);
- background-color: #222;
+.btn-primary {
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: #222;
 }
 
-.btn-primary:hover, .header-nav-signin, .icon-avatar, .session-submit{
+.btn-primary:hover,
+.header-nav-signin,
+.icon-avatar,
+.session-submit {
   cursor: pointer;
 }
 
-
-.btn{
+.btn {
   border-radius: 3px;
   border-style: solid;
   border-width: 1px;
@@ -168,33 +168,32 @@
   box-sizing: border-box;
 }
 
-ul, menu, dir {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+ul,
+menu,
+dir {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
 
-
-
-.account-nav{
+.account-nav {
   float: right;
   margin: 0;
   padding-left: 0;
   height: 80px;
   list-style-position: outside;
   padding-inline-start: 40px;
-
 }
 
-.account-nav li{
+.account-nav li {
   /* color: blue; */
 
-  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,
-  "Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   font-size: 14px;
   line-height: 16px;
   line-height: 1.4;
@@ -216,46 +215,41 @@ ul, menu, dir {
   font-size: 14px;
   text-decoration: none;
   box-sizing: border-box;
-
-
-
 }
 
 .account-nav a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .account-nav a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .account-nav a:hover {
-    text-decoration: underline;
-    /* background-color: yellow; */
-
+  text-decoration: underline;
+  /* background-color: yellow; */
 }
 
 .account-nav a:active {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
   display: list-item;
 }
 
-.account-nav li:nth-last-child(2) a{
+.account-nav li:nth-last-child(2) a {
   /* background-color: green; */
-  border-left: 1px solid #E1E3DF;
-  border-right: 1px solid #E1E3DF;
-
-
+  border-left: 1px solid #e1e3df;
+  border-right: 1px solid #e1e3df;
 }
 
 .text-sell-etsy {
   margin-top: 28px !important;
 }
 
-.account-nav li a , .account-nav li button{
+.account-nav li a,
+.account-nav li button {
   /* border: 1px solid transparent; */
   height: auto;
   margin-top: 14px;
@@ -267,15 +261,15 @@ li {
   color: #222;
 }
 
-.header-nav-register{
+.header-nav-register {
   margin-top: 28px !important;
 }
 
-.header-nav-signin{
+.header-nav-signin {
   margin-top: 26px !important;
 }
 
-.icon-img-cart > .fa-shopping-cart{
+.icon-img-cart > .fa-shopping-cart {
   /* border: 1px solid transparent; */
   font-size: 20px;
   margin-top: -10px;
@@ -288,12 +282,9 @@ li {
   margin-top: -10px;
   padding-bottom: 2px;
   padding-left: 18px;
-
 }
 
-.account-nav a:not(:hover):not(:focus):not(:active)
-
-#sign-in-link {
+.account-nav a:not(:hover):not(:focus):not(:active) #sign-in-link {
   /* color: #222; */
   box-sizing: border-box;
   border: 1px solid black;
@@ -317,53 +308,47 @@ li {
   } */
 
 .sign-in-link button {
-    border: 1px solid black;
-    border-radius: 3px;
-    margin-right: 12px;
-    /* text-decoration: underline; */
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-right: 12px;
+  /* text-decoration: underline; */
 }
 
-
 .sign-in-link button:hover {
-    text-decoration: none;
-    background-color: #222;
-    color: white;
-    border-radius: 3px;
+  text-decoration: none;
+  background-color: #222;
+  color: white;
+  border-radius: 3px;
 }
 
 // .profile-drop-down {
 
-
-
-[class*="avatar"] {
-
- // display: inline-block !important;
- position: relative;
- background-image: url("default_avatar.png");
- background-size: 30px 30px;
- background-repeat: no-repeat;
- vertical-align: bottom;
- overflow: hidden;
- height: 40px ;
- width: 30px;
- margin-bottom: 0px;
- border-radius: 60%;
-
+[class*='avatar'] {
+  // display: inline-block !important;
+  position: relative;
+  background-image: url('default_avatar.png');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  vertical-align: bottom;
+  overflow: hidden;
+  height: 40px;
+  width: 30px;
+  margin-bottom: 0px;
+  border-radius: 60%;
 }
 
 .container-profile-picture .icon-avatar {
- background-position: 5px -5px;
- padding-top: 25px ;
+  background-position: 5px -5px;
+  padding-top: 25px;
 }
-
 
 .developer-links {
   display: flex;
   justify-content: flex-end;
 }
 
-.linkedin-link{
-  background-image: url("linked-in.png"); /* image provided by Linked-In is under copywrite law */
+.linkedin-link {
+  background-image: url('linked-in.png'); /* image provided by Linked-In is under copywrite law */
   background-size: cover;
   height: 50px;
   width: 50px;
@@ -372,8 +357,8 @@ li {
   top: 0;
 }
 
-.github-link{
-  background-image: url("github.png"); /* image provided by Github is under copywrite law */
+.github-link {
+  background-image: url('github.png'); /* image provided by Github is under copywrite law */
   background-size: cover;
   height: 50px;
   width: 50px;
@@ -382,16 +367,15 @@ li {
   top: 0;
 }
 
-.header-nav-register{
+.header-nav-register {
   border: none;
-  // margin-right: 
+  // margin-right:
 }
 
-.header-nav-register:hover{
+.header-nav-register:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-
 
 // [class*="icon-"] {
 //   border: 5px solid red;
