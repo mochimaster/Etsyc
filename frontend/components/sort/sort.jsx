@@ -1,45 +1,29 @@
 import React from 'react'
 
-class SortDropDownList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      sortParamOrder: 'newest'
-    }
+import { SORT_TYPE } from '../../../utils/constants'
 
-    this.handleSortChange = this.handleSortChange.bind(this)
+const SortDropDownList = ({ setSort, sortOption }) => {
+  const handleSortChange = ({ target: { value } }) => {
+    setSort(value)
   }
 
-  handleSortChange(e) {
-    const sortValue = e.target.value
+  return (
+    <div className="sort-container">
+      <div className="sort-inner-container">
+        <label for="sortParamOrder">Sort by: </label>
 
-    this.setState(
-      {
-        sortParamOrder: sortValue
-      },
-      () => this.props.setSort(sortValue)
-    )
-  }
-
-  render() {
-    return (
-      <div className="sort-container">
-        <div className="sort-inner-container">
-          <label for="sortParamOrder">Sort by: </label>
-
-          <select
-            id="sortParamOrder"
-            value={this.state.sortParamOrder}
-            onChange={this.handleSortChange}
-          >
-            <option value="priceAsc">Lowest Price</option>
-            <option value="priceDesc">Highest Price</option>
-            <option value="newest">Most Recent</option>
-          </select>
-        </div>
+        <select
+          id="sortParamOrder"
+          value={sortOption}
+          onChange={handleSortChange}
+        >
+          <option value={SORT_TYPE.PRICE_ASC}>Lowest Price</option>
+          <option value={SORT_TYPE.PRICE_DESC}>Highest Price</option>
+          <option value={SORT_TYPE.MOST_RECENT}>Most Recent</option>
+        </select>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default SortDropDownList

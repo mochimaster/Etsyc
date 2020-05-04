@@ -1,12 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { MODAL_TYPE } from '../../../utils/constants'
+import { MODAL_TYPE, FORM_TYPE } from '../../../utils/constants'
 
 import LogInFormContainer from '../session_form/login_form_container'
-import SignUpFormContainer from '../session_form/signup_form_container'
 import UserDropdownContainer from '../user_dropdown/user_dropdown_container'
-import DemoSessionFormContainer from '../session_form/demo_login_form_container'
 import Slider from '../slider/slider_container'
 
 import { closeModal } from '../../actions/modal_actions'
@@ -20,13 +18,13 @@ const Modal = ({ modal, closeModal }) => {
   let modalComponent
   switch (modal) {
     case MODAL_TYPE.LOGIN:
-      modalComponent = <LogInFormContainer />
+      modalComponent = <LogInFormContainer formType={FORM_TYPE.LOGIN} />
       break
     case MODAL_TYPE.SIGN_UP:
-      modalComponent = <SignUpFormContainer />
+      modalComponent = <LogInFormContainer formType={FORM_TYPE.SIGN_UP} />
       break
     case MODAL_TYPE.DEMO:
-      modalComponent = <DemoSessionFormContainer />
+      modalComponent = <LogInFormContainer formType={FORM_TYPE.DEMO} />
       break
     case MODAL_TYPE.PROFILE_DROPDOWN:
       modalComponent = <UserDropdownContainer />

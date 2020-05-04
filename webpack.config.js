@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('path')
+const WebpackNotifierPlugin = require('webpack-notifier')
 
 module.exports = {
   context: __dirname,
@@ -20,9 +21,10 @@ module.exports = {
           query: {
             presets: ['@babel/env', '@babel/react']
           }
-        },
+        }
       }
     ]
   },
-  devtool: 'source-map'
-};
+  devtool: 'source-map',
+  plugins: [new WebpackNotifierPlugin({title: 'CastleAndChair', alwaysNotify: true})]
+}

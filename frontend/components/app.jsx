@@ -1,67 +1,83 @@
-import React from 'react';
-import GreetingContainer from './greeting/greeting_container';
-import SessionForm from './session_form/session_form'
-import SignUpFormContainer from './session_form/signup_form_container';
-import LogInFormContainer from './session_form/login_form_container';
-import {Route, Switch, Link, Redirect} from 'react-router-dom';
-import {AuthRoute, ProtectedRoute} from '../util/route_util'
-import Modal from './modal/modal';
-import UserDropdownContainer from './user_dropdown/user_dropdown_container';
-import {connect} from 'react-redux';
-import { openModal } from '../actions/modal_actions';
-import Header from './header/header_container';
-import ListingIndexContainer from './listing_index/listing_index_container';
-import ListingShowContainer from './listing_show/listing_show_container';
-import ListingFormContainer from './listing_form/listing_form_container';
-import ListingEditFormContainer from './listing_form/listing_edit_form_container';
-import CartContainer from './cart/cart_container';
-import ErrorShow from './error/error';
+import React from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
+
+import { AuthRoute, ProtectedRoute } from '../util/route_util'
+import Modal from './modal/modal'
+
+import Header from './header/header_container'
+import ListingIndexContainer from './listing_index/listing_index_container'
+import ListingShowContainer from './listing_show/listing_show_container'
+import ListingFormContainer from './listing_form/listing_form_container'
+import ListingEditFormContainer from './listing_form/listing_edit_form_container'
+import CartContainer from './cart/cart_container'
 import CategoryIndexContainer from './category/category_index_container'
 import CategoryShowContainer from './category/category_show_container'
 import PaginationAll from '../components/pagination/pagination_container'
-import Footer from './footer/footer';
 import SortDropDownContainer from './sort/sort_container'
 import HomeIndexContainer from './home_index/home_index_container'
 
+import ErrorShow from './error/error'
+import Footer from './footer/footer'
 
 const App = () => {
-
-  return <div className='app-container'>
+  return (
+    <div className="app-container">
       <Modal />
       <Header />
-      <div className='body'>
+      <div className="body">
         <CategoryIndexContainer />
-        <Route exact path={["/listings", "/categories/:categoryId"]} component={SortDropDownContainer}/>
+        <Route
+          exact
+          path={['/listings', '/categories/:categoryId']}
+          component={SortDropDownContainer}
+        />
         <Switch>
           {/* Good comment. The below line will be modified
             when I have a component to render on "/" */}
 
-          <ProtectedRoute exact path="/listings/new" component={ListingFormContainer} />
-          <Route path="/categories/:categoryId" component={CategoryShowContainer} />
-          <ProtectedRoute path="/users/:userId/home" component={HomeIndexContainer} />
-          <ProtectedRoute path="/users/:userId/carts" component={CartContainer} />
+          <ProtectedRoute
+            exact
+            path="/listings/new"
+            component={ListingFormContainer}
+          />
+          <Route
+            path="/categories/:categoryId"
+            component={CategoryShowContainer}
+          />
+          <ProtectedRoute
+            path="/users/:userId/home"
+            component={HomeIndexContainer}
+          />
+          <ProtectedRoute
+            path="/users/:userId/carts"
+            component={CartContainer}
+          />
           <Route exact path="/listings" component={ListingIndexContainer} />
           <Route path="/search" component={ListingIndexContainer} />
-          <ProtectedRoute path="/listings/:listingId/edit" component={ListingEditFormContainer} />
+          <ProtectedRoute
+            path="/listings/:listingId/edit"
+            component={ListingEditFormContainer}
+          />
           <Route path="/listings/:listingId" component={ListingShowContainer} />
           <Route exact path="/error" component={ErrorShow} />
           <Redirect to="/listings" />
           <Redirect to="/" />
         </Switch>
         <Switch>
-          <Route path={["/search", "/categories"]} component={PaginationAll} />
-          <Route exact path={["/listings"]} component={PaginationAll} />
+          <Route path={['/search', '/categories']} component={PaginationAll} />
+          <Route exact path={['/listings']} component={PaginationAll} />
         </Switch>
       </div>
       <Footer />
-    </div>;
+    </div>
+  )
 }
 
 // <Route path="/users/:userId/carts" component={CartContainer} />
 
 // <Route exact path="/" render={() => null} />
 // <Route path="/listings/:listingId" component={ListingShowContainer} />
-export default App;
+export default App
 
 // <AuthRoute exact path="/login" component={LogInFormContainer} />
 // <AuthRoute exact path="/signup" component={SignUpFormContainer} />
@@ -85,8 +101,6 @@ export default App;
 //   openModal: (modal) => dispatch(openModal(modal))
 //   }
 // }
-
-
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
 

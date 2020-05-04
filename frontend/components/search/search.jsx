@@ -1,61 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      title: props.location.search.slice(7).replace(/%20/g, ' ')
-    }
-    this.updateTitle = this.updateTitle.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+const Search = (props) => {
+  const [title, setTitle] = useState(
+    props.location.search.slice(7).replace(/%20/g, ' ')
+  )
+
+  const updateTitle = ({ target: { value } }) => {
+    setTitle(value)
   }
 
-  updateTitle(e) {
-    this.setState({ title: e.target.value })
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    this.props.history.push(`/search?query=${this.state.title}`)
-    this.props.search({ title: this.state.title })
-    // this.props.history.push(`/search?query=${this.state.title}`);
-    // this.setState({ title: "" });
-    // if (this.state.title == ""){
-    //     this.props.history.push("/listings");
-    // }else {
-    //     this.setState({title: ""});
-    //     this.props.history.push("/search");
-    // }
+    props.history.push(`/search?query=${title}`)
+    props.search({ title })
   }
 
-  render() {
-    return (
-      <form
-        onSubmit={this.handleSubmit}
-        id="nav-search"
-        className="header-search-nav-form"
-        method=""
-        action=""
-      >
-        <div className="header-search-bar-inner">
-          <div className="header-search-bar-input-wrapper">
-            <input
-              autoFocus
-              id="search-query"
-              type="text"
-              placeholder="Search for items or shops"
-              value={this.state.title}
-              onChange={this.updateTitle}
-            />
-          </div>
-          <div className="header-search-button-wrapper">
-            <button className="btn btn-primary">Search</button>
-          </div>
+  return (
+    <form
+      onSubmit={handleSubmit}
+      id="nav-search"
+      className="header-search-nav-form"
+      method=""
+      action=""
+    >
+      <div className="header-search-bar-inner">
+        <div className="header-search-bar-input-wrapper">
+          <input
+            autoFocus
+            id="search-query"
+            type="text"
+            placeholder="Search for items or shops"
+            value={title}
+            onChange={updateTitle}
+          />
         </div>
-      </form>
-    )
-  }
+        <div className="header-search-button-wrapper">
+          <button className="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+  )
 }
 
 export default withRouter(Search)
