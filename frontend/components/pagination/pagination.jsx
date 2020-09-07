@@ -1,6 +1,5 @@
 import React from 'react'
 import { Pagination } from 'semantic-ui-react'
-import { replace } from 'lodash'
 
 class PaginationAll extends React.Component {
   constructor(props) {
@@ -8,13 +7,14 @@ class PaginationAll extends React.Component {
     this.state = {
       listings: props.listings,
       page: props.location.search ? props.location.search.slice(6) : 1,
-      pages: 1
+      pages: 1,
+      filters: props.filters
     }
     this.handlePage = this.handlePage.bind(this)
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { pages, sortOption } = this.props
+    const { pages, sortOption, filters } = this.props
     const { page } = this.state
 
     if (pages !== prevState.pages) {
@@ -27,7 +27,7 @@ class PaginationAll extends React.Component {
       this.props.match.url === '/listings' &&
       sortOption !== prevProps.sortOption
     ) {
-      this.props.getListings(page, sortOption)
+      this.props.getListings(page, sortOption, filters)
     }
   }
 
@@ -57,7 +57,8 @@ class PaginationAll extends React.Component {
         this.setState({
           listings: this.props.listings,
           page: this.props.page,
-          pages: this.props.pages
+          pages: this.props.pages,
+          filters: this.props.filters
         })
       })
     } else if (this.props.match.url === '/search') {
@@ -92,13 +93,16 @@ class PaginationAll extends React.Component {
       this.props.history.push(`${this.props.location.pathname}?page=${pageNum}`)
       const categoryId = this.props.location.pathname.slice(12)
 
-      this.props.getListingsByCategory(categoryId, pageNum).then((response) => {
-        this.setState({
-          listings: this.props.listings,
-          page: this.props.page,
-          pages: this.props.pages
+      this.props
+        .getListingsByCategory(categoryId, pageNum, this.props.filters)
+        .then((response) => {
+          this.setState({
+            listings: this.props.listings,
+            page: this.props.page,
+            pages: this.props.pages,
+            filters: this.props.filters
+          })
         })
-      })
     } else if (this.props.match.url === '/search') {
       const searchQuery = this.props.location.search.slice(7)
       // this.props.history.push(`/${this.props.location.pathname}?query=${searchQuery}&page=${pageNum}`);
@@ -117,13 +121,16 @@ class PaginationAll extends React.Component {
         pathname: '/listings',
         search: `?page=${pageNum}`
       })
-      this.props.getListings(pageNum, this.props.sortOption).then((response) =>
-        this.setState({
-          // listings: this.props.listings,
-          page: this.props.page,
-          pages: this.props.pages
-        })
-      )
+      this.props
+        .getListings(pageNum, this.props.sortOption, this.props.filters)
+        .then((response) =>
+          this.setState({
+            // listings: this.props.listings,
+            page: this.props.page,
+            pages: this.props.pages,
+            filters: this.props.filters
+          })
+        )
     }
 
     // } else if (this.props.match.url === "/listings"){
@@ -144,7 +151,7 @@ class PaginationAll extends React.Component {
         </div>
       )
     } else {
-      return <div></div>
+      return <div>No search result on this page. Please return to main page.</div>
     }
 
     // return <Pagination ellipsisItem={null} boundaryRange={2} siblingRange={2} onPageChange={this.handlePage} defaultActivePage={this.state.page} totalPages={this.state.pages} />
