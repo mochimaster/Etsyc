@@ -54,8 +54,6 @@ export const getListings = (
   sort_option = 'newest',
   filters = { condition: CONDITION.ALL }
 ) => {
-  console.log('getListings api: ', filters)
-
   return $.ajax({
     method: 'GET',
     url: `/api/listings?page=${page}`,
