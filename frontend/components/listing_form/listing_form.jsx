@@ -1,57 +1,53 @@
-import ListingFormContainer from './listing_form_container';
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
+import ListingFormContainer from './listing_form_container'
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 // import ListingEditFormContainer from './listing_edit_form_container';
-
-
+import { CONDITION } from '../../../utils/constants'
 
 class ListingForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      title: props.listing ? props.listing.title : "",
-      description: props.listing ? props.listing.description : "",
-      overview: props.listing ? props.listing.overview : "",
-      price: props.listing ? props.listing.price : "",
-      photo: props.listing ? props.listing.photo : "",
+      title: props.listing ? props.listing.title : '',
+      description: props.listing ? props.listing.description : '',
+      overview: props.listing ? props.listing.overview : '',
+      price: props.listing ? props.listing.price : '',
+      photo: props.listing ? props.listing.photo : '',
       imageUrl: null,
-      merchantName: props.merchantName ? props.merchantName : "",
+      merchantName: props.merchantName ? props.merchantName : '',
+      condition: props.condition ? props.condition : CONDITION.NEW,
       photos: [],
       // photos: props.listing ? props.listing.photoUrls : "",
       // category: props.listing ? props.listing.category.split(",") : []
       category: props.listing ? props.listing.category : [],
-      phoneNumber: props.phoneNumber ? props.phoneNumber : "",
+      phoneNumber: props.phoneNumber ? props.phoneNumber : '',
       photoHash: {}
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.imagePreview = this.imagePreview.bind(this);
-    this.previewExistingPhoto = this.previewExistingPhoto.bind(this);
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.imagePreview = this.imagePreview.bind(this)
+    this.previewExistingPhoto = this.previewExistingPhoto.bind(this)
   }
   // removed  by Elliot
   // this.state.author_id = this.props.sessionId
   componentDidMount() {
-    if (this.props.formType === "Create Listing") {
+    if (this.props.formType === 'Create Listing') {
     } else {
-      
-      this.props.getListing(this.props.match.params.listingId).then(listing => {
-        // console.log("calling setstate");
-        this.setState({ ...this.props.listing }, () => {
-
-          if (this.props.listing && this.props.listing.photoUrls) {
-            let photoHash = {}
-            this.props.listing.photoUrls.forEach(( _, index) => {
-              photoHash[index] = true
-            })
-            this.setState({ photoHash: photoHash });
-          }
-
-        });
-      });
-
-      
-     
+      this.props
+        .getListing(this.props.match.params.listingId)
+        .then((listing) => {
+          this.setState({ ...this.props.listing }, () => {
+            if (this.props.listing && this.props.listing.photoUrls) {
+              let photoHash = {}
+              this.props.listing.photoUrls.forEach((_, index) => {
+                photoHash[index] = true
+              })
+              this.setState({ photoHash: photoHash })
+            }
+          })
+        })
     }
     // this.setState({listing:this.props.listing});
     // if(this.props.formType === 'Edit Listing'){
@@ -64,21 +60,22 @@ class ListingForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData();
-    formData.append("listing[title]", this.state.title);
-    formData.append("listing[overview]", this.state.overview);
-    formData.append("listing[price]", this.state.price);
-    formData.append("listing[description]", this.state.description);
-    formData.append("listing[author_id]", this.props.sessionId);
-    formData.append("listing[merchant_name]", this.props.merchantName);
-    formData.append("listing[category]", this.state.category);
-    formData.append("category[category]", this.state.category);
-    formData.append("user[phone_number]", this.state.phoneNumber);
+    const formData = new FormData()
+    formData.append('listing[title]', this.state.title)
+    formData.append('listing[overview]', this.state.overview)
+    formData.append('listing[price]', this.state.price)
+    formData.append('listing[description]', this.state.description)
+    formData.append('listing[author_id]', this.props.sessionId)
+    formData.append('listing[merchant_name]', this.props.merchantName)
+    formData.append('listing[category]', this.state.category)
+    formData.append('category[category]', this.state.category)
+    formData.append('user[phone_number]', this.state.phoneNumber)
+    formData.append('listing[condition]', this.state.condition)
 
     if (this.props.match.params.listingId) {
-      formData.append("listing[id]", this.props.match.params.listingId);
+      formData.append('listing[id]', this.props.match.params.listingId)
     }
 
     // if (!!this.state.imageUrl) {
@@ -90,28 +87,26 @@ class ListingForm extends React.Component {
     if (!!this.state.photos) {
       for (let i = 0; i < this.state.photos.length; i++) {
         // formData.append("listing[photo][]", this.state.photos[i]);
-        formData.append("listing[photos][]", this.state.photos[i]);
+        formData.append('listing[photos][]', this.state.photos[i])
       }
     }
 
-    if (!!this.state.photoHash){
-      for(let i=0; i < Object.keys(this.state.photoHash).length ;i ++){
-        formData.append("listing[photo_hash][]", this.state.photoHash[i])
+    if (!!this.state.photoHash) {
+      for (let i = 0; i < Object.keys(this.state.photoHash).length; i++) {
+        formData.append('listing[photo_hash][]', this.state.photoHash[i])
       }
     }
 
-    if (this.props.formType === "Create Listing"){
+    if (this.props.formType === 'Create Listing') {
       this.props.action(formData).then(this.props.history.push('/listings'))
     } else {
       this.props.action(formData).then(() => {
         this.props.history.push(
           `/listings/${this.props.match.params.listingId}`
-        );
+        )
         window.location.reload(false)
-      });
-
+      })
     }
-
   }
 
   // loadPreview(e){
@@ -167,27 +162,26 @@ class ListingForm extends React.Component {
   // }
 
   imagePreview(e) {
-    let preview = document.querySelector("#preview");
+    let preview = document.querySelector('#preview')
     // if (e.currentTarget.files) {
     if (e) {
       // console.log(e.currentTarget.files);
 
-      this.setState({ imageFile: e.currentTarget.files });
-
-      [].forEach.call(e.currentTarget.files, readAndPreview.bind(this));
+      this.setState({ imageFile: e.currentTarget.files })
+      ;[].forEach.call(e.currentTarget.files, readAndPreview.bind(this))
 
       // console.log("Before this.state.photos")
       // console.log(this.state.photos);
       // console.log(this.state.imageFile);
-    } 
-    
+    }
+
     // else if (this.props.listing.photoUrls) {
     //   [].forEach.call(this.props.listing.photoUrls, readAndPreview.bind(this));
     // }
 
     function readAndPreview(file) {
       // debugger;
-      let reader = new FileReader();
+      let reader = new FileReader()
       // console.log("this.state.photos: "+ this.state.photos);
       // console.log(file);
 
@@ -198,114 +192,117 @@ class ListingForm extends React.Component {
       // this.setState({photos: [...this.state.photos, file]},
       //   console.log("finish set state"))
 
-      this.setState(prevState => ({
-        photos: [...prevState.photos, file]
-      }), () => {});
+      this.setState(
+        (prevState) => ({
+          photos: [...prevState.photos, file]
+        }),
+        () => {}
+      )
 
       reader.addEventListener(
-        "load",
-        function() {
+        'load',
+        function () {
           // let image = new Image(320 , 416	);
-          let image = new Image();
+          let image = new Image()
           // image.height = 200;
           // image.width = 100;
-          image.title = file.name;
-          image.src = this.result;
-          preview.appendChild(image);
-        },
+          image.title = file.name
+          image.src = this.result
+          preview.appendChild(image)
+        }
         // preventDefault(),
         // {capture: false}
-      );
-      reader.readAsDataURL(file);
+      )
+      reader.readAsDataURL(file)
     }
-    
   }
 
   previewExistingPhoto(photo, index) {
     if (this.state.photoHash[index]) {
+      let preview = document.querySelector('#preview')
+      let button = document.createElement('button')
 
-      let preview = document.querySelector("#preview");
-      let button = document.createElement("button");
-
-      preview.appendChild(button);
+      preview.appendChild(button)
       // debugger
       button.addEventListener(
-        "click", 
-        function(){
-          this.deleteImage(index);
+        'click',
+        function () {
+          this.deleteImage(index)
         }.bind(this)
-      );
+      )
 
-      button.innerText='X'
-      button.type = "button"
+      button.innerText = 'X'
+      button.type = 'button'
       button.className = `photo photo-${index} photo-x`
 
-      let image = document.createElement("img")
+      let image = document.createElement('img')
       image.src = photo
       image.id = photo
-      image.className = `photo photo-${index} photo-x`;
-      preview.appendChild(
-        image
-      )
+      image.className = `photo photo-${index} photo-x`
+      preview.appendChild(image)
     }
   }
 
-  deleteImage(index){
-    while (document.querySelector(`.photo-${index}`)){
-      let deleteImage = document.querySelector(`.photo-${index}`);
+  deleteImage(index) {
+    while (document.querySelector(`.photo-${index}`)) {
+      let deleteImage = document.querySelector(`.photo-${index}`)
       deleteImage.parentNode.removeChild(deleteImage)
     }
 
     const copyPhotoHash = this.state.photoHash
     copyPhotoHash[index] = false
 
-    this.setState({ photoHash: copyPhotoHash})
+    this.setState({ photoHash: copyPhotoHash })
   }
 
   updateTitle(e) {
-    this.setState({ title: e.target.value });
+    this.setState({ title: e.target.value })
   }
 
   updateOverview(e) {
-    this.setState({ overview: e.target.value });
+    this.setState({ overview: e.target.value })
   }
 
   updateDescription(e) {
-    this.setState({ description: e.target.value });
+    this.setState({ description: e.target.value })
   }
 
   updatePrice(e) {
-    this.setState({ price: e.target.value });
+    this.setState({ price: e.target.value })
   }
 
   updateMerchantName(e) {
-    this.setState({ merchantName: e.target.value });
+    this.setState({ merchantName: e.target.value })
   }
 
   updatePhoneNumber(e) {
-    this.setState({ phoneNumber: e.target.value });
+    this.setState({ phoneNumber: e.target.value })
   }
 
   updateCategory(e) {
-    let oldCategory = this.state.category;
+    let oldCategory = this.state.category
 
-    if (oldCategory === "") {
-      oldCategory = [];
+    if (oldCategory === '') {
+      oldCategory = []
     }
 
-    if (typeof oldCategory === "string") {
-      oldCategory = oldCategory.split(",");
+    if (typeof oldCategory === 'string') {
+      oldCategory = oldCategory.split(',')
     }
 
     if (oldCategory.includes(e.target.value)) {
-      oldCategory = oldCategory.filter(function(value, index, arr) {
-        return value !== e.target.value;
-      });
+      oldCategory = oldCategory.filter(function (value, index, arr) {
+        return value !== e.target.value
+      })
     } else {
-      oldCategory.push(e.target.value);
+      oldCategory.push(e.target.value)
     }
 
-    this.setState({ category: oldCategory });
+    this.setState({ category: oldCategory })
+  }
+
+  updateCondition(e) {
+    this.setState({ condition: e.target.value })
   }
 
   renderErrors() {
@@ -315,11 +312,11 @@ class ListingForm extends React.Component {
           <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
-    );
+    )
   }
 
   merchantExist() {
-    let name;
+    let name
     if (!this.props.merchantName) {
       name = (
         <div>
@@ -332,11 +329,11 @@ class ListingForm extends React.Component {
             type="text"
           />
         </div>
-      );
+      )
     } else {
-      name = <p>{this.state.merchantName}</p>;
+      name = <p>{this.state.merchantName}</p>
     }
-    return name;
+    return name
   }
 
   // phoneNumberExist(){
@@ -358,17 +355,16 @@ class ListingForm extends React.Component {
   // }
 
   render() {
-    // debugger
     if (!this.props.listing) {
-      return null;
+      return null
     }
 
     // Redirect user if logged in user is not the listing author.
     // explore try catch.
-    if (this.props.formType === "Edit Listing") {
+    if (this.props.formType === 'Edit Listing') {
       if (this.props.listing.author_id !== this.props.sessionId) {
-        this.props.history.push(`/`);
-        return null;
+        this.props.history.push(`/`)
+        return null
       }
     }
 
@@ -407,28 +403,26 @@ class ListingForm extends React.Component {
 
     // debugger
 
-    if(this.state.photoUrl){
+    if (this.state.photoUrl) {
       let preview = document.querySelector('#preview')
       preview.innerHTML = ''
       this.previewExistingPhoto(this.state.photoUrl, 0)
-
     }
 
     if (this.state.photoUrls) {
-      let preview = document.querySelector("#preview");
-      preview.innerHTML = "";
+      let preview = document.querySelector('#preview')
+      preview.innerHTML = ''
 
       // [].forEach.call(
       //   this.state.photoUrls,
       //   this.previewExistingPhoto.bind(this)
       // );
-      let photoHash = {};
-      for(let i=0; i<this.state.photoUrls.length; i++){
+      let photoHash = {}
+      for (let i = 0; i < this.state.photoUrls.length; i++) {
         this.previewExistingPhoto(this.state.photoUrls[i], i)
         photoHash[i] = true
-      }      
+      }
     }
-    
 
     return (
       <div className="create-listing-form-wrapper">
@@ -437,7 +431,7 @@ class ListingForm extends React.Component {
         <form className="create-form-wrapper" onSubmit={this.handleSubmit}>
           <div className="create-listing-photo create-listing-left-side">
             <p className="create-listing-photo-inner">
-              {" "}
+              {' '}
               Multiple Images uploader
             </p>
             <input
@@ -525,7 +519,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="1"
                   name="Sofa & Sectional"
-                  checked={this.state.category.includes("1") ? true : false}
+                  checked={this.state.category.includes('1') ? true : false}
                 />
                 Sofa & Sectional
                 <input
@@ -533,7 +527,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="2"
                   name="Seating"
-                  checked={this.state.category.includes("2") ? true : false}
+                  checked={this.state.category.includes('2') ? true : false}
                 />
                 Seating
                 <input
@@ -541,7 +535,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="3"
                   name="Bedroom"
-                  checked={this.state.category.includes("3") ? true : false}
+                  checked={this.state.category.includes('3') ? true : false}
                 />
                 Bedroom
                 <input
@@ -549,7 +543,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="4"
                   name="Console & Cabinet"
-                  checked={this.state.category.includes("4") ? true : false}
+                  checked={this.state.category.includes('4') ? true : false}
                 />
                 Console & Cabinet
                 <input
@@ -557,7 +551,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="5"
                   name="Dining"
-                  checked={this.state.category.includes("5") ? true : false}
+                  checked={this.state.category.includes('5') ? true : false}
                 />
                 Dining
                 <input
@@ -565,7 +559,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="6"
                   name="Outdoor"
-                  checked={this.state.category.includes("6") ? true : false}
+                  checked={this.state.category.includes('6') ? true : false}
                 />
                 Outdoor
                 <input
@@ -573,7 +567,7 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="7"
                   name="Miscellaneous"
-                  checked={this.state.category.includes("7") ? true : false}
+                  checked={this.state.category.includes('7') ? true : false}
                 />
                 Miscellaneous
                 <input
@@ -581,10 +575,24 @@ class ListingForm extends React.Component {
                   type="checkbox"
                   value="8"
                   name="Special"
-                  checked={this.state.category.includes("8") ? true : false}
+                  checked={this.state.category.includes('8') ? true : false}
                 />
                 Special
               </div>
+            </div>
+
+            <div className="create-listing-condition">
+              <label for="condition">Condition: </label>
+
+              <select
+                name="condition"
+                id="condition"
+                onChange={this.updateCondition.bind(this)}
+                value={this.state.condition}
+              >
+                <option value="new">New</option>
+                <option value="used">Used</option>
+              </select>
             </div>
 
             <div className="create-listing-price">
@@ -612,9 +620,8 @@ class ListingForm extends React.Component {
           </div>
         </form>
       </div>
-    );
+    )
   }
 }
 
-
-export default withRouter(ListingForm);
+export default withRouter(ListingForm)

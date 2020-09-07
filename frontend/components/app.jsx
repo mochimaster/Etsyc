@@ -15,6 +15,7 @@ import CategoryShowContainer from './category/category_show_container'
 import PaginationAll from '../components/pagination/pagination_container'
 import SortDropDownContainer from './sort/sort_container'
 import HomeIndexContainer from './home_index/home_index_container'
+import ConditionDropDownContainer from './condition/condition_container'
 
 import ErrorShow from './error/error'
 import Footer from './footer/footer'
@@ -26,11 +27,18 @@ const App = () => {
       <Header />
       <div className="body">
         <CategoryIndexContainer />
-        <Route
-          exact
-          path={['/listings', '/categories/:categoryId']}
-          component={SortDropDownContainer}
-        />
+        <div className="filters">
+          <Route
+            exact
+            path={['/listings', '/categories/:categoryId']}
+            component={ConditionDropDownContainer}
+          />
+          <Route
+            exact
+            path={['/listings', '/categories/:categoryId']}
+            component={SortDropDownContainer}
+          />
+        </div>
         <Switch>
           {/* Good comment. The below line will be modified
             when I have a component to render on "/" */}

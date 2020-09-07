@@ -1,3 +1,5 @@
+import { CONDITION } from '../../utils/constants'
+
 export const createListing = (listing) => {
   return $.ajax({
     method: 'POST',
@@ -5,8 +7,8 @@ export const createListing = (listing) => {
     data: listing,
     contentType: false,
     processData: false
-  });
-};
+  })
+}
 
 // Became formData - need to use getAll('listing[id]')
 export const updateListing = (formData) => {
@@ -28,7 +30,7 @@ export const updateListing = (formData) => {
       data: formData,
       contentType: false,
       processData: false
-    });
+    })
   } else {
     const { id, status } = formData
 
@@ -38,42 +40,43 @@ export const updateListing = (formData) => {
       data: { listing: { status } }
     })
   }
-
-
-
-};
+}
 
 export const getListing = (id) => {
   return $.ajax({
     method: 'GET',
     url: `api/listings/${id}`
-  });
-};
+  })
+}
 
-export const getListings = (page = 1, sort_option = "newest") => {
+export const getListings = (
+  page = 1,
+  sort_option = 'newest',
+  filters = { condition: CONDITION.ALL }
+) => {
+  console.log('getListings api: ', filters)
+
   return $.ajax({
     method: 'GET',
     url: `/api/listings?page=${page}`,
-    data: { sort: sort_option }
-  });
-};
-
+    data: { sort: sort_option, filters }
+  })
+}
 
 export const getSavedListings = (listing_ids) => {
   return $.ajax({
     method: 'GET',
     url: `/api/listings`,
     data: { cart_listing_ids: listing_ids }
-  });
-};
+  })
+}
 
 export const deleteListing = (id) => {
-
   return $.ajax({
     method: 'DELETE',
     url: `/api/listings/${id}`
-  });
-};
+  })
+}
 
 export const listingSearch = (title, page = 1) => {
   return $.ajax({

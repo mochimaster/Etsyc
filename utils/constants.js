@@ -17,3 +17,9 @@ export const SORT_TYPE = {
   PRICE_DESC: 'priceDesc',
   MOST_RECENT: 'newest'
 }
+
+export const CONDITION = {
+  ALL : 'all',
+  NEW: 'new',
+  USED: 'used'
+}

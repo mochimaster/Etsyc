@@ -187,7 +187,7 @@ class ListingShow extends React.Component {
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
             {/* <img src={this.props.listing.photoUrl} /> */}
-            <Slider images={images}  />
+            <Slider images={images} />
             {/* {displayImages} */}
           </div>
 
@@ -243,6 +243,12 @@ class ListingShow extends React.Component {
                 Add to cart
               </button>
             </div>
+
+            <div className="listing-details listing-details-condition">
+              <label className="condition-label">Condition: </label>
+              {this.props.listing.condition}
+            </div>
+            <br></br>
 
             <div className="listing-details listing-details-overview">
               <label className="title-label">Overview</label>

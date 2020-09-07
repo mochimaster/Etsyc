@@ -24,17 +24,18 @@ const mapStateToProps = (state, ownProps) => {
     page: state.entities.pagination.page,
     pages: state.entities.pagination.pages,
     sortOption: state.entities.sortOption,
-    disabledListings: state.entities.disabledListings
+    disabledListings: state.entities.disabledListings,
+    filters: state.entities.filters
     // listingsByAuthor
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getListings: (page = '', sortOption) =>
-      dispatch(getListings(page, sortOption)),
-    getListingsByCategory: (category, page, sortOption) =>
-      dispatch(getListingsByCategory(category, page, sortOption))
+    getListings: (page = '', sortOption, filters) =>
+      dispatch(getListings(page, sortOption, filters)),
+    getListingsByCategory: (category, page, sortOption, filters) =>
+      dispatch(getListingsByCategory(category, page, sortOption, filters))
     // deleteListing: id => dispatch(deleteListing(id)),
     // getListingsPage: page => dispatch(getListingsPage(page))
   }

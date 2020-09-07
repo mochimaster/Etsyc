@@ -59,6 +59,10 @@ class Api::ListingsController < ApplicationController
       params[:page]=1
     end
 
+    filters = params[:filters]
+
+    condition = filters[:condition] == 'all' ? ['new', 'used'] : filters[:condition]
+
     sort_option = params[:sort]
 
     if sort_option == 'priceDesc'
@@ -72,9 +76,9 @@ class Api::ListingsController < ApplicationController
     end
 
     if sort_order == 'asc'
-      @listings = Listing.where(status: [nil, true]).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+      @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     else
-      @listings = Listing.where(status: [nil, true]).order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+      @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     end
     # @listings = Listing.paginate(:page => params[:page])
     
@@ -101,7 +105,7 @@ class Api::ListingsController < ApplicationController
   def listing_params
     # params[:listing][:modified_by_userid] = params[:author_id]
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, :status, photo_hash:[], photos: [])
+      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, :status, :condition, photo_hash:[], photos: [])
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)
