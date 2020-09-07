@@ -1,73 +1,77 @@
 .create-listing-form-wrapper {
-  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: 'Graphik Webfont', -apple-system, system-ui, Roboto, 'Droid Sans',
+    'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 15px;
   padding: 20px 40px 20px 40px;
-
 }
 
-.create-form-wrapper{
+.create-form-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 530px;
   grid-column-gap: 10px;
-
 }
 
-.create-listing-left-side{
-
+.create-listing-left-side {
   display: grid;
   height: 100%;
-  width:  100%;
-  border: #E1E3DF 1px solid;
+  width: 100%;
+  border: #e1e3df 1px solid;
   box-sizing: border-box;
   margin: -10px;
   grid-template-rows: 1fr 5fr;
-
 }
 
-.create-listing-photo-inner, .create-listing-photo-intake, .create-listing-photo p {
+.create-listing-photo-inner,
+.create-listing-photo-intake,
+.create-listing-photo p {
   align-self: center;
   justify-self: center;
 }
 
-.create-listing-photo-inner{
+.create-listing-photo-inner {
   font-size: 20px;
 }
 
-.create-listing-title-input, .create-listing-overview-textarea, .create-listing-description-input, .create-list-price-input, .create-listing-merchant-input, .create-listing-phone-number-input {
+.create-listing-title-input,
+.create-listing-overview-textarea,
+.create-listing-description-input,
+.create-list-price-input,
+.create-listing-merchant-input,
+.create-listing-phone-number-input {
   width: 100%;
-  border: 1px solid #CFCBC8;
+  border: 1px solid #cfcbc8;
   background: #f9f9f8;
   padding: 6px 10px;
-  box-shadow: inset 0 1px 2px #E9E9E8, 0 0 0 1000px #fbfbfa inset;
+  box-shadow: inset 0 1px 2px #e9e9e8, 0 0 0 1000px #fbfbfa inset;
   font-size: 14px;
   box-sizing: border-box;
 }
 
-.create-listing-right-side > div{
+.create-listing-right-side > div {
   margin-bottom: 10px;
 }
 
-.required{
+.required {
   color: red;
   font-size: 15px;
-
 }
 
-.create-listing-title-input, .create-listing-merchant-input, {
+.create-listing-title-input,
+.create-listing-merchant-input {
   height: 34px;
 }
 
-.create-listing-overview .create-listing-overview-textarea{
+.create-listing-overview .create-listing-overview-textarea {
   height: 79px;
   white-space: pre-wrap;
 }
 
-.listing-description{
+.listing-description {
   white-space: pre-wrap;
 }
 
-.listing-details{
+.listing-details {
   white-space: pre-wrap;
 }
 
@@ -78,8 +82,9 @@
   margin-bottom: 12px;
 } */
 
-
-.create-listing-category .create-listing-category-radio{
+.create-listing-category
+  .create-listing-category-radio
+  .create-listing-condition {
   width: auto;
 }
 
@@ -91,21 +96,21 @@
   height: 139px;
 }
 
-.create-listing-category-radio, .create-list-price-input{
+.create-listing-category-radio,
+.create-list-price-input {
   margin-left: 10px;
 }
 
-.create-listing-price .create-list-price-input{
+.create-listing-price .create-list-price-input {
   width: 141px;
   margin-left: 1px;
 }
 
-.dollar-margin{
+.dollar-margin {
   margin-left: 10px;
 }
 
 .submit-button {
   width: 100%;
   /* height: 34px; */
-
 }

@@ -31,10 +31,13 @@ class ListingIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { page, sortOption, match, location } = this.props
+    const { page, sortOption, match, filters } = this.props
 
-    if (match.url === 'listings' && sortOption !== prevProps.sortOption) {
-      this.props.getListings(page, sortOption)
+    if (
+      (match.url === 'listings' && sortOption !== prevProps.sortOption) ||
+      filters !== prevProps.filters
+    ) {
+      this.props.getListings(page, sortOption, filters)
     }
   }
 

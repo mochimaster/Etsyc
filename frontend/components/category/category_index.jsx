@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const CategoryIndex = (props) => {
   const [isActive] = useState(false)
 
-  const { getListingsByCategory, page, sortOption } = props
+  const { getListingsByCategory, page, sortOption, filters } = props
 
   const categories = {
     1: 'Sofa & Sectional',
@@ -24,7 +24,7 @@ const CategoryIndex = (props) => {
           <li className={isActive ? 'highlight' : null}>
             <Link
               onClick={() => {
-                getListingsByCategory(categorId, page, sortOption)
+                getListingsByCategory(categorId, page, sortOption, filters)
               }}
               to={`/categories/${categorId}`}
             >

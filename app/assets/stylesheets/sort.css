@@ -1,4 +1,4 @@
-.sort-container {
+.sort-container .condition-container {
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
     'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   margin-top: 14px;
@@ -12,11 +12,21 @@
   margin-right: 16px;
 }
 
-.sort-inner-container {
-  position: absolute;
-  right: 0;
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
 }
 
-#sortParamOrder{
-    font-size: 12px;
+/* .sort-inner-container {
+  position: absolute;
+  right: 0;
+} */
+
+.condition-container {
+  margin-right: 15px;
+}
+
+#sortParamOrder #condition{
+  font-size: 12px;
 }
