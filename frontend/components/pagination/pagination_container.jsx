@@ -14,16 +14,17 @@ const mapStateToProps = (state, ownProps) => {
     listings: listingsByAuthor,
     page: state.entities.pagination.page,
     pages: state.entities.pagination.pages,
-    sortOption: state.entities.sortOption
+    sortOption: state.entities.sortOption,
+    filters: state.entities.filters
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getListings: (page = '', sortOption) =>
-      dispatch(getListings(page, sortOption)),
-    getListingsByCategory: (categoryId, page) =>
-      dispatch(getListingsByCategory(categoryId, page)),
+    getListings: (page = '', sortOption, filters) =>
+      dispatch(getListings(page, sortOption, filters)),
+    getListingsByCategory: (categoryId, page, filters) =>
+      dispatch(getListingsByCategory(categoryId, page, filters)),
     searchListing: (title, page) => dispatch(searchListing(title, page))
   }
 }
