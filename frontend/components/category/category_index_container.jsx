@@ -7,14 +7,15 @@ import { getListingsByCategory } from '../../actions/category_actions'
 const mapStateToProps = (state) => {
   return {
     page: state.entities.pagination.page,
-    sortOption: state.entities.sortOption
+    sortOption: state.entities.sortOption,
+    filters: state.entities.filters
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getListingsByCategory: (categoryId, page, sortOption) =>
-      dispatch(getListingsByCategory(categoryId, page, sortOption))
+    getListingsByCategory: (categoryId, page, sortOption, filters) =>
+      dispatch(getListingsByCategory(categoryId, page, sortOption, filters))
   }
 }
 

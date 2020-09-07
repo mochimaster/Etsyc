@@ -15,14 +15,15 @@ const mapStateToProps = (state, ownProps) => {
     category: ownProps.match.params.categoryId,
     listings: listingsByAuthor,
     sortOption: state.entities.sortOption,
-    page: state.entities.pagination.page
+    page: state.entities.pagination.page,
+    filters: state.entities.filters
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getListingsByCategory: (listingId, page, sortOption) =>
-      dispatch(getListingsByCategory(listingId, page, sortOption))
+    getListingsByCategory: (listingId, page, sortOption, filters) =>
+      dispatch(getListingsByCategory(listingId, page, sortOption, filters))
   }
 }
 

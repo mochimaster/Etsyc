@@ -9,7 +9,6 @@ export const getListingsByCategory = (
   sortOption,
   filters
 ) => {
-  console.log('getListingsByCategory filters: ', filters)
   return (dispatch) => {
     return ApiUtil.getListingsByCategory(
       category,

@@ -50,12 +50,21 @@ class Api::CategoriesController < ApplicationController
             sort_param = :id
         end
 
+        filters = params[:filters]
+        condition = filters && filters[:condition]
+        
+        if !condition || condition == 'all'
+            condition = ['new', 'used']
+        end
+
+
+
         if sort_order == 'asc' &&  sort_param == :price
-            @categories = Category.includes(:listing).where(listings: { status: [nil, true]}).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true], condition: condition }).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price')
         elsif sort_order == 'desc' &&  sort_param == :price
-            @categories = Category.includes(:listing).where(listings: { status: [nil, true]}).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price DESC')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true], condition: condition }).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price DESC')
         else
-            @categories = Category.includes(:listing).where(listings: { status: [nil, true]}).paginate(:page => params[:page]).where(category: params[:id]).order('listings.id')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true], condition: condition }).paginate(:page => params[:page]).where(category: params[:id]).order('listings.id')
         end
 
         @listings = @categories.map do |category| 

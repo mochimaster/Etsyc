@@ -8,12 +8,13 @@ const CategoryShow = (props) => {
     page,
     match: {
       params: { categoryId }
-    }
+    },
+    filters
   } = props
 
   useEffect(() => {
-    props.getListingsByCategory(categoryId, page, sortOption)
-  }, [props.sortOption])
+    props.getListingsByCategory(categoryId, page, sortOption, filters)
+  }, [props.sortOption, filters])
 
   if (!props.listings) return 'No items in this category.'
   return (
