@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import ReactLoading from 'react-loading'
 
 import ListingIndexItem from '../listing_index/listing_index_item'
 
@@ -16,7 +17,11 @@ const CategoryShow = (props) => {
     props.getListingsByCategory(categoryId, page, sortOption, filters)
   }, [props.sortOption, filters])
 
-  if (!props.listings) return 'No items in this category.'
+  if (!props.listings)
+    return (
+      <ReactLoading className="react-loading" type="bubbles" color="black" />
+    )
+
   return (
     <div>
       <ul className="index-wrapper">
