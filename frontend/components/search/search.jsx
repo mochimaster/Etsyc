@@ -27,7 +27,6 @@ const Search = (props) => {
       <div className="header-search-bar-inner">
         <div className="header-search-bar-input-wrapper">
           <input
-            autoFocus
             id="search-query"
             type="text"
             placeholder="Search for items or shops"

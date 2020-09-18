@@ -1,4 +1,4 @@
-.sort-container .condition-container {
+.sort-container,.condition-container {
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
     'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   margin-top: 14px;
