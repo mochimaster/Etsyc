@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 // import ListingEditFormContainer from './listing_edit_form_container';
 import { CONDITION } from '../../../utils/constants'
+import Compress from 'compress.js'
 
 class ListingForm extends React.Component {
   constructor(props) {
@@ -49,17 +50,32 @@ class ListingForm extends React.Component {
           })
         })
     }
-    // this.setState({listing:this.props.listing});
-    // if(this.props.formType === 'Edit Listing'){
-    //   console.log("inside if statement.")
-    //   this.props.getListing(this.props.match.params.listingId)
-    // } else {
-    //   console.log("inside else.")
-    //   return null
-    // }
   }
 
-  handleSubmit(e) {
+  async compressImage(imageFile) {
+    const compress = new Compress()
+
+    const compressedImage = await compress
+      .compress([imageFile], {
+        size: 3, // the max size in MB, defaults to 2MB
+        quality: 0.3, // the quality of the image, max is 1,
+        maxWidth: 1920, // the max width of the output image, defaults to 1920px
+        maxHeight: 1920, // the max height of the output image, defaults to 1920px
+        resize: true // defaults to true, set false if you do not want to resize the image width and height
+      })
+      .then((results) => {
+        const img1 = results[0]
+        const base64str = img1.data
+        const imgExt = img1.ext
+        const compressed = Compress.convertBase64ToFile(base64str, imgExt)
+
+        const file = new File([compressed], img1.alt)
+        return file
+      })
+    return compressedImage
+  }
+
+  async handleSubmit(e) {
     e.preventDefault()
 
     const formData = new FormData()
@@ -86,8 +102,9 @@ class ListingForm extends React.Component {
 
     if (!!this.state.photos) {
       for (let i = 0; i < this.state.photos.length; i++) {
-        // formData.append("listing[photo][]", this.state.photos[i]);
-        formData.append('listing[photos][]', this.state.photos[i])
+        const compressedImage = await this.compressImage(this.state.photos[i])
+
+        formData.append('listing[photos][]', compressedImage)
       }
     }
 
@@ -167,14 +184,8 @@ class ListingForm extends React.Component {
     let preview = document.querySelector('#preview')
     // if (e.currentTarget.files) {
     if (e) {
-      // console.log(e.currentTarget.files);
-
       this.setState({ imageFile: e.currentTarget.files })
       ;[].forEach.call(e.currentTarget.files, readAndPreview.bind(this))
-
-      // console.log("Before this.state.photos")
-      // console.log(this.state.photos);
-      // console.log(this.state.imageFile);
     }
 
     // else if (this.props.listing.photoUrls) {

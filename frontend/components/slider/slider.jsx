@@ -20,7 +20,6 @@ const Slider = (props) => {
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
 
-    console.log('inside useEffect')
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
@@ -79,7 +78,6 @@ const Slider = (props) => {
           className={`slider-image ${additionalClassName}`}
           src={images[currentIndex]}
           onClick={() => {
-            console.log('inside onclick ')
             props.openModal(MODAL_TYPE.SLIDER)
           }}
         />
