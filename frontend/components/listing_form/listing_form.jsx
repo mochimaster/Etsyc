@@ -591,6 +591,14 @@ class ListingForm extends React.Component {
                   checked={this.state.category.includes('8') ? true : false}
                 />
                 Special
+                <input
+                  onChange={this.updateCategory.bind(this)}
+                  type="checkbox"
+                  value="9"
+                  name="Appliance"
+                  checked={this.state.category.includes('9') ? true : false}
+                />
+                Appliance
               </div>
             </div>
 
