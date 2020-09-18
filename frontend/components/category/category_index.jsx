@@ -14,21 +14,22 @@ const CategoryIndex = (props) => {
     5: 'Dining',
     6: 'Outdoor',
     7: 'Miscellaneous',
-    8: 'Special'
+    8: 'Special',
+    9: 'Appliance'
   }
 
   return (
     <ul className="categories-wrapper">
-      {Object.keys(categories).map((categorId) => {
+      {Object.keys(categories).map((categoryId) => {
         return (
           <li className={isActive ? 'highlight' : null}>
             <Link
               onClick={() => {
-                getListingsByCategory(categorId, page, sortOption, filters)
+                getListingsByCategory(categoryId, page, sortOption, filters)
               }}
-              to={`/categories/${categorId}`}
+              to={`/categories/${categoryId}`}
             >
-              {categories[categorId]}
+              {categories[categoryId]}
             </Link>
           </li>
         )
