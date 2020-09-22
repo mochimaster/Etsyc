@@ -58,7 +58,7 @@ class ListingForm extends React.Component {
     const compressedImage = await compress
       .compress([imageFile], {
         size: 3, // the max size in MB, defaults to 2MB
-        quality: 0.3, // the quality of the image, max is 1,
+        quality: 0.2, // the quality of the image, max is 1,
         maxWidth: 1920, // the max width of the output image, defaults to 1920px
         maxHeight: 1920, // the max height of the output image, defaults to 1920px
         resize: true // defaults to true, set false if you do not want to resize the image width and height
@@ -94,15 +94,15 @@ class ListingForm extends React.Component {
       formData.append('listing[id]', this.props.match.params.listingId)
     }
 
-    // if (!!this.state.imageUrl) {
-    //   formData.append("listing[photo]", this.state.imageFile);
-    // }
-
-    // multiple
-
     if (!!this.state.photos) {
       for (let i = 0; i < this.state.photos.length; i++) {
-        const compressedImage = await this.compressImage(this.state.photos[i])
+        const currentPhoto = this.state.photos[i]
+
+        // only compress if image larger than 100 kb
+        const compressedImage =
+          currentPhoto.size > 100000
+            ? await this.compressImage(currentPhoto)
+            : currentPhoto
 
         formData.append('listing[photos][]', compressedImage)
       }
