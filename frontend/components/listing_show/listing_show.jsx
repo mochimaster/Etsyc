@@ -80,6 +80,10 @@ class ListingShow extends React.Component {
     this.props.updateListing({ id: this.props.listing.id, status: newStatus })
   }
 
+  handleRenewListing(listing) {
+    console.log('handling renew.: ', listing)
+  }
+
   render() {
     if (!this.props.listing) {
       return <div className="error-page">Page Not Found.</div>
@@ -97,6 +101,12 @@ class ListingShow extends React.Component {
           >
             Edit Listing
           </Link>
+          <button
+            className="btn btn-primary listing-renew-listing-button"
+            onClick={() => this.handleRenewListing(this.props.listing)}
+          >
+            Renew Listing
+          </button>
           <input
             className="btn btn-primary listing-toggle-listing-status-button"
             type="submit"
