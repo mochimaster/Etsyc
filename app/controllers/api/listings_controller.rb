@@ -6,7 +6,7 @@ class Api::ListingsController < ApplicationController
     # <ActionController::Parameters {"listing"=>{"title"=>"fancy lamp", "overview"=>"44", "price"=>"66", "description"=>"55", "author_id"=>"1", "merchant_name"=>"Atsy", "photos"=>[#<ActionDispatch::Http::UploadedFile:0x007ff2e2302e10 @tempfile=#<Tempfile:/var/folders/8v/v0k661gs061c87pgjflrfnmw0000gn/T/RackMultipart20181118-4250-qqd8zm.jpg>, @original_filename="1.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"listing[photos][]\"; filename=\"1.jpg\"\r\nContent-Type: image/jpeg\r\n">]}, "format"=>:json, "controller"=>"api/listings", "action"=>"create"} permitted: false>
     @listing.modified_by_userid = @listing.author_id
     @listing.renewed_at = DateTime.now
-    # debugger
+
     if @listing.save
       render :show
     else
