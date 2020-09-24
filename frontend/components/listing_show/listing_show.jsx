@@ -82,10 +82,7 @@ class ListingShow extends React.Component {
   }
 
   handleRenewListing(listing) {
-    console.log('handling renew.: ', listing)
-    this.props.renewListing(listing.id).then(() => {
-      alert('Listing renewed.')
-    })
+    this.props.renewListing(listing.id).then(alert('Listing renewed.'))
   }
 
   render() {
