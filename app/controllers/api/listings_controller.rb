@@ -5,6 +5,7 @@ class Api::ListingsController < ApplicationController
 
     # <ActionController::Parameters {"listing"=>{"title"=>"fancy lamp", "overview"=>"44", "price"=>"66", "description"=>"55", "author_id"=>"1", "merchant_name"=>"Atsy", "photos"=>[#<ActionDispatch::Http::UploadedFile:0x007ff2e2302e10 @tempfile=#<Tempfile:/var/folders/8v/v0k661gs061c87pgjflrfnmw0000gn/T/RackMultipart20181118-4250-qqd8zm.jpg>, @original_filename="1.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"listing[photos][]\"; filename=\"1.jpg\"\r\nContent-Type: image/jpeg\r\n">]}, "format"=>:json, "controller"=>"api/listings", "action"=>"create"} permitted: false>
     @listing.modified_by_userid = @listing.author_id
+    @listing.renewed_at = DateTime.now
     # debugger
     if @listing.save
       render :show
@@ -75,10 +76,12 @@ class Api::ListingsController < ApplicationController
       sort_param = :id
     end
 
-    if sort_order == 'asc'
+    if sort_order == 'asc' && sort_param == :price
       @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
-    else
+    elsif sort_order == 'desc' && sort_param == :price
       @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+    else
+      @listings = Listing.where(status: [nil, true], condition: condition).order('renewed_at DESC').paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     end
     # @listings = Listing.paginate(:page => params[:page])
     
@@ -97,6 +100,18 @@ class Api::ListingsController < ApplicationController
       render :show
     else
       render ['Cannot delete that listing.']
+    end
+  end
+
+  def renew
+    @listing = Listing.find_by(id: params[:listing_id])
+
+    @listing.renewed_at = DateTime.now
+
+    if @listing.save
+      render :show
+    else
+      render json: @listing.errors.full_messages, status: 401
     end
   end
 

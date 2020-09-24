@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import Slider from '../slider/slider_container'
+import { renewListing } from '../../util/listing_api_util'
 
 class ListingShow extends React.Component {
   constructor(props) {
@@ -80,6 +81,10 @@ class ListingShow extends React.Component {
     this.props.updateListing({ id: this.props.listing.id, status: newStatus })
   }
 
+  handleRenewListing(listing) {
+    this.props.renewListing(listing.id).then(alert('Listing renewed.'))
+  }
+
   render() {
     if (!this.props.listing) {
       return <div className="error-page">Page Not Found.</div>
@@ -97,6 +102,12 @@ class ListingShow extends React.Component {
           >
             Edit Listing
           </Link>
+          <button
+            className="btn btn-primary listing-renew-listing-button"
+            onClick={() => this.handleRenewListing(this.props.listing)}
+          >
+            Renew Listing
+          </button>
           <input
             className="btn btn-primary listing-toggle-listing-status-button"
             type="submit"
