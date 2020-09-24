@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :listings, defaults: {format: :json} do
       resources :reviews, only: [:index]
+      patch '/renew', to: 'listings#renew'
     end
     resources :reviews, except: [:new, :index],defaults: {format: :json}
     resource :session, only: [:create, :destroy]

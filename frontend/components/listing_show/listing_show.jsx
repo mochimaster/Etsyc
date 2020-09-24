@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import Slider from '../slider/slider_container'
+import { renewListing } from '../../util/listing_api_util'
 
 class ListingShow extends React.Component {
   constructor(props) {
@@ -82,6 +83,9 @@ class ListingShow extends React.Component {
 
   handleRenewListing(listing) {
     console.log('handling renew.: ', listing)
+    this.props.renewListing(listing.id).then(() => {
+      alert('Listing renewed.')
+    })
   }
 
   render() {

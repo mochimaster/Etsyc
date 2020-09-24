@@ -73,3 +73,8 @@ export const searchListing = (title, page = 1) => {
     })
   }
 }
+
+export const renewListing = (id) => (dispatch) =>
+  ApiUtil.renewListing(id).then((listing) =>
+    dispatch({ type: RECEIVE_LISTING, listing })
+  )

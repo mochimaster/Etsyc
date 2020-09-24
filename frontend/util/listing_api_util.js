@@ -87,6 +87,13 @@ export const listingSearch = (title, page = 1) => {
   })
 }
 
+export const renewListing = (id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/listings/${id}/renew`
+  })
+}
+
 // {entities: {…}, session: {…}, errors: {…}, ui: {…}}
 //   entities:
 //     users: {id: null}
