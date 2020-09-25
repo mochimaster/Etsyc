@@ -90,10 +90,19 @@ class ListingShow extends React.Component {
       return <div className="error-page">Page Not Found.</div>
     }
 
-    const listingStatus = this.props.listing.status
+    const { status: listingStatus, author_id: authorId } = this.props.listing
+    const isListingAuthor = authorId === this.props.sessionId
+
+    if (!listingStatus && !isListingAuthor) {
+      return (
+        <div className="error-message">
+          This listing is no longer available.
+        </div>
+      )
+    }
 
     let displayAuthorButton
-    if (this.props.listing.author_id === this.props.sessionId) {
+    if (isListingAuthor) {
       displayAuthorButton = (
         <div className="listing-show-author-buttons">
           <Link

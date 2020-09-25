@@ -1,4 +1,4 @@
-.error-page, .loading-page, .no-result, .cart-empty{
+.error-page, .loading-page, .no-result, .cart-empty, .error-message{
     line-height: 16px;
     font-size: 15px;
     color: #222;
