@@ -1,4 +1,6 @@
 import React from 'react'
+import ReactLoading from 'react-loading'
+
 import ListingShowContainer from './listing_show_container'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
@@ -12,7 +14,8 @@ class ListingShow extends React.Component {
     super(props)
     // debugger
     this.state = {
-      quantity: 1
+      quantity: 1,
+      isLoading: true
     }
 
     this.toggleListingStatus = this.toggleListingStatus.bind(this)
@@ -26,7 +29,9 @@ class ListingShow extends React.Component {
   componentDidMount() {
     // debugger
     // this.props.getListings();
-    this.props.getListing(this.props.match.params.listingId)
+    this.props
+      .getListing(this.props.match.params.listingId)
+      .then(this.setState({ isLoading: false }))
   }
 
   // componentWillReceiveProps(nextProps){
@@ -86,6 +91,14 @@ class ListingShow extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <div id="react-loading" className="react-loading">
+          <ReactLoading type="bubbles" color="black" />
+        </div>
+      )
+    }
+
     if (!this.props.listing) {
       return <div className="error-page">Page Not Found.</div>
     }
