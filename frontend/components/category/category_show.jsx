@@ -25,7 +25,9 @@ const CategoryShow = (props) => {
 
   if (loading) {
     return (
-      <ReactLoading className="react-loading" type="bubbles" color="black" />
+      <div id='react-loading' className="react-loading">
+        <ReactLoading type="bubbles" color="black" />
+      </div>
     )
   } else if (!props.listings) {
     return (
