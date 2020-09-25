@@ -43,6 +43,8 @@ class Api::ListingsController < ApplicationController
     @listing = Listing.includes(:categories).with_attached_photos.find_by(id: params[:id])
     if @listing
       render :show
+    elsif !@listing
+      render json: ['Listing cannot be found.'], status: 404
     end
   end
 
