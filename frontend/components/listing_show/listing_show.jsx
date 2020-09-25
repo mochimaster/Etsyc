@@ -91,12 +91,20 @@ class ListingShow extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading || !this.props.listing) {
+    if (this.state.isLoading) {
+      setTimeout(() => {
+        this.setState({ isLoading: false })
+      }, 7000)
+
       return (
         <div id="react-loading" className="react-loading">
           <ReactLoading tye="bubbles" color="black" />
         </div>
       )
+    }
+
+    if (!this.props.listing) {
+      return <div className='error-message'>Listing not found, please return to home page.</div>
     }
 
     const { status: listingStatus, author_id: authorId } = this.props.listing
