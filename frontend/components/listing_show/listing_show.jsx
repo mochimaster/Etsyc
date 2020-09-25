@@ -29,9 +29,9 @@ class ListingShow extends React.Component {
   componentDidMount() {
     // debugger
     // this.props.getListings();
-    this.props
-      .getListing(this.props.match.params.listingId)
-      .then(this.setState({ isLoading: false }))
+    this.props.getListing(this.props.match.params.listingId).then(() => {
+      this.setState({ isLoading: false })
+    })
   }
 
   // componentWillReceiveProps(nextProps){
@@ -91,16 +91,12 @@ class ListingShow extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading) {
+    if (this.state.isLoading || !this.props.listing) {
       return (
         <div id="react-loading" className="react-loading">
-          <ReactLoading type="bubbles" color="black" />
+          <ReactLoading tye="bubbles" color="black" />
         </div>
       )
-    }
-
-    if (!this.props.listing) {
-      return <div className="error-page">Page Not Found.</div>
     }
 
     const { status: listingStatus, author_id: authorId } = this.props.listing
