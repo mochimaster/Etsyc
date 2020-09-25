@@ -23,7 +23,7 @@
 .react-loading{ 
     fill: black;
     height: 10%;
-    width: 10%;
+    width: 100%;
     left: 45vw;
     position: fixed;
 }
