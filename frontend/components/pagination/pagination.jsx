@@ -151,7 +151,7 @@ class PaginationAll extends React.Component {
         </div>
       )
     } else {
-      return <div>No search result on this page. Please return to main page.</div>
+      return <div></div>
     }
 
     // return <Pagination ellipsisItem={null} boundaryRange={2} siblingRange={2} onPageChange={this.handlePage} defaultActivePage={this.state.page} totalPages={this.state.pages} />

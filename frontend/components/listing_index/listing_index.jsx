@@ -135,7 +135,13 @@ class ListingIndex extends React.Component {
     ) {
       // return <div className="loading-page">Loading...</div>
       return (
-        <ReactLoading className="react-loading" type="bubbles" color="black" />
+        <div>
+          <ReactLoading
+            className="react-loading"
+            type="bubbles"
+            color="black"
+          />
+        </div>
       )
     }
 

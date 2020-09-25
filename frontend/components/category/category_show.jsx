@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 
 import ListingIndexItem from '../listing_index/listing_index_item'
@@ -13,14 +13,28 @@ const CategoryShow = (props) => {
     filters
   } = props
 
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
-    props.getListingsByCategory(categoryId, page, sortOption, filters)
+    props
+      .getListingsByCategory(categoryId, page, sortOption, filters)
+      .then(() => {
+        setLoading(false)
+      })
   }, [props.sortOption, filters])
 
-  if (!props.listings)
+  if (loading) {
     return (
       <ReactLoading className="react-loading" type="bubbles" color="black" />
     )
+  } else if (!props.listings) {
+    return (
+      <div>
+        'No result in this category at current page. Please navigate to home
+        screen.'
+      </div>
+    )
+  }
 
   return (
     <div>
