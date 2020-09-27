@@ -9,6 +9,8 @@ import ReviewForm from '../review/review_create_form_container'
 import Slider from '../slider/slider_container'
 import { renewListing } from '../../util/listing_api_util'
 
+import { trackEvent, EVENTS } from '../../../utils/track'
+
 class ListingShow extends React.Component {
   constructor(props) {
     super(props)
@@ -104,7 +106,11 @@ class ListingShow extends React.Component {
     }
 
     if (!this.props.listing) {
-      return <div className='error-message'>Listing not found, please return to home page.</div>
+      return (
+        <div className="error-message">
+          Listing not found, please return to home page.
+        </div>
+      )
     }
 
     const { status: listingStatus, author_id: authorId } = this.props.listing
@@ -263,8 +269,12 @@ class ListingShow extends React.Component {
 
             <div className="listing-details add-to-cart">
               <button
-                onClick={() =>
-                  this.props
+                onClick={() => {
+                  trackEvent({
+                    eventName: EVENTS.ADD_TO_CART,
+                    eventProperties: { title: this.props.listing.description }
+                  })
+                  return this.props
                     .createCart({
                       quantity: this.state.quantity,
                       listing_id: this.props.listing.id,
@@ -275,7 +285,7 @@ class ListingShow extends React.Component {
                         `/users/${this.props.sessionId}/carts`
                       )
                     )
-                }
+                }}
               >
                 Add to cart
               </button>

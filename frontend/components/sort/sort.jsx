@@ -2,9 +2,15 @@ import React from 'react'
 
 import { SORT_TYPE } from '../../../utils/constants'
 
+import { trackEvent, EVENTS } from '../../../utils/track'
+
 const SortDropDownList = ({ setSort, sortOption }) => {
   const handleSortChange = ({ target: { value } }) => {
     setSort(value)
+    trackEvent({
+      eventName: EVENTS.SET_SORT,
+      eventProperties: { order: value }
+    })
   }
 
   return (

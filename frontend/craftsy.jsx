@@ -5,6 +5,8 @@ import configureStore from './store/store'
 
 import Root from './components/root'
 
+import { identifyUser } from '../utils/track'
+
 document.addEventListener('DOMContentLoaded', () => {
   let store
   if (window.currentUser) {
@@ -15,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
       session: { id: window.currentUser.id }
     }
     store = configureStore(preloadedState)
+    identifyUser(window.currentUser)
+
     delete window.currentUser
   } else {
     store = configureStore()

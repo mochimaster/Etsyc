@@ -1,6 +1,8 @@
 import React from 'react'
 import { Pagination } from 'semantic-ui-react'
 
+import { trackEvent, EVENTS } from '../../../utils/track'
+
 class PaginationAll extends React.Component {
   constructor(props) {
     super(props)
@@ -88,6 +90,11 @@ class PaginationAll extends React.Component {
     //     pathname: this.props.location.pathname,
     //     search: `?page=${pageNum}`
     // });
+
+    trackEvent({
+      eventName: EVENTS.SET_PAGINATION,
+      eventProperties: { 'To Page': pageNum }
+    })
 
     if (this.props.match.url === '/categories') {
       this.props.history.push(`${this.props.location.pathname}?page=${pageNum}`)
