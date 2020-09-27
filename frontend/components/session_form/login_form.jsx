@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { FORM_TYPE } from '../../../utils/constants'
+import { identifyUser } from '../../../utils/track'
 
 const LoginForm = (props) => {
   const { formType } = props
@@ -16,6 +17,8 @@ const LoginForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const user = { username, password }
+
+    identifyUser({ userEmail: username })
 
     formType === FORM_TYPE.SIGN_UP
       ? props.signup(user).then(() => {
@@ -89,7 +92,9 @@ const LoginForm = (props) => {
                 type="text"
                 autocomplete="on"
                 value={username}
-                onChange={formType === FORM_TYPE.DEMO ? () => {} : updateUsername}
+                onChange={
+                  formType === FORM_TYPE.DEMO ? () => {} : updateUsername
+                }
               />
             </label>
           </div>
@@ -103,7 +108,9 @@ const LoginForm = (props) => {
                 type="password"
                 autocomplete="on"
                 value={password}
-                onChange={formType === FORM_TYPE.DEMO ? () => {} : updatePassword}
+                onChange={
+                  formType === FORM_TYPE.DEMO ? () => {} : updatePassword
+                }
               />
             </label>
           </div>
