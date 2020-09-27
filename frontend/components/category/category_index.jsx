@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { trackEvent, EVENTS } from '../../../utils/track'
+
 const CategoryIndex = (props) => {
   const [isActive] = useState(false)
 
@@ -25,6 +27,10 @@ const CategoryIndex = (props) => {
           <li className={isActive ? 'highlight' : null}>
             <Link
               onClick={() => {
+                trackEvent({
+                  eventName: EVENTS.SET_CATEGORY,
+                  eventProperties: { category: categories[categoryId] }
+                })
                 getListingsByCategory(categoryId, page, sortOption, filters)
               }}
               to={`/categories/${categoryId}`}

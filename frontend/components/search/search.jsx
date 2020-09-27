@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import { trackEvent, EVENTS } from '../../../utils/track'
+
 const Search = (props) => {
   const [title, setTitle] = useState(
     props.location.search.slice(7).replace(/%20/g, ' ')
@@ -11,6 +13,11 @@ const Search = (props) => {
   }
 
   const handleSubmit = (e) => {
+    trackEvent({
+      eventName: EVENTS.SEARCH_PRODUCT,
+      eventProperties: { 'Search Term': title }
+    })
+
     e.preventDefault()
     props.history.push(`/search?query=${title}`)
     props.search({ title })

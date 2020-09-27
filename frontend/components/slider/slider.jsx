@@ -5,6 +5,7 @@ import RightArrow from './right_arrow'
 import { sliderThumbnails } from './slider_thumbnail'
 
 import { MODAL_TYPE } from '../../../utils/constants'
+import { trackEvent, EVENTS } from '../../../utils/track'
 
 const Slider = (props) => {
   const [images] = useState(
@@ -78,6 +79,8 @@ const Slider = (props) => {
           className={`slider-image ${additionalClassName}`}
           src={images[currentIndex]}
           onClick={() => {
+            trackEvent({ eventName: EVENTS.ENLARGE_IMAGE })
+
             props.openModal(MODAL_TYPE.SLIDER)
           }}
         />
