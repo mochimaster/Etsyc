@@ -25,5 +25,6 @@ export const EVENTS = {
   SELL_ON_HERE: 'Sell on Here',
   SET_FILTER_BY_CONDITION: 'Set Filter By Condition',
   SET_SORT: 'Set Sort',
-  SET_CATEGORY: 'Set Category'
+  SET_CATEGORY: 'Set Category',
+  VIEW_LISTING: 'View Listing'
 }

@@ -17,7 +17,8 @@ class ListingShow extends React.Component {
     // debugger
     this.state = {
       quantity: 1,
-      isLoading: true
+      isLoading: true,
+      isTracked: false
     }
 
     this.toggleListingStatus = this.toggleListingStatus.bind(this)
@@ -34,6 +35,17 @@ class ListingShow extends React.Component {
     this.props.getListing(this.props.match.params.listingId).then(() => {
       this.setState({ isLoading: false })
     })
+  }
+
+  componentDidUpdate(prevProps, nextProps) {
+    if (prevProps.listing && !nextProps.isLoading && !this.state.isTracked) {
+      trackEvent({
+        eventName: EVENTS.VIEW_LISTING,
+        eventProperties: { title: prevProps.listing.title }
+      })
+
+      this.setState({ isTracked: true })
+    }
   }
 
   // componentWillReceiveProps(nextProps){
