@@ -48,7 +48,7 @@
   border: 1px solid #e1e3df;
   border-bottom-color: #cbccc9;
   display: grid;
-  grid-template-columns: 4fr 1.5fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .cart-index-item-photo {
@@ -167,6 +167,7 @@
   background-image: image-url('payment_venmo.png');
   background-repeat: no-repeat;
   width: 100%;
+  min-width: 300px;
   height: 100%;
   margin-top: 20px;
   box-sizing: border-box;
