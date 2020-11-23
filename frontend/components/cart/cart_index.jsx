@@ -55,7 +55,7 @@ const CartIndex = (props) => {
             <div className="total-amount">Item(s) total: ${sum}</div>
 
             <div className="payment-container">
-              <p>Scan QR Code for payment</p>
+              <p>Scan or Tap QR Code for payment</p>
               <p>Venmo ID: @castleandchair</p>
               <a
                 href="https://venmo.com/code?user_id=1631646868570112774"
