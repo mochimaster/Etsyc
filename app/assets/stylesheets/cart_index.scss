@@ -40,15 +40,15 @@
 }
 
 .cart-index-section-wrapper {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-bottom: 30px;
   border-radius: 3px;
   background-color: #fff;
   border: 1px solid #e1e3df;
   border-bottom-color: #cbccc9;
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 4fr 1.5fr;
 }
 
 .cart-index-item-photo {
@@ -166,10 +166,15 @@
 #payment-venmo {
   background-image: image-url('payment_venmo.png');
   background-repeat: no-repeat;
-  height: 20%;
-  min-height: 20%;
   width: 100%;
+  height: 100%;
   margin-top: 20px;
-  background-size: 150px;
   box-sizing: border-box;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.payment-container {
+  height: 500px;
 }

@@ -54,16 +54,18 @@ const CartIndex = (props) => {
           <div className="cart-index-checkout">
             <div className="total-amount">Item(s) total: ${sum}</div>
 
-            <a
-              href="https://venmo.com/code?user_id=1631646868570112774"
-              target="_blank"
-            >
-              <img
-                id="payment-venmo"
-                className="payment-venmo"
-                aria-label="Payment - Venmo"
-              ></img>
-            </a>
+            <div className='payment-container'>
+              <a
+                href="https://venmo.com/code?user_id=1631646868570112774"
+                target="_blank"
+              >
+                <img
+                  id="payment-venmo"
+                  className="payment-venmo"
+                  aria-label="Payment - Venmo"
+                ></img>
+              </a>
+            </div>
           </div>
         </div>
       </div>
