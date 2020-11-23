@@ -54,21 +54,6 @@ const CartIndex = (props) => {
           <div className="cart-index-checkout">
             <div className="total-amount">Item(s) total: ${sum}</div>
 
-            <div className="checkout-instructions">Checkout instructions:</div>
-            <p>
-              1. Venmo the Item(s) total amount to the Venmo account displayed
-              below.
-            </p>
-            <p>
-              2. After payment, text 510-936-1639 to confirm your payment and
-              the item(s) number you are purchasing.
-            </p>
-            <p>3. Pick up time and address will be coordinated through text.</p>
-            <p>
-              4. Delivery can be arranged through Lugg. Fee varies by location.
-              It ranges between $70 - $150 around the Bay Area.
-            </p>
-
             <a
               href="https://venmo.com/code?user_id=1631646868570112774"
               target="_blank"
