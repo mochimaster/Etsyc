@@ -56,7 +56,13 @@ const CartIndex = (props) => {
 
             <div className="payment-container">
               <p>Scan or Tap QR Code for payment</p>
-              <p>Venmo ID: @castleandchair</p>
+              Venmo ID: {' '}
+              <a
+                href="https://venmo.com/code?user_id=1631646868570112774"
+                target="_blank"
+              >
+                @castleandchair
+              </a>
               <a
                 href="https://venmo.com/code?user_id=1631646868570112774"
                 target="_blank"
