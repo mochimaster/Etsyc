@@ -31,6 +31,24 @@ const Header = (props) => {
     </Link>
   )
 
+  const sellLink =
+    props.currentUser && props.currentUser.username === 'kee' ? (
+      <li className="icon-sell-etsy">
+        <Link
+          onClick={() => {
+            trackEvent({ eventName: EVENTS.SELL_ON_HERE })
+          }}
+          to={`/listings/new`}
+          className="text-sell-etsy"
+          href=""
+        >
+          Sell on here
+        </Link>
+      </li>
+    ) : (
+      <li></li>
+    )
+
   return (
     <div id="global-header" className="header-nav-top-level">
       <header className="header-nav-inner">
@@ -48,18 +66,7 @@ const Header = (props) => {
         </div>
 
         <ul className="account-nav">
-          <li className="icon-sell-etsy">
-            <Link
-              onClick={() => {
-                trackEvent({ eventName: EVENTS.SELL_ON_HERE })
-              }}
-              to={`/listings/new`}
-              className="text-sell-etsy"
-              href=""
-            >
-              Sell on here
-            </Link>
-          </li>
+          {sellLink}
           {navBar}
           <li>
             <Link to="/" className="icon-img-discover">
