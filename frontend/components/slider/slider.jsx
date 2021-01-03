@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import { useSwipeable } from 'react-swipeable'
+
 import LeftArrow from './left_arrow'
 import RightArrow from './right_arrow'
 import { sliderThumbnails } from './slider_thumbnail'
@@ -59,8 +61,15 @@ const Slider = (props) => {
     ''
   )
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => goNextSlide(),
+    onSwipedRight: () => goPrevSlide(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  })
+
   return images.length <= 1 ? (
-    <div>
+    <div {...handlers}>
       <img
         className={`slider-image ${additionalClassName}`}
         src={images[0]}
@@ -71,7 +80,7 @@ const Slider = (props) => {
       {modalX}
     </div>
   ) : (
-    <div className="slider">
+    <div {...handlers} className="slider">
       <div className="slider-wrapper">
         <LeftArrow goPrevSlide={goPrevSlide} />
         <RightArrow goNextSlide={goNextSlide} />
