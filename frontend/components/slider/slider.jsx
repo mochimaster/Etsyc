@@ -64,6 +64,8 @@ const Slider = (props) => {
   const handlers = useSwipeable({
     onSwipedLeft: () => goNextSlide(),
     onSwipedRight: () => goPrevSlide(),
+    onSwipedUp: () => props.closeModal(),
+    onSwipedDown: () => props.closeModal(),
     preventDefaultTouchmoveEvent: true,
     trackMouse: true
   })
