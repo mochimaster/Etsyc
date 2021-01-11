@@ -62,10 +62,14 @@ const Slider = (props) => {
   )
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => goNextSlide(),
-    onSwipedRight: () => goPrevSlide(),
-    onSwipedUp: () => props.closeModal(),
-    onSwipedDown: () => props.closeModal(),
+    onSwipedLeft: () =>
+      window.visualViewport.scale === 1 ? goNextSlide() : undefined,
+    onSwipedRight: () =>
+      window.visualViewport.scale === 1 ? goPrevSlide() : undefined,
+    onSwipedUp: () =>
+      window.visualViewport.scale === 1 ? props.closeModal() : undefined,
+    onSwipedDown: () =>
+      window.visualViewport.scale === 1 ? props.closeModal() : undefined,
     preventDefaultTouchmoveEvent: true,
     trackMouse: true
   })
