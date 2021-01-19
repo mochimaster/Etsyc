@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDisabledListingsByUserId: (userId) =>
-      dispatch(getDisabledListingsByUserId(userId))
+    getDisabledListingsByUserId: (userId, page, sortOption, filters) =>
+      dispatch(getDisabledListingsByUserId(userId, page, sortOption, filters))
   }
 }
 
