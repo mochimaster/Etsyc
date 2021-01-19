@@ -1,5 +1,7 @@
 import { getListings, searchListing } from '../../actions/listing_actions'
 import { getListingsByCategory } from '../../actions/category_actions'
+import { getDisabledListingsByUserId } from '../../actions/home_actions'
+
 import { connect } from 'react-redux'
 import { selectListingsByAuthor } from '../../reducers/selectors'
 import PaginationAll from './pagination'
@@ -15,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
     page: state.entities.pagination.page,
     pages: state.entities.pagination.pages,
     sortOption: state.entities.sortOption,
-    filters: state.entities.filters
+    filters: state.entities.filters,
+    disabledListings: state.entities.disabledListings
   }
 }
 
@@ -25,7 +28,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getListings(page, sortOption, filters)),
     getListingsByCategory: (categoryId, page, filters) =>
       dispatch(getListingsByCategory(categoryId, page, filters)),
-    searchListing: (title, page) => dispatch(searchListing(title, page))
+    searchListing: (title, page) => dispatch(searchListing(title, page)),
+    getDisabledListingsByUserId: (userId, page, sortOption, filters) =>
+      dispatch(getDisabledListingsByUserId(userId, page, sortOption, filters))
   }
 }
 

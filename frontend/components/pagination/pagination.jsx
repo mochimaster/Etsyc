@@ -75,6 +75,16 @@ class PaginationAll extends React.Component {
           pages: this.props.pages
         })
       })
+    } else if (this.props.match.url.slice(-5) === '/home') {
+      const userId = this.props.match.params.userId
+
+      this.props.getDisabledListingsByUserId(userId).then((res) => {
+        this.setState({
+          listings: res.disabledListings,
+          page: this.props.page,
+          pages: res.pages
+        })
+      })
     }
   }
 
@@ -138,6 +148,17 @@ class PaginationAll extends React.Component {
             filters: this.props.filters
           })
         )
+    } else if (this.props.match.url.slice(-5) === '/home') {
+      this.props
+        .getDisabledListingsByUserId(this.props.match.params.userId, pageNum)
+        .then(() =>
+          this.setState({
+            listings: this.props.disabledListings,
+            page: this.props.page,
+            pages: this.props.pages,
+            filters: this.props.filters
+          })
+        )
     }
 
     // } else if (this.props.match.url === "/listings"){
@@ -146,7 +167,10 @@ class PaginationAll extends React.Component {
   }
 
   render() {
-    if (this.props.listings && this.props.listings.length) {
+    if (
+      this.props.disabledListings.length ||
+      (this.props.listings && this.props.listings.length)
+    ) {
       return (
         <div className="pagination-wrapper">
           <Pagination
