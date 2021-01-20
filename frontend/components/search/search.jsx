@@ -8,9 +8,17 @@ const Search = (props) => {
     props.location.search.slice(7).replace(/%20/g, ' ')
   )
 
+  const [isHome, setHome] = useState(
+    props.location.pathname.slice(-5) === '/home' || false
+  )
+
   const updateTitle = ({ target: { value } }) => {
     setTitle(value)
   }
+
+  useEffect(() => {
+    setHome(props.location.pathname.slice(-5) === '/home')
+  }, [props.location.pathname])
 
   const handleSubmit = (e) => {
     trackEvent({
@@ -20,7 +28,7 @@ const Search = (props) => {
 
     e.preventDefault()
     props.history.push(`/search?query=${title}`)
-    props.search({ title })
+    props.search({ title, isDisabled: isHome })
   }
 
   return (

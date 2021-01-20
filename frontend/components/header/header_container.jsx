@@ -5,7 +5,7 @@ import Header from './header'
 import { openModal } from '../../actions/modal_actions'
 import { searchListing } from '../../actions/listing_actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const currentSession = state.session.id ? state.session.id : 0
 
   return {
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     openModal: (modal) => dispatch(openModal(modal)),
-    searchListing: (title) => dispatch(searchListing(title))
+    searchListing: (title, page, isDisabled) =>
+      dispatch(searchListing(title, page, isDisabled))
   }
 }
 
