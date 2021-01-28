@@ -61,7 +61,7 @@ const App = () => {
             component={CartContainer}
           />
           <Route exact path="/listings" component={ListingIndexContainer} />
-          <Route path="/search" component={ListingIndexContainer} />
+          <Route path="/listings/search" component={ListingIndexContainer} />
           <ProtectedRoute
             path="/listings/:listingId/edit"
             component={ListingEditFormContainer}
@@ -73,7 +73,7 @@ const App = () => {
         </Switch>
         <Switch>
           <Route
-            path={['/search', '/categories', '/users/:userId/home']}
+            path={['/listings/search', '/categories', '/users/:userId/home']}
             component={PaginationAll}
           />
           <Route exact path={['/listings']} component={PaginationAll} />

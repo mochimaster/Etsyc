@@ -113,12 +113,20 @@ class ListingIndex extends React.Component {
           </div>
         )
       } else {
-        return <div className="body">You have no disabled listings.</div>
+        setTimeout(() => {
+          return <div className="body">You have no disabled listings.</div>
+        }, 5000)
+
+        return (
+          <div id="react-loading" className="react-loading">
+            <ReactLoading type="bubbles" color="black" />
+          </div>
+        )
       }
     }
 
     if (
-      this.props.match.path == '/search' &&
+      this.props.match.path == '/listings/search' &&
       this.props.listings === 0
       // this.props.listings.length == 0
     ) {

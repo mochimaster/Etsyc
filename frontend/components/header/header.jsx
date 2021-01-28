@@ -61,7 +61,7 @@ const Header = (props) => {
 
         <div className="header-search-div-wrapper">
           <div className="header-search-bar-outer">
-            <Search search={props.searchListing} />
+            <Search {...props} />
           </div>
         </div>
 

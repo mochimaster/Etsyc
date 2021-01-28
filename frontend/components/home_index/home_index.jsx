@@ -9,7 +9,8 @@ const HomeIndex = (props) => {
 
   return (
     <div>
-      <ListingIndex listings={props.disabledListings} match={props.match} />
+      {/* <ListingIndex listings={props.disabledListings} match={props.match} /> */}
+      <ListingIndex listings={props.listings} match={props.match} />
     </div>
   )
 }

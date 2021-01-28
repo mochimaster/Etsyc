@@ -6,11 +6,14 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show] do
       resources :listings, only: [:index]
       resources :carts, except: [:new]
-      resources :home, only: [:index]
+      resources :home, only: [:index] do
+        resources :search, only: [:index]
+      end
     end
     resources :listings, defaults: {format: :json} do
       resources :reviews, only: [:index]
       patch '/renew', to: 'listings#renew'
+      resources :search, only: [:index]
     end
     resources :reviews, except: [:new, :index],defaults: {format: :json}
     resource :session, only: [:create, :destroy]
