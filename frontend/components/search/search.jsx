@@ -33,17 +33,25 @@ const Search = (props) => {
       eventProperties: { 'Search Term': title }
     })
 
-    const currentPathWithoutSearch = props.location.pathname.replace(
-      '/search',
-      ''
-    )
+    let finalPath = props.location.pathname.replace('/search', '')
+
+    if (finalPath.indexOf('/listings') >= 0) {
+      finalPath = `/${finalPath.split('/')[1]}`
+    } else if (finalPath.indexOf('/categories') >= 0) {
+      /**
+       * Search within category currently not supported. Needs to be extended.
+       * If search within categories, redirect to search within listings.
+       */
+
+      finalPath = '/listings'
+    }
 
     let sortOption
     let filters
 
     e.preventDefault()
     props.history.push({
-      pathname: `${currentPathWithoutSearch}/search`,
+      pathname: `${finalPath}/search`,
       search: `query=${title}`
     })
 
