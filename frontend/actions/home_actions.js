@@ -6,14 +6,16 @@ export const getDisabledListingsByUserId = (
   userId,
   page,
   sortOption,
-  filters
+  filters,
+  search = ''
 ) => {
   return (dispatch) => {
     return ApiUtil.getDisabledListingsByUserId(
       userId,
       page,
       sortOption,
-      filters
+      filters,
+      search
     ).then(({ disabled_listings, page, total_pages }) => {
       return dispatch({
         type: RECEIVE_DISABLED_LISTINGS,

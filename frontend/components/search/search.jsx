@@ -4,12 +4,16 @@ import { withRouter } from 'react-router-dom'
 import { trackEvent, EVENTS } from '../../../utils/track'
 
 const Search = (props) => {
-  const [title, setTitle] = useState(
-    props.location.search.slice(7).replace(/%20/g, ' ')
-  )
+  const userId = props.currentUser && props.currentUser.id
+
+  const queryString = props.location.search
+  const urlParams = new URLSearchParams(queryString)
+  const searchTerm = urlParams.get('query')
+
+  const [title, setTitle] = useState(searchTerm)
 
   const [isHome, setHome] = useState(
-    props.location.pathname.slice(-5) === '/home' || false
+    props.location.pathname.indexOf('/home') > 0 ? true : false
   )
 
   const updateTitle = ({ target: { value } }) => {
@@ -17,7 +21,10 @@ const Search = (props) => {
   }
 
   useEffect(() => {
-    setHome(props.location.pathname.slice(-5) === '/home')
+    const atHomePath =
+      props.location.pathname.indexOf('/home') > 0 ? true : false
+
+    setHome(atHomePath)
   }, [props.location.pathname])
 
   const handleSubmit = (e) => {
@@ -26,9 +33,31 @@ const Search = (props) => {
       eventProperties: { 'Search Term': title }
     })
 
+    const currentPathWithoutSearch = props.location.pathname.replace(
+      '/search',
+      ''
+    )
+
+    let sortOption
+    let filters
+
     e.preventDefault()
-    props.history.push(`/search?query=${title}`)
-    props.search({ title, isDisabled: isHome })
+    props.history.push({
+      pathname: `${currentPathWithoutSearch}/search`,
+      search: `query=${title}`
+    })
+
+    if (isHome) {
+      props.getDisabledListingsByUserId(
+        userId,
+        props.page,
+        sortOption,
+        filters,
+        title
+      )
+    } else {
+      props.searchListing({ title, isDisabled: isHome })
+    }
   }
 
   return (

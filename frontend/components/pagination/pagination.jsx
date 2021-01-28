@@ -8,7 +8,7 @@ class PaginationAll extends React.Component {
     super(props)
     this.state = {
       listings: props.listings,
-      page: props.location.search ? props.location.search.slice(6) : 1,
+      page: 1,
       pages: 1,
       filters: props.filters
     }
@@ -18,6 +18,12 @@ class PaginationAll extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const { pages, sortOption, filters } = this.props
     const { page } = this.state
+
+    if (prevProps.match.url !== this.props.match.url) {
+      this.setState({
+        page: 1
+      })
+    }
 
     if (pages !== prevState.pages) {
       this.setState({
@@ -63,7 +69,7 @@ class PaginationAll extends React.Component {
           filters: this.props.filters
         })
       })
-    } else if (this.props.match.url === '/search') {
+    } else if (this.props.match.url === '/listings/search') {
       const title = this.props.location.search.slice(7)
       const pageParams = this.props.location.search
       const pageNum = parseInt(pageParams.slice(6))
@@ -120,7 +126,7 @@ class PaginationAll extends React.Component {
             filters: this.props.filters
           })
         })
-    } else if (this.props.match.url === '/search') {
+    } else if (this.props.match.url === '/listings/search') {
       const searchQuery = this.props.location.search.slice(7)
       // this.props.history.push(`/${this.props.location.pathname}?query=${searchQuery}&page=${pageNum}`);
 
