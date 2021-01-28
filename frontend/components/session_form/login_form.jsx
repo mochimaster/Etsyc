@@ -27,7 +27,10 @@ const LoginForm = (props) => {
         })
       : props.login(user).then(() => {
           props.closeModal()
-          props.history.push('/')
+
+          if (props.location.pathname === '/error') {
+            props.history.push('/')
+          }
         })
   }
 
