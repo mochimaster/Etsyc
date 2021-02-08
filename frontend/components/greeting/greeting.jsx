@@ -4,7 +4,7 @@ import { MODAL_TYPE } from '../../../utils/constants'
 
 const Greeting = ({ openModal }) => (
   <React.Fragment>
-    <li>
+    <li className="sign-in-link">
       <button
         className="header-nav-register"
         onClick={() => openModal(MODAL_TYPE.SIGN_UP)}
@@ -13,7 +13,10 @@ const Greeting = ({ openModal }) => (
       </button>
     </li>
     <li id="sign-in-link" className="sign-in-link">
-      <button className="header-nav-signin" onClick={() => openModal(MODAL_TYPE.LOGIN)}>
+      <button
+        className="header-nav-signin"
+        onClick={() => openModal(MODAL_TYPE.LOGIN)}
+      >
         Sign In
       </button>
     </li>
