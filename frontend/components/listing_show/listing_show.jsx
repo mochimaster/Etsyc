@@ -18,7 +18,8 @@ class ListingShow extends React.Component {
     this.state = {
       quantity: 1,
       isLoading: true,
-      isTracked: false
+      isTracked: false,
+      displayAddToCartToolTip: false
     }
 
     this.toggleListingStatus = this.toggleListingStatus.bind(this)
@@ -279,29 +280,46 @@ class ListingShow extends React.Component {
               />
             </div>
 
-            <div className="listing-details add-to-cart">
-              <button
-                onClick={() => {
-                  trackEvent({
-                    eventName: EVENTS.ADD_TO_CART,
-                    eventProperties: { title: this.props.listing.description }
-                  })
-                  return this.props
-                    .createCart({
-                      quantity: this.state.quantity,
-                      listing_id: this.props.listing.id,
-                      user_id: this.props.sessionId
+            <tooltip
+              className="add-to-cart-button-tooltip"
+              onMouseEnter={() =>
+                this.setState({ displayAddToCartToolTip: true })
+              }
+              onMouseLeave={() =>
+                this.setState({ displayAddToCartToolTip: false })
+              }
+            >
+              {!this.props.sessionId && this.state.displayAddToCartToolTip ? (
+                <div className="add-to-cart-tooltip">
+                  You must sign in to use cart.
+                </div>
+              ) : (
+                <div className="add-to-cart-tooltip"></div>
+              )}
+              <div className="listing-details add-to-cart">
+                <button
+                  onClick={() => {
+                    trackEvent({
+                      eventName: EVENTS.ADD_TO_CART,
+                      eventProperties: { title: this.props.listing.description }
                     })
-                    .then(() =>
-                      this.props.history.push(
-                        `/users/${this.props.sessionId}/carts`
+                    return this.props
+                      .createCart({
+                        quantity: this.state.quantity,
+                        listing_id: this.props.listing.id,
+                        user_id: this.props.sessionId
+                      })
+                      .then(() =>
+                        this.props.history.push(
+                          `/users/${this.props.sessionId}/carts`
+                        )
                       )
-                    )
-                }}
-              >
-                Add to cart
-              </button>
-            </div>
+                  }}
+                >
+                  Add to cart
+                </button>
+              </div>
+            </tooltip>
 
             <div className="listing-details listing-details-condition">
               <label className="condition-label">Condition: </label>

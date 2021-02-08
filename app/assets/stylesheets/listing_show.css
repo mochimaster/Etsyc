@@ -1,16 +1,18 @@
 .listing-show-content-wrapper {
-  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: 'Graphik Webfont', -apple-system, system-ui, Roboto, 'Droid Sans',
+    'Segoe UI', Helvetica, Arial, sans-serif;
   margin-bottom: 40px;
 }
 
-.listing-show-author-buttons{
+.listing-show-author-buttons {
   display: grid;
   grid-gap: 10px;
   padding: 20px 40px 20px 40px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.listing-show-author-buttons>.btn ,.listing-show-author-buttons.btn-primary{
+.listing-show-author-buttons > .btn,
+.listing-show-author-buttons.btn-primary {
   width: 100%;
   justify-self: center;
 }
@@ -21,48 +23,46 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-
   /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
 }
 
-.listing-header-seller-name{
+.listing-header-seller-name {
   margin-bottom: 15px;
 }
 
-.listing-header-seller-name a{
+.listing-header-seller-name a {
   font-size: 20px;
   font-weight: 500;
   text-decoration: none;
   color: black;
 }
 
-.listing-header-seller-name a{
+.listing-header-seller-name a {
   color: #757575;
   font-size: 14px;
 }
 
-.listing-seller-phone-number > a{
+.listing-seller-phone-number > a {
   color: black;
   font-size: 14px;
 }
 
-.listing-header-seller-name a:hover{
+.listing-header-seller-name a:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-
-.listing-header-seller-thumbnails{
+.listing-header-seller-thumbnails {
   justify-self: end;
 }
 
-.listing-header-seller-left{
+.listing-header-seller-left {
   display: grid;
   grid-template-columns: 1fr;
   overflow: hidden;
 }
 
-.listing-show-body-wrapper{
+.listing-show-body-wrapper {
   display: grid;
   grid-template-columns: 65fr 35fr;
   /* grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); */
@@ -72,55 +72,49 @@
   grid-column-gap: 24px;
 }
 
-
-
 .listing-show-body-wrapper .listing-image {
   min-height: 0;
   /* max-height: 760px; */
   /* overflow: hidden; */
 }
 
-
-.listing-left-half{
-    overflow: hidden;
-    /* height: 70vh; */
+.listing-left-half {
+  overflow: hidden;
+  /* height: 70vh; */
 }
 
-
 .listing-details .listing-right-half {
-
   font-size: 14px;
   background-color: rgb(255, 255, 255);
   color: rgb(34, 34, 34);
 }
 
-.listing-details .listing-details-title{
+.listing-details .listing-details-title {
   font-family: Guardian-EgypTT, Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 26px;
   margin-bottom: 12px;
   overflow-wrap: break-word;
-
 }
 
-.input-quantity .input-quantity-input{
+.input-quantity .input-quantity-input {
   padding-left: 10px;
 }
 
-.listing-details .listing-details-price{
+.listing-details .listing-details-price {
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 12px;
 }
 
-.listing-details .listing-details-quantity{
+.listing-details .listing-details-quantity {
   font-size: 14px;
   font-weight: 100;
   margin-bottom: 3px;
 }
 
-.select-custom{
+.select-custom {
   font-size: 11px;
   height: 38px;
   width: 63px;
@@ -128,7 +122,7 @@
   padding-left: 10px;
 }
 
-.listing-details .add-to-cart > button{
+.listing-details .add-to-cart > button {
   display: block;
   height: 38px;
   border: 1px solid black;
@@ -143,30 +137,32 @@
   font-weight: bold;
   border-radius: 3px;
   margin-bottom: 35px;
-
 }
 
-.listing-details .add-to-cart{
+.listing-details .add-to-cart {
   margin-bottom: 35px; /* 14 + 21*/
-  border-bottom: #E1E3DF 1px solid;
-
+  border-bottom: #e1e3df 1px solid;
 }
 
-.listing-details .add-to-cart button:hover{
+.listing-details .add-to-cart button:hover {
   background-color: #3c3c3c;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-.listing-description{
+.add-to-cart-tooltip {
+  min-height: 25px;
+}
+
+.listing-description {
   margin-top: 18px; /* 14 + 21*/
-  border-top: #E1E3DF 1px solid;
-  border-bottom: #E1E3DF 1px solid;
+  border-top: #e1e3df 1px solid;
+  border-bottom: #e1e3df 1px solid;
   padding: 12px 0 12px 0;
   font-weight: 500;
   font-size: 16px;
 }
 
-.listing-description > p{
+.listing-description > p {
   font-size: 14px;
   font-weight: normal;
   margin-top: 0px;
@@ -174,33 +170,28 @@
   padding-top: 6px;
 }
 
-.listing-reviews{
-
-}
-
-.review-form-wrapper{
+.review-form-wrapper {
   margin-top: 15px;
 }
 
-.review-form-input{
+.review-form-input {
   width: 300px;
   height: 120px;
 }
 
-.review-input-title{
+.review-input-title {
   justify-self: top;
-
 }
 
-.overview{
+.overview {
   font-size: 14px;
 }
 
-.title-label{
+.title-label {
   font-weight: 500;
 }
 
-.photo-x{
+.photo-x {
   float: right;
   font-size: 15px;
   margin-right: 5px;
