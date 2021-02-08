@@ -74,6 +74,7 @@ const App = () => {
           />
           <Route path="/listings/:listingId" component={ListingShowContainer} />
           <Route exact path="/error" component={ErrorShow} />
+          <Redirect exact from="/" to="/listings" />
           <Route component={NotFound} />
         </Switch>
         <Switch>
