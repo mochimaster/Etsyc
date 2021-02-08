@@ -16,7 +16,8 @@ import PaginationAll from '../components/pagination/pagination_container'
 import SortDropDownContainer from './sort/sort_container'
 import HomeIndexContainer from './home_index/home_index_container'
 import ConditionDropDownContainer from './condition/condition_container'
-import { faq } from './faq/faq'
+import { Faq } from './faq/faq'
+import NotFound from './not_found'
 
 import ErrorShow from './error/error'
 import Footer from './footer/footer'
@@ -28,7 +29,7 @@ const App = () => {
       <Route component={HeaderContainer} />
       <div className="body">
         <Switch>
-          <Route path={'/faq'} component={faq} />
+          <Route path={'/faq'} component={Faq} />
           <Route path={['/']} component={CategoryIndexContainer} />
         </Switch>
 
@@ -73,7 +74,7 @@ const App = () => {
           />
           <Route path="/listings/:listingId" component={ListingShowContainer} />
           <Route exact path="/error" component={ErrorShow} />
-          <Redirect exact from="/" to="/listings" />
+          <Route component={NotFound} />
         </Switch>
         <Switch>
           <Route
@@ -84,7 +85,6 @@ const App = () => {
         </Switch>
       </div>
       <Footer />
-      <Redirect from="/" to="/listings" />
     </div>
   )
 }

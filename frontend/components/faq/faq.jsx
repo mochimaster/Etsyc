@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const faq = () => (
+export const Faq = () => (
   <div className="faq-page-container">
     <h1 className="faq-title">Frequently Asked Questions</h1>
     <div className="faq-container">
@@ -75,7 +75,9 @@ export const faq = () => (
         <div className="answer-left">A.</div>
         <div className="answer-right">
           Condition of each piece is disclosed in the listing. Please refer to
-          the listing.
+          the listing. Every item listed has been inspected and all issues are
+          disclosed in the listing so that you have no surprises with your
+          purchase.
         </div>
       </div>
     </div>

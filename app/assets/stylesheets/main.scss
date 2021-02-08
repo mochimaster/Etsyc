@@ -378,6 +378,17 @@ li {
   text-decoration: underline;
 }
 
+.page-body-container {
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.page-not-found-header,
+.page-not-found-link {
+  font-size: 30px;
+}
+
 // [class*="icon-"] {
 //   border: 5px solid red;
 //   display: inline-block !important;
