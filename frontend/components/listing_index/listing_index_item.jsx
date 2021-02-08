@@ -40,12 +40,14 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
         </Link>
       </div>
       <div className="listing-item-title">
-        <Link
-          className="listing-item-title-link"
-          to={`/listings/${listing.id}`}
-        >
-          {listing.title}
-        </Link>{' '}
+        <tooltip title={listing.title}>
+          <Link
+            className="listing-item-title-link"
+            to={`/listings/${listing.id}`}
+          >
+            {listing.title}
+          </Link>
+        </tooltip>
         <br />
       </div>
       <div className="listing-item-author">
