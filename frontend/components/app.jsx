@@ -16,6 +16,7 @@ import PaginationAll from '../components/pagination/pagination_container'
 import SortDropDownContainer from './sort/sort_container'
 import HomeIndexContainer from './home_index/home_index_container'
 import ConditionDropDownContainer from './condition/condition_container'
+import { faq } from './faq/faq'
 
 import ErrorShow from './error/error'
 import Footer from './footer/footer'
@@ -26,7 +27,11 @@ const App = () => {
       <Modal />
       <Route component={HeaderContainer} />
       <div className="body">
-        <CategoryIndexContainer />
+        <Switch>
+          <Route path={'/faq'} component={faq} />
+          <Route path={['/']} component={CategoryIndexContainer} />
+        </Switch>
+
         <div className="filters">
           <Route
             exact
@@ -68,8 +73,7 @@ const App = () => {
           />
           <Route path="/listings/:listingId" component={ListingShowContainer} />
           <Route exact path="/error" component={ErrorShow} />
-          <Redirect to="/listings" />
-          <Redirect to="/" />
+          <Redirect exact from="/" to="/listings" />
         </Switch>
         <Switch>
           <Route
@@ -80,79 +84,9 @@ const App = () => {
         </Switch>
       </div>
       <Footer />
+      <Redirect from="/" to="/listings" />
     </div>
   )
 }
 
-// <Route path="/users/:userId/carts" component={CartContainer} />
-
-// <Route exact path="/" render={() => null} />
-// <Route path="/listings/:listingId" component={ListingShowContainer} />
 export default App
-
-// <AuthRoute exact path="/login" component={LogInFormContainer} />
-// <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-// const mapStateToProps = state => {
-//   // debugger
-//   let currentSession;
-//   if (state.session.id) {
-//     currentSession = state.session.id
-//   } else {
-//     currentSession = 0
-//   }
-//
-//   return {
-//     currentUser: state.entities.users[currentSession]
-//   }
-// }
-// // currentUser: state.entities.users[state.session.id]
-//
-// const mapDispatchToProps = dispatch => {
-//   return {
-//   openModal: (modal) => dispatch(openModal(modal))
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// <div id="global-header" className="header-nav-top-level">
-//   <header className="header-nav-inner">
-//     <div id="craftsy-logo" className="header-site-logo">
-//       <a href="/" aria-label="Craftsy" >Craftsy </a>
-//     </div>
-//     <div className="header-search-div-wrapper">
-//       <div className="header-search-bar-outer">
-//         <form id="nav-search" className="header-search-nav-form" method="" action="">
-//           <div className="header-search-bar-inner">
-//             <div className="header-search-bar-input-wrapper" >
-//               <input id="search-query" type="text"
-//               defaultValue="Search for items or shops"/>
-//             </div>
-//             <div className="header-search-button-wrapper">
-//               <button className="btn btn-primary">Search</button>
-//             </div>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//
-//
-//
-//       <ul className="account-nav">
-//         <li className = "icon-sell-etsy"><a className="text-sell-etsy" href="">Sell on Etsy</a></li>
-//         {navBar}
-//         <li>
-//           <a href="" className="icon-img-discover">
-//             <i class="fas fa-briefcase"></i><br/>Discover
-//           </a>
-//         </li>
-//         <li>
-//           <a href="" className="icon-img-cart">
-//             <i class="fas fa-shopping-cart"></i><br/>Cart
-//           </a>
-//         </li>
-//       </ul>
-//
-//   </header>
-//
-// </div>

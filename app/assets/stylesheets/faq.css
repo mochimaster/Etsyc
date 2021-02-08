@@ -1,0 +1,42 @@
+.faq-page-container {
+  padding-left: 32px;
+  padding-right: 32px;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+}
+
+.faq-title {
+  padding: 40px 0 40px 0;
+}
+
+.question-container,
+.answer-container {
+  display: grid;
+  grid-template-columns: 50px auto;
+}
+
+.answer-container {
+  margin-bottom: 50px;
+}
+
+.faq-title {
+  font-weight: 700;
+  font-size: 44px;
+}
+
+.question-left,
+.answer-left {
+  color: rgba(128, 128, 128, 0.2);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.question-right {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.answer-right {
+  font-size: 16px;
+  font-weight: 230;
+}
