@@ -1,12 +1,10 @@
-
-
-.index-wrapper{
+.index-wrapper {
   padding: 0 40px 0 40px;
   display: grid;
   /* grid-template-columns: repeat(4, 1fr) */
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto,
-    "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: 'Graphik Webfont', -apple-system, system-ui, Roboto, 'Droid Sans',
+    'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
   line-height: 22.4px;
@@ -17,7 +15,7 @@
   display: grid;
 
 } */
-.listing-item-wrapper{
+.listing-item-wrapper {
   display: grid;
   /* grid-template-rows: 30% 10% 10% 10% 10%; */
   grid-template-rows: 6fr auto auto auto auto;
@@ -34,27 +32,27 @@
   overflow: hidden;
 }
 
-.listing-item-image > a > img{
+.listing-thumbnail {
   position: absolute;
   left: 50%;
   top: 50%;
   height: 100%;
   width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
-.listing-item-image{
-  border-radius: 2px; 
-  transition: box-shadow .3s;
+.listing-item-image {
+  border-radius: 2px;
+  transition: box-shadow 0.3s;
 }
 
-.listing-item-image:hover{
-  box-shadow: 0 0 15px gray; 
+.listing-item-image:hover {
+  box-shadow: 0 0 15px gray;
 }
 
-.index-wrapper > li{
+.index-wrapper > li {
   list-style: none;
   padding: 9px;
   /* Row below is for minimum height */
@@ -71,8 +69,7 @@
   white-space: nowrap;
 }
 
-
-.listing-item-title a{
+.listing-item-title a {
   text-decoration: none;
   color: rgb(34, 34, 34);
 }
@@ -80,19 +77,17 @@
 .index-wrapper .listing-item-author {
   font-size: 12px;
   line-height: 19.2px;
-  color: rgb(89,89,89);
+  color: rgb(89, 89, 89);
   text-decoration: none;
-
 }
 
-.listing-item-author >.listing-item-link{
+.listing-item-author > .listing-item-link {
   text-decoration: none;
   color: black;
 }
 
-.listing-item-author >.listing-item-link:hover{
+.listing-item-author > .listing-item-link:hover {
   text-decoration: underline;
-
 }
 
 .index-wrapper .listing-item-price {
