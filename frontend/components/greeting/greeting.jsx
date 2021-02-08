@@ -20,14 +20,14 @@ const Greeting = ({ openModal }) => (
         Sign In
       </button>
     </li>
-    <li id="demo-sign-in-link" className="sign-in-link">
+    {/* <li id="demo-sign-in-link" className="sign-in-link">
       <button
         className="header-nav-signin demo-sign-in-link"
         onClick={() => openModal(MODAL_TYPE.DEMO)}
       >
         Demo User
       </button>
-    </li>
+    </li> */}
   </React.Fragment>
 )
 
