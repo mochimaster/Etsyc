@@ -53,7 +53,7 @@ const Header = (props) => {
     <div id="global-header" className="header-nav-top-level">
       <header className="header-nav-inner">
         <Link
-          to="/listings"
+          to="/"
           id="craftsy-logo"
           className="header-site-logo"
           aria-label="Craftsy"
@@ -69,11 +69,8 @@ const Header = (props) => {
           {sellLink}
           {navBar}
           <li>
-            <Link
-              to="/faq"
-              className="icon-img-discover icon-img-question"
-            >
-            <i class="far fa-question-circle"></i>
+            <Link to="/faq" className="icon-img-discover icon-img-question">
+              <i class="far fa-question-circle"></i>
               <br />
               FAQ
             </Link>
