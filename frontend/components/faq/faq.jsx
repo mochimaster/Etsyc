@@ -19,8 +19,8 @@ export const Faq = () => (
                  >
                    1273 Industrial Pkwy W Ste 750 Hayward, CA 94544
                  </a> */}
-          <a target="_blank" href="https://goo.gl/maps/xz8Bvjsv3M2YEEPr7">
-            2525 Whipple Rd Hayward CA 94544
+          <a target="_blank" href="https://goo.gl/maps/ZHrviBbQ2YwQQwiaA">
+            1273 Industrial Parkway West #750 94544
           </a>
           .
         </div>
@@ -78,6 +78,17 @@ export const Faq = () => (
           the listing. Every item listed has been inspected and all issues are
           disclosed in the listing so that you have no surprises with your
           purchase.
+        </div>
+      </div>
+
+      <div className="question-container">
+        <div className="question-left">Q.</div>
+        <div className="question-right">What form of payments do you accept?</div>
+      </div>
+      <div className="answer-container">
+        <div className="answer-left">A.</div>
+        <div className="answer-right">
+          We accept cash, Venmo, or Zelle.
         </div>
       </div>
     </div>
