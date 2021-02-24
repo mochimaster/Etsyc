@@ -11,7 +11,7 @@ export const Faq = () => (
       <div className="answer-container">
         <div className="answer-left">A.</div>
         <div className="answer-right">
-          We meet customers by appointment. Give us a call or send us a text to
+          We meet customers by appointment generally between the hours of 9AM - 7PM. Give us a call or send us a text to
           schedule an appointment. We are located at{' '}
           {/* <a
                    target="_blank"
@@ -46,12 +46,14 @@ export const Faq = () => (
       <div className="answer-container">
         <div className="answer-left">A.</div>
         <div className="answer-right">
+          Same day delivery around the Bay Area, California is available.
           Delivery goes through a 3rd party service -{' '}
           <a target="_blank" href="https://lugg.com/">
             Lugg
-          </a>
-          . Delivery fee generally cost $70 - $120 around the Bay Area. It will
-          be taken into your home.
+          </a>{' '}
+          and generally cost $70 - $120 for 1 mover or around $90 - $150 for 2
+          movers. You can text me your delivery address to get a more accurate
+          quote. Purchased pieces can be taken into your home.
         </div>
       </div>
 
@@ -83,13 +85,13 @@ export const Faq = () => (
 
       <div className="question-container">
         <div className="question-left">Q.</div>
-        <div className="question-right">What form of payments do you accept?</div>
+        <div className="question-right">
+          What form of payments do you accept?
+        </div>
       </div>
       <div className="answer-container">
         <div className="answer-left">A.</div>
-        <div className="answer-right">
-          We accept cash, Venmo, or Zelle.
-        </div>
+        <div className="answer-right">We accept cash, Venmo, or Zelle.</div>
       </div>
     </div>
   </div>
