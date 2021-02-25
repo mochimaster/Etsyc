@@ -38,7 +38,7 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
   return (
     <li className="listing-item-wrapper">
       <div className="listing-item-image">
-        <Link to={`/listings/${id}`}>
+        <Link to={`/listings/${id}/${title.replaceAll(' ', '-')}`}>
           <tooltip title={title}>{displayImage}</tooltip>
         </Link>
       </div>

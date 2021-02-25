@@ -46,11 +46,6 @@ class ListingShow extends React.Component {
       })
 
       this.setState({ isTracked: true })
-
-      const title = prevProps.listing.title.replaceAll(' ', '-')
-      const currentUrl = this.props.match.url
-
-      this.props.history.push(`${currentUrl}/${title}`)
     }
   }
 
