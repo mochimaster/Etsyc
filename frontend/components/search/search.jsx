@@ -49,6 +49,12 @@ const Search = (props) => {
     let sortOption
     let filters
 
+    if (
+      !(finalPath.indexOf('/users') >= 0 || finalPath.indexOf('/listings') >= 0)
+    ) {
+      finalPath = '/listings'
+    }
+
     e.preventDefault()
     props.history.push({
       pathname: `${finalPath}/search`,
