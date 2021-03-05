@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   private
   def redirect_to_castleandchair
-    domain_to_redirect_to = 'castleandchair.com'
+    domain_to_redirect_to = 'www.castleandchair.com'
     domain_exceptions = ['castleandchair.com', 'www.castleandchair.com']
     should_redirect = domain_exceptions.exclude? request.host
     new_url = "#{request.protocol}#{domain_to_redirect_to}#{request.fullpath}"
