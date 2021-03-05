@@ -64,7 +64,7 @@ class Api::CategoriesController < ApplicationController
         elsif sort_order == 'desc' &&  sort_param == :price
             @categories = Category.includes(:listing).where(listings: { status: [nil, true], condition: condition }).paginate(:page => params[:page]).where(category: params[:id]).order('listings.price DESC')
         else
-            @categories = Category.includes(:listing).where(listings: { status: [nil, true], condition: condition }).paginate(:page => params[:page]).where(category: params[:id]).order('listings.id')
+            @categories = Category.includes(:listing).where(listings: { status: [nil, true], condition: condition }).paginate(:page => params[:page]).where(category: params[:id]).order('renewed_at DESC')
         end
 
         @listings = @categories.map do |category| 
