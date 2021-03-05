@@ -26,26 +26,33 @@ class ListingShow extends React.Component {
   }
 
   updateQuantity(e) {
-    // debugger
     this.setState({ quantity: parseInt(e.target.value) })
   }
 
   componentDidMount() {
-    // debugger
-    // this.props.getListings();
     this.props.getListing(this.props.match.params.listingId).then(() => {
       this.setState({ isLoading: false })
     })
   }
 
-  componentDidUpdate(prevProps, nextProps) {
-    if (prevProps.listing && !nextProps.isLoading && !this.state.isTracked) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.listing && !prevState.isLoading && !this.state.isTracked) {
       trackEvent({
         eventName: EVENTS.VIEW_LISTING,
         eventProperties: { title: prevProps.listing.title }
       })
 
       this.setState({ isTracked: true })
+    }
+
+    if (
+      this.props.match.params.listingId !== prevProps.match.params.listingId
+    ) {
+      this.setState({ isLoading: true })
+
+      this.props.getListing(this.props.match.params.listingId).then(() => {
+        this.setState({ isLoading: false })
+      })
     }
   }
 
@@ -118,7 +125,7 @@ class ListingShow extends React.Component {
       )
     }
 
-    if (!this.props.listing) {
+    if (!this.props.listing && !this.state.loading) {
       return (
         <div className="error-message">
           Listing not found, please return to home page.

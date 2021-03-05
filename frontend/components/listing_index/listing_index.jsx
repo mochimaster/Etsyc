@@ -41,57 +41,6 @@ class ListingIndex extends React.Component {
     }
   }
 
-  // componentWillReceiveProps(newProps){
-  //   // if newProps params have userID , need to filter.
-  //   //
-  //   // if(this.props.)
-  //
-  //   // if (newProps.)
-  //
-  //
-  // }
-
-  //listingsByAuthor = (9) [{…}, {…}, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
-
-  // {match: {…}, location: {…}, history: {…}, staticContext: undefined, listings: Array(9), …}
-  // deleteListing: ƒ deleteListing(id)
-  // getListings: ƒ getListings()
-  // history: {length: 50, action: "PUSH", location: {…}, createHref: ƒ, push: ƒ, …}
-  // listings: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-  // listingsByAuthor: (9) [{…}, {…}, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
-  // location: {pathname: "/users/1/listings", search: "", hash: "", state: undefined}
-  // match: {path: "/users/:userId/listings", url: "/users/1/listings", isExact: true, params: {…}}
-
-  // componentWillReceiveProps(nextProps){
-  //
-  //   debugger
-  //   // if (!this.props.match.params){
-  //   // if(nextProps.match.params.userId){
-  //     console.log("inside if condition of component will receive props.")
-  //     this.setState({[this.props.listings]: nextProps.listingsByAuthor});
-  //   // }
-  //   debugger
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.post.id != nextProps.match.params.postId) {
-  //     this.props.fetchPost(nextProps.match.params.postId);
-  //   }
-  // }
-
-  // handlePage(e, {activePage}){
-  //   let goToPage = { activePage }
-  //   let pageNum = goToPage.activePage
-  //   // let pageString = pageNum.toString()
-
-  //   this.props.history.push({
-  //     pathname: "/listings",
-  //     search: `?page=${pageNum}`
-  //   });
-  //   this.props.getListings(pageNum);
-
-  // }
-
   render() {
     const currentUrl = this.props.match.url
     const rootUrl = currentUrl.split('/')[1]
