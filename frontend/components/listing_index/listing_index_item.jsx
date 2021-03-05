@@ -35,23 +35,32 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
 
   const { id, title, author_id, merchant_name, price } = listing
 
+  const titleForUrl = title.replaceAll(' ', '-')
+
   return (
     <li className="listing-item-wrapper">
       <div className="listing-item-image">
-        <Link to={`/listings/${id}/${title.replaceAll(' ', '-')}`}>
+        <Link to={`/listings/${id}/${titleForUrl}`}>
           <tooltip title={title}>{displayImage}</tooltip>
         </Link>
       </div>
       <div className="listing-item-title">
         <tooltip title={title}>
-          <Link className="listing-item-title-link" to={`/listings/${id}`}>
+          <Link
+            className="listing-item-title-link"
+            to={`/listings/${id}/${titleForUrl}`}
+          >
             {title}
           </Link>
         </tooltip>
         <br />
       </div>
       <div className="listing-item-author">
-        <Link className="listing-item-link" to={`/users/${author_id}/listings`}>
+        <Link
+          className="listing-item-link"
+          to={`/listings/${id}/${titleForUrl}`}
+          // to={`/users/${author_id}/listings`}
+        >
           {merchant_name}
         </Link>
       </div>

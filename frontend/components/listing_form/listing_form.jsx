@@ -1,7 +1,6 @@
 import ListingFormContainer from './listing_form_container'
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
 // import ListingEditFormContainer from './listing_edit_form_container';
 import { CONDITION } from '../../../utils/constants'
 import Compress from 'compress.js'
@@ -24,7 +23,8 @@ class ListingForm extends React.Component {
       // category: props.listing ? props.listing.category.split(",") : []
       category: props.listing ? props.listing.category : [],
       phoneNumber: props.phoneNumber ? props.phoneNumber : '',
-      photoHash: {}
+      photoHash: {},
+      isSubmitLoading: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -76,6 +76,7 @@ class ListingForm extends React.Component {
   }
 
   async handleSubmit(e) {
+    this.setState({ isSubmitLoading: true })
     e.preventDefault()
 
     const formData = new FormData()
@@ -115,15 +116,17 @@ class ListingForm extends React.Component {
     }
 
     if (this.props.formType === 'Create Listing') {
-      this.props
-        .action(formData)
-        .then(() => this.props.history.push('/listings'))
+      this.props.action(formData).then(() => {
+        this.props.history.push('/listings')
+        this.setState({ isSubmitLoading: false })
+      })
     } else {
       this.props.action(formData).then(() => {
         this.props.history.push(
           `/listings/${this.props.match.params.listingId}`
         )
         window.location.reload(false)
+        this.setState({ isSubmitLoading: false })
       })
     }
   }
@@ -463,7 +466,6 @@ class ListingForm extends React.Component {
               <label>Merchant Name:</label>
               {this.merchantExist()}
             </div>
-
             <div className="create-listing-phone-number">
               <label>Phone Number:</label>
               <br />
@@ -474,7 +476,6 @@ class ListingForm extends React.Component {
                 type="text"
               />
             </div>
-
             <div className="create-listing-title">
               <label>Product Name:</label>
               <label className="required"> * </label>
@@ -486,7 +487,6 @@ class ListingForm extends React.Component {
                 type="text"
               />
             </div>
-
             <div className="create-listing-overview">
               <label className="title-label">Overview:</label>
               <label className="required"> * </label>
@@ -499,7 +499,6 @@ class ListingForm extends React.Component {
                 {this.state.overview}
               </textarea>
             </div>
-
             <div className="create-listing-description">
               <label className="title-label">Description:</label>
               <label className="required"> * </label>
@@ -510,7 +509,6 @@ class ListingForm extends React.Component {
                 value={this.state.description}
               />
             </div>
-
             {/* <div className="create-listing-category">
               <label>Category:</label><label className="required"> * </label>
 
@@ -521,7 +519,6 @@ class ListingForm extends React.Component {
                 <option value="vintage">Vintage</option>
               </select>
             </div> */}
-
             <div className="create-listing-category">
               <label>Category:</label>
               <label className="required"> * </label>
@@ -601,7 +598,6 @@ class ListingForm extends React.Component {
                 Appliance
               </div>
             </div>
-
             <div className="create-listing-condition">
               <label for="condition">Condition: </label>
 
@@ -615,7 +611,6 @@ class ListingForm extends React.Component {
                 <option value="used">Used</option>
               </select>
             </div>
-
             <div className="create-listing-price">
               <label>Price: </label>
               <label className="required"> * </label>
@@ -635,7 +630,11 @@ class ListingForm extends React.Component {
               <input
                 className="submit-button btn-primary btn"
                 type="submit"
-                value={this.props.formType}
+                value={
+                  this.state.isSubmitLoading
+                    ? 'Loading...'
+                    : this.props.formType
+                }
               />
             </div>
           </div>

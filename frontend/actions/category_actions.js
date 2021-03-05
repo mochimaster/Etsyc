@@ -6,7 +6,7 @@ export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS'
 export const getListingsByCategory = (
   category,
   page = 1,
-  sortOption,
+  sortOption = 'newest',
   filters
 ) => {
   return (dispatch) => {
