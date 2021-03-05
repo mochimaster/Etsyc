@@ -27,7 +27,7 @@ class Api::CartsController < ApplicationController
   end
 
   def index
-    @carts = Cart.where(user_id: params[:user_id]).includes(:listing).where(listings: { status: true })
+    @carts = Cart.where(user_id: params[:user_id]).includes(:listing).where(listings: { status: true }).order('renewed_at DESC')
 
     render :index
   end
