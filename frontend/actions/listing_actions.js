@@ -13,7 +13,7 @@ export const createListing = (listing) => {
         dispatch({ type: RECEIVE_LISTING, listing })
       },
       (errors) => {
-        return dispatch({
+        dispatch({
           type: RECEIVE_LISTING_ERRORS,
           errors: errors.responseJSON
         })
@@ -29,7 +29,7 @@ export const updateListing = (listing) => {
         dispatch({ type: RECEIVE_LISTING, listing })
       },
       (errors) => {
-        return dispatch({
+        dispatch({
           type: RECEIVE_LISTING_ERRORS,
           errors: errors.responseJSON
         })
@@ -62,9 +62,10 @@ export const deleteListing = (id) => {
   }
 }
 
-export const clearErrors = () => ({
-  type: CLEAR_LISTING_ERRORS
-})
+export const clearErrors = () => (dispatch) =>
+  dispatch({
+    type: CLEAR_LISTING_ERRORS
+  })
 
 export const searchListing = (title, page = 1) => {
   return (dispatch) => {

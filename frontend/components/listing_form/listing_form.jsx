@@ -34,6 +34,8 @@ class ListingForm extends React.Component {
   // removed  by Elliot
   // this.state.author_id = this.props.sessionId
   componentDidMount() {
+    this.props.clearErrors()
+
     if (this.props.formType === 'Create Listing') {
     } else {
       this.props
@@ -116,18 +118,25 @@ class ListingForm extends React.Component {
     }
 
     if (this.props.formType === 'Create Listing') {
-      this.props.action(formData).then(() => {
-        this.props.history.push('/listings')
-        this.setState({ isSubmitLoading: false })
-      })
+      this.props
+        .action(formData)
+        .then(() => {
+          this.props.history.push('/listings')
+        })
+        .always(() => {
+          this.setState({ isSubmitLoading: false })
+        })
     } else {
-      this.props.action(formData).then(() => {
-        this.props.history.push(
-          `/listings/${this.props.match.params.listingId}`
-        )
-        window.location.reload(false)
-        this.setState({ isSubmitLoading: false })
-      })
+      this.props
+        .action(formData)
+        .then(() => {
+          this.props.history.push(
+            `/listings/${this.props.match.params.listingId}`
+          )
+        })
+        .always(() => {
+          this.setState({ isSubmitLoading: false })
+        })
     }
   }
 

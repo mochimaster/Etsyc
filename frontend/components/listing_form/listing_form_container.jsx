@@ -4,6 +4,7 @@ import ListingForm from './listing_form'
 
 import { createListing } from '../../actions/listing_actions'
 import { createReview } from '../../actions/review_actions'
+import { clearErrors } from '../../actions/listing_actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -27,7 +28,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     action: (listing) => dispatch(createListing(listing)),
-    createReview: (review) => dispatch(createReview(review))
+    createReview: (review) => dispatch(createReview(review)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 
