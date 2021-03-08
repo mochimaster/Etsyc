@@ -144,6 +144,11 @@
   border-bottom: #e1e3df 1px solid;
 }
 
+.listing-details .add-to-cart .button-disabled{
+  background-color: #3c3c3c;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
 .listing-details .add-to-cart button:hover {
   background-color: #3c3c3c;
   border-color: rgba(0, 0, 0, 0.2);
