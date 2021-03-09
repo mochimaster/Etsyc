@@ -21,8 +21,8 @@ class Listing < ApplicationRecord
   validates :price, numericality: { greater_than: 0}
   attribute :modified_by_userid, :integer, default: :author_id
 
-  has_many_attached :photos # to support multiple picture upload
-  has_one_attached :photo # to support previous single upload
+  has_many_attached :photos, :dependent => :purge_later # to support multiple picture upload
+  has_one_attached :photo, :dependent => :purge_later # to support previous single upload
 
   # scope :with_eager_loaded_photo, -> { eager_load(photo: :blob) }
   # scope :with_preloaded_photo, -> { preload(photo: :blob) }
@@ -40,7 +40,8 @@ class Listing < ApplicationRecord
   has_many :carts,
     primary_key: :id,
     foreign_key: :listing_id,
-    class_name: :Cart
+    class_name: :Cart,
+    :dependent => :destroy
 
   has_many :saved_listings,
     through: :carts,
@@ -49,12 +50,14 @@ class Listing < ApplicationRecord
   has_many :reviews,
     primary_key: :id,
     foreign_key: :listing_id,
-    class_name: :Review
+    class_name: :Review,
+    :dependent => :destroy
 
   has_many :categories,
     primary_key: :id,
     foreign_key: :listing_id,
-    class_name: :Category
+    class_name: :Category,
+    :dependent => :destroy
 
   self.per_page = 20
 
