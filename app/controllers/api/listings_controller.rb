@@ -85,7 +85,6 @@ class Api::ListingsController < ApplicationController
     else
       @listings = Listing.where(status: [nil, true], condition: condition).order('renewed_at DESC').paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     end
-    # @listings = Listing.paginate(:page => params[:page])
     
     render :index    
     # render json: {
