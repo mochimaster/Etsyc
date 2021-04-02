@@ -35,7 +35,13 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
 
   const { id, title, author_id, merchant_name, price } = listing
 
-  const titleForUrl = title.replaceAll(' ', '-')
+  let titleForUrl = title
+
+  try {
+    titleForUrl = title.replaceAll(' ', '-')
+  } catch {
+    console.log("replaceAll not supported for this browser.")
+  }
 
   return (
     <li className="listing-item-wrapper">
