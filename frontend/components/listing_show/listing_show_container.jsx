@@ -4,7 +4,8 @@ import {
   getListing,
   updateListing,
   deleteListing,
-  renewListing
+  renewListing,
+  getDuplicateListing
 } from '../../actions/listing_actions'
 import ListingShow from './listing_show'
 import { createCart } from '../../actions/cart_actions'
@@ -37,7 +38,8 @@ const mapDispatchToProps = (dispatch) => {
     deleteListing: (id) => dispatch(deleteListing(id)),
     createCart: (cart) => dispatch(createCart(cart)),
     openModal: (modal) => dispatch(openModal(modal)),
-    renewListing: (id) => dispatch(renewListing(id))
+    renewListing: (id) => dispatch(renewListing(id)),
+    duplicateListing: (listing) => dispatch(getDuplicateListing(listing))
   }
 }
 
