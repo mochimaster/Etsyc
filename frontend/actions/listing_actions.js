@@ -79,3 +79,6 @@ export const renewListing = (id) => (dispatch) =>
   ApiUtil.renewListing(id).then((listing) =>
     dispatch({ type: RECEIVE_LISTING, listing })
   )
+
+export const getDuplicateListing = (listing) => (dispatch) =>
+  dispatch({ type: RECEIVE_LISTING, listing })

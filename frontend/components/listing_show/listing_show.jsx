@@ -112,6 +112,11 @@ class ListingShow extends React.Component {
     this.props.renewListing(listing.id).then(alert('Listing renewed.'))
   }
 
+  handleDuplicateListing(listing) {
+    this.props.duplicateListing(listing)
+    this.props.history.push(`/listings/new`)
+  }
+
   render() {
     if (this.state.isLoading) {
       setTimeout(() => {
@@ -165,6 +170,12 @@ class ListingShow extends React.Component {
             type="submit"
             value={`Mark as ${this.getListingDisplayStatus(listingStatus)}`}
             onClick={() => this.toggleListingStatus(listingStatus)}
+          />
+          <input
+            className="btn btn-primary listing-duplicate-button"
+            type="submit"
+            value={`Duplicate this listing`}
+            onClick={() => this.handleDuplicateListing(this.props.listing)}
           />
           <input
             className="btn btn-primary listing-show-delete-button"
