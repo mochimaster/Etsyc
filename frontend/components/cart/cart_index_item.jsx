@@ -28,7 +28,7 @@ const CartIndexItem = (props) => {
         <div className="cart-index-item-title">
           <Link
             className="cart-index-item-title-link"
-            to={`/listings/${props.cart.listing_id}`}
+            to={`/listings/${props.cart.listing_id}/${props.cart.title}`}
           >
             {props.cart.title}
           </Link>

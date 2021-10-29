@@ -83,6 +83,9 @@ const CartIndex = (props) => {
                   aria-label="Payment - Cashapp"
                 ></img>
               </a>
+              <a href="https://cash.app/app/KVFFDRK" target="_blank">
+                Get $5 using my code: KVFFDRK
+              </a>
             </div>
           </div>
         </div>
