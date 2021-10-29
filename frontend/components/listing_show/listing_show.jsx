@@ -22,7 +22,7 @@ class ListingShow extends React.Component {
       displayAddToCartToolTip: false
     }
 
-    this.toggleListingStatus = this.toggleListingStatus.bind(this)
+    this.updateListing = this.updateListing.bind(this)
   }
 
   updateQuantity(e) {
@@ -102,10 +102,8 @@ class ListingShow extends React.Component {
     return 'Not Available'
   }
 
-  toggleListingStatus(listingStatus) {
-    const newStatus = listingStatus ? false : true
-
-    this.props.updateListing({ id: this.props.listing.id, status: newStatus })
+  updateListing(payload) {
+    this.props.updateListing({ id: this.props.listing.id, ...payload })
   }
 
   handleRenewListing(listing) {
@@ -138,7 +136,11 @@ class ListingShow extends React.Component {
       )
     }
 
-    const { status: listingStatus, author_id: authorId } = this.props.listing
+    const {
+      status: listingStatus,
+      author_id: authorId,
+      title
+    } = this.props.listing
     const isListingAuthor = authorId === this.props.sessionId
 
     if (!listingStatus && !isListingAuthor) {
@@ -148,6 +150,8 @@ class ListingShow extends React.Component {
         </div>
       )
     }
+
+    const isListingPending = title.includes('PENDING') ? true : false
 
     let displayAuthorButton
     if (isListingAuthor) {
@@ -166,10 +170,24 @@ class ListingShow extends React.Component {
             Renew Listing
           </button>
           <input
+            className="btn btn-primary listing-toggle-pending"
+            type="submit"
+            value={isListingPending ? 'Mark Non-pending' : 'Mark Pending'}
+            onClick={() => {
+              this.updateListing({
+                title: isListingPending
+                  ? `${this.props.listing.title.replaceAll('(PENDING) ', '')}`
+                  : `(PENDING) ${this.props.listing.title}`
+              })
+            }}
+          />
+          <input
             className="btn btn-primary listing-toggle-listing-status-button"
             type="submit"
-            value={`Mark as ${this.getListingDisplayStatus(listingStatus)}`}
-            onClick={() => this.toggleListingStatus(listingStatus)}
+            value={`Mark ${this.getListingDisplayStatus(listingStatus)}`}
+            onClick={() =>
+              this.updateListing({ status: listingStatus ? false : true })
+            }
           />
           <input
             className="btn btn-primary listing-duplicate-button"
@@ -340,7 +358,7 @@ class ListingShow extends React.Component {
               </div>
             </tooltip>
             <div>Item number: {itemNumber}</div>
-            <br/>
+            <br />
 
             <div className="listing-details listing-details-condition">
               <label className="condition-label">Condition: </label>
