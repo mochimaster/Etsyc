@@ -32,12 +32,12 @@ export const updateListing = (formData) => {
       processData: false
     })
   } else {
-    const { id, status } = formData
+    const { id, status, title } = formData
 
     return $.ajax({
       method: 'PATCH',
       url: `/api/listings/${id}`,
-      data: { listing: { status } }
+      data: { listing: { status, title } }
     })
   }
 }
