@@ -56,6 +56,7 @@ const CartIndex = (props) => {
 
             <div className="payment-container">
               <p>Accepted payments: Cash, Zelle, or Cashapp</p>
+              <p>Include item number when submitting payment.</p>
               <br />
               <h1>Zelle: castleandchair@gmail.com</h1>
               <p>Enrolled as Castle and Chair Inc.</p>

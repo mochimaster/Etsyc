@@ -339,6 +339,8 @@ class ListingShow extends React.Component {
                 </button>
               </div>
             </tooltip>
+            <div>Item number: {itemNumber}</div>
+            <br/>
 
             <div className="listing-details listing-details-condition">
               <label className="condition-label">Condition: </label>
