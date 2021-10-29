@@ -76,10 +76,7 @@ const CartIndex = (props) => {
               >
                 @castleandchair
               </a> */}
-              <a
-                href="https://venmo.com/code?user_id=1631646868570112774"
-                target="_blank"
-              >
+              <a href="https://cash.app/$castleandchair" target="_blank">
                 <img
                   id="payment-cashapp"
                   className="payment-cashapp"
