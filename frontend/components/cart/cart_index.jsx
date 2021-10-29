@@ -55,22 +55,34 @@ const CartIndex = (props) => {
             <div className="total-amount">Item(s) total: ${sum}</div>
 
             <div className="payment-container">
+              <p>Accepted payments: Cash, Zelle, or Cashapp</p>
+              <br />
+              <h1>Zelle: castleandchair@gmail.com</h1>
+              <p>Enrolled as Castle and Chair Inc.</p>
+              <br />
               <p>Scan or Tap QR Code for payment</p>
-              Venmo ID: {' '}
+              <p>
+                Cashapp:{' '}
+                <a href="https://cash.app/$castleandchair" target="_blank">
+                  $castleandchair
+                </a>
+              </p>
+              {/* <p>Scan or Tap QR Code for payment</p>
+              Venmo ID:{' '}
               <a
                 href="https://venmo.com/code?user_id=1631646868570112774"
                 target="_blank"
               >
                 @castleandchair
-              </a>
+              </a> */}
               <a
                 href="https://venmo.com/code?user_id=1631646868570112774"
                 target="_blank"
               >
                 <img
-                  id="payment-venmo"
-                  className="payment-venmo"
-                  aria-label="Payment - Venmo"
+                  id="payment-cashapp"
+                  className="payment-cashapp"
+                  aria-label="Payment - Cashapp"
                 ></img>
               </a>
             </div>
