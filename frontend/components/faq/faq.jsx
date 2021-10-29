@@ -11,8 +11,10 @@ export const Faq = () => (
       <div className="answer-container">
         <div className="answer-left">A.</div>
         <div className="answer-right">
-          We meet customers by appointment generally between the hours of 9AM - 7PM. Give us a call or send us a text to
-          schedule an appointment. We are located at{' '}
+          We meet customers by appointment generally on weekdays between the hours of 9.30AM
+          - 5PM. Weekend hours are very limited and reserved only for customer
+          delivery pick ups. Give us a call or send us a text between the hours
+          of operation to schedule an appointment. We are located at{' '}
           {/* <a
                    target="_blank"
                    href="https://goo.gl/maps/pFnJSdTpH91D32nBA"
@@ -36,6 +38,10 @@ export const Faq = () => (
         <div className="answer-left">A.</div>
         <div className="answer-right">
           Yes! You can come visit our warehouse by appointment.
+          <br />
+          Please make selection prior to the appointment and send us the item
+          numbers or links to the listing that you are interested in purchasing.
+          You will be able to inspect item during appointment prior to purchase.
         </div>
       </div>
 
@@ -47,13 +53,16 @@ export const Faq = () => (
         <div className="answer-left">A.</div>
         <div className="answer-right">
           Same day delivery around the Bay Area, California is available.
-          Delivery goes through a 3rd party service -{' '}
-          <a target="_blank" href="https://lugg.com/">
-            Lugg
-          </a>{' '}
-          and generally cost $70 - $120 for 1 mover or around $90 - $150 for 2
-          movers. You can text me your delivery address to get a more accurate
-          quote. Purchased pieces can be taken into your home.
+          Delivery goes through a 3rd party service - Lugg.{' '}
+          <a
+            target="_blank"
+            href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+          >
+            Click here to get free estimate.
+          </a>
+          <br />
+          Input Delivery Address under Destination field and you will see the
+          available options and respective charges.
         </div>
       </div>
 
@@ -64,8 +73,9 @@ export const Faq = () => (
       <div className="answer-container">
         <div className="answer-left">A.</div>
         <div className="answer-right">
-          Prices are firm as listed even if multiple is purchased. I list the prices as the best deal that I
-          can offer and this streamlines the sales process.
+          Prices are firm as listed even if multiple is purchased. I list the
+          prices as the best deal that I can offer and this streamlines the
+          sales process.
         </div>
       </div>
 
@@ -91,7 +101,9 @@ export const Faq = () => (
       </div>
       <div className="answer-container">
         <div className="answer-left">A.</div>
-        <div className="answer-right">We accept cash, Zelle, or Cashapp. Venmo not accepted at this time.</div>
+        <div className="answer-right">
+          We accept cash, Zelle, or Cashapp. Venmo not accepted at this time.
+        </div>
       </div>
     </div>
   </div>
