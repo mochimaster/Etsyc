@@ -20,7 +20,7 @@ export const Faq = () => (
                    1273 Industrial Pkwy W Ste 750 Hayward, CA 94544
                  </a> */}
           <a target="_blank" href="https://goo.gl/maps/ZHrviBbQ2YwQQwiaA">
-            1273 Industrial Parkway West #750 94544
+            1273 Industrial Parkway West #750 Hayward CA 94544
           </a>
           .
         </div>
@@ -64,7 +64,7 @@ export const Faq = () => (
       <div className="answer-container">
         <div className="answer-left">A.</div>
         <div className="answer-right">
-          Prices are firm as listed. I list the prices as the best deal that I
+          Prices are firm as listed even if multiple is purchased. I list the prices as the best deal that I
           can offer and this streamlines the sales process.
         </div>
       </div>
@@ -91,7 +91,7 @@ export const Faq = () => (
       </div>
       <div className="answer-container">
         <div className="answer-left">A.</div>
-        <div className="answer-right">We accept cash, Venmo, or Zelle.</div>
+        <div className="answer-right">We accept cash, Zelle, or Cashapp. Venmo not accepted at this time.</div>
       </div>
     </div>
   </div>
