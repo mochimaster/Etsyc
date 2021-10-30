@@ -68,14 +68,6 @@ const CartIndex = (props) => {
                   $castleandchair
                 </a>
               </p>
-              {/* <p>Scan or Tap QR Code for payment</p>
-              Venmo ID:{' '}
-              <a
-                href="https://venmo.com/code?user_id=1631646868570112774"
-                target="_blank"
-              >
-                @castleandchair
-              </a> */}
               <a href="https://cash.app/$castleandchair" target="_blank">
                 <img
                   id="payment-cashapp"
@@ -86,6 +78,27 @@ const CartIndex = (props) => {
               <a href="https://cash.app/app/KVFFDRK" target="_blank">
                 Get $5 using my code: KVFFDRK
               </a>
+              <br />
+              <br />
+              {/* <p>Scan or Tap QR Code for payment</p>
+              Venmo ID:{' '}
+              <a
+                href="https://venmo.com/code?user_id=1631646868570112774"
+                target="_blank"
+              >
+                @castleandchair
+              </a> */}
+
+              <div className="">
+                Delivery available through Lugg.{' '}
+                <a
+                  target="_blank"
+                  href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+                >
+                  Calculate delivery
+                </a>{' '}
+                to different zip code.
+              </div>
             </div>
           </div>
         </div>

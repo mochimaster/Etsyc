@@ -136,6 +136,10 @@
   line-height: 19.6px;
   font-weight: bold;
   border-radius: 3px;
+  margin-bottom: 25px;
+}
+
+.delivery-estimate {
   margin-bottom: 35px;
 }
 
@@ -144,7 +148,7 @@
   border-bottom: #e1e3df 1px solid;
 }
 
-.listing-details .add-to-cart .button-disabled{
+.listing-details .add-to-cart .button-disabled {
   background-color: #3c3c3c;
   border-color: rgba(0, 0, 0, 0.2);
 }

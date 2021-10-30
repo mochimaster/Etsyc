@@ -355,6 +355,16 @@ class ListingShow extends React.Component {
                 >
                   Add to cart
                 </button>
+                <div className="delivery-estimate">
+                  Delivery available through Lugg.{' '}
+                  <a
+                    target="_blank"
+                    href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+                  >
+                    Calculate delivery
+                  </a>{' '}
+                  to different zip code.
+                </div>
               </div>
             </tooltip>
             <div>Item number: {itemNumber}</div>
