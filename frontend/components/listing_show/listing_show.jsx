@@ -76,10 +76,18 @@ class ListingShow extends React.Component {
     if (this.props.listing.phoneNumber) {
       return (
         <div className="listing-seller-phone-number">
-          ☎️ :{' '}
-          <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
-            {this.props.listing.phoneNumber}
-          </a>
+          <div>
+            ☎️ :{' '}
+            <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
+              {this.props.listing.phoneNumber}
+            </a>
+            {'      '}|{'      '}
+            <a
+              href={`sms:+15109361639&body=Hi, I would like to inquire about item number ${this.props.listing.id} - ${this.props.listing.title}`}
+            >
+              Click here to text us!
+            </a>
+          </div>
         </div>
       )
     }
