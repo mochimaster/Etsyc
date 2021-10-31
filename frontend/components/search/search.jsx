@@ -33,6 +33,11 @@ const Search = (props) => {
       eventProperties: { 'Search Term': title }
     })
 
+    const maybeListingId = parseInt(title)
+    if (Number.isInteger(maybeListingId)) {
+      return props.history.push(`/listings/${maybeListingId}`)
+    }
+
     let finalPath = props.location.pathname.replace('/search', '')
 
     if (finalPath.indexOf('/listings') >= 0) {
@@ -88,7 +93,7 @@ const Search = (props) => {
           <input
             id="search-query"
             type="text"
-            placeholder="Search for items or shops"
+            placeholder="Search for items or item number"
             value={title}
             onChange={updateTitle}
           />

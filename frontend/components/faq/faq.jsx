@@ -11,10 +11,11 @@ export const Faq = () => (
       <div className="answer-container">
         <div className="answer-left">A.</div>
         <div className="answer-right">
-          We meet customers by appointment generally on weekdays between the hours of 9.30AM
-          - 5PM. Weekend hours are very limited and reserved only for customer
-          delivery pick ups. Give us a call or send us a text between the hours
-          of operation to schedule an appointment. We are located at{' '}
+          We meet customers by appointment generally on weekdays between the
+          hours of 9.30AM - 5PM. Weekend hours are very limited and reserved
+          only for customer delivery pick ups. Give us a call or send us a text
+          between the hours of operation to schedule an appointment. We are
+          located at{' '}
           {/* <a
                    target="_blank"
                    href="https://goo.gl/maps/pFnJSdTpH91D32nBA"
@@ -103,6 +104,17 @@ export const Faq = () => (
         <div className="answer-left">A.</div>
         <div className="answer-right">
           We accept cash, Zelle, or Cashapp. Venmo not accepted at this time.
+        </div>
+      </div>
+
+      <div className="question-container">
+        <div className="question-left">Q.</div>
+        <div className="question-right">What is your return policy?</div>
+      </div>
+      <div className="answer-container">
+        <div className="answer-left">A.</div>
+        <div className="answer-right">
+          We do not accept returns or exchanges. All sales are final.
         </div>
       </div>
     </div>
