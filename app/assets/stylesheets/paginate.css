@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.pagination{
+  display: contents;
+}
+
 .pagination-wrapper a.active {
   background-color: #f0f0ec;
   border-color: rgba(0, 0, 0, 0.5);
@@ -36,4 +40,14 @@
 a[type='ellipsisItem']:hover {
   cursor: default;
   border-color: 5px solid red;
+}
+
+.pagination-go-to-input {
+  width: 22px;
+}
+
+.pagination-go-to-input::-webkit-outer-spin-button,
+.pagination-go-to-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

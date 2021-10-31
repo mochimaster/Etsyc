@@ -92,7 +92,7 @@ class ListingShow extends React.Component {
             <a
               href={`sms:+15109361639&body=Hi, I would like to inquire about item number ${this.props.listing.id} - ${this.props.listing.title}`}
             >
-              Click here to text us!
+              Click here to text!
             </a>
           </div>
         </div>

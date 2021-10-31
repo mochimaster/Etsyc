@@ -10,7 +10,8 @@ class PaginationAll extends React.Component {
       listings: props.listings,
       page: 1,
       pages: 1,
-      filters: props.filters
+      filters: props.filters,
+      goToPage: 1
     }
     this.handlePage = this.handlePage.bind(this)
   }
@@ -184,7 +185,30 @@ class PaginationAll extends React.Component {
             onPageChange={this.handlePage}
             defaultActivePage={this.state.page}
             totalPages={this.state.pages}
-          />
+          />{' '}
+          Go to page:{' '}
+          <input
+            className="pagination-go-to-input"
+            type="number"
+            value={this.state.goToPage}
+            onChange={({ target: { value } }) => {
+              if (value < 0) value = 0
+              if (value >= this.state.pages) value = this.state.pages
+
+              this.setState({ goToPage: value })
+            }}
+            onKeyDown={({ key }) => {
+              if (key === 'Enter')
+                this.handlePage(_, { activePage: this.state.goToPage })
+            }}
+          ></input>
+          <button
+            onClick={() =>
+              this.handlePage(_, { activePage: this.state.goToPage })
+            }
+          >
+            Go
+          </button>
         </div>
       )
     } else {
