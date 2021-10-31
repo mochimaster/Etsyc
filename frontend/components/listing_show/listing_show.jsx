@@ -88,7 +88,7 @@ class ListingShow extends React.Component {
             <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
               {this.props.listing.phoneNumber}
             </a>
-            {'    '}|{'    '}
+            {'  '}|{'  '}💬:{' '}
             <a
               href={`sms:+15109361639&body=Hi, I would like to inquire about item number ${this.props.listing.id} - ${this.props.listing.title}`}
             >
