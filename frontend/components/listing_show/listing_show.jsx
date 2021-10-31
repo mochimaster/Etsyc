@@ -54,6 +54,13 @@ class ListingShow extends React.Component {
         this.setState({ isLoading: false })
       })
     }
+
+    const { listingTitle } = this.props.match.params
+    if (!listingTitle && this.props.listing) {
+      this.props.history.push(
+        `${this.props.location.pathname}/${this.props.listing.title}`
+      )
+    }
   }
 
   // componentWillReceiveProps(nextProps){
@@ -265,7 +272,7 @@ class ListingShow extends React.Component {
       images.push(this.props.listing.photoUrl)
     }
 
-    let itemNumber = this.props.match.url.slice(10)
+    let itemNumber = this.props.match.params.listingId
     while (itemNumber.length <= 4) {
       itemNumber = '0' + itemNumber
     }
