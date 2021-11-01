@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_174316) do
+ActiveRecord::Schema.define(version: 2021_11_01_154356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_174316) do
     t.boolean "status", default: true
     t.string "condition", default: "new"
     t.datetime "renewed_at"
+    t.string "brand"
     t.index ["status"], name: "index_listings_on_status"
     t.index ["title"], name: "index_listings_on_title", unique: true
   end

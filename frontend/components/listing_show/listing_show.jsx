@@ -310,6 +310,12 @@ class ListingShow extends React.Component {
                 {this.phoneNumberExist()}
               </div>
             </div>
+            {this.props.listing.brand && (
+              <div className="listing-details listing-details-brand">
+                <label className="condition-label">Brand: </label>
+                {this.props.listing.brand}
+              </div>
+            )}
             <div className="listing-details listing-details-title">
               {this.props.listing.title} {`  (${itemNumber})`}
             </div>

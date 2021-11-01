@@ -121,7 +121,7 @@ class Api::ListingsController < ApplicationController
   def listing_params
     # params[:listing][:modified_by_userid] = params[:author_id]
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, :status, :condition, photo_hash:[], photos: [])
+      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, :status, :brand,:condition, photo_hash:[], photos: [])
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)

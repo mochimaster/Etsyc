@@ -2,7 +2,7 @@ import ListingFormContainer from './listing_form_container'
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 // import ListingEditFormContainer from './listing_edit_form_container';
-import { CONDITION } from '../../../utils/constants'
+import { BRANDS, CONDITION } from '../../../utils/constants'
 import Compress from 'compress.js'
 
 class ListingForm extends React.Component {
@@ -18,6 +18,7 @@ class ListingForm extends React.Component {
       imageUrl: null,
       merchantName: props.merchantName ? props.merchantName : '',
       condition: props.condition ? props.condition : CONDITION.NEW,
+      brand: props.brand ? props.brand : BRANDS.WEST_ELM,
       photos: [],
       // photos: props.listing ? props.listing.photoUrls : "",
       // category: props.listing ? props.listing.category.split(",") : []
@@ -30,6 +31,7 @@ class ListingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.imagePreview = this.imagePreview.bind(this)
     this.previewExistingPhoto = this.previewExistingPhoto.bind(this)
+    this.updateState = this.updateState.bind(this)
   }
   // removed  by Elliot
   // this.state.author_id = this.props.sessionId
@@ -92,6 +94,7 @@ class ListingForm extends React.Component {
     formData.append('category[category]', this.state.category)
     formData.append('user[phone_number]', this.state.phoneNumber)
     formData.append('listing[condition]', this.state.condition)
+    formData.append('listing[brand]', this.state.brand)
 
     if (this.props.match.params.listingId) {
       formData.append('listing[id]', this.props.match.params.listingId)
@@ -278,6 +281,10 @@ class ListingForm extends React.Component {
     copyPhotoHash[index] = false
 
     this.setState({ photoHash: copyPhotoHash })
+  }
+
+  updateState(property, value) {
+    this.setState({ [property]: value })
   }
 
   updateTitle(e) {
@@ -619,6 +626,22 @@ class ListingForm extends React.Component {
                 <option value="new">New</option>
                 <option value="like new">Like New</option>
                 <option value="used">Used</option>
+              </select>
+            </div>
+            <div className="create-listing-brand">
+              <label for="brand">Brand: </label>
+
+              <select
+                name="brand"
+                id="brand"
+                onChange={({ target: { value } }) =>
+                  this.updateState('brand', value)
+                }
+                value={this.state.brand}
+              >
+                {Object.values(BRANDS).map((value) => (
+                  <option value={value}>{value}</option>
+                ))}
               </select>
             </div>
             <div className="create-listing-price">
