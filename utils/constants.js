@@ -24,3 +24,15 @@ export const CONDITION = {
   LIKE_NEW: 'like new',
   USED: 'used'
 }
+
+export const BRANDS = {
+  WEST_ELM: 'West Elm',
+  POTTERY_BARN: 'Pottery Barn',
+  RESTORATION_HARDWARE: 'Restoration Hardware',
+  CRATE_AND_BARREL: 'Crate and Barrel',
+  CB2: 'CB2',
+  REJUVENATION: 'Rejuvenation',
+  WILLIAM_SONOMA: 'William Sonoma',
+  UNKNOWN: 'Unknown',
+  NONE: ''
+}
