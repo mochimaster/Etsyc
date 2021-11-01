@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { capitalize } from 'lodash'
+
 import { CONDITION } from '../../../utils/constants'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
@@ -23,9 +25,9 @@ const ConditionDropDownList = ({ setCondition, condition }) => {
           value={condition}
           onChange={handleConditionChange}
         >
-          <option value={CONDITION.ALL}>All</option>
-          <option value={CONDITION.NEW}>New</option>
-          <option value={CONDITION.USED}>Used</option>
+          {Object.values(CONDITION).map((value) => (
+            <option value={value}>{capitalize(value)}</option>
+          ))}
         </select>
       </div>
     </div>

@@ -174,43 +174,51 @@ class PaginationAll extends React.Component {
   }
 
   render() {
+    const displayGoToPage = (
+      <>
+        Go to page:{' '}
+        <input
+          className="pagination-go-to-input"
+          type="number"
+          value={this.state.goToPage}
+          onChange={({ target: { value } }) => {
+            if (value < 0) value = 0
+            if (value >= this.state.pages) value = this.state.pages
+
+            this.setState({ goToPage: value })
+          }}
+          onKeyDown={({ key }) => {
+            if (key === 'Enter')
+              this.handlePage(_, { activePage: this.state.goToPage })
+          }}
+        ></input>
+        <button
+          onClick={() =>
+            this.handlePage(_, { activePage: this.state.goToPage })
+          }
+        >
+          Go
+        </button>
+      </>
+    )
+
     if (
       this.props.disabledListings.length ||
       (this.props.listings && this.props.listings.length)
     ) {
       return (
-        <div className="pagination-wrapper">
-          <Pagination
-            ellipsisItem={'...'}
-            onPageChange={this.handlePage}
-            defaultActivePage={this.state.page}
-            totalPages={this.state.pages}
-            activePage={this.state.page}
-          />{' '}
-          Go to page:{' '}
-          <input
-            className="pagination-go-to-input"
-            type="number"
-            value={this.state.goToPage}
-            onChange={({ target: { value } }) => {
-              if (value < 0) value = 0
-              if (value >= this.state.pages) value = this.state.pages
-
-              this.setState({ goToPage: value })
-            }}
-            onKeyDown={({ key }) => {
-              if (key === 'Enter')
-                this.handlePage(_, { activePage: this.state.goToPage })
-            }}
-          ></input>
-          <button
-            onClick={() =>
-              this.handlePage(_, { activePage: this.state.goToPage })
-            }
-          >
-            Go
-          </button>
-        </div>
+        this.state.pages && (
+          <div className="pagination-wrapper">
+            <Pagination
+              ellipsisItem={'...'}
+              onPageChange={this.handlePage}
+              defaultActivePage={this.state.page}
+              totalPages={this.state.pages}
+              activePage={this.state.page}
+            />{' '}
+            {displayGoToPage}
+          </div>
+        )
       )
     } else {
       return <div></div>

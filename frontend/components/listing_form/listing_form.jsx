@@ -617,6 +617,7 @@ class ListingForm extends React.Component {
                 value={this.state.condition}
               >
                 <option value="new">New</option>
+                <option value="like new">Like New</option>
                 <option value="used">Used</option>
               </select>
             </div>

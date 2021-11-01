@@ -19,7 +19,8 @@ export const SORT_TYPE = {
 }
 
 export const CONDITION = {
-  ALL : 'all',
+  ALL: 'all',
   NEW: 'new',
+  LIKE_NEW: 'like new',
   USED: 'used'
 }
