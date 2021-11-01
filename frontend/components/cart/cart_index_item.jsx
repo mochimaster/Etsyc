@@ -30,6 +30,8 @@ const CartIndexItem = (props) => {
             className="cart-index-item-title-link"
             to={`/listings/${props.cart.listing_id}/${props.cart.title}`}
           >
+            {props.cart.brand}
+            <br />
             {props.cart.title}
           </Link>
         </div>

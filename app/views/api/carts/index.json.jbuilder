@@ -6,6 +6,7 @@
       json.title cart_item.listing.title
       json.merchant_name cart_item.listing.author.merchant_name
       json.author_id cart_item.listing.author.id
+      json.brand cart_item.listing.brand
       if(cart_item.listing.photo.attached?)
         json.photoUrl url_for(cart_item.listing.photo)
       end

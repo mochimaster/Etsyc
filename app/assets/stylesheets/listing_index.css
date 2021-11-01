@@ -74,20 +74,20 @@
   color: rgb(34, 34, 34);
 }
 
-.index-wrapper .listing-item-author {
+.index-wrapper .listing-item-brand {
   font-size: 12px;
   line-height: 19.2px;
   color: rgb(89, 89, 89);
   text-decoration: none;
 }
 
-.listing-item-author > .listing-item-link {
+.listing-item-brand > .listing-item-link {
   text-decoration: none;
   color: black;
 }
 
-.listing-item-author > .listing-item-link:hover {
-  text-decoration: underline;
+.listing-item-brand > .listing-item-link:hover {
+  text-decoration: none;
 }
 
 .index-wrapper .listing-item-price {

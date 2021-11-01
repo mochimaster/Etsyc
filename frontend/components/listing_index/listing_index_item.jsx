@@ -33,14 +33,14 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
     displayImage = <img className="listing-thumbnail" src={listing.photoUrl} />
   }
 
-  const { id, title, author_id, merchant_name, price } = listing
+  const { id, title, author_id, merchant_name, price, brand } = listing
 
   let titleForUrl = title
 
   try {
     titleForUrl = title.replaceAll(' ', '-')
   } catch {
-    console.log("replaceAll not supported for this browser.")
+    console.log('replaceAll not supported for this browser.')
   }
 
   return (
@@ -61,13 +61,12 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
         </tooltip>
         <br />
       </div>
-      <div className="listing-item-author">
+      <div className="listing-item-brand">
         <Link
           className="listing-item-link"
           to={`/listings/${id}/${titleForUrl}`}
-          // to={`/users/${author_id}/listings`}
         >
-          {merchant_name}
+          {brand || ''}
         </Link>
       </div>
       <div className="listing-item-review"></div>
