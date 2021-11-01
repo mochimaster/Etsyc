@@ -207,7 +207,7 @@ class PaginationAll extends React.Component {
       (this.props.listings && this.props.listings.length)
     ) {
       return (
-        this.state.pages && (
+        this.state.pages > 1 && (
           <div className="pagination-wrapper">
             <Pagination
               ellipsisItem={'...'}
