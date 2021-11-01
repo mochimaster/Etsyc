@@ -18,7 +18,7 @@
 .listing-item-wrapper {
   display: grid;
   /* grid-template-rows: 30% 10% 10% 10% 10%; */
-  grid-template-rows: 6fr auto auto auto auto;
+  grid-template-rows: 6fr 1fr 1fr;
 }
 
 /* .listing-item-wrapper > .listing-item-image > a >img {
@@ -63,10 +63,17 @@
 
 .index-wrapper > li > div {
   cursor: pointer;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.listing-item-title {
+  height: 28px;
+  line-height: 14px;
+  overflow: hidden;
+  margin-top: 5px;
 }
 
 .listing-item-title a {

@@ -50,7 +50,7 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
           <tooltip title={title}>{displayImage}</tooltip>
         </Link>
       </div>
-      <div className="listing-item-title">
+      <h4 className="listing-item-title">
         <tooltip title={title}>
           <Link
             className="listing-item-title-link"
@@ -59,17 +59,15 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
             {title}
           </Link>
         </tooltip>
-        <br />
-      </div>
-      <div className="listing-item-brand">
+      </h4>
+      {/* <div className="listing-item-brand">
         <Link
           className="listing-item-link"
           to={`/listings/${id}/${titleForUrl}`}
         >
           {brand || ''}
         </Link>
-      </div>
-      <div className="listing-item-review"></div>
+      </div> */}
       <div className="listing-item-price">$ {price}</div>
     </li>
   )
