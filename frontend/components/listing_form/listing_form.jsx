@@ -2,7 +2,7 @@ import ListingFormContainer from './listing_form_container'
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 // import ListingEditFormContainer from './listing_edit_form_container';
-import { BRANDS, CONDITION } from '../../../utils/constants'
+import { BRANDS, CONDITION, CATEGORIES } from '../../../utils/constants'
 import Compress from 'compress.js'
 
 class ListingForm extends React.Component {
@@ -287,28 +287,8 @@ class ListingForm extends React.Component {
     this.setState({ [property]: value })
   }
 
-  updateTitle(e) {
-    this.setState({ title: e.target.value })
-  }
-
-  updateOverview(e) {
-    this.setState({ overview: e.target.value })
-  }
-
-  updateDescription(e) {
-    this.setState({ description: e.target.value })
-  }
-
-  updatePrice(e) {
-    this.setState({ price: e.target.value })
-  }
-
   updateMerchantName(e) {
     this.setState({ merchantName: e.target.value })
-  }
-
-  updatePhoneNumber(e) {
-    this.setState({ phoneNumber: e.target.value })
   }
 
   updateCategory(e) {
@@ -329,12 +309,7 @@ class ListingForm extends React.Component {
     } else {
       oldCategory.push(e.target.value)
     }
-
     this.setState({ category: oldCategory })
-  }
-
-  updateCondition(e) {
-    this.setState({ condition: e.target.value })
   }
 
   renderErrors() {
@@ -356,7 +331,9 @@ class ListingForm extends React.Component {
           <br />
           <input
             className="create-listing-merchant-input"
-            onChange={this.updateMerchantName.bind(this)}
+            onChange={({ target: { value } }) =>
+              this.updateState('merchantName', value)
+            }
             value={this.state.merchantName}
             type="text"
           />
@@ -368,23 +345,20 @@ class ListingForm extends React.Component {
     return name
   }
 
-  // phoneNumberExist(){
-  //   let phoneNumber;
-  //   debugger
-
-  //   if(!this.props.phoneNumber){
-  //     phoneNumber = (
-  //       <div>
-  //         <input
-  //           className="create-listing-phone-number"
-  //           onChange={this.updatePhoneNumber.bind(this)}
-  //           value={this.state.phoneNumber}
-  //           type="text"
-  //         />
-  //       </div>
-  //     )
-  //   }
-  // }
+  renderCategoriesCheckbox() {
+    return Object.entries(CATEGORIES).map(([key, value]) => (
+      <>
+        <input
+          onChange={this.updateCategory.bind(this)}
+          type="checkbox"
+          value={key}
+          name={value}
+          checked={this.state.category.includes(key) ? true : false}
+        />
+        {value}
+      </>
+    ))
+  }
 
   render() {
     if (!this.props.listing) {
@@ -399,41 +373,6 @@ class ListingForm extends React.Component {
         return null
       }
     }
-
-    // check if it has single or multiple images
-    // if (this.props.listing.photoUrls){
-    //   this.imagePreview();
-    // }
-
-    // ----------------------------
-
-    // const reader = new FileReader();
-    // const file = e.currentTarget.files[0];
-    // reader.onloadend = () =>
-    //   this.setState({ imageUrl: reader.result, imageFile: file});
-    //
-    // if (file) {
-    //   reader.readAsDataURL(file);
-    // } else {
-    //   this.setState({ imageUrl: "", imageFile: null });
-    // }
-
-    // ----------------------------
-
-    // const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
-
-    // let preview="";
-    // debugger
-    // if (this.props.formType === 'Edit Listing'){
-    //   preview = <img src={this.props.listing.photoUrl} />
-    // } else {
-    //   preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null
-    // }
-
-    //onSubmit={() => this.props.createListing(this.state)}
-    // { preview }
-
-    // debugger
 
     if (this.state.photoUrl) {
       let preview = document.querySelector('#preview')
@@ -487,7 +426,9 @@ class ListingForm extends React.Component {
               <br />
               <input
                 className="create-listing-phone-number-input"
-                onChange={this.updatePhoneNumber.bind(this)}
+                onChange={({ target: { value } }) =>
+                  this.updateState('phoneNumber', value)
+                }
                 value={this.state.phoneNumber}
                 type="text"
               />
@@ -498,7 +439,9 @@ class ListingForm extends React.Component {
               <br />
               <input
                 className="create-listing-title-input"
-                onChange={this.updateTitle.bind(this)}
+                onChange={({ target: { value } }) =>
+                  this.updateState('title', value)
+                }
                 value={this.state.title}
                 type="text"
               />
@@ -509,7 +452,9 @@ class ListingForm extends React.Component {
 
               <br />
               <textarea
-                onChange={this.updateOverview.bind(this)}
+                onChange={({ target: { value } }) =>
+                  this.updateState('overview', value)
+                }
                 className="create-listing-overview-textarea"
               >
                 {this.state.overview}
@@ -521,7 +466,9 @@ class ListingForm extends React.Component {
               <br />
               <textarea
                 className="create-listing-description-input"
-                onChange={this.updateDescription.bind(this)}
+                onChange={({ target: { value } }) =>
+                  this.updateState('description', value)
+                }
                 value={this.state.description}
               />
             </div>
@@ -540,78 +487,7 @@ class ListingForm extends React.Component {
               <label className="required"> * </label>
 
               <div className="create-listing-category-radio">
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="1"
-                  name="Sofa & Sectional"
-                  checked={this.state.category.includes('1') ? true : false}
-                />
-                Sofa & Sectional
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="2"
-                  name="Seating"
-                  checked={this.state.category.includes('2') ? true : false}
-                />
-                Seating
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="3"
-                  name="Bedroom"
-                  checked={this.state.category.includes('3') ? true : false}
-                />
-                Bedroom
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="4"
-                  name="Console & Cabinet"
-                  checked={this.state.category.includes('4') ? true : false}
-                />
-                Console & Cabinet
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="5"
-                  name="Dining"
-                  checked={this.state.category.includes('5') ? true : false}
-                />
-                Dining
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="6"
-                  name="Outdoor"
-                  checked={this.state.category.includes('6') ? true : false}
-                />
-                Outdoor
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="7"
-                  name="Miscellaneous"
-                  checked={this.state.category.includes('7') ? true : false}
-                />
-                Miscellaneous
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="8"
-                  name="Special"
-                  checked={this.state.category.includes('8') ? true : false}
-                />
-                Special
-                <input
-                  onChange={this.updateCategory.bind(this)}
-                  type="checkbox"
-                  value="9"
-                  name="Appliance"
-                  checked={this.state.category.includes('9') ? true : false}
-                />
-                Appliance
+                {this.renderCategoriesCheckbox()}
               </div>
             </div>
             <div className="create-listing-condition">
@@ -620,7 +496,9 @@ class ListingForm extends React.Component {
               <select
                 name="condition"
                 id="condition"
-                onChange={this.updateCondition.bind(this)}
+                onChange={({ target: { value } }) =>
+                  this.updateState('condition', value)
+                }
                 value={this.state.condition}
               >
                 <option value="new">New</option>
@@ -654,7 +532,9 @@ class ListingForm extends React.Component {
                 min="0.00"
                 max="99999999.99"
                 step="0.01"
-                onChange={this.updatePrice.bind(this)}
+                onChange={({ target: { value } }) =>
+                  this.updateState('price', value)
+                }
                 value={this.state.price}
               />
             </div>

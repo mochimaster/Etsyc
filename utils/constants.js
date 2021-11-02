@@ -36,3 +36,14 @@ export const BRANDS = {
   UNKNOWN: 'Unknown',
   NONE: ''
 }
+
+export const CATEGORIES = {
+  1: 'Sofa & Sectional',
+  2: 'Seating',
+  3: 'Bedroom',
+  4: 'Console & Cabinet',
+  5: 'Dining',
+  6: 'Outdoor',
+  7: 'Miscellaneous',
+  8: 'Appliance'
+}
