@@ -33,9 +33,8 @@ const Search = (props) => {
       eventProperties: { 'Search Term': title }
     })
 
-    const maybeListingId = parseInt(title)
-    if (Number.isInteger(maybeListingId)) {
-      return props.history.push(`/listings/${maybeListingId}`)
+    if (!isNaN(title)) {
+      return props.history.push(`/listings/${title}`)
     }
 
     let finalPath = props.location.pathname.replace('/search', '')
