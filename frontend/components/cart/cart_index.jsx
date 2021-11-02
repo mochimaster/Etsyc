@@ -56,7 +56,7 @@ const CartIndex = (props) => {
           <div className="cart-index-checkout">
             <div className="total">Item(s) sub-total: ${sum}</div>
             <div className="total">
-              Tax amount(10.75%): ${round(sum * 0.1075, 2).toFixed(2)}
+              Tax(10.75%): ${round(sum * 0.1075, 2).toFixed(2)}
             </div>
             <div className="total-amount">
               Total: ${round(sum * 1.1075, 2).toFixed(2)}
