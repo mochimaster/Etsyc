@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import { round } from 'lodash'
+
 import CartIndexItem from './cart_index_item'
 
 const CartIndex = (props) => {
@@ -52,7 +54,13 @@ const CartIndex = (props) => {
 
         <div className="cart-index-right-side">
           <div className="cart-index-checkout">
-            <div className="total-amount">Item(s) total: ${sum}</div>
+            <div className="total">Item(s) sub-total: ${sum}</div>
+            <div className="total">
+              Tax amount(10.75%): ${round(sum * 0.1075, 2).toFixed(2)}
+            </div>
+            <div className="total-amount">
+              Total: ${round(sum * 1.1075, 2).toFixed(2)}
+            </div>
 
             <div className="payment-container">
               <p>Accepted payments: Cash, Zelle, or Cashapp</p>

@@ -117,6 +117,38 @@ export const Faq = () => (
           We do not accept returns or exchanges. All sales are final.
         </div>
       </div>
+
+      <div className="question-container">
+        <div className="question-left">Q.</div>
+        <div className="question-right">Can I have a refund on deposit?</div>
+      </div>
+      <div className="answer-container">
+        <div className="answer-left">A.</div>
+        <div className="answer-right">
+          Deposits are used to hold the item specifically for you. Deposits are
+          not refundable.
+          <br />
+          Deposit of 20% for each 1 week of hold. If you do not pay the balance
+          by the end of the hold, the item will no longer be held for you and
+          the deopsit is forfeited and non refundable. The item will then be
+          made available for purchase to other customers.
+        </div>
+      </div>
+
+      <div className="question-container">
+        <div className="question-left">Q.</div>
+        <div className="question-right">How long can you hold the item?</div>
+      </div>
+      <div className="answer-container">
+        <div className="answer-left">A.</div>
+        <div className="answer-right">
+          All fully paid items must be picked up in 2 weeks. If the item is not
+          picked up in 2 weeks, it will be treated as abondoned and the payment
+          is not refundable. <br />
+          If you need more than 2 weeks of hold, please let us know and we can
+          make necessary arrangments and come to an agreement.
+        </div>
+      </div>
     </div>
   </div>
 )
