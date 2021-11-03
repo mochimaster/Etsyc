@@ -152,7 +152,7 @@ export const ListingForm = (props) => {
       }
     }
 
-    if (!!photoHash) {
+    if (!!photoHash && props.formType === 'Edit Listing') {
       for (let i = 0; i < Object.keys(photoHash).length; i++) {
         formData.append('listing[photo_hash][]', photoHash[i])
       }
