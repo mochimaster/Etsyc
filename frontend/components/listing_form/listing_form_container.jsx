@@ -49,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
       photo: photo || photoUrls || null,
       author_id: author_id || null,
       phoneNumber: phoneNumber || '',
-      photoUrls
+      photoUrls: photoUrls || []
     },
     sessionId: state.session.id,
     merchantName: state.entities.users[state.session.id].merchant_name,

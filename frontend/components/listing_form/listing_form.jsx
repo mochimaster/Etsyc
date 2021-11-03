@@ -28,22 +28,23 @@ const compressImage = async (imageFile) => {
   return compressedImage
 }
 
+const defaultListing = {
+  title: '',
+  description: '',
+  overview: '',
+  price: '',
+  photo: '',
+  imageUrl: '',
+  condition: '',
+  brand: '',
+  photos: [],
+  category: [],
+  phoneNumber: '',
+  photoUrls: []
+}
+
 export const ListingForm = (props) => {
-  const [listing, setListing] = useState({
-    title: '',
-    description: '',
-    overview: '',
-    price: '',
-    photo: '',
-    imageUrl: '',
-    merchantName: '',
-    condition: '',
-    brand: '',
-    photos: [],
-    category: [],
-    phoneNumber: '',
-    photoUrls: []
-  })
+  const [listing, setListing] = useState(defaultListing)
 
   const [photos, setPhotos] = useState([]) // new uploading photos
 
@@ -61,6 +62,7 @@ export const ListingForm = (props) => {
   }, [props.formType])
 
   useEffect(() => {
+    if (!props.match.params.listingId) return
     props.getListing(props.match.params.listingId).then((listing) => {
       // this.setState({ ...props.listing }, () => {
       if (props.listing && props.listing.photoUrls) {
@@ -74,7 +76,14 @@ export const ListingForm = (props) => {
   }, [props.match.params.listingId])
 
   useEffect(() => {
-    if (props.listing) setListing(props.listing)
+    if (props.listing) {
+      setListing((prevListing) => ({
+        ...prevListing,
+        ...props.listing,
+        phoneNumber: props.phoneNumber || props.listing.phoneNumber,
+        merchantName: props.merchantName || props.listing.merchantName
+      }))
+    }
   }, [props.listing])
 
   useEffect(() => {
