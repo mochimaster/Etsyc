@@ -7,7 +7,7 @@ class Api::SearchController < ApplicationController
 
         status = search_params[:isDisabled] == "true" ? false : [nil, true]
 
-        @listings = Listing.where(status: status).includes(:author).with_attached_photo.with_attached_photos.search_result(search_params[:title]).paginate(:page => params[:page])
+        @listings = Listing.where(status: status).includes(:author).with_attached_photo.with_attached_photos.search_result(search_params[:title]).order('renewed_at DESC').paginate(:page => params[:page])
 
         render 'api/listings/index'
     end
