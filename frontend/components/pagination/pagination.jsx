@@ -216,7 +216,7 @@ class PaginationAll extends React.Component {
               totalPages={this.state.pages}
               activePage={this.state.page}
             />{' '}
-            {displayGoToPage}
+            {this.state.pages > 5 && displayGoToPage}
           </div>
         )
       )
