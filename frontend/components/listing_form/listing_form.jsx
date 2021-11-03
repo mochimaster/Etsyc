@@ -35,7 +35,7 @@ const defaultListing = {
   price: '',
   photo: '',
   imageUrl: '',
-  condition: '',
+  condition: 'new',
   brand: '',
   photos: [],
   category: [],
