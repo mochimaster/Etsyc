@@ -69,6 +69,7 @@
   grid-auto-rows: minmax(100px, auto);
   /* max-height: 294px; */
   text-decoration: none;
+  justify-content: space-around;
 }
 
 .index-wrapper > li > div {
@@ -92,7 +93,6 @@
   line-height: 20px;
   overflow: hidden;
 }
-
 
 .listing-item-title a {
   text-decoration: none;
