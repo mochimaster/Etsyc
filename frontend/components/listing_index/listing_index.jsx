@@ -42,6 +42,8 @@ class ListingIndex extends React.Component {
   }
 
   render() {
+    const deviceClassName = window.isMobile ? 'device-mobile' : 'device-large'
+
     const currentUrl = this.props.match.url
     const rootUrl = currentUrl.split('/')[1]
 
@@ -49,7 +51,7 @@ class ListingIndex extends React.Component {
       if (this.props.disabledListings.length) {
         return (
           <div>
-            <ul className="index-wrapper">
+            <ul className={`index-wrapper ${deviceClassName}`}>
               {this.props.disabledListings.map((disabledListing) => {
                 return (
                   <ListingIndexItem
@@ -114,13 +116,14 @@ class ListingIndex extends React.Component {
 
     return (
       <div>
-        <ul className="index-wrapper">
+        <ul className={`index-wrapper ${deviceClassName}`}>
           {this.props.listings.map((listing) => {
             return (
               <ListingIndexItem
                 key={listing.id}
                 listing={listing}
                 deleteListing={this.props.deleteListing}
+                isMobile={window.isMobile}
               />
             )
           })}
