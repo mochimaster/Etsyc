@@ -11,6 +11,11 @@
   color: rgb(34, 34, 34);
 }
 
+.index-wrapper.device-mobile {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  font-size: 23px;
+}
+
 /* .listing-item-wrapper{
   display: grid;
 
@@ -30,6 +35,11 @@
   width: 200px;
   height: 200px;
   overflow: hidden;
+}
+
+.listing-item-image.device-mobile {
+  width: 350px;
+  height: 350px;
 }
 
 .listing-thumbnail {
@@ -57,7 +67,7 @@
   padding: 9px;
   /* Row below is for minimum height */
   grid-auto-rows: minmax(100px, auto);
-  max-height: 294px;
+  /* max-height: 294px; */
   text-decoration: none;
 }
 
@@ -76,6 +86,13 @@
   margin-top: 5px;
   padding-right: 15px;
 }
+
+.listing-item-title.device-mobile {
+  height: 48px;
+  line-height: 20px;
+  overflow: hidden;
+}
+
 
 .listing-item-title a {
   text-decoration: none;

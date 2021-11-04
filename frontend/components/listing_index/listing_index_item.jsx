@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ListingIndexItem = ({ listing, deleteListing }) => {
+const ListingIndexItem = ({ listing, deleteListing, isMobile }) => {
   // debugger
   const url = `/listings/${listing.id}`
   //
@@ -45,12 +45,20 @@ const ListingIndexItem = ({ listing, deleteListing }) => {
 
   return (
     <li className="listing-item-wrapper">
-      <div className="listing-item-image">
+      <div
+        className={`listing-item-image ${
+          isMobile ? 'device-mobile' : 'device-large'
+        }`}
+      >
         <Link to={`/listings/${id}/${titleForUrl}`}>
           <tooltip title={title}>{displayImage}</tooltip>
         </Link>
       </div>
-      <h4 className="listing-item-title">
+      <h4
+        className={`listing-item-title ${
+          isMobile ? 'device-mobile' : 'device-large'
+        }`}
+      >
         <tooltip title={title}>
           <Link
             className="listing-item-title-link"
