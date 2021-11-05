@@ -98,7 +98,9 @@ const Search = (props) => {
           />
         </div>
         <div className="header-search-button-wrapper">
-          <button className="btn btn-primary">Search</button>
+          <button className="btn btn-primary">
+            <i className="fas fa-search"></i>
+          </button>
         </div>
       </div>
     </form>
