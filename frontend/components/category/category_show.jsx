@@ -25,7 +25,7 @@ const CategoryShow = (props) => {
 
   if (loading) {
     return (
-      <div id='react-loading' className="react-loading">
+      <div id="react-loading" className="react-loading">
         <ReactLoading type="bubbles" color="black" />
       </div>
     )
@@ -40,7 +40,11 @@ const CategoryShow = (props) => {
 
   return (
     <div>
-      <ul className="index-wrapper">
+      <ul
+        className={`index-wrapper ${
+          isMobile ? 'device-mobile' : 'device-large'
+        }`}
+      >
         {props.listings.map((listing) => (
           <ListingIndexItem
             key={listing.id}
