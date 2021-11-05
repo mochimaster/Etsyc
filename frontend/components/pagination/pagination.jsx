@@ -168,6 +168,8 @@ class PaginationAll extends React.Component {
         )
     }
 
+    window.scrollTo(0, 0)
+
     // } else if (this.props.match.url === "/listings"){
     //     this.props.getListings(pageNum);
     // }
