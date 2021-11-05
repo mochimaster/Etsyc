@@ -17,7 +17,7 @@ const CategoryIndex = (props) => {
     6: 'Outdoor',
     7: 'Miscellaneous',
     8: 'Special',
-    9: 'Appliance'
+    // 9: 'Appliance'
   }
 
   return (
