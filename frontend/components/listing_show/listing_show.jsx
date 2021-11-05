@@ -296,6 +296,24 @@ class ListingShow extends React.Component {
             {/* <img src={this.props.listing.photoUrl} /> */}
             <Slider images={images} />
             {/* {displayImages} */}
+            <div className="listing-description">
+              <label className="title-label">Description</label> <br />
+              <p>{this.props.listing.description}</p>
+            </div>
+
+            <div>
+              <ReviewForm listingId={this.props.listing.id} />
+            </div>
+            <div />
+
+            <div className="listing-reviews">
+              <ReviewIndexContainer
+                createReview={this.props.createReview}
+                listing={this.props.listing}
+                sessionId={this.props.sessionId}
+                listingId={this.props.listing.listingId}
+              />
+            </div>
           </div>
 
           <div className="listing-details listing-right-half">
@@ -401,26 +419,6 @@ class ListingShow extends React.Component {
               <label className="title-label">Overview</label>
               <p className="overview">{this.props.listing.overview}</p>
             </div>
-          </div>
-
-          <div className="listing-description">
-            <label className="title-label">Description</label> <br />
-            <p>{this.props.listing.description}</p>
-          </div>
-
-          <div />
-          <div>
-            <ReviewForm listingId={this.props.listing.id} />
-          </div>
-          <div />
-
-          <div className="listing-reviews">
-            <ReviewIndexContainer
-              createReview={this.props.createReview}
-              listing={this.props.listing}
-              sessionId={this.props.sessionId}
-              listingId={this.props.listing.listingId}
-            />
           </div>
         </div>
       </div>

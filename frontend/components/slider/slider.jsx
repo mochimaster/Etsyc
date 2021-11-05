@@ -56,7 +56,10 @@ const Slider = (props) => {
 
   const additionalClassName = isModalDisplayed ? 'modal-child-photo' : ''
   const modalX = isModalDisplayed ? (
-    <i className="far fa-window-close fa-3x" onClick={props.closeModal} />
+    <i
+      className={`far fa-window-close ${window.isMobile ? 'fa-4x' : 'fa-8x'}`}
+      onClick={props.closeModal}
+    />
   ) : (
     ''
   )
