@@ -64,7 +64,7 @@ class Api::ListingsController < ApplicationController
 
     filters = params[:filters]
 
-    condition = filters[:condition] == 'all' ? ['new', 'used'] : filters[:condition]
+    condition = filters[:condition] == 'all' ? ['new', 'used', 'like new'] : filters[:condition]
 
     sort_option = params[:sort]
 
