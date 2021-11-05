@@ -91,7 +91,7 @@
 
 .listing-item-title.device-mobile {
   height: 48px;
-  line-height: 20px;
+  line-height: 24px;
   overflow: hidden;
 }
 
@@ -120,4 +120,8 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 25.6px;
+}
+
+.index-wrapper .listing-item-price.device-mobile {
+  font-size: 30px;
 }

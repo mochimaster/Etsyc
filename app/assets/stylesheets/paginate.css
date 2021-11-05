@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+.pagination-wrapper.device-mobile {
+  font-size: 20px;
+  line-height: 3;
+}
+
 .pagination-wrapper a.item {
   margin-left: 0;
   border-color: rgba(0, 0, 0, 0.15);
@@ -28,7 +33,7 @@
   cursor: pointer;
 }
 
-.pagination{
+.pagination {
   display: contents;
 }
 

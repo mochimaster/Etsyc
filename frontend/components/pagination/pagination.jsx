@@ -208,7 +208,11 @@ class PaginationAll extends React.Component {
     ) {
       return (
         this.state.pages > 1 && (
-          <div className="pagination-wrapper">
+          <div
+            className={`pagination-wrapper ${
+              isMobile ? 'device-mobile' : 'device-large'
+            }`}
+          >
             <Pagination
               ellipsisItem={'...'}
               onPageChange={this.handlePage}

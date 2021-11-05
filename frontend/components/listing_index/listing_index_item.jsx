@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { capitalize } from 'lodash'
+
 const ListingIndexItem = ({ listing, deleteListing, isMobile }) => {
   // debugger
   const url = `/listings/${listing.id}`
+
+  const deviceClassName = isMobile ? 'device-mobile' : 'device-large'
   //
   // const star = 4;
   // const starHTML = "";
@@ -45,26 +49,18 @@ const ListingIndexItem = ({ listing, deleteListing, isMobile }) => {
 
   return (
     <li className="listing-item-wrapper">
-      <div
-        className={`listing-item-image ${
-          isMobile ? 'device-mobile' : 'device-large'
-        }`}
-      >
+      <div className={`listing-item-image ${deviceClassName}`}>
         <Link to={`/listings/${id}/${titleForUrl}`}>
           <tooltip title={title}>{displayImage}</tooltip>
         </Link>
       </div>
-      <h4
-        className={`listing-item-title ${
-          isMobile ? 'device-mobile' : 'device-large'
-        }`}
-      >
-        <tooltip title={title}>
+      <h4 className={`listing-item-title ${deviceClassName}`}>
+        <tooltip title={capitalize(title)}>
           <Link
             className="listing-item-title-link"
             to={`/listings/${id}/${titleForUrl}`}
           >
-            {title}
+            {capitalize(title)}
           </Link>
         </tooltip>
       </h4>
@@ -76,7 +72,7 @@ const ListingIndexItem = ({ listing, deleteListing, isMobile }) => {
           {brand || ''}
         </Link>
       </div> */}
-      <div className="listing-item-price">$ {price}</div>
+      <div className={`listing-item-price ${deviceClassName}`}>$ {price}</div>
     </li>
   )
 }
