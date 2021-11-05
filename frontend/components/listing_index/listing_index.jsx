@@ -123,7 +123,6 @@ class ListingIndex extends React.Component {
                 key={listing.id}
                 listing={listing}
                 deleteListing={this.props.deleteListing}
-                isMobile={window.isMobile}
               />
             )
           })}

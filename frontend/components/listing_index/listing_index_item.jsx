@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { startCase } from 'lodash'
+import { capitalize } from 'lodash'
 
-const ListingIndexItem = ({ listing, deleteListing, isMobile }) => {
+const ListingIndexItem = ({ listing }) => {
   // debugger
   const url = `/listings/${listing.id}`
 
@@ -60,7 +60,7 @@ const ListingIndexItem = ({ listing, deleteListing, isMobile }) => {
             className="listing-item-title-link"
             to={`/listings/${id}/${titleForUrl}`}
           >
-            {startCase(title)}
+            {title.replace(/\w+/g, capitalize)}
           </Link>
         </tooltip>
       </h4>
