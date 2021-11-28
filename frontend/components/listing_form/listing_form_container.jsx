@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     listing: {
-      title: title ? `${title}-copy` : '',
+      title: title ? title : '',
       description: description || '',
       category: category || '',
       overview: overview || '',
