@@ -68,12 +68,12 @@ const Header = (props) => {
         <ul className="account-nav">
           {sellLink}
           <li>
-            <Link
+            {props.currentUser && <Link
               className="header-button manage-listing"
               to={`/users/${props.currentUser.id}/home`}
             >
               Manage listings
-            </Link>
+            </Link>}
           </li>
           {navBar}
           <li>
