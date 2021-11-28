@@ -17,7 +17,7 @@
 
 class Listing < ApplicationRecord
   validates :description, :author_id, :price, :overview,presence: true
-  validates :title, uniqueness: true
+  # validates :title, uniqueness: true
   validates :price, numericality: { greater_than: 0}
   attribute :modified_by_userid, :integer, default: :author_id
 
