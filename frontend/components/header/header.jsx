@@ -68,12 +68,14 @@ const Header = (props) => {
         <ul className="account-nav">
           {sellLink}
           <li>
-            {props.currentUser && <Link
-              className="header-button manage-listing"
-              to={`/users/${props.currentUser.id}/home`}
-            >
-              Manage listings
-            </Link>}
+            {props.currentUser === 2 && (
+              <Link
+                className="header-button manage-listing"
+                to={`/users/${props.currentUser.id}/home`}
+              >
+                Manage listings
+              </Link>
+            )}
           </li>
           {navBar}
           <li>
