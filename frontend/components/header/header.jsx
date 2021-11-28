@@ -67,6 +67,14 @@ const Header = (props) => {
 
         <ul className="account-nav">
           {sellLink}
+          <li>
+            <Link
+              className="header-button manage-listing"
+              to={`/users/${props.currentUser.id}/home`}
+            >
+              Manage listings
+            </Link>
+          </li>
           {navBar}
           <li>
             <Link to="/faq" className="icon-img-discover icon-img-question">

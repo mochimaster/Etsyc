@@ -54,7 +54,7 @@ class Api::CategoriesController < ApplicationController
         condition = filters && filters[:condition]
         
         if !condition || condition == 'all'
-            condition = ['new', 'used']
+            condition = ['new', 'used', 'like new']
         end
 
 
