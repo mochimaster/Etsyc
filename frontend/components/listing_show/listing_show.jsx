@@ -128,7 +128,10 @@ class ListingShow extends React.Component {
   }
 
   handleDuplicateListing(listing) {
-    this.props.duplicateListing(listing)
+    this.props.duplicateListing({
+      ...listing,
+      title: listing.title.replaceAll('(PENDING)', '').trim()
+    })
     this.props.history.push(`/listings/new`)
   }
 
