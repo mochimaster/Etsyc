@@ -1,17 +1,26 @@
-.app-container{
-    min-height: 100%;
-    position: relative;
+.app-container {
+  min-height: 100%;
+  position: relative;
 }
 
-.body{
-    min-height: 92vh;
-    /* padding-bottom: 96px; */
+.announcement {
+  text-align: center;
+  padding-top: 10px;
+  margin: 0 35px 0 35px;
+  font-weight: bold;
+}
+
+.announcement > .announcement-red {
+  color: red;
+}
+
+.body {
+  min-height: 92vh;
 }
 
 .footer-wrapper {
+  bottom: 0;
+  width: 95%;
 
-   bottom:0;
-   width:95%;
-
-   /* background:#6cf; */
+  /* background:#6cf; */
 }
