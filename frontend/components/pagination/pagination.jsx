@@ -205,8 +205,8 @@ class PaginationAll extends React.Component {
     )
 
     if (
-      this.props.disabledListings.length ||
-      (this.props.listings && this.props.listings.length)
+      Boolean(this.props.disabledListings.length) ||
+      Boolean(this.props.listings && this.props.listings.length)
     ) {
       return (
         this.state.pages > 1 && (
