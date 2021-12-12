@@ -63,7 +63,7 @@
 
 .cart-index-wrapper {
   padding: 18px;
-  min-height: 700px;
+  min-height: 1200px;
 }
 
 .cart-index-item {
@@ -170,6 +170,19 @@
   background-repeat: no-repeat;
   width: 100%;
   min-width: 300px;
+  height: 100%;
+  margin-top: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-position: center;
+}
+
+#payment-zelle {
+  background-image: image-url('payment_zelle.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  min-width: 300px;
+  min-height: 400px;
   height: 100%;
   margin-top: 20px;
   box-sizing: border-box;

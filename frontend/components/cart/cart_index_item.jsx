@@ -1,6 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+const getItemNumber = (listingId) => {
+  while (listingId.length <= 4) {
+    listingId = '0' + listingId
+  }
+
+  return listingId
+}
+
 const CartIndexItem = (props) => {
   const updateQuantity = (e) => {
     props.updateCart({
@@ -32,7 +40,7 @@ const CartIndexItem = (props) => {
           >
             {props.cart.brand}
             <br />
-            {props.cart.title}
+            {props.cart.title} ({getItemNumber(`${props.cart.listing_id}`)})
           </Link>
         </div>
 
