@@ -66,9 +66,17 @@ const CartIndex = (props) => {
               <p>Accepted payments: Cash, Zelle, or Cashapp</p>
               <p>Include item number when submitting payment.</p>
               <br />
-              <h1>Zelle: castleandchair@gmail.com</h1>
-              <p>Enrolled as Castle and Chair Inc.</p>
               <p>Scan or Tap QR Code for Zelle payment</p>
+              <p>
+                Zelle:{' '}
+                <a
+                  href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
+                  target="_blank"
+                >
+                  castleandchair@gmail.com
+                </a>
+              </p>
+              <p>Enrolled as Castle and Chair Inc.</p>
               <a
                 href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
                 target="_blank"
