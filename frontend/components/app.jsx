@@ -65,10 +65,10 @@ const App = () => {
         </div>
 
         <div className="announcement">
-          <span className="announcement-red">Announcement</span>: Store is not
+          {/* <span className="announcement-red">Announcement</span>: Store is not
           available between 12/13/2021 - 12/24/2021 for pick ups. All purchases
           made between that will be put on hold for you and available for pick
-          up 12/25 onwards.
+          up 12/25 onwards. */}
         </div>
 
         <Switch>
