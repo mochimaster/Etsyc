@@ -7,6 +7,8 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const signup = (user) => {
+  user.username = user.username.toLowerCase()
+  
   return dispatch => {
     return ApiUtil.signup(user).then(user => {
       return dispatch({type: RECEIVE_CURRENT_USER, user:user });
@@ -19,6 +21,7 @@ export const signup = (user) => {
 };
 
 export const login = (user) => {
+  user.username = user.username.toLowerCase()
 
   return dispatch => {
     return ApiUtil.login(user).then(user => {

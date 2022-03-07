@@ -109,17 +109,6 @@ export const Faq = () => (
 
       <div className="question-container">
         <div className="question-left">Q.</div>
-        <div className="question-right">What is your return policy?</div>
-      </div>
-      <div className="answer-container">
-        <div className="answer-left">A.</div>
-        <div className="answer-right">
-          We do not accept returns or exchanges. All sales are final.
-        </div>
-      </div>
-
-      <div className="question-container">
-        <div className="question-left">Q.</div>
         <div className="question-right">Can I have a refund on deposit?</div>
       </div>
       <div className="answer-container">
@@ -130,7 +119,7 @@ export const Faq = () => (
           <br />
           Deposit of 20% for each 1 week of hold. If you do not pay the balance
           by the end of the hold, the item will no longer be held for you and
-          the deopsit is forfeited and non refundable. The item will then be
+          the deposit is forfeited and non refundable. The item will then be
           made available for purchase to other customers.
         </div>
       </div>
@@ -143,10 +132,47 @@ export const Faq = () => (
         <div className="answer-left">A.</div>
         <div className="answer-right">
           All fully paid items must be picked up in 2 weeks. If the item is not
-          picked up in 2 weeks, it will be treated as abondoned and the payment
+          picked up in 2 weeks, it will be treated as abandoned and the payment
           is not refundable. <br />
           If you need more than 2 weeks of hold, please let us know and we can
-          make necessary arrangments and come to an agreement.
+          make necessary arrangements and come to an agreement.
+        </div>
+      </div>
+
+      <div className="question-container">
+        <div className="question-left">Q.</div>
+        <div className="question-right">What is your return policy?</div>
+      </div>
+      <div className="answer-container">
+        <div className="answer-left">A.</div>
+        <div className="answer-right">
+          All sales are final. There are no returns on any merchandise. All
+          merchandise is sold as is, without warranties or services. Customer is
+          responsible to inspect all items purchased and do understand at they
+          are sold as is with no warranties or services.
+          <br />
+          Once inspected and accepted, the merchandise shall become the sole
+          responsibility of customer including but not limited to the carrying,
+          loading, packaging and securing the further transport. Please come
+          prepared with the necessary tools: proper vehicle, rope, packing
+          materials
+        </div>
+      </div>
+
+      <div className="question-container">
+        <div className="question-left">Q.</div>
+        <div className="question-right">
+          Can we do a self pick up of purchased items?
+        </div>
+      </div>
+      <div className="answer-container">
+        <div className="answer-left">A.</div>
+        <div className="answer-right">
+          We offer assistance in loading your items into your vehicle but we
+          cannot provide you with wrapping or rope to tie down your items, nor are we
+          responsible for securing items to your vehicle. We cannot be
+          responsible for damage that occurs to your merchandise, your vehicle,
+          or other vehicles when you transport your purchase.
         </div>
       </div>
     </div>
