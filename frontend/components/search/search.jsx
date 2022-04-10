@@ -34,7 +34,7 @@ const Search = (props) => {
     })
 
     if (!isNaN(title)) {
-      return props.history.push(`/listings/${title}`)
+      return props.history.push(`/listings/${title.replace(/^0+/, '')}`)
     }
 
     let finalPath = props.location.pathname.replace('/search', '')
