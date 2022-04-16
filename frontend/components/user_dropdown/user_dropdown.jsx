@@ -26,12 +26,14 @@ const UserDropdown = (props) => {
           <Link
             className="header-button"
             to={`/users/${props.currentUser.id}/home`}
+            onClick={() => props.closeModal()}
           >
             Manage listings
           </Link>
           <Link
             className="header-button"
             to={`/users/${props.currentUser.id}/reset`}
+            onClick={() => props.closeModal()}
           >
             Reset password
           </Link>
