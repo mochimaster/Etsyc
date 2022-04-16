@@ -32,6 +32,9 @@ const HomeForm = ({
       newPassword1: '',
       newPassword2: ''
     })
+
+    setStatusResponse()
+    setResponse()
   }, [statusResponse, response])
 
   const handleUpdate = (value, field) => {
