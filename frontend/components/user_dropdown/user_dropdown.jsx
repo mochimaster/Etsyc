@@ -29,6 +29,12 @@ const UserDropdown = (props) => {
           >
             Manage listings
           </Link>
+          <Link
+            className="header-button"
+            to={`/users/${props.currentUser.id}/reset`}
+          >
+            Reset password
+          </Link>
           <a className="header-button" onClick={handleSubmit}>
             Sign out
           </a>

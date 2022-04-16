@@ -16,6 +16,7 @@ import PaginationAll from '../components/pagination/pagination_container'
 import SortDropDownContainer from './sort/sort_container'
 import HomeIndexContainer from './home_index/home_index_container'
 import ConditionDropDownContainer from './condition/condition_container'
+import HomeFormContainer from './home_form/home_form_container'
 import { Faq } from './faq/faq'
 import NotFound from './not_found'
 
@@ -83,6 +84,10 @@ const App = () => {
           <Route
             path="/categories/:categoryId"
             component={CategoryShowContainer}
+          />
+          <ProtectedRoute
+            path="/users/:userId/reset"
+            component={HomeFormContainer}
           />
           <ProtectedRoute
             path="/users/:userId/home"
