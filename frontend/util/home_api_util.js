@@ -13,3 +13,15 @@ export const getDisabledListingsByUserId = (
     data: { sort: sortOption, filters, search }
   })
 }
+
+export const resetPassword = (credential) =>
+  $.ajax({
+    method: 'POST',
+    url: `/api/users/${credential.userId}/reset`,
+    data: { ...credential },
+    success: (response, _, { status }) => ({
+      response,
+      status
+    }),
+    error: (error) => error
+  })

@@ -1,6 +1,8 @@
 import * as ApiUtil from '../util/home_api_util'
 
 export const RECEIVE_DISABLED_LISTINGS = 'RECEIVE_DISABLED_LISTINGS'
+export const RECEIVE_CREDENTIAL_UPDATED = 'RECEIVE_CREDENTIAL_UPDATED'
+export const RECEIVE_CREDENTIAL_ERRORS = 'RECEIVE_CREDENTIAL_ERRORS'
 
 export const getDisabledListingsByUserId = (
   userId,
@@ -26,3 +28,19 @@ export const getDisabledListingsByUserId = (
     })
   }
 }
+
+export const resetPassword = (credential) => (dispatch) =>
+  ApiUtil.resetPassword(credential).then(
+    (response, _, { status }) =>
+      dispatch({
+        type: RECEIVE_CREDENTIAL_UPDATED,
+        response,
+        status
+      }),
+    ({ responseJSON, status }) =>
+      dispatch({
+        type: RECEIVE_CREDENTIAL_ERRORS,
+        status,
+        response: responseJSON
+      })
+  )

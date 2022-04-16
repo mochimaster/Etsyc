@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :home, only: [:index] do
         resources :search, only: [:index]
       end
+      resources :reset, only: [:create], defaults: {format: :json}
     end
     resources :listings, defaults: {format: :json} do
       resources :reviews, only: [:index]
