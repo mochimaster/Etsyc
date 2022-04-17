@@ -1,0 +1,26 @@
+%header-banner-styles {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+  background: #d68391;
+  color: white;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center; /* Vertical center alignment */
+  justify-content: center; /* Horizontal center alignment */
+}
+
+#header-banner {
+  @extend %header-banner-styles;
+}
+
+#header-banner-mobile {
+  @extend %header-banner-styles;
+  height: 45px;
+}
+
+.appointment-link {
+  text-decoration: underline;
+  color: white;
+}
