@@ -1,0 +1,16 @@
+#header-banner {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+  text-align: center;
+  background: #d68391;
+  color: white;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  padding-top: 5px;
+}
+
+.appointment-link {
+  text-decoration: underline;
+  color: white;
+}

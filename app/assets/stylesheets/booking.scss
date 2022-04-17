@@ -1,0 +1,37 @@
+#directions-map {
+  background-image: image-url('directions_map.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  min-width: 300px;
+  min-height: 500px;
+  height: 100%;
+  margin-top: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-position: center;
+}
+
+.booking-container {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+  text-align: center;
+}
+
+.booking-header {
+  font-size: 36px;
+
+  border-bottom: 1px solid #e1e3df;
+  padding: 15px 20px 20px 20px;
+}
+
+.booking-body {
+  margin: 20px;
+}
+
+.booking-name {
+  font-size: 23px;
+}
+
+#direction-btn {
+  width: 200px;
+}
