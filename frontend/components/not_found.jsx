@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const NotFound = ({ location }) => {
-  if (location.pathname === '/faq') return <div></div>
+  if (['/faq', '/pages/appointment'].includes(location.pathname))
+    return <div></div>
 
   return (
     <div className="page-body-container">
