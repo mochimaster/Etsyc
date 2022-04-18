@@ -18,7 +18,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         )}`
     )
 
-    setPopulatedNoteField(listingsIdAndTitle.join('%0A'))
+    setPopulatedNoteField(listingsIdAndTitle.join('%0A%0A'))
   }, [carts])
 
   return (
@@ -39,9 +39,8 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         <InlineWidget
           styles={{
             minWidth: '320px',
-            height: window.isMobile ? '1400px' : '950px',
-            overflow: 'hidden',
-            width: '100%'
+            height: window.isMobile ? '1300px' : '950px',
+            overflow: 'hidden'
           }}
           pageSettings={{
             hideGdprBanner: true
