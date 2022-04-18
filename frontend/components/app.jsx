@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import Modal from './modal/modal'
 
-import BookingContainer from './booking/booking'
+import BookingContainer from './booking/booking_container'
 import HeaderBannerContainer from './header_banner/header_banner'
 import HeaderContainer from './header/header_container'
 import ListingIndexContainer from './listing_index/listing_index_container'

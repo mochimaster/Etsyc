@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { InlineWidget } from 'react-calendly'
 
-const Booking = () => {
+const BookingShow = ({ carts, getCarts, currentUserId }) => {
+  const [populatedNoteField, setPopulatedNoteField] = useState('')
+
+  useEffect(() => {
+    currentUserId && getCarts(currentUserId)
+  }, [])
+
+  useEffect(() => {
+    const listingsIdAndTitle = carts.map(
+      ({ listing_id, title }) =>
+        `https://castleandchair.com/listings/${listing_id}/${title.replaceAll(
+          ' ',
+          '-'
+        )}`
+    )
+
+    setPopulatedNoteField(listingsIdAndTitle.join('%0A'))
+  }, [carts])
+
   return (
     <div className="booking-container">
       <h1 className="booking-header">Visit Our Warehouse</h1>
@@ -28,7 +46,7 @@ const Booking = () => {
           pageSettings={{
             hideGdprBanner: true
           }}
-          url="https://calendly.com/castleandchair/30"
+          url={`https://calendly.com/castleandchair/visit?a2=${populatedNoteField}`}
         />
 
         {/* <div id="booking-book-me-text">
@@ -99,4 +117,4 @@ const Booking = () => {
   )
 }
 
-export default Booking
+export default BookingShow
