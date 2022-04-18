@@ -11,6 +11,7 @@
     "mixpanel-browser": "^2.39.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
+    "react-calendly": "^3.0.3",
     "react-dom": "^16.13.1",
     "react-loading": "^2.0.3",
     "react-redux": "^5.0.7",
