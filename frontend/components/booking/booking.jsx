@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { InlineWidget } from 'react-calendly'
+
 const Booking = () => {
   return (
     <div className="booking-container">
@@ -15,6 +17,17 @@ const Booking = () => {
           We are currently open by appointments weekdays 10AM - 5PM. To make an
           appointment, use the scheduler below:
         </div>
+
+        <InlineWidget
+          styles={{
+            minWidth: '320px',
+            height: window.isMobile ? '1000px' : '800px',
+            overflow: 'hidden',
+            width: '100%'
+          }}
+          url="https://calendly.com/castleandchair/30"
+        />
+
         {/* <div id="booking-book-me-text">
           <a
             href="https://castleandchair.youcanbook.me/"
@@ -33,31 +46,6 @@ const Booking = () => {
           </a>
           <br />
         </div> */}
-
-        {/* <div
-          class="calendly-inline-widget"
-          data-url="https://calendly.com/castleandchair?hide_landing_page_details=1&hide_gdpr_banner=1"
-          style={{ minWidth: '320px', height: '630px' }}
-        ></div>
-        <script
-          type="text/javascript"
-          src="https://assets.calendly.com/assets/external/widget.js"
-          async
-        ></script> */}
-        <div
-          class="calendly-inline-widget"
-          data-url="https://calendly.com/castleandchair/30?hide_landing_page_details=1&hide_gdpr_banner=1"
-          style={{
-            minWidth: '320px',
-            height: window.isMobile ? '1000px' : '800px',
-            overflow: 'hidden'
-          }}
-        ></div>
-        <script
-          type="text/javascript"
-          src="https://assets.calendly.com/assets/external/widget.js"
-          async
-        ></script>
 
         <div>
           If you have any questions or to make an appointment within the next
