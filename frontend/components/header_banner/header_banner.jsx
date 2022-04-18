@@ -6,7 +6,7 @@ const HeaderBanner = () => (
     id={`${window.isMobile ? 'header-banner-mobile' : 'header-banner'}`}
     className="animate__animated animate__bounce"
   >
-    CASTLE AND CHAIR OPEN BY APPOINTMENT.{' '}
+    CASTLE AND CHAIR OPEN BY APPOINTMENT.&nbsp;
     <Link className="appointment-link" to="/pages/appointment">
       BOOK NOW.
     </Link>
