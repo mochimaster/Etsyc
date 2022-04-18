@@ -15,8 +15,7 @@ const Booking = () => {
           We are currently open by appointments weekdays 10AM - 5PM. To make an
           appointment, click the button below:{' '}
         </div>
-        <br />
-        <div id="booking-book-me-text">
+        {/* <div id="booking-book-me-text">
           <a
             href="https://castleandchair.youcanbook.me/"
             target="_blank"
@@ -33,8 +32,31 @@ const Booking = () => {
             BOOK ME
           </a>
           <br />
-        </div>
+        </div> */}
         <br />
+
+        {/* <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/castleandchair?hide_landing_page_details=1&hide_gdpr_banner=1"
+          style={{ minWidth: '320px', height: '630px' }}
+        ></div>
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script> */}
+
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/castleandchair/30?hide_landing_page_details=1&hide_gdpr_banner=1"
+          style={{ minWidth: '320px', height: '900px' }}
+        ></div>
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
+
         <div>
           If you have any questions or to make an appointment within the next
           two hours, text us at{' '}
