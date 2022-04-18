@@ -21,7 +21,7 @@ const Booking = () => {
         <InlineWidget
           styles={{
             minWidth: '320px',
-            height: window.isMobile ? '1000px' : '800px',
+            height: window.isMobile ? '1200px' : '800px',
             overflow: 'hidden',
             width: '100%'
           }}
