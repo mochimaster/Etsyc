@@ -39,7 +39,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         <InlineWidget
           styles={{
             minWidth: '320px',
-            height: window.isMobile ? '1200px' : '800px',
+            height: window.isMobile ? '1400px' : '950px',
             overflow: 'hidden',
             width: '100%'
           }}
