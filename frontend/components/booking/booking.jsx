@@ -63,11 +63,16 @@ const Booking = () => {
             </button>
           </a>
         </div>
-        <img
-          id="directions-map"
-          className="directions-map"
-          aria-label="Directions"
-        ></img>
+        <br />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.2001748647267!2d-122.06223908437639!3d37.620978928765425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f957a2aa658d1%3A0x8ba446f321e60e43!2sCastle%20and%20Chair!5e0!3m2!1sen!2sus!4v1650241531675!5m2!1sen!2sus"
+          width="800"
+          height="600"
+          style={{ border: 0 }}
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   )
