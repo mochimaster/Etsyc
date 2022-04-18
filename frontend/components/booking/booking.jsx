@@ -13,7 +13,7 @@ const Booking = () => {
         <br />
         <div>
           We are currently open by appointments weekdays 10AM - 5PM. To make an
-          appointment, click the button below:{' '}
+          appointment, use the scheduler below:
         </div>
         {/* <div id="booking-book-me-text">
           <a
@@ -33,7 +33,6 @@ const Booking = () => {
           </a>
           <br />
         </div> */}
-        <br />
 
         {/* <div
           class="calendly-inline-widget"
@@ -49,7 +48,7 @@ const Booking = () => {
         <div
           class="calendly-inline-widget"
           data-url="https://calendly.com/castleandchair/30?hide_landing_page_details=1&hide_gdpr_banner=1"
-          style={{ minWidth: '320px', height: '900px' }}
+          style={{ minWidth: '320px', height: '800px' }}
         ></div>
         <script
           type="text/javascript"
