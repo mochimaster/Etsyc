@@ -25,6 +25,9 @@ const Booking = () => {
             overflow: 'hidden',
             width: '100%'
           }}
+          pageSettings={{
+            hideGdprBanner: true
+          }}
           url="https://calendly.com/castleandchair/30"
         />
 
