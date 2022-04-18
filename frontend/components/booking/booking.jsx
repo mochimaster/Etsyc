@@ -16,17 +16,23 @@ const Booking = () => {
           appointment, click the button below:{' '}
         </div>
         <br />
-        <div>
+        <div id="booking-book-me-text">
           <a
             href="https://castleandchair.youcanbook.me/"
             target="_blank"
             data-ycbm-modal="true"
           >
-            <img
-              src="https://youcanbook.me/resources/pics/ycbm-button.png"
-              style={{ borderStyle: 'none', height: 200, width: 200 }}
-            />
+            <i
+              class="fa-solid fa-calendar-days"
+              style={{
+                fontSize: '100px',
+                color: 'black'
+              }}
+            ></i>
+            <br />
+            BOOK ME
           </a>
+          <br />
         </div>
         <br />
         <div>
