@@ -12,7 +12,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
   useEffect(() => {
     const listingsIdAndTitle = carts.map(
       ({ listing_id, title }) =>
-        `https://castleandchair.com/listings/${listing_id}/${title.replaceAll(
+        `https://castleandchair.com/#/listings/${listing_id}/${title.replaceAll(
           ' ',
           '-'
         )}`
