@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactLoading from 'react-loading'
 
+import { merge } from 'lodash'
+
 import ListingShowContainer from './listing_show_container'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
@@ -369,13 +371,6 @@ class ListingShow extends React.Component {
                 this.setState({ displayAddToCartToolTip: false })
               }
             >
-              {!this.props.sessionId && this.state.displayAddToCartToolTip ? (
-                <div className="add-to-cart-tooltip">
-                  You must sign in to use cart.
-                </div>
-              ) : (
-                <div className="add-to-cart-tooltip"></div>
-              )}
               <div className="listing-details add-to-cart">
                 <button
                   className={this.props.sessionId ? '' : 'button-disabled'}
@@ -384,17 +379,40 @@ class ListingShow extends React.Component {
                       eventName: EVENTS.ADD_TO_CART,
                       eventProperties: { title: this.props.listing.description }
                     })
-                    return this.props
-                      .createCart({
-                        quantity: this.state.quantity,
-                        listing_id: this.props.listing.id,
-                        user_id: this.props.sessionId
+
+                    if (!this.props.sessionId) {
+                      const localStorageCartItems =
+                        window.localStorage.getItem('cartItems')
+                      const existingCarts =
+                        (localStorageCartItems &&
+                          JSON.parse(localStorageCartItems)) ||
+                        {}
+
+                      const mergedCarts = merge(existingCarts, {
+                        [this.props.listing.id]: {
+                          quantity: this.state.quantity
+                        }
                       })
-                      .then(() =>
-                        this.props.history.push(
-                          `/users/${this.props.sessionId}/carts`
-                        )
+
+                      window.localStorage.setItem(
+                        'cartItems',
+                        JSON.stringify(mergedCarts)
                       )
+
+                      this.props.history.push(`/users/temp/carts`)
+                    } else {
+                      return this.props
+                        .createCart({
+                          quantity: this.state.quantity,
+                          listing_id: this.props.listing.id,
+                          user_id: this.props.sessionId
+                        })
+                        .then(() =>
+                          this.props.history.push(
+                            `/users/${this.props.sessionId}/carts`
+                          )
+                        )
+                    }
                   }}
                 >
                   Add to cart

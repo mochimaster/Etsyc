@@ -97,6 +97,7 @@ const App = () => {
             path="/users/:userId/home"
             component={HomeIndexContainer}
           />
+          <Route path="/users/temp/carts" component={CartContainer} />
           <ProtectedRoute
             path="/users/:userId/carts"
             component={CartContainer}
