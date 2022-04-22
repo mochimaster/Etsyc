@@ -95,6 +95,7 @@ export const getTempCartListing = (id, quantity) => (dispatch) =>
   })
 
 export const getTempCartListings = (listingIds) => (dispatch) => {
+  if (listingIds.length < 1) return
   return ApiUtil.getListingsByIds(listingIds).then(({ listings }) => {
     /**
      * {

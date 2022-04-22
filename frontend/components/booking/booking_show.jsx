@@ -19,7 +19,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         )}`
     )
 
-    setPopulatedNoteField(listingsIdAndTitle.join('%0A%0A'))
+    setPopulatedNoteField(listingsIdAndTitle.join('{"\n"}'))
   }, [carts])
 
   return (
