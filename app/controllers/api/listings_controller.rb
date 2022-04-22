@@ -62,6 +62,8 @@ class Api::ListingsController < ApplicationController
       params[:page]=1
     end
 
+    ids = params[:ids]
+
     filters = params[:filters]
 
     condition = filters[:condition] == 'all' ? ['new', 'used', 'like new'] : filters[:condition]
@@ -78,7 +80,9 @@ class Api::ListingsController < ApplicationController
       sort_param = :id
     end
 
-    if sort_order == 'asc' && sort_param == :price
+    if ids && ids.length > 0
+      @listings = Listing.where(id: ids,status: [nil, true], condition: condition).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+    elsif sort_order == 'asc' && sort_param == :price
       @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     elsif sort_order == 'desc' && sort_param == :price
       @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
@@ -115,7 +119,6 @@ class Api::ListingsController < ApplicationController
       render json: @listing.errors.full_messages, status: 401
     end
   end
-
 
   private
   def listing_params

@@ -61,6 +61,19 @@ export const getListings = (
   })
 }
 
+export const getListingsByIds = (
+  ids,
+  page = 1,
+  sort_option = 'newest',
+  filters = { condition: CONDITION.ALL }
+) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/listings?page=${page}`,
+    data: { ids, sort: sort_option, filters }
+  })
+}
+
 export const getSavedListings = (listing_ids) => {
   return $.ajax({
     method: 'GET',
