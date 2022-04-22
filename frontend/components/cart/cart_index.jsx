@@ -1,20 +1,88 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { round } from 'lodash'
+import { pick, round } from 'lodash'
 
 import CartIndexItem from './cart_index_item'
 
 const CartIndex = (props) => {
+  const [isSignedIn, setIsSignedIn] = useState(props.currentUserId)
+  const [transformedTempCarts, setTransformedTempCarts] = useState([])
+  const [listingsIdandQuantity, setListingsIdandQuantity] = useState([])
+
+  useEffect(() => {
+    if (props.session) setIsSignedIn(true)
+  }, [props.session])
+
   useEffect(() => {
     props.getCarts(props.currentUserId)
   }, [])
 
-  if (!props.carts) {
+  useEffect(() => {
+    const localStorageCartItems = window.localStorage.getItem('cartItems')
+
+    const cartItemsJSON =
+      (localStorageCartItems && JSON.parse(localStorageCartItems)) || {}
+
+    const tempListingsIdandQuantity = []
+    for (const cartItem in cartItemsJSON) {
+      tempListingsIdandQuantity.push({
+        id: cartItem,
+        quantity: cartItemsJSON[cartItem].quantity
+      })
+    }
+
+    setListingsIdandQuantity(tempListingsIdandQuantity)
+
+    props.getTempCartListingsByIds(
+      tempListingsIdandQuantity.map(({ id }) => id)
+    )
+
+    // const cart = listingIAndQuantity.map(({ id, quantity }) =>
+    //   props.getTempCartListing(id, quantity)
+    // )
+  }, [])
+
+  const transformTempCarts = (tempCarts, listingsIdandQuantity) => {
+    return tempCarts.map((tempCart) => {
+      let quantity
+
+      if (tempCart.quantity && tempCart.quantity > 0) {
+        quantity = tempCart.quantity
+      } else {
+        const matchingId = listingsIdandQuantity.filter(
+          (listingIdAndQuantity) => listingIdAndQuantity.id == tempCart.id
+        )[0]
+
+        quantity = (matchingId && matchingId.quantity) || 1
+      }
+
+      return {
+        ...tempCart,
+        listing_id: tempCart.id,
+        quantity
+      }
+    })
+  }
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      const transformed = transformTempCarts(
+        props.tempCarts,
+        listingsIdandQuantity
+      )
+
+      setTransformedTempCarts(transformed)
+    }
+  }, [props.tempCarts])
+
+  if (!props.carts && transformedTempCarts.length < 1) {
     return <div className="cart-empty">Your cart is empty.</div>
   }
 
-  const itemCount = props.carts.length
+  const itemCount = isSignedIn
+    ? props.carts.length
+    : transformedTempCarts.length
 
   const itemCountDisplay =
     itemCount === 1 ? (
@@ -23,10 +91,72 @@ const CartIndex = (props) => {
       <p> {itemCount} items in your cart</p>
     )
 
-  let sum = 0
+  let cartSum = 0
   props.carts.forEach(
-    ({ price = 1, quantity = 0 }) => (sum += price * quantity)
+    ({ price = 1, quantity = 0 }) => (cartSum += price * quantity)
   )
+
+  const tempCartsSum = transformedTempCarts.reduce(
+    (sum, { price, quantity = 1 }) => (sum += price * quantity),
+    0
+  )
+
+  const deleteTempCart = (listingId) => {
+    const updatedTempCarts = transformedTempCarts.filter(
+      ({ id }) => listingId !== id
+    )
+
+    const objectTempCarts = {}
+
+    updatedTempCarts.forEach((tempCart) => {
+      objectTempCarts[tempCart.id] = tempCart
+    })
+
+    window.localStorage.setItem('cartItems', JSON.stringify(objectTempCarts))
+    setTransformedTempCarts(updatedTempCarts)
+
+    props.removeTempCartListing(listingId)
+  }
+
+  const updateTempCart = (tempCart) => {
+    const updatedTempCarts = transformedTempCarts.map((transformedTempCart) =>
+      tempCart.id === transformedTempCart.id
+        ? { ...transformedTempCart, quantity: parseInt(tempCart.quantity) }
+        : transformedTempCart
+    )
+
+    const objectTempCarts = {}
+    updatedTempCarts.forEach((tempCart) => {
+      objectTempCarts[tempCart.id] = { quantity: parseInt(tempCart.quantity) }
+    })
+
+    window.localStorage.setItem('cartItems', JSON.stringify(objectTempCarts))
+    setTransformedTempCarts(updatedTempCarts)
+
+    props.updateTempCartListings(updatedTempCarts)
+  }
+
+  const displayUserCart = props.carts.map((cart) => {
+    return (
+      <CartIndexItem
+        key={cart.id}
+        cart={cart}
+        deleteCart={props.deleteCart}
+        updateCart={props.updateCart}
+      />
+    )
+  })
+
+  const displayTempCart = transformedTempCarts.map((cart) => {
+    return (
+      <CartIndexItem
+        key={cart.id}
+        cart={cart}
+        deleteCart={(cart) => deleteTempCart(cart.id)}
+        updateCart={(cart) => updateTempCart(cart)}
+      />
+    )
+  })
 
   return (
     <div className="cart-index-page-container">
@@ -40,26 +170,25 @@ const CartIndex = (props) => {
       </div>
       <div className="cart-index-section-wrapper">
         <ul className="cart-index-wrapper">
-          {props.carts.map((cart) => {
-            return (
-              <CartIndexItem
-                key={cart.id}
-                cart={cart}
-                deleteCart={props.deleteCart}
-                updateCart={props.updateCart}
-              />
-            )
-          })}
+          {isSignedIn ? displayUserCart : displayTempCart}
         </ul>
 
         <div className="cart-index-right-side">
           <div className="cart-index-checkout">
-            <div className="total">Item(s) sub-total: ${sum}</div>
             <div className="total">
-              Tax(10.75%): ${round(sum * 0.1075, 2).toFixed(2)}
+              Item(s) sub-total: ${isSignedIn ? cartSum : tempCartsSum}
+            </div>
+            <div className="total">
+              Tax(10.75%): $
+              {round(isSignedIn ? cartSum : tempCartsSum * 0.1075, 2).toFixed(
+                2
+              )}
             </div>
             <div className="total-amount">
-              Total: ${round(sum * 1.1075, 2).toFixed(2)}
+              Total: $
+              {round(isSignedIn ? cartSum : tempCartsSum * 1.1075, 2).toFixed(
+                2
+              )}
             </div>
 
             <div className="payment-container">

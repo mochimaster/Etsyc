@@ -158,10 +158,6 @@
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-.add-to-cart-tooltip {
-  min-height: 25px;
-}
-
 .listing-description {
   margin-top: 18px; /* 14 + 21*/
   border-top: #e1e3df 1px solid;

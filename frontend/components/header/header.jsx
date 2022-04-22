@@ -22,7 +22,11 @@ const Header = (props) => {
 
   const cartLink = (
     <Link
-      to={props.currentUser ? `/users/${props.currentUser.id}/carts` : '/error'}
+      to={
+        props.currentUser
+          ? `/users/${props.currentUser.id}/carts`
+          : '/users/temp/carts'
+      }
       className="icon-img-cart"
     >
       <i className="fas fa-shopping-cart"></i>
@@ -50,7 +54,12 @@ const Header = (props) => {
     )
 
   return (
-    <div id="global-header" className="header-nav-top-level">
+    <div
+      id="global-header"
+      className={
+        window.isMobile ? 'header-nav-top-level-mobile' : 'header-nav-top-level'
+      }
+    >
       <header className="header-nav-inner">
         <Link
           to="/"

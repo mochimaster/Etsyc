@@ -25,13 +25,13 @@ const CartIndexItem = (props) => {
           className="cart-index-merchant-name-link"
           to={`/users/${props.cart.author_id}/listings`}
         >
-          {props.cart.merchant_name}
+          {props.cart.merchant_name || ''}
         </Link>
       </div>
 
       <div className="cart-left-section-middle-section-wrapper">
         <div className="cart-index-item-photo">
-          <img src={props.cart.photoUrl} />
+          <img src={props.cart.photoUrl || props.cart.photoUrls[0]} />
         </div>
         <div className="cart-index-item-title">
           <Link

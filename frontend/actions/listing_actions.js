@@ -5,6 +5,9 @@ export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS'
 export const REMOVE_LISTING = 'REMOVE_LISTING'
 export const RECEIVE_LISTING_ERRORS = 'RECEIVE_LISTING_ERRORS'
 export const CLEAR_LISTING_ERRORS = 'CLEAR_LISTING_ERRORS'
+export const RECEIVE_TEMP_CART_LISTING = 'RECEIVE_TEMP_CART_LISTING'
+export const REMOVE_TEMP_CART_LISTING = 'REMOVE_TEMP_CART_LISTING'
+export const RECEIVE_TEMP_CART_LISTINGS = 'RECEIVE_TEMP_CART_LISTINGS'
 
 export const createListing = (listing) => {
   return (dispatch) => {
@@ -82,3 +85,33 @@ export const renewListing = (id) => (dispatch) =>
 
 export const getDuplicateListing = (listing) => (dispatch) =>
   dispatch({ type: RECEIVE_LISTING, listing })
+
+export const getTempCartListing = (id, quantity) => (dispatch) =>
+  ApiUtil.getListing(id).then((listing) => {
+    dispatch({
+      type: RECEIVE_TEMP_CART_LISTING,
+      listing: { ...listing, quantity }
+    })
+  })
+
+export const getTempCartListings = (listingIds) => (dispatch) => {
+  return ApiUtil.getListingsByIds(listingIds).then(({ listings }) => {
+    /**
+     * {
+     * listings: [{},{}],
+     * page: 1,
+     * total_pages: 1
+     * }
+     */
+    dispatch({
+      type: RECEIVE_TEMP_CART_LISTINGS,
+      cart: listings
+    })
+  })
+}
+
+export const removeTempCartListing = (id) => (dispatch) =>
+  dispatch({ type: REMOVE_TEMP_CART_LISTING, id })
+
+export const updateTempCartListings = (cart) => (dispatch) =>
+  dispatch({ type: RECEIVE_TEMP_CART_LISTINGS, cart })

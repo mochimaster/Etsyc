@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
 import { InlineWidget } from 'react-calendly'
+import { replace } from 'lodash'
 
 const BookingShow = ({ carts, getCarts, currentUserId }) => {
   const [populatedNoteField, setPopulatedNoteField] = useState('')
@@ -12,7 +12,8 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
   useEffect(() => {
     const listingsIdAndTitle = carts.map(
       ({ listing_id, title }) =>
-        `https://castleandchair.com/#/listings/${listing_id}/${title.replaceAll(
+        `https://castleandchair.com/#/listings/${listing_id}/${replace(
+          title,
           ' ',
           '-'
         )}`
@@ -45,7 +46,12 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
           pageSettings={{
             hideGdprBanner: true
           }}
-          url={`https://calendly.com/castleandchair/visit?a2=${populatedNoteField}`}
+          url={`https://calendly.com/castleandchair/visit`}
+          prefill={{
+            customAnswers: {
+              a2: populatedNoteField
+            }
+          }}
         />
 
         {/* <div id="booking-book-me-text">
