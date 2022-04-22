@@ -12,14 +12,13 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
   useEffect(() => {
     const listingsIdAndTitle = carts.map(
       ({ listing_id, title }) =>
-        `https://www.castleandchair.com/#/listings/${listing_id}/${replace(
-          title,
+        `https://www.castleandchair.com/#/listings/${listing_id}/${title.replaceAll(
           ' ',
           '-'
         )}`
     )
 
-    setPopulatedNoteField(listingsIdAndTitle.join('%0A%0A'))
+    setPopulatedNoteField(listingsIdAndTitle.join('%0A%0A%0A'))
   }, [carts])
 
   return (
