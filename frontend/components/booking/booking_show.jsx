@@ -19,7 +19,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         )}`
     )
 
-    setPopulatedNoteField(listingsIdAndTitle.join('\n'))
+    setPopulatedNoteField(listingsIdAndTitle.join('%0A%0A'))
   }, [carts])
 
   return (
@@ -46,12 +46,12 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
           pageSettings={{
             hideGdprBanner: true
           }}
-          url={`https://calendly.com/castleandchair/visit`}
-          prefill={{
-            customAnswers: {
-              a2: populatedNoteField
-            }
-          }}
+          url={`https://calendly.com/castleandchair/visit?a2=${populatedNoteField}`}
+          // prefill={{
+          //   customAnswers: {
+          //     a2: populatedNoteField
+          //   }
+          // }}
         />
 
         {/* <div id="booking-book-me-text">
