@@ -12,13 +12,10 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
   useEffect(() => {
     const listingsIdAndTitle = carts.map(
       ({ listing_id, title }) =>
-        `https://www.castleandchair.com/#/listings/${listing_id}/${title.replaceAll(
-          ' ',
-          '-'
-        )}`
+        `https://www.castleandchair.com/#/listings/${listing_id}/${title}`
     )
 
-    setPopulatedNoteField(listingsIdAndTitle.join('%0A%0A%0A'))
+    setPopulatedNoteField(listingsIdAndTitle.join('\n\n'))
   }, [carts])
 
   return (
@@ -45,7 +42,9 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
           pageSettings={{
             hideGdprBanner: true
           }}
-          url={`https://calendly.com/castleandchair/visit?a2=${populatedNoteField}`}
+          url={`https://calendly.com/castleandchair/visit?a2=${encodeURIComponent(
+            populatedNoteField
+          )}`}
           // prefill={{
           //   customAnswers: {
           //     a2: populatedNoteField

@@ -31,7 +31,12 @@ const CartIndexItem = (props) => {
 
       <div className="cart-left-section-middle-section-wrapper">
         <div className="cart-index-item-photo">
-          <img src={props.cart.photoUrl || props.cart.photoUrls[0]} />
+          <img
+            src={
+              props.cart.photoUrl ||
+              (props.cart.photoUrls && props.cart.photoUrls[0])
+            }
+          />
         </div>
         <div className="cart-index-item-title">
           <Link

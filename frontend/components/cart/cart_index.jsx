@@ -37,10 +37,6 @@ const CartIndex = (props) => {
     props.getTempCartListingsByIds(
       tempListingsIdandQuantity.map(({ id }) => id)
     )
-
-    // const cart = listingIAndQuantity.map(({ id, quantity }) =>
-    //   props.getTempCartListing(id, quantity)
-    // )
   }, [])
 
   const transformTempCarts = (tempCarts, listingsIdandQuantity) => {
