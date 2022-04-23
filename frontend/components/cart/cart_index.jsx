@@ -176,13 +176,13 @@ const CartIndex = (props) => {
             </div>
             <div className="total">
               Tax(10.75%): $
-              {round(isSignedIn ? cartSum : tempCartsSum * 0.1075, 2).toFixed(
+              {round((isSignedIn ? cartSum : tempCartsSum) * 0.1075, 2).toFixed(
                 2
               )}
             </div>
             <div className="total-amount">
               Total: $
-              {round(isSignedIn ? cartSum : tempCartsSum * 1.1075, 2).toFixed(
+              {round((isSignedIn ? cartSum : tempCartsSum) * 1.1075, 2).toFixed(
                 2
               )}
             </div>
