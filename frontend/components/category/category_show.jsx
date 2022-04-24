@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 
+import queryString from 'query-string'
+
 import ListingIndexItem from '../listing_index/listing_index_item'
 
 const CategoryShow = (props) => {
-  const {
-    sortOption,
-    page,
-    match: {
-      params: { categoryId }
-    },
-    filters
-  } = props
+  const { sortOption, page, filters, categoryId } = props
+
+  const params = queryString.parse(props.location.search)
+  const pageParams = params.page
 
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     props
-      .getListingsByCategory(categoryId, page, sortOption, filters)
+      .getListingsByCategory(categoryId, pageParams, sortOption, filters)
       .then(() => {
         setLoading(false)
       })
-  }, [props.sortOption, filters])
+  }, [sortOption, filters, categoryId])
 
   if (loading) {
     return (

@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   )
 
   return {
-    category: ownProps.match.params.categoryId,
+    categoryId: ownProps.match.params.categoryId,
     listings: listingsByAuthor,
     sortOption: state.entities.sortOption,
     page: state.entities.pagination.page,

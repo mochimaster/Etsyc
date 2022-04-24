@@ -1,4 +1,7 @@
 import React from 'react'
+
+import queryString from 'query-string'
+
 import ListingIndexContainer from './listing_index_container'
 import ListingIndexItem from './listing_index_item'
 import ReactLoading from 'react-loading'
@@ -33,11 +36,15 @@ class ListingIndex extends React.Component {
   componentDidUpdate(prevProps) {
     const { page, sortOption, match, filters } = this.props
 
+    const params = queryString.parse(this.props.location.search)
+    const pageParams = params.page || 1
+
     if (
       (match.url === 'listings' && sortOption !== prevProps.sortOption) ||
-      filters !== prevProps.filters
+      filters !== prevProps.filters ||
+      page != pageParams
     ) {
-      this.props.getListings(page, sortOption, filters)
+      this.props.getListings(pageParams || page, sortOption, filters)
     }
   }
 
