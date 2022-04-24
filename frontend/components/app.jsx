@@ -77,9 +77,6 @@ const App = () => {
         </div>
 
         <Switch>
-          {/* Good comment. The below line will be modified
-            when I have a component to render on "/" */}
-
           <ProtectedRoute
             exact
             path="/listings/new"
