@@ -1,9 +1,5 @@
 import ListingIndex from './listing_index'
-import {
-  getListings,
-  deleteListing,
-  getListingsPage
-} from '../../actions/listing_actions'
+import { getListings } from '../../actions/listing_actions'
 import { getListingsByCategory } from '../../actions/category_actions'
 import { connect } from 'react-redux'
 import { selectListingsByAuthor } from '../../reducers/selectors'
