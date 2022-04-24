@@ -34,7 +34,7 @@ class ListingIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { page, sortOption, match, filters, location } = this.props
+    const { page, sortOption, match, filters } = this.props
 
     const params = queryString.parse(this.props.location.search)
     const pageParams = params.page || 1
