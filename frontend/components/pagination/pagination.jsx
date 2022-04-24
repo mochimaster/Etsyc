@@ -1,6 +1,8 @@
 import React from 'react'
 import { Pagination } from 'semantic-ui-react'
 
+import queryString from 'query-string'
+
 import { trackEvent, EVENTS } from '../../../utils/track'
 
 class PaginationAll extends React.Component {
@@ -17,7 +19,7 @@ class PaginationAll extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { pages, sortOption, filters } = this.props
+    const { page: propsPage, pages, sortOption, filters } = this.props
     const { page } = this.state
 
     if (prevProps.match.url !== this.props.match.url) {
@@ -26,8 +28,12 @@ class PaginationAll extends React.Component {
       })
     }
 
-    if (pages !== prevState.pages) {
+    const params = queryString.parse(this.props.location.search)
+    const pageParams = params.page || 1
+
+    if (pages !== prevState.pages || pageParams != page) {
       this.setState({
+        page: pageParams,
         pages
       })
     }
