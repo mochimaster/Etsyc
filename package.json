@@ -10,7 +10,6 @@
     "lodash": "^4.17.11",
     "mixpanel-browser": "^2.39.0",
     "prettier": "^2.0.5",
-    "query-string": "^7.1.1",
     "react": "^16.13.1",
     "react-calendly": "^3.0.3",
     "react-dom": "^16.13.1",

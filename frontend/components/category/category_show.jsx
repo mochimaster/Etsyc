@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 
-import queryString from 'query-string'
-
 import ListingIndexItem from '../listing_index/listing_index_item'
 
 const CategoryShow = (props) => {
   const { sortOption, page, filters, categoryId } = props
 
-  const params = queryString.parse(props.location.search)
-  const pageParams = params.page
+  const params = new URLSearchParams(props.location.search)
+  const pageParams = params.get('page') || 1
+
+  // const params = queryString.parse(props.location.search)
+  // const pageParams = params.page
 
   const [loading, setLoading] = useState(true)
 
