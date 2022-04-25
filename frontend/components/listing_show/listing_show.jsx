@@ -2,6 +2,7 @@ import React from 'react'
 import ReactLoading from 'react-loading'
 
 import { merge } from 'lodash'
+import { animateScroll as scroll } from 'react-scroll'
 
 import ListingShowContainer from './listing_show_container'
 import { Link } from 'react-router-dom'
@@ -32,7 +33,7 @@ class ListingShow extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    scroll.scrollToTop()
 
     this.props.getListing(this.props.match.params.listingId).then(() => {
       this.setState({ isLoading: false })

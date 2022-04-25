@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { Pagination } from 'semantic-ui-react'
+import { animateScroll as scroll } from 'react-scroll'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
 
@@ -178,8 +180,7 @@ class PaginationAll extends React.Component {
         })
     }
 
-    window.scrollTo(0, 0)
-
+    scroll.scrollToTop()
     // } else if (this.props.match.url === "/listings"){
     //     this.props.getListings(pageNum);
     // }
