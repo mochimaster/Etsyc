@@ -36,7 +36,7 @@ class PaginationAll extends React.Component {
     const pageParams = params.get('page') || 1
 
     if (pages !== prevState.pages || pageParams != page) {
-      if (isAtHomePage) return
+      // if (isAtHomePage) return
       this.setState({
         page: pageParams,
         pages
@@ -92,16 +92,6 @@ class PaginationAll extends React.Component {
           listings: this.props.listings,
           page: this.props.page,
           pages: this.props.pages
-        })
-      })
-    } else if (this.props.match.url.slice(-5) === '/home') {
-      const userId = this.props.match.params.userId
-
-      this.props.getDisabledListingsByUserId(userId).then((res) => {
-        this.setState({
-          listings: res.disabledListings,
-          page: this.props.page,
-          pages: res.pages
         })
       })
     }
@@ -168,6 +158,8 @@ class PaginationAll extends React.Component {
           })
         )
     } else if (this.props.match.url.slice(-5) === '/home') {
+      this.props.history.push(`${this.props.location.pathname}?page=${pageNum}`)
+
       this.props
         .getDisabledListingsByUserId(this.props.match.params.userId, pageNum)
         .then((res) => {

@@ -7,7 +7,9 @@ import { getDisabledListingsByUserId } from '../../actions/home_actions'
 const mapStateToProps = (state) => {
   return {
     userId: state.session.id,
-    disabledListings: state.entities.disabledListings
+    disabledListings: state.entities.disabledListings,
+    page: state.entities.pagination.page,
+    pages: state.entities.pagination.pages
   }
 }
 

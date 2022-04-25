@@ -4,8 +4,11 @@ import ListingIndex from '../listing_index/listing_index_container'
 
 const HomeIndex = (props) => {
   useEffect(() => {
-    props.getDisabledListingsByUserId(props.userId)
-  }, [])
+    const params = new URLSearchParams(props.location.search)
+    const pageParams = params.get('page') || 1
+
+    props.getDisabledListingsByUserId(props.userId, pageParams)
+  }, [props.location.search])
 
   return (
     <div>
