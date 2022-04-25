@@ -1,6 +1,7 @@
 import ListingIndex from './listing_index'
-import { getListings } from '../../actions/listing_actions'
+import { getListings, searchListing } from '../../actions/listing_actions'
 import { getListingsByCategory } from '../../actions/category_actions'
+import { getDisabledListingsByUserId } from '../../actions/home_actions'
 import { connect } from 'react-redux'
 import { selectListingsByAuthor } from '../../reducers/selectors'
 
@@ -31,7 +32,13 @@ const mapDispatchToProps = (dispatch) => {
     getListings: (page = '', sortOption, filters) =>
       dispatch(getListings(page, sortOption, filters)),
     getListingsByCategory: (category, page, sortOption, filters) =>
-      dispatch(getListingsByCategory(category, page, sortOption, filters))
+      dispatch(getListingsByCategory(category, page, sortOption, filters)),
+    searchListing: (title, page) => dispatch(searchListing(title, page)),
+    getDisabledListingsByUserId: (userId, page, sortOption, filters, search) =>
+      dispatch(
+        getDisabledListingsByUserId(userId, page, sortOption, filters, search)
+      )
+
     // deleteListing: id => dispatch(deleteListing(id)),
     // getListingsPage: page => dispatch(getListingsPage(page))
   }

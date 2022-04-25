@@ -28,9 +28,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getListings(page, sortOption, filters)),
     getListingsByCategory: (categoryId, page, filters) =>
       dispatch(getListingsByCategory(categoryId, page, filters)),
-    searchListing: (title, page) => dispatch(searchListing(title, page)),
-    getDisabledListingsByUserId: (userId, page, sortOption, filters) =>
-      dispatch(getDisabledListingsByUserId(userId, page, sortOption, filters))
+    searchListing: (title, page) => dispatch(searchListing(title, page))
   }
 }
 

@@ -53,6 +53,8 @@ class PaginationAll extends React.Component {
   }
 
   componentDidMount() {
+    const params = new URLSearchParams(this.props.location.search)
+    const pageParams = params.get('page') || 1
     // prevent getListings firing again after search result is returned
     // if (this.props.match.path == "/search") {
     //     return null
@@ -74,7 +76,7 @@ class PaginationAll extends React.Component {
       //     })
       // })
     } else if (this.props.match.url === '/listings') {
-      this.props.getListings(this.state.page).then((response) => {
+      this.props.getListings(pageParams).then((response) => {
         this.setState({
           listings: this.props.listings,
           page: this.props.page,
@@ -110,6 +112,9 @@ class PaginationAll extends React.Component {
     //     search: `?page=${pageNum}`
     // });
 
+    const params = new URLSearchParams(this.props.location.search)
+    const searchParams = params.get('query') || ''
+
     trackEvent({
       eventName: EVENTS.SET_PAGINATION,
       eventProperties: { 'To Page': pageNum }
@@ -130,52 +135,21 @@ class PaginationAll extends React.Component {
           })
         })
     } else if (this.props.match.url === '/listings/search') {
-      const searchQuery = this.props.location.search.slice(7)
-      // this.props.history.push(`/${this.props.location.pathname}?query=${searchQuery}&page=${pageNum}`);
-
-      this.props
-        .searchListing({ title: searchQuery }, pageNum)
-        .then((response) =>
-          this.setState({
-            listings: this.props.listings,
-            page: this.props.page,
-            pages: this.props.pages
-          })
-        )
+      this.props.history.push(
+        `${this.props.location.pathname}?query=${searchParams}&page=${pageNum}`
+      )
     } else if (this.props.match.url === '/listings') {
       this.props.history.push({
         pathname: '/listings',
         search: `?page=${pageNum}`
       })
-      this.props
-        .getListings(pageNum, this.props.sortOption, this.props.filters)
-        .then((response) =>
-          this.setState({
-            // listings: this.props.listings,
-            page: this.props.page,
-            pages: this.props.pages,
-            filters: this.props.filters
-          })
-        )
     } else if (this.props.match.url.slice(-5) === '/home') {
-      this.props.history.push(`${this.props.location.pathname}?page=${pageNum}`)
-
-      this.props
-        .getDisabledListingsByUserId(this.props.match.params.userId, pageNum)
-        .then((res) => {
-          this.setState({
-            listings: this.props.disabledListings,
-            page: res.page,
-            pages: res.pages,
-            filters: this.props.filters
-          })
-        })
+      this.props.history.push(
+        `${this.props.location.pathname}?query=${searchParams}&page=${pageNum}`
+      )
     }
 
     scroll.scrollToTop()
-    // } else if (this.props.match.url === "/listings"){
-    //     this.props.getListings(pageNum);
-    // }
   }
 
   render() {

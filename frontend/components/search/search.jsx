@@ -50,9 +50,6 @@ const Search = (props) => {
       finalPath = '/listings'
     }
 
-    let sortOption
-    let filters
-
     if (
       finalPath.indexOf('/carts') >= 0 ||
       !(finalPath.indexOf('/users') >= 0 || finalPath.indexOf('/listings') >= 0)
@@ -67,13 +64,6 @@ const Search = (props) => {
     })
 
     if (isHome) {
-      props.getDisabledListingsByUserId(
-        userId,
-        props.page,
-        sortOption,
-        filters,
-        title
-      )
     } else {
       props.searchListing({ title, isDisabled: isHome })
     }

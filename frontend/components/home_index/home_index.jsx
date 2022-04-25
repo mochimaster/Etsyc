@@ -8,7 +8,7 @@ const HomeIndex = (props) => {
     const pageParams = params.get('page') || 1
 
     props.getDisabledListingsByUserId(props.userId, pageParams)
-  }, [props.location.search])
+  }, [])
 
   return (
     <div>

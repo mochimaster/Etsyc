@@ -7,6 +7,7 @@ export const getDisabledListingsByUserId = (
   filters = { condition: CONDITION.ALL },
   search = ''
 ) => {
+  console.log('getDisabledListings search :', search)
   return $.ajax({
     method: 'GET',
     url: `/api/users/${userId}/home?page=${page}`,
