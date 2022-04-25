@@ -45,6 +45,7 @@ class ListingIndex extends React.Component {
       filters !== prevProps.filters ||
       page != pageParams
     ) {
+      if (this.props.match.url.slice(0, 6) === '/users') return
       this.props.getListings(pageParams || page, sortOption, filters)
     }
   }

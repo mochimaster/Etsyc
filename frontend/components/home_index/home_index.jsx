@@ -11,7 +11,11 @@ const HomeIndex = (props) => {
     <div>
       <div style={{ textAlign: 'center' }}>Manage Listings</div>
       {/* <ListingIndex listings={props.disabledListings} match={props.match} /> */}
-      <ListingIndex listings={props.listings} match={props.match} />
+      <ListingIndex
+        listings={props.listings}
+        match={props.match}
+        location={props.location}
+      />
     </div>
   )
 }

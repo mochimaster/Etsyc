@@ -17,6 +17,7 @@ class PaginationAll extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const isAtHomePage = this.props.match.url.slice(0, 6) === '/users'
     const { page: propsPage, pages, sortOption, filters } = this.props
     const { page } = this.state
 
@@ -33,6 +34,7 @@ class PaginationAll extends React.Component {
     const pageParams = params.get('page') || 1
 
     if (pages !== prevState.pages || pageParams != page) {
+      if (isAtHomePage) return
       this.setState({
         page: pageParams,
         pages
@@ -41,6 +43,7 @@ class PaginationAll extends React.Component {
 
     if (
       this.props.match.url === '/listings' &&
+      !isAtHomePage &&
       sortOption !== prevProps.sortOption
     ) {
       this.props.getListings(page, sortOption, filters)
@@ -165,14 +168,14 @@ class PaginationAll extends React.Component {
     } else if (this.props.match.url.slice(-5) === '/home') {
       this.props
         .getDisabledListingsByUserId(this.props.match.params.userId, pageNum)
-        .then(() =>
+        .then((res) => {
           this.setState({
             listings: this.props.disabledListings,
-            page: this.props.page,
-            pages: this.props.pages,
+            page: res.page,
+            pages: res.pages,
             filters: this.props.filters
           })
-        )
+        })
     }
 
     window.scrollTo(0, 0)
