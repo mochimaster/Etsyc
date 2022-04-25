@@ -58,7 +58,6 @@ class App extends React.Component {
   render() {
     return (
       <ScrollManager history={this.history}>
-        {/* <Router history={this.history}> */}
         <WindowScroller>
           <div className="app-container">
             <Modal />
@@ -131,13 +130,10 @@ class App extends React.Component {
                     path="/listings/:listingId/edit"
                     component={ListingEditFormContainer}
                   />
-                  {/* <div className="content"> */}
                   <Route
                     path="/listings/:listingId/:listingTitle?"
                     component={ListingShowContainer}
                   />
-                  {/* </div> */}
-
                   <Route exact path="/error" component={ErrorShow} />
                   <Redirect exact from="/" to="/listings" />
                   <Route component={NotFound} />
@@ -159,7 +155,6 @@ class App extends React.Component {
             <Footer />
           </div>
         </WindowScroller>
-        {/* </Router> */}
       </ScrollManager>
     )
   }
