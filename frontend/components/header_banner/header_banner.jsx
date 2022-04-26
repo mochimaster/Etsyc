@@ -12,7 +12,7 @@ const HeaderBanner = () => (
     style={{ background: colors[random(0, 1)] }}
   >
     CASTLE AND CHAIR OPEN BY APPOINTMENT.&nbsp;
-    <Link className="appointment-link" to="/pages/appointment">
+    <Link className="appointment-link" to="/visit">
       BOOK NOW.
     </Link>
   </div>

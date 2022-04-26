@@ -67,7 +67,7 @@ class App extends React.Component {
               <Switch>
                 <Route path={'/faq'} component={Faq} />
                 <Route
-                  path={'/pages/appointment'}
+                  path={['/appointment', '/visit', '/pages/appointment']}
                   component={BookingContainer}
                 />
                 <Route path={['/']} component={CategoryIndexContainer} />
