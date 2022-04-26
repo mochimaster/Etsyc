@@ -16,6 +16,8 @@
 #
 
 class Listing < ApplicationRecord
+  attr_accessor :is_requested_by_author
+
   validates :description, :author_id, :price, :overview,presence: true
   # validates :title, uniqueness: true
   validates :price, numericality: { greater_than: 0}
