@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     action: (listing) => dispatch(updateListing(listing)),
-    getListing: (id) => dispatch(getListing(id)),
+    getListing: (id, userId) => dispatch(getListing(id, userId)),
     clearErrors: () => dispatch(clearErrors())
   }
 }

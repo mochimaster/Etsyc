@@ -41,7 +41,11 @@ class Api::ListingsController < ApplicationController
 
   def show
     @listing = Listing.includes(:categories).with_attached_photos.find_by(id: params[:id])
-    if @listing
+
+    if !@listing.status && @listing.author_id != params[:userId].to_i
+      render json: ['Listing cannot be found.'], status: 404
+    elsif @listing
+      @listing.is_requested_by_author = true if @listing.author_id == params[:userId].to_i
       render :show
     elsif !@listing
       render json: ['Listing cannot be found.'], status: 404
@@ -124,7 +128,8 @@ class Api::ListingsController < ApplicationController
   def listing_params
     # params[:listing][:modified_by_userid] = params[:author_id]
     params.require(:listing).permit(:title, :description, :author_id,
-      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, :category, :status, :brand,:condition, photo_hash:[], photos: [])
+      :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, 
+      :category, :status, :brand,:condition, :internal_note, photo_hash:[], photos: [])
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)

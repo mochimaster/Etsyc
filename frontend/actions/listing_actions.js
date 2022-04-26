@@ -41,9 +41,9 @@ export const updateListing = (listing) => {
   }
 }
 
-export const getListing = (id) => {
+export const getListing = (id, userId) => {
   return (dispatch) => {
-    return ApiUtil.getListing(id).then((listing) => {
+    return ApiUtil.getListing(id, userId).then((listing) => {
       dispatch({ type: RECEIVE_LISTING, listing })
     })
   }
