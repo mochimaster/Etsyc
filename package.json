@@ -13,6 +13,7 @@
     "react": "^16.13.1",
     "react-calendly": "^3.0.3",
     "react-dom": "^16.13.1",
+    "react-intersection-observer": "^9.1.0",
     "react-loading": "^2.0.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
