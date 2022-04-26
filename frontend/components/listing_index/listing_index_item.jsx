@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { capitalize } from 'lodash'
+import { useInView } from 'react-intersection-observer'
 
 const ListingIndexItem = ({ listing }) => {
-  // debugger
-  const url = `/listings/${listing.id}`
+  const { ref, inView } = useInView({
+    threshold: 0
+  })
+
+  const [displayActualImage, setDisplayActualImage] = useState(false)
+
+  useEffect(() => {
+    if (inView) setDisplayActualImage(true)
+  }, [inView])
 
   const deviceClassName = isMobile ? 'device-mobile' : 'device-large'
   //
@@ -28,14 +36,15 @@ const ListingIndexItem = ({ listing }) => {
   //
   // }
 
-  let displayImage
-  if (listing.photoUrls) {
-    displayImage = (
-      <img className="listing-thumbnail" src={listing.photoUrls[0]} />
+  const getImage = () =>
+    displayActualImage ? (
+      <img
+        className="listing-thumbnail"
+        src={listing.photoUrls ? listing.photoUrls[0] : listing.photoUrl}
+      />
+    ) : (
+      <img className="listing-thumbnail" src='./image_loading.png' />
     )
-  } else if (listing.photoUrl) {
-    displayImage = <img className="listing-thumbnail" src={listing.photoUrl} />
-  }
 
   const { id, title, author_id, merchant_name, price, brand } = listing
 
@@ -51,7 +60,9 @@ const ListingIndexItem = ({ listing }) => {
     <li className="listing-item-wrapper">
       <div className={`listing-item-image ${deviceClassName}`}>
         <Link to={`/listings/${id}/${titleForUrl}`}>
-          <tooltip title={title}>{displayImage}</tooltip>
+          <tooltip title={title}>
+            <div ref={ref}>{getImage()}</div>
+          </tooltip>
         </Link>
       </div>
       <h4 className={`listing-item-title ${deviceClassName}`}>
