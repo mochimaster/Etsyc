@@ -41,6 +41,7 @@ const defaultListing = {
   category: [],
   phoneNumber: '',
   photoUrls: [],
+  internalNote: '',
   internalPhotos: [],
   internalPhotoUrls: []
 }
