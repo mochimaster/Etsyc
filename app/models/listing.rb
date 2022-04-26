@@ -2,7 +2,7 @@
 #
 # Table name: listings
 #
-#  id                 :bigint(8)        not null, primary key
+#  id                 :bigint           not null, primary key
 #  title              :string           not null
 #  description        :text             not null
 #  category           :string
@@ -13,6 +13,11 @@
 #  price              :float
 #  overview           :text
 #  merchant_name      :string
+#  status             :boolean          default(TRUE)
+#  condition          :string           default("new")
+#  renewed_at         :datetime
+#  brand              :string
+#  internal_note      :string
 #
 
 class Listing < ApplicationRecord
@@ -25,6 +30,8 @@ class Listing < ApplicationRecord
 
   has_many_attached :photos, :dependent => :purge_later # to support multiple picture upload
   has_one_attached :photo, :dependent => :purge_later # to support previous single upload
+
+  has_many_attached :internal_photos, :dependent => :purge_later
 
   # scope :with_eager_loaded_photo, -> { eager_load(photo: :blob) }
   # scope :with_preloaded_photo, -> { preload(photo: :blob) }

@@ -1,0 +1,4 @@
+class InternalPhotosController < ApplicationController
+
+
+end

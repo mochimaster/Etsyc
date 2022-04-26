@@ -2,7 +2,7 @@
 #
 # Table name: carts
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :bigint           not null, primary key
 #  quantity   :integer          not null
 #  listing_id :integer          not null
 #  user_id    :integer          not null

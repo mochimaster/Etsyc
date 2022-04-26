@@ -2,7 +2,7 @@
 #
 # Table name: listings
 #
-#  id                 :bigint(8)        not null, primary key
+#  id                 :bigint           not null, primary key
 #  title              :string           not null
 #  description        :text             not null
 #  category           :string
@@ -13,6 +13,11 @@
 #  price              :float
 #  overview           :text
 #  merchant_name      :string
+#  status             :boolean          default(TRUE)
+#  condition          :string           default("new")
+#  renewed_at         :datetime
+#  brand              :string
+#  internal_note      :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

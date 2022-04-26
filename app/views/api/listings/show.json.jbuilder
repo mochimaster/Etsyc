@@ -2,6 +2,7 @@ json.extract! @listing, :id, :title, :description, :author_id, :overview, :price
 
 if @listing.is_requested_by_author
   json.internalNote @listing.internal_note
+  json.internalPhotoUrls @listing.internal_photos.map { |file| url_for(file) }
 end
 
 if (@listing.photo.attached?)
