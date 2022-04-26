@@ -19,7 +19,10 @@ class Api::ListingsController < ApplicationController
     
     photo_hash = listing_params[:photo_hash]
     params[:listing].delete :photo_hash
-    
+
+    internal_photo_hash = listing_params[:internal_photo_hash]
+    params[:listing].delete :internal_photo_hash
+
     user_params= {} if !user_params
 
     if @listing && @listing.update_attributes(listing_params) && @listing.author.update_attributes(user_params)
@@ -27,6 +30,14 @@ class Api::ListingsController < ApplicationController
         photo_hash.each_with_index { |truth, index|
         if truth == "false"
           @listing.photos[index].purge
+        end
+      }
+      end
+
+      if internal_photo_hash
+        internal_photo_hash.each_with_index { |truth, index|
+        if truth == "false"
+          @listing.internal_photos[index].purge
         end
       }
       end
@@ -129,7 +140,8 @@ class Api::ListingsController < ApplicationController
     # params[:listing][:modified_by_userid] = params[:author_id]
     params.require(:listing).permit(:title, :description, :author_id,
       :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, 
-      :category, :status, :brand,:condition, :internal_note, photo_hash:[], photos: [])
+      :category, :status, :brand,:condition, :internal_note, 
+      photo_hash:[], photos: [], internal_photos: [], internal_photo_hash: [])
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)

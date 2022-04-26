@@ -324,6 +324,17 @@ class ListingShow extends React.Component {
                 listingId={this.props.listing.listingId}
               />
             </div>
+
+            {isListingAuthor &&
+              this.props.listing.internalPhotoUrls &&
+              this.props.listing.internalPhotoUrls.length > 0 && (
+                <div>
+                  <br />
+                  <label className="title-label">Internal Photos</label>
+                  <br />
+                  <Slider images={this.props.listing.internalPhotoUrls} />
+                </div>
+              )}
           </div>
 
           <div className="listing-details listing-right-half">

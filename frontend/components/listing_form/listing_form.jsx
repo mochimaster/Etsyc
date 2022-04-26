@@ -40,19 +40,31 @@ const defaultListing = {
   photos: [],
   category: [],
   phoneNumber: '',
-  photoUrls: []
+  photoUrls: [],
+  internalPhotos: [],
+  internalPhotoUrls: []
 }
 
 export const ListingForm = (props) => {
   const [listing, setListing] = useState(defaultListing)
 
   const [photos, setPhotos] = useState([]) // new uploading photos
+  const [internalPhotos, setInternalPhotos] = useState([]) // new uploading photos
 
   const [photoHash, setPhotoHash] = useState({}) // existing photo urls
+  const [internalPhotoHash, setInternalPhotoHash] = useState({}) // existing internal photo urls
   const [isSubmitLoading, setIsSubmitLoading] = useState(false)
+
+  const [isUploadInternalPhotos, setIsUploadInternalPhotos] = useState(false)
 
   const preview = document.querySelector('#preview')
   const newPhotoNode = document.querySelector('#preview-new-photo')
+  const newInternalPhotoNode = document.querySelector(
+    '#preview-new-internal-photo'
+  )
+  const previewExistingInternalPhoto = document.querySelector(
+    '#preview-existing-internal-photo'
+  )
 
   // removed  by Elliot
   // state.author_id = props.sessionId
@@ -74,6 +86,14 @@ export const ListingForm = (props) => {
           })
           setPhotoHash(tempPhotoHash)
         }
+
+        if (props.listing && props.listing.internalPhotoUrls) {
+          const tempInternalPhotoHash = {}
+          props.listing.internalPhotoUrls.forEach((_, index) => {
+            tempInternalPhotoHash[index] = true
+          })
+          setInternalPhotoHash(tempInternalPhotoHash)
+        }
       })
   }, [props.match.params.listingId])
 
@@ -90,31 +110,45 @@ export const ListingForm = (props) => {
 
   useEffect(() => {
     if (preview) preview.innerHTML = ''
+    if (previewExistingInternalPhoto)
+      previewExistingInternalPhoto.innerHTML = ''
 
     for (let i = 0; i < listing.photoUrls.length; i++) {
       photoHash[i] = true
       previewExistingPhoto(listing.photoUrls[i], i)
     }
-  }, [listing.photoUrls])
+
+    for (let i = 0; i < listing.internalPhotoUrls.length; i++) {
+      internalPhotoHash[i] = true
+      previewExistingPhoto(listing.internalPhotoUrls[i], i, true)
+    }
+  }, [listing.photoUrls, listing.internalPhotoUrls])
 
   useEffect(() => {
     if (newPhotoNode) newPhotoNode.innerHTML = ''
+    if (newInternalPhotoNode) newInternalPhotoNode.innerHTML = ''
     // preview photos being uploaded.
     for (const photo of photos) {
       readAndPreview(photo)
     }
-  }, [photos])
+
+    for (const internalPhoto of internalPhotos) {
+      readAndPreview(internalPhoto, true)
+    }
+  }, [photos, internalPhotos])
 
   useEffect(() => {}, [photoHash])
 
-  const readAndPreview = (file) => {
+  const readAndPreview = (file, isInternal = false) => {
     const fileReader = new FileReader()
 
     fileReader.addEventListener('load', function () {
       const image = new Image()
       image.title = file.name
       image.src = fileReader.result
-      newPhotoNode.appendChild(image)
+      isInternal
+        ? newInternalPhotoNode.append(image)
+        : newPhotoNode.appendChild(image)
     })
     fileReader.readAsDataURL(file)
   }
@@ -141,6 +175,7 @@ export const ListingForm = (props) => {
       formData.append('listing[id]', props.match.params.listingId)
     }
 
+    // Compress customer facing photos
     if (!!photos) {
       for (let i = 0; i < photos.length; i++) {
         const currentPhoto = photos[i]
@@ -155,9 +190,30 @@ export const ListingForm = (props) => {
       }
     }
 
+    // Compress internal facing photos
+    if (!!internalPhotos) {
+      for (let i = 0; i < internalPhotos.length; i++) {
+        const currentPhoto = internalPhotos[i]
+
+        // only compress if image larger than 100 kb
+        const compressedImage =
+          currentPhoto.size > 100000
+            ? await compressImage(currentPhoto)
+            : currentPhoto
+
+        formData.append('listing[internal_photos][]', compressedImage)
+      }
+    }
+
     if (!!photoHash && props.formType === 'Edit Listing') {
       for (let i = 0; i < Object.keys(photoHash).length; i++) {
         formData.append('listing[photo_hash][]', photoHash[i])
+      }
+    }
+
+    if (!!internalPhotoHash && props.formType === 'Edit Listing') {
+      for (let i = 0; i < Object.keys(internalPhotoHash).length; i++) {
+        formData.append('listing[internal_photo_hash][]', internalPhotoHash[i])
       }
     }
 
@@ -182,36 +238,59 @@ export const ListingForm = (props) => {
     }
   }
 
-  const previewExistingPhoto = (photo, index) => {
-    if (photoHash[index]) {
-      const preview = document.querySelector('#preview')
+  const previewExistingPhoto = (photo, index, isInternalPhoto = false) => {
+    if (photoHash[index] || internalPhotoHash[index]) {
+      const preview = isInternalPhoto
+        ? document.querySelector('#preview-existing-internal-photo')
+        : document.querySelector('#preview')
       const button = document.createElement('button')
 
       preview.appendChild(button)
-      button.addEventListener('click', () => deleteImage(index))
+      button.addEventListener('click', () =>
+        deleteImage(index, isInternalPhoto)
+      )
 
       button.innerText = 'X'
       button.type = 'button'
-      button.className = `photo photo-${index} photo-x`
+      button.className = `photo photo-${index} photo-x ${
+        isInternalPhoto && 'internal'
+      }`
 
       const image = document.createElement('img')
       image.src = photo
       image.id = photo
-      image.className = `photo photo-${index} photo-x`
+      image.className = `photo photo-${index} photo-x ${
+        isInternalPhoto && 'internal'
+      }`
       preview.appendChild(image)
     }
   }
 
-  const deleteImage = (index) => {
-    while (document.querySelector(`.photo-${index}`)) {
-      const deleteImage = document.querySelector(`.photo-${index}`)
+  const deleteImage = (index, isInternalPhoto = false) => {
+    while (
+      isInternalPhoto
+        ? document.querySelector(`.photo-${index}.internal`)
+        : document.querySelector(`.photo-${index}`)
+    ) {
+      const deleteImage = isInternalPhoto
+        ? document.querySelector(`.photo-${index}.internal`)
+        : document.querySelector(`.photo-${index}`)
+
+      console.log('deleteImage: ', deleteImage)
       deleteImage.parentNode.removeChild(deleteImage)
     }
 
-    const copyPhotoHash = photoHash
-    copyPhotoHash[index] = false
+    if (isInternalPhoto) {
+      const copyInternalPhotoHash = internalPhotoHash
+      copyInternalPhotoHash[index] = false
 
-    setPhotoHash(copyPhotoHash)
+      setInternalPhotoHash(copyInternalPhotoHash)
+    } else {
+      const copyPhotoHash = photoHash
+      copyPhotoHash[index] = false
+
+      setPhotoHash(copyPhotoHash)
+    }
   }
 
   const updateCategory = (categoryId) => {
@@ -307,9 +386,34 @@ export const ListingForm = (props) => {
             value=""
             multiple
           />
-
           <div id="preview" />
           <div id="preview-new-photo" />
+
+          <br />
+          <div>
+            <br />
+            <br />
+
+            <div id="create-listing-photo-intake">
+              <p className="">
+                <b className="">Multiple Internal Images uploader</b>
+              </p>
+              <br />
+              <br />
+
+              <input
+                className="create-listing-photo-intake"
+                type="file"
+                onChange={({ currentTarget: { files } }) => {
+                  setInternalPhotos((prevPhotos) => [...prevPhotos, ...files])
+                }}
+                value=""
+                multiple
+              />
+            </div>
+          </div>
+          <div id="preview-existing-internal-photo" />
+          <div id="preview-new-internal-photo" />
         </div>
 
         <div className="create-listing-right-side">
