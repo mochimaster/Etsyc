@@ -43,7 +43,6 @@ export const updateListing = (formData) => {
 }
 
 export const getListing = (id, userId) => {
-  console.log('listing api getListing: ', id, userId)
   return $.ajax({
     method: 'GET',
     url: `api/listings/${id}`,
@@ -106,14 +105,6 @@ export const renewListing = (id) => {
   return $.ajax({
     method: 'PATCH',
     url: `/api/listings/${id}/renew`
-  })
-}
-
-export const getListingInternalNote = (listingId) => {
-  console.log('getListingInternalNote listingId: ', listingId)
-  return $.ajax({
-    method: 'GET',
-    url: `api/listings/${listingId}/internal-note`
   })
 }
 
