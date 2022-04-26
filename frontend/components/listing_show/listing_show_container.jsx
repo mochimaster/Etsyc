@@ -33,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getListing: (id) => dispatch(getListing(id)),
+    getListing: (id, userId) => dispatch(getListing(id, userId)),
     updateListing: (listing) => dispatch(updateListing(listing)),
     deleteListing: (id) => dispatch(deleteListing(id)),
     createCart: (cart) => dispatch(createCart(cart)),

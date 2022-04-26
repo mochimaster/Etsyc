@@ -42,10 +42,11 @@ export const updateListing = (formData) => {
   }
 }
 
-export const getListing = (id) => {
+export const getListing = (id, userId) => {
   return $.ajax({
     method: 'GET',
-    url: `api/listings/${id}`
+    url: `api/listings/${id}`,
+    data: { userId }
   })
 }
 

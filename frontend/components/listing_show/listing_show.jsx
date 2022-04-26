@@ -35,9 +35,11 @@ class ListingShow extends React.Component {
   componentDidMount() {
     scroll.scrollToTop()
 
-    this.props.getListing(this.props.match.params.listingId).then(() => {
-      this.setState({ isLoading: false })
-    })
+    this.props
+      .getListing(this.props.match.params.listingId, this.props.sessionId)
+      .then(() => {
+        this.setState({ isLoading: false })
+      })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -443,6 +445,16 @@ class ListingShow extends React.Component {
               <label className="title-label">Overview</label>
               <p className="overview">{this.props.listing.overview}</p>
             </div>
+
+            <br />
+            {isListingAuthor && (
+              <div className="listing-details listing-details-internal-note">
+                <label className="internal-note-label">Internal Note</label>
+                <p className="internal-note">
+                  {this.props.listing.internalNote}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_173455) do
+ActiveRecord::Schema.define(version: 2022_04_26_011415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_173455) do
     t.string "condition", default: "new"
     t.datetime "renewed_at"
     t.string "brand"
+    t.string "internal_note"
     t.index ["status"], name: "index_listings_on_status"
   end
 

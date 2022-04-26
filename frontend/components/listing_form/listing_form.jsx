@@ -63,16 +63,18 @@ export const ListingForm = (props) => {
 
   useEffect(() => {
     if (!props.match.params.listingId) return
-    props.getListing(props.match.params.listingId).then((listing) => {
-      // this.setState({ ...props.listing }, () => {
-      if (props.listing && props.listing.photoUrls) {
-        const tempPhotoHash = {}
-        props.listing.photoUrls.forEach((_, index) => {
-          tempPhotoHash[index] = true
-        })
-        setPhotoHash(tempPhotoHash)
-      }
-    })
+    props
+      .getListing(props.match.params.listingId, props.sessionId)
+      .then((listing) => {
+        // this.setState({ ...props.listing }, () => {
+        if (props.listing && props.listing.photoUrls) {
+          const tempPhotoHash = {}
+          props.listing.photoUrls.forEach((_, index) => {
+            tempPhotoHash[index] = true
+          })
+          setPhotoHash(tempPhotoHash)
+        }
+      })
   }, [props.match.params.listingId])
 
   useEffect(() => {
@@ -133,6 +135,7 @@ export const ListingForm = (props) => {
     formData.append('user[phone_number]', listing.phoneNumber)
     formData.append('listing[condition]', listing.condition)
     formData.append('listing[brand]', listing.brand)
+    formData.append('listing[internal_note]', listing.internalNote)
 
     if (props.match.params.listingId) {
       formData.append('listing[id]', props.match.params.listingId)
@@ -428,6 +431,18 @@ export const ListingForm = (props) => {
               }
               value={listing.price}
             />
+          </div>
+
+          <div className="create-listing-internal-note">
+            <label className="title-label">Internal Note:</label>
+            <br />
+            <textarea
+              className="create-listing-internal-textarea"
+              value={listing.internalNote}
+              onChange={({ target: { value } }) =>
+                setListing((listing) => ({ ...listing, internalNote: value }))
+              }
+            ></textarea>
           </div>
 
           <div className="create-listing-submit-button">
