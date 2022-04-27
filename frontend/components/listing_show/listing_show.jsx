@@ -12,9 +12,9 @@ import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import Slider from '../slider/slider_container'
-// import ImageGallery from 'react-image-gallery'
+import ImageGallery from 'react-image-gallery'
 
-// import 'react-image-gallery/styles/css/image-gallery.css'
+import 'react-image-gallery/styles/css/image-gallery.css'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
 
@@ -278,20 +278,18 @@ class ListingShow extends React.Component {
     const images = []
     if (this.props.listing.photoUrls) {
       for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
-        images.push(this.props.listing.photoUrls[i])
-        // images.push({
-        //   original: this.props.listing.photoUrls[i],
-        //   thumbnail: this.props.listing.photoUrls[i]
-        // })
+        images.push({
+          original: this.props.listing.photoUrls[i],
+          thumbnail: this.props.listing.photoUrls[i]
+        })
       }
     }
 
     if (this.props.listing.photoUrl) {
-      images.push(this.props.listing.photoUrl)
-      // images.push({
-      //   original: this.props.listing.photoUrl,
-      //   thumbnail: this.props.listing.photoUrl
-      // })
+      images.push({
+        original: this.props.listing.photoUrl,
+        thumbnail: this.props.listing.photoUrl
+      })
     }
 
     const internalImages = []
@@ -329,8 +327,7 @@ class ListingShow extends React.Component {
             {/* <Slider images={images} /> */}
             {/* {displayImages} */}
             <div id="image-gallery">
-              <Slider images={images} />
-              {/* <ImageGallery items={images} showPlayButton={false} /> */}
+              <ImageGallery items={images} showPlayButton={false} />
             </div>
 
             <div className="listing-description">
@@ -356,8 +353,7 @@ class ListingShow extends React.Component {
                   <br />
                   <label className="title-label">Internal Photos</label>
                   <br />
-                  <Slider images={this.props.listing.internalPhotoUrls} />
-                  {/* <ImageGallery items={internalImages} showPlayButton={false} /> */}
+                  <ImageGallery items={internalImages} showPlayButton={false} />
                 </div>
               )}
           </div>
