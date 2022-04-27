@@ -10,10 +10,12 @@ import Slider from '../slider/slider_container'
 import { closeModal } from '../../actions/modal_actions'
 import { clearErrors } from '../../actions/session_actions'
 
-const Modal = ({ modal, closeModal }) => {
-  if (!modal) {
+const Modal = ({ modal: propsModal, closeModal }) => {
+  if (!propsModal) {
     return null
   }
+
+  const { modal, images, currentIndex } = propsModal
 
   let modalComponent
   switch (modal) {
@@ -30,7 +32,7 @@ const Modal = ({ modal, closeModal }) => {
       modalComponent = <UserDropdownContainer />
       break
     case MODAL_TYPE.SLIDER:
-      modalComponent = <Slider />
+      modalComponent = <Slider images={images} currentIndex={currentIndex} />
       break
 
     default:

@@ -17,7 +17,7 @@ const Slider = (props) => {
       props.listing.photoUrl
   )
 
-  const [currentIndex, setIndex] = useState(0)
+  const [currentIndex, setIndex] = useState(props.currentIndex || 0)
   const [isModalDisplayed] = useState(props.modal)
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const Slider = (props) => {
         className={`slider-image ${additionalClassName}`}
         src={images[0]}
         onClick={() => {
-          props.openModal(MODAL_TYPE.SLIDER)
+          props.openModal(MODAL_TYPE.SLIDER, images, currentIndex)
         }}
       />
       {modalX}
@@ -99,7 +99,7 @@ const Slider = (props) => {
           onClick={() => {
             trackEvent({ eventName: EVENTS.ENLARGE_IMAGE })
 
-            props.openModal(MODAL_TYPE.SLIDER)
+            props.openModal(MODAL_TYPE.SLIDER, images, currentIndex)
           }}
         />
         {modalX}
