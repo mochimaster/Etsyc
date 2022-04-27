@@ -87,7 +87,8 @@
   /* height: 70vh; */
 }
 
-.image-gallery-svg {
+/* .image-gallery-svg { */
+.image-gallery-fullscreen-button > .image-gallery-svg {
   height: 50px !important;
   width: 50px !important;
 }
