@@ -278,18 +278,20 @@ class ListingShow extends React.Component {
     const images = []
     if (this.props.listing.photoUrls) {
       for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
-        images.push({
-          original: this.props.listing.photoUrls[i],
-          thumbnail: this.props.listing.photoUrls[i]
-        })
+        images.push(this.props.listing.photoUrls[i])
+        // images.push({
+        //   original: this.props.listing.photoUrls[i],
+        //   thumbnail: this.props.listing.photoUrls[i]
+        // })
       }
     }
 
     if (this.props.listing.photoUrl) {
-      images.push({
-        original: this.props.listing.photoUrl,
-        thumbnail: this.props.listing.photoUrl
-      })
+      images.push(this.props.listing.photoUrl)
+      // images.push({
+      //   original: this.props.listing.photoUrl,
+      //   thumbnail: this.props.listing.photoUrl
+      // })
     }
 
     const internalImages = []
@@ -325,7 +327,8 @@ class ListingShow extends React.Component {
             {/* <Slider images={images} /> */}
             {/* {displayImages} */}
             <div id="image-gallery">
-              <ImageGallery items={images} showPlayButton={false} />
+              <Slider images={images} />
+              {/* <ImageGallery items={images} showPlayButton={false} /> */}
             </div>
 
             <div className="listing-description">
@@ -351,7 +354,8 @@ class ListingShow extends React.Component {
                   <br />
                   <label className="title-label">Internal Photos</label>
                   <br />
-                  <ImageGallery items={internalImages} showPlayButton={false} />
+                  <Slider images={this.props.listing.internalPhotoUrls} />
+                  {/* <ImageGallery items={internalImages} showPlayButton={false} /> */}
                 </div>
               )}
           </div>
