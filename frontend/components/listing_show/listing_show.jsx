@@ -295,11 +295,13 @@ class ListingShow extends React.Component {
     }
 
     const internalImages = []
-    for (const internalPhotoUrl of this.props.listing.internalPhotoUrls) {
-      internalImages.push({
-        original: internalPhotoUrl,
-        thumbnail: internalPhotoUrl
-      })
+    if (this.props.listing.internalPhotoUrls) {
+      for (const internalPhotoUrl of this.props.listing.internalPhotoUrls) {
+        internalImages.push({
+          original: internalPhotoUrl,
+          thumbnail: internalPhotoUrl
+        })
+      }
     }
 
     let itemNumber = this.props.match.params.listingId
