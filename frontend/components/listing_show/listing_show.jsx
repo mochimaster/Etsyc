@@ -327,7 +327,11 @@ class ListingShow extends React.Component {
             {/* <Slider images={images} /> */}
             {/* {displayImages} */}
             <div id="image-gallery">
-              <ImageGallery items={images} showPlayButton={false} />
+              <ImageGallery
+                items={images}
+                showPlayButton={false}
+                lazyLoad={true}
+              />
             </div>
 
             <div className="listing-description">
