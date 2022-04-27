@@ -325,7 +325,7 @@ class ListingShow extends React.Component {
             {/* <Slider images={images} /> */}
             {/* {displayImages} */}
             <div id="image-gallery">
-              <ImageGallery items={images} />
+              <ImageGallery items={images} showPlayButton={false} />
             </div>
 
             <div className="listing-description">
@@ -351,7 +351,7 @@ class ListingShow extends React.Component {
                   <br />
                   <label className="title-label">Internal Photos</label>
                   <br />
-                  <ImageGallery items={internalImages} />
+                  <ImageGallery items={internalImages} showPlayButton={false} />
                 </div>
               )}
           </div>
