@@ -82,7 +82,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
           .
         </div>
 
-        <div>
+        <div id="book-directions">
           <br />
           <div className="booking-name">
             Castle and Chair Warehouse Location:{' '}

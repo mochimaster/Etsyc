@@ -6,6 +6,8 @@ import { animateScroll as scroll } from 'react-scroll'
 
 import ListingShowContainer from './listing_show_container'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
+
 import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
@@ -386,6 +388,22 @@ class ListingShow extends React.Component {
               }
             >
               <div className="listing-details add-to-cart">
+                <div className="delivery-estimate">
+                  <div>
+                    Delivery available through Lugg.{' '}
+                    <a
+                      target="_blank"
+                      href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+                    >
+                      Calculate delivery
+                    </a>{' '}
+                    to different zip code.
+                  </div>
+                  <div>
+                    Free pick up at our warehouse in Hayward.{' '}
+                    <HashLink to="/visit#book-directions">Directions</HashLink>.
+                  </div>
+                </div>
                 <button
                   className={this.props.sessionId ? '' : 'button-disabled'}
                   onClick={() => {
@@ -431,16 +449,6 @@ class ListingShow extends React.Component {
                 >
                   Add to cart
                 </button>
-                <div className="delivery-estimate">
-                  Delivery available through Lugg.{' '}
-                  <a
-                    target="_blank"
-                    href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
-                  >
-                    Calculate delivery
-                  </a>{' '}
-                  to different zip code.
-                </div>
               </div>
             </tooltip>
             <div>Item number: {itemNumber}</div>
