@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     closeModal: () => {
       dispatch(closeModal())
     },
-    openModal: (modalType) => {
-      dispatch(openModal(modalType))
+    openModal: (modalType, images, currentIndex) => {
+      dispatch(openModal(modalType, images, currentIndex))
     }
   }
 }
