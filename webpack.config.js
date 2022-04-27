@@ -23,7 +23,7 @@ module.exports = {
             plugins: ['@babel/plugin-transform-runtime']
           }
         }
-      },
+      }
       // {
       //   // For pure CSS - /\.css$/i,
       //   // For Sass/SCSS - /\.((c|sa|sc)ss)$/i,

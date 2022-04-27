@@ -12,7 +12,7 @@ import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import Slider from '../slider/slider_container'
-import ImageGallery from 'react-image-gallery'
+// import ImageGallery from 'react-image-gallery'
 
 // import 'react-image-gallery/styles/css/image-gallery.css'
 
