@@ -80,6 +80,10 @@
 
 .listing-left-half {
   overflow: hidden;
+}
+
+.image-gallery-image {
+  min-height: 700px;
   /* height: 70vh; */
 }
 

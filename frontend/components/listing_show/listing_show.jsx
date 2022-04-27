@@ -12,7 +12,9 @@ import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import Slider from '../slider/slider_container'
-import { renewListing } from '../../util/listing_api_util'
+import ImageGallery from 'react-image-gallery'
+
+import 'react-image-gallery/styles/css/image-gallery.css'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
 
@@ -273,15 +275,29 @@ class ListingShow extends React.Component {
 
     // }
 
-    let images = []
+    const images = []
     if (this.props.listing.photoUrls) {
       for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
-        images.push(this.props.listing.photoUrls[i])
+        images.push({
+          original: this.props.listing.photoUrls[i],
+          thumbnail: this.props.listing.photoUrls[i]
+        })
       }
     }
 
     if (this.props.listing.photoUrl) {
-      images.push(this.props.listing.photoUrl)
+      images.push({
+        original: this.props.listing.photoUrl,
+        thumbnail: this.props.listing.photoUrl
+      })
+    }
+
+    const internalImages = []
+    for (const internalPhotoUrl of this.props.listing.internalPhotoUrls) {
+      internalImages.push({
+        original: internalPhotoUrl,
+        thumbnail: internalPhotoUrl
+      })
     }
 
     let itemNumber = this.props.match.params.listingId
@@ -306,18 +322,20 @@ class ListingShow extends React.Component {
         <div className="listing-show-body-wrapper">
           <div className="listing-image listing-left-half">
             {/* <img src={this.props.listing.photoUrl} /> */}
-            <Slider images={images} />
+            {/* <Slider images={images} /> */}
             {/* {displayImages} */}
+            <div id="image-gallery">
+              <ImageGallery items={images} />
+            </div>
+
             <div className="listing-description">
               <label className="title-label">Description</label> <br />
               <p>{this.props.listing.description}</p>
             </div>
-
             <div>
               <ReviewForm listingId={this.props.listing.id} />
             </div>
             <div />
-
             <div className="listing-reviews">
               <ReviewIndexContainer
                 createReview={this.props.createReview}
@@ -326,7 +344,6 @@ class ListingShow extends React.Component {
                 listingId={this.props.listing.listingId}
               />
             </div>
-
             {isListingAuthor &&
               this.props.listing.internalPhotoUrls &&
               this.props.listing.internalPhotoUrls.length > 0 && (
@@ -334,7 +351,7 @@ class ListingShow extends React.Component {
                   <br />
                   <label className="title-label">Internal Photos</label>
                   <br />
-                  <Slider images={this.props.listing.internalPhotoUrls} />
+                  <ImageGallery items={internalImages} />
                 </div>
               )}
           </div>
