@@ -2,19 +2,21 @@
   padding: 0 40px 0 40px;
   display: grid;
   /* grid-template-columns: repeat(4, 1fr) */
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   font-family: 'Graphik Webfont', -apple-system, system-ui, Roboto, 'Droid Sans',
     'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
   line-height: 22.4px;
   color: rgb(34, 34, 34);
-  min-height: 300px;
+  min-height: 400px;
+  justify-items: center;
 }
 
 .index-wrapper.device-mobile {
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  font-size: 23px;
+  font-size: 30px;
+  padding: 0 0 0 0;
 }
 
 /* .listing-item-wrapper{
@@ -24,7 +26,10 @@
 .listing-item-wrapper {
   display: grid;
   /* grid-template-rows: 30% 10% 10% 10% 10%; */
-  grid-template-rows: 6fr 1fr 1fr;
+  grid-template-rows: 8fr 0.7fr 1.5fr;
+  max-width: 400px;
+  grid-template-columns: 1fr;
+  justify-content: center;
 }
 
 /* .listing-item-wrapper > .listing-item-image > a >img {
@@ -33,25 +38,25 @@
 
 .listing-item-image {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
 }
 
 .listing-item-image.device-mobile {
-  width: 350px;
-  height: 350px;
+  width: 450px;
+  height: 450px;
 }
 
 .listing-thumbnail {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  /* left: 50%; */
+  /* top: 50%; */
   height: 100%;
-  width: auto;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  /* width: auto; */
+  /* -webkit-transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  /* transform: translate(-50%, -50%); */
 }
 
 .listing-item-image {
@@ -65,13 +70,13 @@
 
 .index-wrapper > li {
   list-style: none;
-  padding: 9px;
+  /* padding: 9px; */
   /* Row below is for minimum height */
   grid-auto-rows: minmax(100px, auto);
   /* max-height: 294px; */
   text-decoration: none;
-  justify-content: space-evenly;
-  padding-left: 40px;
+  /* justify-items: center; */
+  /* padding-left: 40px; */
 }
 
 .index-wrapper > li > div {
