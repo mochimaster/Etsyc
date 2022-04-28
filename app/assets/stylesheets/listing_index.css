@@ -26,7 +26,7 @@
 .listing-item-wrapper {
   display: grid;
   /* grid-template-rows: 30% 10% 10% 10% 10%; */
-  grid-template-rows: 8fr 0.7fr 1.5fr;
+  grid-template-rows: 7fr 1.2fr 1.3fr;
   max-width: 400px;
   grid-template-columns: 1fr;
   justify-content: center;
@@ -45,7 +45,7 @@
 
 .listing-item-image.device-mobile {
   width: 450px;
-  height: 450px;
+  height: 400px;
 }
 
 .listing-thumbnail {
@@ -96,8 +96,8 @@
 }
 
 .listing-item-title.device-mobile {
-  height: 48px;
-  line-height: 24px;
+  height: 59px;
+  line-height: 28px;
   overflow: hidden;
 }
 
