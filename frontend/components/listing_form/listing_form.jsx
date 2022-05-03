@@ -5,6 +5,11 @@ import Compress from 'compress.js'
 
 import { BRANDS, CATEGORIES } from '../../../utils/constants'
 
+const PHOTO_POSITION = {
+  UP: 'up',
+  DOWN: 'down'
+}
+
 const compressImage = async (imageFile) => {
   const compress = new Compress()
 
@@ -43,20 +48,20 @@ const defaultListing = {
   photoUrls: [],
   internalNote: '',
   internalPhotos: [],
-  internalPhotoUrls: []
+  internalPhotoUrls: [],
+  photosOrder: []
 }
 
 export const ListingForm = (props) => {
+  const [photosUpdate, setPhotosUpdate] = useState({})
+  const [internalPhotosUpdate, setInternalPhotosUpdate] = useState({})
+
   const [listing, setListing] = useState(defaultListing)
 
   const [photos, setPhotos] = useState([]) // new uploading photos
   const [internalPhotos, setInternalPhotos] = useState([]) // new uploading photos
 
-  const [photoHash, setPhotoHash] = useState({}) // existing photo urls
-  const [internalPhotoHash, setInternalPhotoHash] = useState({}) // existing internal photo urls
   const [isSubmitLoading, setIsSubmitLoading] = useState(false)
-
-  const [isUploadInternalPhotos, setIsUploadInternalPhotos] = useState(false)
 
   const preview = document.querySelector('#preview')
   const newPhotoNode = document.querySelector('#preview-new-photo')
@@ -67,35 +72,13 @@ export const ListingForm = (props) => {
     '#preview-existing-internal-photo'
   )
 
-  // removed  by Elliot
-  // state.author_id = props.sessionId
-
   useEffect(() => {
     props.clearErrors()
   }, [props.formType])
 
   useEffect(() => {
     if (!props.match.params.listingId) return
-    props
-      .getListing(props.match.params.listingId, props.sessionId)
-      .then((listing) => {
-        // this.setState({ ...props.listing }, () => {
-        if (props.listing && props.listing.photoUrls) {
-          const tempPhotoHash = {}
-          props.listing.photoUrls.forEach((_, index) => {
-            tempPhotoHash[index] = true
-          })
-          setPhotoHash(tempPhotoHash)
-        }
-
-        if (props.listing && props.listing.internalPhotoUrls) {
-          const tempInternalPhotoHash = {}
-          props.listing.internalPhotoUrls.forEach((_, index) => {
-            tempInternalPhotoHash[index] = true
-          })
-          setInternalPhotoHash(tempInternalPhotoHash)
-        }
-      })
+    props.getListing(props.match.params.listingId, props.sessionId)
   }, [props.match.params.listingId])
 
   useEffect(() => {
@@ -110,37 +93,73 @@ export const ListingForm = (props) => {
   }, [props.listing])
 
   useEffect(() => {
+    const tempPhotosUpdate = {}
+    listing.photoUrls.forEach((photoListingUrl, index) => {
+      const position =
+        props.listing.photosOrder.indexOf(photoListingUrl) > -1
+          ? props.listing.photosOrder.indexOf(photoListingUrl)
+          : index
+
+      tempPhotosUpdate[photoListingUrl] = {
+        photoListingUrl,
+        delete: false,
+        position
+      }
+
+      setPhotosUpdate(tempPhotosUpdate)
+    })
+  }, [listing.photoUrls])
+
+  useEffect(() => {
+    const tempInternalPhotosUpdate = {}
+    listing.internalPhotoUrls.forEach((internalPhotoUrl, index) => {
+      tempInternalPhotosUpdate[internalPhotoUrl] = {
+        internalPhotoUrl,
+        delete: false,
+        position: index
+      }
+    })
+
+    setInternalPhotosUpdate(tempInternalPhotosUpdate)
+  }, [listing.internalPhotoUrls])
+
+  useEffect(() => {
     if (preview) preview.innerHTML = ''
+
+    const sortedEnabledPhotosUpdate = Object.values(photosUpdate)
+      .filter((photoUpdate) => !photoUpdate.delete)
+      .sort((a, b) => a.position - b.position)
+
+    sortedEnabledPhotosUpdate.forEach((photoUpdate) =>
+      previewExistingPhoto(photoUpdate.photoListingUrl, photoUpdate.position)
+    )
+  }, [photosUpdate])
+
+  useEffect(() => {
     if (previewExistingInternalPhoto)
       previewExistingInternalPhoto.innerHTML = ''
 
-    for (let i = 0; i < listing.photoUrls.length; i++) {
-      photoHash[i] = true
-      previewExistingPhoto(listing.photoUrls[i], i)
-    }
-
-    for (let i = 0; i < listing.internalPhotoUrls.length; i++) {
-      internalPhotoHash[i] = true
-      previewExistingPhoto(listing.internalPhotoUrls[i], i, true)
-    }
-  }, [listing.photoUrls, listing.internalPhotoUrls])
+    Object.values(internalPhotosUpdate)
+      .filter((internalPhotoUpdate) => !internalPhotoUpdate.delete)
+      .forEach((internalPhotoUpdate, index) => {
+        previewExistingPhoto(internalPhotoUpdate.internalPhotoUrl, index, true)
+      })
+  }, [internalPhotosUpdate])
 
   useEffect(() => {
     if (newPhotoNode) newPhotoNode.innerHTML = ''
     if (newInternalPhotoNode) newInternalPhotoNode.innerHTML = ''
     // preview photos being uploaded.
     for (const photo of photos) {
-      readAndPreview(photo)
+      readAndPreviewNewPhoto(photo)
     }
 
     for (const internalPhoto of internalPhotos) {
-      readAndPreview(internalPhoto, true)
+      readAndPreviewNewPhoto(internalPhoto, true)
     }
   }, [photos, internalPhotos])
 
-  useEffect(() => {}, [photoHash])
-
-  const readAndPreview = (file, isInternal = false) => {
+  const readAndPreviewNewPhoto = (file, isInternal = false) => {
     const fileReader = new FileReader()
 
     fileReader.addEventListener('load', function () {
@@ -155,8 +174,29 @@ export const ListingForm = (props) => {
   }
 
   const handleSubmit = async (e) => {
-    setIsSubmitLoading(true)
     e.preventDefault()
+
+    const photosToDelete = {}
+    Object.keys(photosUpdate).map((photoUpdateKey) => {
+      photosToDelete[photoUpdateKey] = photosUpdate[photoUpdateKey]['delete']
+    })
+
+    const internalPhotosToDelete = {}
+    Object.keys(internalPhotosUpdate).map((internalPhotoUpdateKey) => {
+      internalPhotosToDelete[internalPhotoUpdateKey] =
+        internalPhotosUpdate[internalPhotoUpdateKey]['delete']
+    })
+
+    const populatedPhotoOrder = []
+    const sortedEnabledPhotosUpdate = Object.values(photosUpdate)
+      .filter((photoUpdate) => !photoUpdate.delete)
+      .sort((a, b) => a.position - b.position)
+
+    sortedEnabledPhotosUpdate.forEach((photoUpdate) =>
+      populatedPhotoOrder.push(photoUpdate.photoListingUrl)
+    )
+
+    setIsSubmitLoading(true)
 
     const formData = new FormData()
     formData.append('listing[title]', listing.title)
@@ -171,6 +211,10 @@ export const ListingForm = (props) => {
     formData.append('listing[condition]', listing.condition)
     formData.append('listing[brand]', listing.brand)
     formData.append('listing[internal_note]', listing.internalNote)
+
+    for (const photoListingUrl of populatedPhotoOrder) {
+      formData.append('listing[photos_order][]', photoListingUrl)
+    }
 
     if (props.match.params.listingId) {
       formData.append('listing[id]', props.match.params.listingId)
@@ -206,15 +250,21 @@ export const ListingForm = (props) => {
       }
     }
 
-    if (!!photoHash && props.formType === 'Edit Listing') {
-      for (let i = 0; i < Object.keys(photoHash).length; i++) {
-        formData.append('listing[photo_hash][]', photoHash[i])
+    if (photosToDelete && props.formType === 'Edit Listing') {
+      for (const photoUrl of listing.photoUrls) {
+        formData.append(
+          `listing[photos_to_delete][${photoUrl}]`,
+          photosUpdate[photoUrl]['delete']
+        )
       }
     }
 
-    if (!!internalPhotoHash && props.formType === 'Edit Listing') {
-      for (let i = 0; i < Object.keys(internalPhotoHash).length; i++) {
-        formData.append('listing[internal_photo_hash][]', internalPhotoHash[i])
+    if (internalPhotosToDelete && props.formType === 'Edit Listing') {
+      for (const internalPhotoUrl of listing.internalPhotoUrls) {
+        formData.append(
+          `listing[internal_photos_to_delete][${internalPhotoUrl}]`,
+          internalPhotosUpdate[internalPhotoUrl]['delete']
+        )
       }
     }
 
@@ -239,59 +289,131 @@ export const ListingForm = (props) => {
     }
   }
 
-  const previewExistingPhoto = (photo, index, isInternalPhoto = false) => {
-    if (photoHash[index] || internalPhotoHash[index]) {
-      const preview = isInternalPhoto
-        ? document.querySelector('#preview-existing-internal-photo')
-        : document.querySelector('#preview')
-      const button = document.createElement('button')
+  const updatePhotoPosition = (photoUrl, position) => {
+    const copyPhotosUpdate = { ...photosUpdate }
+    const originalPosition = parseInt(photosUpdate[photoUrl]['position'])
 
-      preview.appendChild(button)
-      button.addEventListener('click', () =>
-        deleteImage(index, isInternalPhoto)
-      )
+    if (position === PHOTO_POSITION.UP && originalPosition > 0) {
+      for (const copyPhotoUpdateKey in copyPhotosUpdate) {
+        if (
+          copyPhotosUpdate[copyPhotoUpdateKey]['position'] ==
+          originalPosition - 1
+        ) {
+          copyPhotosUpdate[copyPhotoUpdateKey]['position'] = `${
+            parseInt(copyPhotosUpdate[copyPhotoUpdateKey]['position']) + 1
+          }`
+        }
+      }
 
-      button.innerText = 'X'
-      button.type = 'button'
-      button.className = `photo photo-${index} photo-x ${
-        isInternalPhoto && 'internal'
-      }`
+      copyPhotosUpdate[photoUrl]['position'] = `${originalPosition - 1}`
+      setPhotosUpdate(copyPhotosUpdate)
+    }
 
-      const image = document.createElement('img')
-      image.src = photo
-      image.id = photo
-      image.className = `photo photo-${index} photo-x ${
-        isInternalPhoto && 'internal'
-      }`
-      preview.appendChild(image)
+    if (
+      position === PHOTO_POSITION.DOWN &&
+      originalPosition < Object.keys(copyPhotosUpdate).length - 1
+    ) {
+      for (const copyPhotoUpdateKey in copyPhotosUpdate) {
+        if (
+          copyPhotosUpdate[copyPhotoUpdateKey]['position'] ==
+          originalPosition + 1
+        ) {
+          copyPhotosUpdate[copyPhotoUpdateKey]['position'] = `${
+            parseInt(copyPhotosUpdate[copyPhotoUpdateKey]['position']) - 1
+          }`
+        }
+      }
+
+      copyPhotosUpdate[photoUrl]['position'] = `${originalPosition + 1}`
+      setPhotosUpdate(copyPhotosUpdate)
     }
   }
 
-  const deleteImage = (index, isInternalPhoto = false) => {
-    while (
-      isInternalPhoto
-        ? document.querySelector(`.photo-${index}.internal`)
-        : document.querySelector(`.photo-${index}`)
-    ) {
-      const deleteImage = isInternalPhoto
-        ? document.querySelector(`.photo-${index}.internal`)
-        : document.querySelector(`.photo-${index}`)
-
-      console.log('deleteImage: ', deleteImage)
-      deleteImage.parentNode.removeChild(deleteImage)
+  const deleteImageById = (photoUrl) => {
+    while (document.getElementById(photoUrl)) {
+      const deleteImage = document.getElementById(photoUrl)
+      deleteImage.parentNode.removeChild(document.getElementById(photoUrl))
     }
+  }
 
-    if (isInternalPhoto) {
-      const copyInternalPhotoHash = internalPhotoHash
-      copyInternalPhotoHash[index] = false
+  const previewExistingPhoto = (photo, index, isInternalPhoto = false) => {
+    const preview = isInternalPhoto
+      ? document.querySelector('#preview-existing-internal-photo')
+      : document.querySelector('#preview')
 
-      setInternalPhotoHash(copyInternalPhotoHash)
-    } else {
-      const copyPhotoHash = photoHash
-      copyPhotoHash[index] = false
+    const deleteButton = document.createElement('button')
+    const upButton = document.createElement('button')
+    const downButton = document.createElement('button')
 
-      setPhotoHash(copyPhotoHash)
-    }
+    preview.appendChild(deleteButton)
+    preview.appendChild(downButton)
+    preview.appendChild(upButton)
+
+    deleteButton.addEventListener('click', () => {
+      /* 
+        set position of photos since a photo in between could be delete
+        only supported for customer facing photos (not internal photos)
+      */
+      if (!isInternalPhoto) {
+        const photoPosition = parseInt(photosUpdate[photo]['position'])
+
+        const copyPhotosUpdate = { ...photosUpdate }
+
+        for (const copyPhotoUpdateKey in photosUpdate) {
+          if (
+            copyPhotosUpdate[copyPhotoUpdateKey]['position'] > photoPosition
+          ) {
+            copyPhotosUpdate[copyPhotoUpdateKey]['position'] = `${
+              parseInt(copyPhotosUpdate[copyPhotoUpdateKey]['position']) - 1
+            }`
+          }
+        }
+        copyPhotosUpdate[photo].delete = true
+
+        setPhotosUpdate(copyPhotosUpdate)
+      } else {
+        const copyInternalPhotosUpdate = { ...internalPhotosUpdate }
+        copyInternalPhotosUpdate[photo].delete = true
+
+        setInternalPhotosUpdate(copyInternalPhotosUpdate)
+      }
+
+      deleteImageById(photo)
+    })
+
+    downButton.addEventListener('click', () =>
+      updatePhotoPosition(photo, PHOTO_POSITION.DOWN)
+    )
+
+    upButton.addEventListener('click', () =>
+      updatePhotoPosition(photo, PHOTO_POSITION.UP)
+    )
+
+    deleteButton.innerText = 'X'
+    deleteButton.type = 'button'
+    deleteButton.className = `photo photo-x ${
+      isInternalPhoto ? `photo-internal-${index}` : `photo-${index}`
+    }`
+
+    downButton.innerText = '↓'
+    downButton.type = 'button'
+    downButton.className = `photo photo-x photo-< ${
+      isInternalPhoto ? `photo-internal-${index}` : `photo-${index}`
+    }`
+
+    upButton.innerText = '↑'
+    upButton.type = 'button'
+    upButton.className = `photo photo-x photo-> ${
+      isInternalPhoto ? `photo-internal-${index}` : `photo-${index}`
+    }`
+
+    const image = document.createElement('img')
+    image.src = photo
+    image.id = photo
+    image.className = `photo  photo-x ${
+      isInternalPhoto ? `photo-internal-${index}` : `photo-${index}`
+    }`
+    preview.appendChild(image)
   }
 
   const updateCategory = (categoryId) => {

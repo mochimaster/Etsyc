@@ -26,10 +26,15 @@
 .listing-item-wrapper {
   display: grid;
   /* grid-template-rows: 30% 10% 10% 10% 10%; */
-  grid-template-rows: 7fr 1.2fr 1.3fr;
+  grid-template-rows: 7fr 0.6fr 1.3fr;
   max-width: 400px;
   grid-template-columns: 1fr;
   justify-content: center;
+  /* font-size: 35px; */
+}
+
+.listing-item-wrapper.device-mobile {
+  grid-template-rows: 7fr 1.2fr 1.3fr;
 }
 
 /* .listing-item-wrapper > .listing-item-image > a >img {

@@ -43,7 +43,7 @@ const ListingIndexItem = ({ listing }) => {
         src={listing.photoUrls ? listing.photoUrls[0] : listing.photoUrl}
       />
     ) : (
-      <img className="listing-thumbnail" src='./image_loading.png' />
+      <img className="listing-thumbnail" src="./image_loading.png" />
     )
 
   const { id, title, author_id, merchant_name, price, brand } = listing
@@ -57,7 +57,7 @@ const ListingIndexItem = ({ listing }) => {
   }
 
   return (
-    <li className="listing-item-wrapper">
+    <li className={`listing-item-wrapper ${deviceClassName}`}>
       <div className={`listing-item-image ${deviceClassName}`}>
         <Link to={`/listings/${id}/${titleForUrl}`}>
           <tooltip title={title}>

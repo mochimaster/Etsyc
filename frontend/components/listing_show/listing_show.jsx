@@ -1,17 +1,14 @@
 import React from 'react'
 import ReactLoading from 'react-loading'
 
-import { merge } from 'lodash'
+import { merge, pull } from 'lodash'
 import { animateScroll as scroll } from 'react-scroll'
 
-import ListingShowContainer from './listing_show_container'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
-import { withRouter } from 'react-router'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
-import Slider from '../slider/slider_container'
 import ImageGallery from 'react-image-gallery'
 
 import 'react-image-gallery/styles/css/image-gallery.css'
@@ -276,20 +273,24 @@ class ListingShow extends React.Component {
     // }
 
     const images = []
-    if (this.props.listing.photoUrls) {
-      for (let i = 0; i < this.props.listing.photoUrls.length; i++) {
+    if (this.props.listing.photoUrls && this.props.listing.photoUrls.length) {
+      const unorderedPhotoUrls = [...this.props.listing.photoUrls]
+
+      this.props.listing.photosOrder.forEach((photoOrder) => {
+        pull(unorderedPhotoUrls, photoOrder)
+
         images.push({
-          original: this.props.listing.photoUrls[i],
-          thumbnail: this.props.listing.photoUrls[i]
+          original: photoOrder,
+          thumbnail: photoOrder
+        })
+      })
+
+      for (const unorderedPhotoUrl of unorderedPhotoUrls) {
+        images.push({
+          original: unorderedPhotoUrl,
+          thumbnail: unorderedPhotoUrl
         })
       }
-    }
-
-    if (this.props.listing.photoUrl) {
-      images.push({
-        original: this.props.listing.photoUrl,
-        thumbnail: this.props.listing.photoUrl
-      })
     }
 
     const internalImages = []
