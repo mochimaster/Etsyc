@@ -455,7 +455,7 @@ class ListingShow extends React.Component {
                         JSON.stringify(mergedCarts)
                       )
 
-                      this.props.history.push(`/users/temp/carts`)
+                      return this.props.history.push(`/users/temp/carts`)
                     } else {
                       return this.props
                         .createCart({

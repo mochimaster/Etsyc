@@ -57,105 +57,94 @@ class App extends React.Component {
 
   render() {
     return (
-      <ScrollManager history={this.history}>
-        <WindowScroller>
-          <div className="app-container">
-            <Modal />
-            <Route component={HeaderBannerContainer} />
-            <Route component={HeaderContainer} />
-            <div className="body">
-              <Switch>
-                <Route path={'/faq'} component={Faq} />
-                <Route
-                  path={['/appointment', '/visit', '/pages/appointment']}
-                  component={BookingContainer}
-                />
-                <Route path={['/']} component={CategoryIndexContainer} />
-              </Switch>
+      // <ScrollManager history={this.history}>
+      // <WindowScroller>
+      <div className="app-container">
+        <Modal />
+        <Route component={HeaderBannerContainer} />
+        <Route component={HeaderContainer} />
+        <div className="body">
+          <Switch>
+            <Route path={'/faq'} component={Faq} />
+            <Route
+              path={['/appointment', '/visit', '/pages/appointment']}
+              component={BookingContainer}
+            />
+            <Route path={['/']} component={CategoryIndexContainer} />
+          </Switch>
 
-              <div className="filters">
-                <Route
-                  exact
-                  path={['/listings', '/categories/:categoryId']}
-                  component={ConditionDropDownContainer}
-                />
-                <Route
-                  exact
-                  path={['/listings', '/categories/:categoryId']}
-                  component={SortDropDownContainer}
-                />
-              </div>
+          <div className="filters">
+            <Route
+              exact
+              path={['/listings', '/categories/:categoryId']}
+              component={ConditionDropDownContainer}
+            />
+            <Route
+              exact
+              path={['/listings', '/categories/:categoryId']}
+              component={SortDropDownContainer}
+            />
+          </div>
 
-              <div className="announcement">
-                {/* <span className="announcement-red">Announcement</span>: Store is not
+          <div className="announcement">
+            {/* <span className="announcement-red">Announcement</span>: Store is not
           available between 12/13/2021 - 12/24/2021 for pick ups. All purchases
           made between that will be put on hold for you and available for pick
         up 12/25 onwards. */}
-              </div>
-
-              <ElementScroller scrollKey="nav">
-                <Switch>
-                  <ProtectedRoute
-                    exact
-                    path="/listings/new"
-                    component={ListingFormContainer}
-                  />
-                  <Route
-                    path="/categories/:categoryId"
-                    component={CategoryShowContainer}
-                  />
-                  <ProtectedRoute
-                    path="/users/:userId/reset"
-                    component={HomeFormContainer}
-                  />
-                  <ProtectedRoute
-                    path="/users/:userId/home"
-                    component={HomeIndexContainer}
-                  />
-                  <Route path="/users/temp/carts" component={CartContainer} />
-                  <ProtectedRoute
-                    path="/users/:userId/carts"
-                    component={CartContainer}
-                  />
-                  <Route
-                    exact
-                    path="/listings"
-                    component={ListingIndexContainer}
-                  />
-                  <Route
-                    path="/listings/search"
-                    component={ListingIndexContainer}
-                  />
-                  <ProtectedRoute
-                    path="/listings/:listingId/edit"
-                    component={ListingEditFormContainer}
-                  />
-                  <Route
-                    path="/listings/:listingId/:listingTitle?"
-                    component={ListingShowContainer}
-                  />
-                  <Route exact path="/error" component={ErrorShow} />
-                  <Redirect exact from="/" to="/listings" />
-                  <Route component={NotFound} />
-                </Switch>
-              </ElementScroller>
-
-              <Switch>
-                <Route
-                  path={[
-                    '/listings/search',
-                    '/categories',
-                    '/users/:userId/home'
-                  ]}
-                  component={PaginationAll}
-                />
-                <Route exact path={['/listings']} component={PaginationAll} />
-              </Switch>
-            </div>
-            <Footer />
           </div>
-        </WindowScroller>
-      </ScrollManager>
+
+          {/* <ElementScroller scrollKey="nav"> */}
+          <Switch>
+            <ProtectedRoute
+              exact
+              path="/listings/new"
+              component={ListingFormContainer}
+            />
+            <Route
+              path="/categories/:categoryId"
+              component={CategoryShowContainer}
+            />
+            <ProtectedRoute
+              path="/users/:userId/reset"
+              component={HomeFormContainer}
+            />
+            <ProtectedRoute
+              path="/users/:userId/home"
+              component={HomeIndexContainer}
+            />
+            <Route path="/users/temp/carts" component={CartContainer} />
+            <ProtectedRoute
+              path="/users/:userId/carts"
+              component={CartContainer}
+            />
+            <Route exact path="/listings" component={ListingIndexContainer} />
+            <Route path="/listings/search" component={ListingIndexContainer} />
+            <ProtectedRoute
+              path="/listings/:listingId/edit"
+              component={ListingEditFormContainer}
+            />
+            <Route
+              path="/listings/:listingId/:listingTitle?"
+              component={ListingShowContainer}
+            />
+            <Route exact path="/error" component={ErrorShow} />
+            <Redirect exact from="/" to="/listings" />
+            <Route component={NotFound} />
+          </Switch>
+          {/* </ElementScroller> */}
+
+          <Switch>
+            <Route
+              path={['/listings/search', '/categories', '/users/:userId/home']}
+              component={PaginationAll}
+            />
+            <Route exact path={['/listings']} component={PaginationAll} />
+          </Switch>
+        </div>
+        <Footer />
+      </div>
+      // </WindowScroller>
+      // </ScrollManager>
     )
   }
 }
