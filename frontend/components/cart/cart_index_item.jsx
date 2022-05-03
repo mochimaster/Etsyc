@@ -22,7 +22,7 @@ const CartIndexItem = (props) => {
     if (props.cart.photosOrder && props.cart.photosOrder.length)
       return props.cart.photosOrder[0]
 
-    return props.cart.photoUrl
+    return props.cart.photoUrl || props.cart.photoUrls[0]
   }
 
   return (
