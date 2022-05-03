@@ -16,30 +16,35 @@ class Api::ListingsController < ApplicationController
 
   def update
     @listing = Listing.find_by(id: params[:id])
+
+    photos_to_delete = listing_params[:photos_to_delete]
+    params[:listing].delete :photos_to_delete
+
+    internal_photos_to_delete = listing_params[:internal_photos_to_delete]
+    params[:listing].delete :internal_photos_to_delete
     
-    photo_hash = listing_params[:photo_hash]
-    params[:listing].delete :photo_hash
-
-    internal_photo_hash = listing_params[:internal_photo_hash]
-    params[:listing].delete :internal_photo_hash
-
     user_params= {} if !user_params
 
     if @listing && @listing.update_attributes(listing_params) && @listing.author.update_attributes(user_params)
-      if photo_hash
-        photo_hash.each_with_index { |truth, index|
-        if truth == "false"
-          @listing.photos[index].purge
-        end
-      }
+
+      if photos_to_delete
+        @listing.photos.each { |photo|
+          photo_url = url_for(photo)
+          substring_position = photo_url.index('/rails')
+          substring = photo_url.slice(substring_position..)
+
+          photo.purge if photos_to_delete[substring] == 'true'
+        }
       end
 
-      if internal_photo_hash
-        internal_photo_hash.each_with_index { |truth, index|
-        if truth == "false"
-          @listing.internal_photos[index].purge
-        end
-      }
+      if internal_photos_to_delete
+        @listing.internal_photos.each { |internal_photo|
+          internal_photo_url = url_for(internal_photo)
+          substring_position = internal_photo_url.index('/rails')
+          substring = internal_photo_url.slice(substring_position..)
+
+          internal_photo.purge if internal_photos_to_delete[substring] == 'true'
+        }
       end
 
       render :show
@@ -140,8 +145,8 @@ class Api::ListingsController < ApplicationController
     # params[:listing][:modified_by_userid] = params[:author_id]
     params.require(:listing).permit(:title, :description, :author_id,
       :modified_by_userid, :price, :overview, :photo, :merchant_name, :page, 
-      :category, :status, :brand,:condition, :internal_note, 
-      photo_hash:[], photos: [], internal_photos: [], internal_photo_hash: [])
+      :category, :status, :brand,:condition, :internal_note, :photos_order => [],
+      photos: [], internal_photos: [], photos_to_delete: {}, internal_photos_to_delete: {})
 
     # params.require(:listing).permit(:title, :description, :author_id,
     #   :modified_by_userid, :price, :overview, photos: [], :merchant_name)

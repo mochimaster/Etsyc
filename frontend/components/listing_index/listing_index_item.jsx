@@ -36,15 +36,25 @@ const ListingIndexItem = ({ listing }) => {
   //
   // }
 
-  const getImage = () =>
-    displayActualImage ? (
+  const getImage = () => {
+    let orderedThumbnail
+    if (listing.photosOrder && listing.photosOrder.length) {
+      orderedThumbnail = listing.photosOrder[0]
+    }
+
+    const nonOrderedThumbnail = listing.photoUrls
+      ? listing.photoUrls[0]
+      : listing.photoUrl
+
+    return displayActualImage ? (
       <img
         className="listing-thumbnail"
-        src={listing.photoUrls ? listing.photoUrls[0] : listing.photoUrl}
+        src={orderedThumbnail ? orderedThumbnail : nonOrderedThumbnail}
       />
     ) : (
-      <img className="listing-thumbnail" src='./image_loading.png' />
+      <img className="listing-thumbnail" src="./image_loading.png" />
     )
+  }
 
   const { id, title, author_id, merchant_name, price, brand } = listing
 
@@ -57,7 +67,7 @@ const ListingIndexItem = ({ listing }) => {
   }
 
   return (
-    <li className="listing-item-wrapper">
+    <li className={`listing-item-wrapper ${deviceClassName}`}>
       <div className={`listing-item-image ${deviceClassName}`}>
         <Link to={`/listings/${id}/${titleForUrl}`}>
           <tooltip title={title}>

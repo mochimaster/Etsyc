@@ -7,6 +7,7 @@
       json.merchant_name cart_item.listing.author.merchant_name
       json.author_id cart_item.listing.author.id
       json.brand cart_item.listing.brand
+      json.photosOrder cart_item.listing.photos_order.map { |photo_order| photo_order}
       if(cart_item.listing.photo.attached?)
         json.photoUrl url_for(cart_item.listing.photo)
       end
