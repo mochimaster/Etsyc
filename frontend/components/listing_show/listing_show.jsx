@@ -293,6 +293,13 @@ class ListingShow extends React.Component {
       }
     }
 
+    if (this.props.listing.photoUrl) {
+      images.push({
+        original: this.props.listing.photoUrl,
+        thumbnail: this.props.listing.photoUrl
+      })
+    }
+
     const internalImages = []
     if (this.props.listing.internalPhotoUrls) {
       for (const internalPhotoUrl of this.props.listing.internalPhotoUrls) {
