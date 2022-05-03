@@ -18,6 +18,13 @@ const CartIndexItem = (props) => {
     })
   }
 
+  const getCartThumbnailImage = () => {
+    if (props.cart.photosOrder && props.cart.photosOrder.length)
+      return props.cart.photosOrder[0]
+
+    return props.cart.photoUrl
+  }
+
   return (
     <li className="cart-index-item">
       <div className="cart-index-merchant-name">
@@ -31,19 +38,14 @@ const CartIndexItem = (props) => {
 
       <div className="cart-left-section-middle-section-wrapper">
         <div className="cart-index-item-photo">
-          <img
-            src={
-              props.cart.photoUrl ||
-              (props.cart.photoUrls && props.cart.photoUrls[0])
-            }
-          />
+          <img src={getCartThumbnailImage()} />
         </div>
         <div className="cart-index-item-title">
           <Link
             className="cart-index-item-title-link"
             to={`/listings/${props.cart.listing_id}/${props.cart.title}`}
           >
-            {props.cart.brand}
+            {props.cart.brand === 'null' ? '' : props.cart.brand}
             <br />
             {props.cart.title} ({getItemNumber(`${props.cart.listing_id}`)})
           </Link>
