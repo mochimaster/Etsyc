@@ -96,6 +96,7 @@ export const ListingForm = (props) => {
     const tempPhotosUpdate = {}
     listing.photoUrls.forEach((photoListingUrl, index) => {
       const position =
+        props.listing.photosOrder &&
         props.listing.photosOrder.indexOf(photoListingUrl) > -1
           ? props.listing.photosOrder.indexOf(photoListingUrl)
           : index
