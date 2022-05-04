@@ -339,6 +339,7 @@ class ListingShow extends React.Component {
                 items={images}
                 showPlayButton={false}
                 lazyLoad={true}
+                slideOnThumbnailOver={true}
               />
             </div>
 
