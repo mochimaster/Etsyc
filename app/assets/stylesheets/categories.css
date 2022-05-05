@@ -1,10 +1,8 @@
-.categories-wrapper{
-    display: flex;
-    list-style-type: none;
-    justify-content: space-around;
-    border-bottom: 1px solid #E1E3DF;
-    margin: 0px;   
-    padding: 0px;
+.categories-wrapper {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  border-bottom: 1px solid #e1e3df;
 }
 
 .categories-wrapper > li {
@@ -13,19 +11,24 @@
 }
 
 .categories-wrapper > li:hover {
-  border-bottom: 3px solid #F56400;
+  border-bottom: 3px solid #f56400;
   margin-bottom: -1px;
 }
 
-
-.categories-wrapper > li > a{
+.categories-wrapper > li > a {
   text-decoration: none;
   line-height: 19.6px;
-  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   cursor: pointer;
   font-weight: 350;
   font-size: 14px;
   color: black;
+}
+
+.categories-wrapper-mobile > li > a {
+  padding-top: 20px;
+  font-size: 20px;
 }
 
 .categories-wrapper > li > a:visited {
@@ -34,6 +37,6 @@
 }
 
 .highlight {
-  border-bottom: 3px solid #F56400;
+  border-bottom: 3px solid #f56400;
   margin-bottom: -1px;
 }

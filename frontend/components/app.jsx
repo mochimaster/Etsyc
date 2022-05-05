@@ -73,7 +73,10 @@ class App extends React.Component {
             <Route path={['/']} component={CategoryIndexContainer} />
           </Switch>
 
-          <div className="filters">
+          <div
+            id={`${isMobile ? 'filters-mobile' : 'filters'}`}
+            className={`filters ${isMobile ? 'filters-mobile' : ''}`}
+          >
             <Route
               exact
               path={['/listings', '/categories/:categoryId']}

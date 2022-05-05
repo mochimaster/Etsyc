@@ -1,4 +1,11 @@
-.header-nav-inner {
+.header-nav-inner,
+.header-nav-inner-mobile {
+  display: grid;
+  grid-template-columns: 15% 50% 35%;
+}
+
+.header-nav-inner-mobile {
+  grid-template-columns: 50% 50%;
 }
 
 .header-nav-top-level {
@@ -12,6 +19,15 @@
   min-width: 100%;
   box-sizing: border-box;
   display: inline-block;
+  // height: 80px;
+}
+
+.account-nav {
+  // border-bottom: 1px solid #e1e3df;
+}
+
+.header-nav-top-level-mobile {
+  height: 120px;
 }
 
 .header-nav-inner {
@@ -19,32 +35,44 @@
   text-align: left;
   margin: 0 auto;
   box-sizing: border-box;
-  height: 80px;
+  // height: 80px;
   padding-left: 18px;
   padding-right: 18px;
   /* display: inline-block; */
   float: none;
   position: relative;
-  display: block;
+  // display: block;
 }
 
-#craftsy-logo {
-  position: relative;
-  float: left;
-  margin-right: 20px;
+#craftsy-logo,
+#craftsy-logo-mobile {
+  // position: relative;
+  // float: left;
   color: #f45800;
   box-sizing: border-box;
   display: block;
   //  font-weight: 525;
   font-weight: 300;
-  background-image: image-url('logo_transparent.png');
-  background-size: 110px;
-  width: 100px;
-  height: 80px;
+  background-image: image-url('logo_round.png');
+
+  // width: 100px;
+  width: 150px;
+  height: 90px;
   background-repeat: no-repeat;
-  top: -14px;
-  margin-left: -20px;
-  margin-right: 10px;
+  min-width: 150px;
+  align-self: center;
+  background-size: contain;
+}
+
+.header-site-logo-container-mobile {
+  display: flex;
+  height: 120px;
+}
+
+#craftsy-logo-mobile {
+  height: 100px;
+  width: 195px;
+  align-self: center;
 }
 
 #craftsy-logo a {
@@ -66,12 +94,13 @@
 .header-search-div-wrapper {
   margin: 0;
   display: block;
+  align-self: center;
 }
 
 .header-search-bar-outer {
   position: relative;
   float: left;
-  width: 35%;
+  width: 90%;
   display: block;
   text-align: left;
   font-size: 14px;
@@ -94,6 +123,7 @@
   height: 34px;
   box-sizing: border-box;
   margin: 0;
+  min-width: 100px;
 }
 
 .header-search-bar-input-wrapper {
@@ -124,6 +154,7 @@
 }
 
 #global-header {
+  align-self: center;
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
     'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
 }
@@ -179,16 +210,26 @@ dir {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 40px;
+  // padding-inline-start: 40px;
 }
 
 .account-nav {
-  float: right;
+  // float: right;
   margin: 0;
   padding-left: 0;
-  height: 80px;
-  list-style-position: outside;
-  padding-inline-start: 40px;
+  // height: 80px;
+  // list-style-position: outside;
+  // padding-inline-start: 40px;
+  justify-content: end;
+  // min-width: 355px;
+  align-self: center;
+  display: flex;
+  font-size: 14px;
+}
+
+.account-nav-mobile {
+  font-size: 40px;
+  grid-column-gap: 15px;
 }
 
 .account-nav li {
@@ -196,11 +237,11 @@ dir {
 
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
     'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
-  font-size: 14px;
+  // font-size: 14px;
   line-height: 16px;
   line-height: 1.4;
   float: left;
-  display: block;
+  // display: block;
   position: relative;
   list-style: none;
   border: 0 none;
@@ -214,7 +255,7 @@ dir {
   /* float: left; */
   /* padding: 8px; */
   /* line-height: 16px; */
-  font-size: 14px;
+  // font-size: 14px;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -242,11 +283,12 @@ li {
 
 .account-nav li:nth-last-child(2) a {
   /* background-color: green; */
-  border-left: 1px solid #e1e3df;
-  border-right: 1px solid #e1e3df;
+  // border-left: 1px solid #e1e3df;
+  // border-right: 1px solid #e1e3df;
 }
 
-.text-sell-etsy, .manage-listing{
+.text-sell-etsy,
+.manage-listing {
   margin-top: 28px !important;
 }
 
@@ -259,7 +301,7 @@ li {
   float: left;
   padding: 8px;
   line-height: 16px;
-  font-size: 14px;
+  // font-size: 14px;
   color: #222;
 }
 
@@ -284,6 +326,22 @@ li {
   margin-top: -10px;
   padding-bottom: 2px;
   padding-left: 2px;
+}
+
+.icon-img-profile {
+}
+
+.fa-question-circle.fa-question-circle-mobile,
+.fa-shopping-cart.fa-shopping-cart-mobile,
+.fa-solid.fa-user.fa-user-mobile,
+.fas.fa-search-mobile {
+  font-size: 50px;
+  padding-bottom: 10px;
+}
+
+.search-button-mobile {
+  border: none;
+  background-color: white;
 }
 
 .account-nav a:not(:hover):not(:focus):not(:active) #sign-in-link {
@@ -325,23 +383,48 @@ li {
 
 // .profile-drop-down {
 
-[class*='avatar'] {
-  // display: inline-block !important;
-  position: relative;
-  background-image: url('default_avatar.png');
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  vertical-align: bottom;
-  overflow: hidden;
-  height: 40px;
-  width: 30px;
-  margin-bottom: 0px;
-  border-radius: 60%;
+// [class*='avatar'] {
+//   // display: inline-block !important;
+//   position: relative;
+//   background-image: url('default_avatar.png');
+//   background-size: 30px 30px;
+//   background-repeat: no-repeat;
+//   vertical-align: bottom;
+//   // overflow: hidden;
+//   height: 40px;
+//   width: 30px;
+//   margin-bottom: 0px;
+//   // border-radius: 60%;
+//   padding: 0px;
+// }
+
+.container-profile-picture-mobile {
+  width: 72px;
+}
+
+.icon-img-profile-mobile {
+  padding: 0;
+  margin: 0;
+  top: -10px;
+  position: absolute;
 }
 
 .container-profile-picture .icon-avatar {
   background-position: 5px -5px;
   padding-top: 25px;
+}
+
+.icon-avatar.icon-avatar-mobile {
+  background-size: 80px 45px;
+  background-position: 0px 0px;
+  padding-top: 0px;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-avatar-text-mobile {
+  position: absolute;
+  top: 55px;
 }
 
 .developer-links {

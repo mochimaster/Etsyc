@@ -12,6 +12,8 @@ const UserDropdown = (props) => {
 
   const username = props.currentUser ? props.currentUser.username : ''
 
+  const isAdmin = props.currentUser && props.currentUser.username === 'kee'
+
   return (
     <div className="header-modal-profile">
       <ul className="modal-profile-dropdown-container">
@@ -23,13 +25,23 @@ const UserDropdown = (props) => {
         </li>
 
         <li className="profile-dropdown-section2">
-          <Link
-            className="header-button"
-            to={`/users/${props.currentUser.id}/home`}
-            onClick={() => props.closeModal()}
-          >
-            Manage listings
-          </Link>
+          {isAdmin && (
+            <Link
+              className="header-button"
+              to="/listings/new"
+            >
+              Sell on here
+            </Link>
+          )}
+          {isAdmin && (
+            <Link
+              className="header-button"
+              to={`/users/${props.currentUser.id}/home`}
+              onClick={() => props.closeModal()}
+            >
+              Manage listings
+            </Link>
+          )}
           <Link
             className="header-button"
             to={`/users/${props.currentUser.id}/reset`}
@@ -37,6 +49,7 @@ const UserDropdown = (props) => {
           >
             Reset password
           </Link>
+
           <a className="header-button" onClick={handleSubmit}>
             Sign out
           </a>

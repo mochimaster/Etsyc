@@ -16,12 +16,16 @@ const CategoryIndex = (props) => {
     5: 'Dining',
     6: 'Outdoor',
     7: 'Miscellaneous',
-    8: 'Special',
+    8: 'Special'
     // 9: 'Appliance'
   }
 
   return (
-    <ul className="categories-wrapper">
+    <ul
+      className={`categories-wrapper ${
+        isMobile ? 'categories-wrapper-mobile' : ''
+      }`}
+    >
       {Object.keys(categories).map((categoryId) => {
         return (
           <li className={isActive ? 'highlight' : null}>
