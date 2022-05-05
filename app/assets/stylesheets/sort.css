@@ -19,17 +19,12 @@
   margin-right: 20px;
 }
 
-
-/* #filters-mobile,
-#condition,
-#sortParamOrder {
+#filters-mobile,
+#condition-mobile,
+#sortParamOrder-mobile {
   font-size: 25px;
-} */
-
-/* .sort-inner-container {
-  position: absolute;
-  right: 0;
-} */
+  padding-left: 15px;
+}
 
 .condition-container {
   margin-right: 15px;

@@ -5,7 +5,7 @@
 }
 
 .header-nav-inner-mobile {
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 30% 70%;
 }
 
 .header-nav-top-level {
@@ -455,6 +455,15 @@ li {
 .header-nav-register {
   border: none;
   // margin-right:
+}
+
+.sign-in-link > .header-nav-register-mobile,
+.sign-in-link > .header-nav-signin-mobile {
+  font-size: 30px;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
 }
 
 .header-nav-register:hover {

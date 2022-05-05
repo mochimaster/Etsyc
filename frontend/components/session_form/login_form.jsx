@@ -87,7 +87,11 @@ const LoginForm = (props) => {
           </div>
 
           <div>
-            <label className="modal-email-address-title">
+            <label
+              className={`modal-email-address-title ${
+                isMobile ? 'modal-email-address-title-mobile' : ''
+              }`}
+            >
               Email address
               <input
                 id="username-input"
@@ -98,6 +102,7 @@ const LoginForm = (props) => {
                 onChange={
                   formType === FORM_TYPE.DEMO ? () => {} : updateUsername
                 }
+                autoFocus
               />
             </label>
           </div>

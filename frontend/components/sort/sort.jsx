@@ -19,7 +19,7 @@ const SortDropDownList = ({ setSort, sortOption }) => {
         <label for="sortParamOrder">Sort by: </label>
 
         <select
-          id="sortParamOrder"
+          id={`${isMobile ? 'sortParamOrder-mobile' : 'sortParamOrder'}`}
           value={sortOption}
           onChange={handleSortChange}
         >

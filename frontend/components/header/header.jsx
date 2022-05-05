@@ -127,6 +127,7 @@ const Header = (props) => {
         )}
 
         <ul className={`account-nav ${isMobile ? 'account-nav-mobile' : ''}`}>
+          {isAdmin && sellLink}
           {isMobile && navBar}
           {isMobile && (
             <li>

@@ -21,7 +21,7 @@ const ConditionDropDownList = ({ setCondition, condition }) => {
         <label for="condition">Condition: </label>
 
         <select
-          id="condition"
+          id={isMobile ? 'condition-mobile' : `condition`}
           value={condition}
           onChange={handleConditionChange}
         >
