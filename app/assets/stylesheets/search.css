@@ -113,3 +113,14 @@
   padding-left: 25px;
   border-bottom-color: rgb(54, 54, 54);
 }
+
+.search-result-count {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+  justify-content: center;
+  display: flex;
+}
+
+.search-result-count-mobile {
+  font-size: 35px;
+}
