@@ -23,6 +23,7 @@
   width: 100%;
   min-width: 160px;
   font-size: 30px;
+  text-align: center;
 }
 
 .categories-wrapper > li {
