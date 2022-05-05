@@ -13,6 +13,7 @@
   overflow-x: auto;
   justify-content: space-between;
   background-color: #f8f8f8;
+  overflow-y: hidden;
 }
 
 .categories-item-mobile {
