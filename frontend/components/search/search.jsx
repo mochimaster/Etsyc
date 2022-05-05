@@ -54,6 +54,7 @@ const Search = (props) => {
   const focusOnSearchInputField = () => {
     setTimeout(() => {
       document.getElementById('search-text-input-mobile').focus()
+      document.getElementById('search-text-input-mobile').click()
     }, '300')
   }
 
