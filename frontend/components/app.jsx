@@ -31,6 +31,16 @@ import NotFound from './not_found'
 import ErrorShow from './error/error'
 import Footer from './footer/footer'
 
+const FiltersHeader = () => (
+  <div
+    id={`${isMobile ? 'filters-mobile' : 'filters'}`}
+    className={`filters ${isMobile ? 'filters-mobile' : ''}`}
+  >
+    <ConditionDropDownContainer />
+    <SortDropDownContainer />
+  </div>
+)
+
 window.mobileCheck = function () {
   let check = false
   ;(function (a) {
@@ -73,21 +83,11 @@ class App extends React.Component {
             <Route path={['/']} component={CategoryIndexContainer} />
           </Switch>
 
-          <div
-            id={`${isMobile ? 'filters-mobile' : 'filters'}`}
-            className={`filters ${isMobile ? 'filters-mobile' : ''}`}
-          >
-            <Route
-              exact
-              path={['/listings', '/categories/:categoryId']}
-              component={ConditionDropDownContainer}
-            />
-            <Route
-              exact
-              path={['/listings', '/categories/:categoryId']}
-              component={SortDropDownContainer}
-            />
-          </div>
+          <Route
+            exact
+            path={['/listings', '/categories/:categoryId']}
+            component={FiltersHeader}
+          ></Route>
 
           <div className="announcement">
             {/* <span className="announcement-red">Announcement</span>: Store is not
