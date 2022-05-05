@@ -52,7 +52,9 @@ const Search = (props) => {
   }
 
   const focusOnSearchInputField = () => {
-    document.getElementById('search-text-input-mobile').focus()
+    setTimeout(() => {
+      document.getElementById('search-text-input-mobile').focus()
+    }, '300')
   }
 
   useEffect(() => {
@@ -123,7 +125,7 @@ const Search = (props) => {
         className="search-button-mobile"
         onClick={() => {
           setDisplaySearchContainer(true)
-          focusMethod()
+          focusOnSearchInputField()
         }}
       >
         <i
