@@ -28,7 +28,11 @@ const CategoryIndex = (props) => {
     >
       {Object.keys(categories).map((categoryId) => {
         return (
-          <li className={isActive ? 'highlight' : null}>
+          <li
+            className={`${isActive ? 'highlight' : ''} ${
+              isMobile ? 'categories-item-mobile' : ''
+            }`}
+          >
             <Link
               onClick={() => {
                 trackEvent({

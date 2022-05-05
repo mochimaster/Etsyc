@@ -5,6 +5,25 @@
   border-bottom: 1px solid #e1e3df;
 }
 
+.categories-wrapper-mobile {
+  left: 10px;
+  top: 10px;
+  width: calc(100% - 1px);
+  height: auto;
+  overflow-x: auto;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+}
+
+.categories-item-mobile {
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  min-width: 160px;
+  font-size: 30px;
+}
+
 .categories-wrapper > li {
   margin: 9px 12px 15px 12px;
   /* box-sizing: border-box; */
@@ -28,7 +47,8 @@
 
 .categories-wrapper-mobile > li > a {
   padding-top: 20px;
-  font-size: 20px;
+  font-size: 25px;
+  width: 100%;
 }
 
 .categories-wrapper > li > a:visited {
