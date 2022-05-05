@@ -121,7 +121,10 @@ const Search = (props) => {
     <div className="header-search-div-container">
       <button
         className="search-button-mobile"
-        onClick={() => setDisplaySearchContainer(true)}
+        onClick={() => {
+          setDisplaySearchContainer(true)
+          focusMethod()
+        }}
       >
         <i
           className={`fas fa-search ${isMobile ? 'fa-search-mobile' : ''}`}
