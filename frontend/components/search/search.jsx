@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
@@ -8,8 +8,9 @@ const Search = (props) => {
 
   const queryString = props.location.search
   const urlParams = new URLSearchParams(queryString)
-  const searchTerm = urlParams.get('query')
+  const searchTerm = urlParams.get('query') || ''
 
+  const inputRef = useRef()
   const [title, setTitle] = useState(searchTerm)
 
   const [isHome, setHome] = useState(
@@ -125,8 +126,9 @@ const Search = (props) => {
       <button
         className="search-button-mobile"
         onClick={() => {
+          inputRef?.current?.focus()
           setDisplaySearchContainer(true)
-          focusOnSearchInputField()
+          // focusOnSearchInputField()
         }}
       >
         <i
@@ -144,6 +146,7 @@ const Search = (props) => {
                 value={title}
                 onChange={updateTitle}
                 autoComplete="off"
+                ref={inputRef}
               ></input>
               <button
                 id="search-button-mobile"
