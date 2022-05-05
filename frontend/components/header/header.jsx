@@ -32,7 +32,9 @@ const Header = (props) => {
         }`}
       >
         <i
-          className={`fa-solid fa-user ${isMobile ? 'fa-solid fa-user-mobile' : ''}`}
+          className={`fa-solid fa-user ${
+            isMobile ? 'fa-solid fa-user-mobile' : ''
+          }`}
         ></i>
         <br />
         {isMobile ? '' : 'You'}
@@ -125,6 +127,7 @@ const Header = (props) => {
         )}
 
         <ul className={`account-nav ${isMobile ? 'account-nav-mobile' : ''}`}>
+          {isMobile && navBar}
           {isMobile && (
             <li>
               <div className="header-search-div-wrapper">
@@ -136,7 +139,7 @@ const Header = (props) => {
           )}
           {!isMobile && sellLink}
           {!isMobile && manageListingsLink}
-          {navBar}
+          {!isMobile && navBar}
           <li>
             <Link
               to="/faq"
