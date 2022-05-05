@@ -2,10 +2,8 @@ import React from 'react'
 
 import { isEqual } from 'lodash'
 
-import ListingIndexContainer from './listing_index_container'
 import ListingIndexItem from './listing_index_item'
 import ReactLoading from 'react-loading'
-import { Pagination } from 'semantic-ui-react'
 
 class ListingIndex extends React.Component {
   // need to arrive here from Index all.
@@ -141,25 +139,23 @@ class ListingIndex extends React.Component {
     //   </div>
     // }
     const isOnSearchPage = this.props.match.path == '/listings/search'
-    const toAppendS = () => `${this.props.count > 1 ? 's' : ''}`
+    const toAppendS = (string) =>
+      `${this.props.count > 1 ? `${string}s` : string}`
 
-    const displaySearchCount = () => {
-      if (this.state.queryTerm.length < 1) return
-      return (
-        <div
-          className={`search-result-count ${
-            isMobile ? 'search-result-count-mobile' : ''
-          }`}
-        >
-          Search result{toAppendS()} for "{this.state.queryTerm}" (
-          {this.props.count} result{toAppendS()})
-        </div>
-      )
-    }
+    const displaySearchCount = this.state.queryTerm.length >= 1 && (
+      <div
+        className={`search-result-count ${
+          isMobile ? 'search-result-count-mobile' : ''
+        }`}
+      >
+        Search {toAppendS('result')} for "{this.state.queryTerm}" (
+        {this.props.count} {toAppendS('result')})
+      </div>
+    )
 
     return (
       <div>
-        {isOnSearchPage && displaySearchCount()}
+        {isOnSearchPage && displaySearchCount}
         <div>
           <ul className={`index-wrapper ${deviceClassName}`}>
             {this.props.listings.map((listing) => {
@@ -176,7 +172,6 @@ class ListingIndex extends React.Component {
       </div>
     )
   }
-  // {paginate}
 }
 
 export default ListingIndex
