@@ -9,7 +9,7 @@
   left: 10px;
   top: 10px;
   width: calc(100% - 1px);
-  height: auto;
+  /* height: auto; */
   overflow-x: auto;
   justify-content: space-between;
   background-color: #f8f8f8;
@@ -46,7 +46,6 @@
 }
 
 .categories-wrapper-mobile > li > a {
-  padding-top: 20px;
   font-size: 25px;
   width: 100%;
 }

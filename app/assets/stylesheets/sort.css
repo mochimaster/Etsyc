@@ -24,6 +24,8 @@
 #sortParamOrder-mobile {
   font-size: 25px;
   padding-left: 15px;
+  height: 50px;
+  padding-bottom: 6px;
 }
 
 .condition-container {
