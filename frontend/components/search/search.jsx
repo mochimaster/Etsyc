@@ -16,6 +16,55 @@ const Search = (props) => {
     props.location.pathname.indexOf('/home') > 0 ? true : false
   )
 
+  const [displaySearchContainer, setDisplaySearchContainer] = useState(false)
+
+  let winX = null
+  let winY = null
+
+  // window.addEventListener('scroll', () => {
+  //   console.log('winX, winY', winX, winY)
+  //   if (winX !== null && winY !== null) {
+  //     window.scrollTo(winX, winY)
+  //   }
+  // })
+
+  // const disableWindowScroll = () => {
+  //   console.log('DISABLE WINDOW SCROLL')
+  //   winX = window.scrollX
+  //   winY = window.scrollY
+  // }
+
+  // const enableWindowScroll = () => {
+  //   console.log('ENABLE WINDOW SCROLL')
+  //   winX = null
+  //   winY = null
+  // }
+
+  const clickListener = (e) => {
+    const coverElement = document.getElementById('search-text-input-mobile')
+
+    if (coverElement) {
+      if (coverElement.contains(e.target)) {
+      } else {
+        // enableWindowScroll()
+        setDisplaySearchContainer(false)
+        window.removeEventListener('click', clickListener)
+      }
+    }
+  }
+
+  useEffect(() => {
+    console.log('useEffect displaySearchContainer', displaySearchContainer)
+    if (displaySearchContainer) {
+      window.addEventListener('click', clickListener)
+    }
+
+    if (!displaySearchContainer) {
+      // enableWindowScroll()
+      window.removeEventListener('click', clickListener)
+    }
+  }, [displaySearchContainer])
+
   const updateTitle = ({ target: { value } }) => {
     setTitle(value)
   }
@@ -28,6 +77,8 @@ const Search = (props) => {
   }, [props.location.pathname])
 
   const handleSubmit = (e) => {
+    e.preventDefault()
+    // enableWindowScroll()
     trackEvent({
       eventName: EVENTS.SEARCH_PRODUCT,
       eventProperties: { 'Search Term': title }
@@ -60,7 +111,6 @@ const Search = (props) => {
       finalPath = '/listings'
     }
 
-    e.preventDefault()
     props.history.push({
       pathname: `${finalPath}/search`,
       search: `query=${title}`
@@ -79,7 +129,50 @@ const Search = (props) => {
     }
   }
 
-  return (
+  return isMobile ? (
+    <div className="header-search-div-container">
+      <button
+        className="search-button-mobile"
+        onClick={() => {
+          console.log('clicked onclick search display container')
+          // disableWindowScroll()
+          setDisplaySearchContainer(true)
+        }}
+      >
+        <i
+          className={`fas fa-search ${isMobile ? 'fa-search-mobile' : ''}`}
+        ></i>
+      </button>
+      {displaySearchContainer && (
+        <form onSubmit={handleSubmit}>
+          <div className="mobile-search-container">
+            <div className="input-search-div-mobile">
+              <input
+                id="search-text-input-mobile"
+                className="mobile-search-text-input"
+                placeholder="Search"
+                value={title}
+                onChange={updateTitle}
+                autoComplete="off"
+              ></input>
+              <button
+                id="search-button-mobile"
+                className="btn btn-primary search-button-mobile"
+                onClick={handleSubmit}
+              >
+                <i
+                  className={`fas fa-search ${
+                    isMobile ? 'fa-search-mobile' : ''
+                  }`}
+                ></i>
+              </button>
+            </div>
+            <div id="cover" className="cover"></div>
+          </div>
+        </form>
+      )}
+    </div>
+  ) : (
     <form
       onSubmit={handleSubmit}
       id="nav-search"
