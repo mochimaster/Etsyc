@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
@@ -10,7 +10,6 @@ const Search = (props) => {
   const urlParams = new URLSearchParams(queryString)
   const searchTerm = urlParams.get('query') || ''
 
-  const inputRef = useRef()
   const [title, setTitle] = useState(searchTerm)
 
   const [isHome, setHome] = useState(
@@ -44,19 +43,10 @@ const Search = (props) => {
     displaySearchContainer
       ? window.addEventListener('click', clickListener)
       : window.removeEventListener('click', clickListener)
-
-    if (displaySearchContainer) focusOnSearchInputField()
   }, [displaySearchContainer])
 
   const updateTitle = ({ target: { value } }) => {
     setTitle(value)
-  }
-
-  const focusOnSearchInputField = () => {
-    setTimeout(() => {
-      document.getElementById('search-text-input-mobile').focus()
-      document.getElementById('search-text-input-mobile').click()
-    }, '300')
   }
 
   useEffect(() => {
@@ -125,11 +115,7 @@ const Search = (props) => {
     <div className="header-search-div-container">
       <button
         className="search-button-mobile"
-        onClick={() => {
-          inputRef?.current?.focus()
-          setDisplaySearchContainer(true)
-          // focusOnSearchInputField()
-        }}
+        onClick={() => setDisplaySearchContainer(true)}
       >
         <i
           className={`fas fa-search ${isMobile ? 'fa-search-mobile' : ''}`}
@@ -146,7 +132,6 @@ const Search = (props) => {
                 value={title}
                 onChange={updateTitle}
                 autoComplete="off"
-                // ref={inputRef}
                 autoFocus
               ></input>
               <button
