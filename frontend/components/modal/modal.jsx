@@ -40,11 +40,13 @@ const Modal = ({ modal: propsModal, closeModal }) => {
   }
 
   let backGroundModal = 'modal-background'
-  let childModalType = 'modal-child'
+  let childModalType = `modal-child ${isMobile ? 'modal-child-mobile' : ''}`
 
   if (modal === MODAL_TYPE.PROFILE_DROPDOWN) {
     backGroundModal = 'modal-clear-background'
-    childModalType = 'modal-child-profile-dropdown'
+    childModalType = `modal-child-profile-dropdown ${
+      isMobile ? 'modal-child-profile-dropdown-mobile' : ''
+    }`
   } else if (modal === MODAL_TYPE.SLIDER) {
     backGroundModal = 'modal-background modal-background-slider'
     childModalType = 'modal-child modal-child-slider'

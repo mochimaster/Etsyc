@@ -6,7 +6,9 @@ const Greeting = ({ openModal }) => (
   <React.Fragment>
     <li className="sign-in-link">
       <button
-        className="header-nav-register"
+        className={`header-nav-register ${
+          isMobile ? 'header-nav-register-mobile' : ''
+        }`}
         onClick={() => openModal(MODAL_TYPE.SIGN_UP)}
       >
         Register
@@ -14,7 +16,9 @@ const Greeting = ({ openModal }) => (
     </li>
     <li id="sign-in-link" className="sign-in-link">
       <button
-        className="header-nav-signin"
+        className={`header-nav-signin ${
+          isMobile ? 'header-nav-signin-mobile' : ''
+        }`}
         onClick={() => openModal(MODAL_TYPE.LOGIN)}
       >
         Sign In

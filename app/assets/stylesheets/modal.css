@@ -10,26 +10,31 @@
 
 .modal-child {
   position: absolute;
-  top: 50vh; /* position */
-  left: 50vw ;
+  top: 40vh; /* position */
+  left: 40vw;
   /* transform: translate(160%, 55%); */
   /* transform: translate(50%, 55%); */
-  width: 360px;
-  height: 420px;
+  width: 600px;
+  height: 820px;
 
   margin-top: -200px;
   margin-left: -180px;
-  width: 360px;
 
   /* background: #fff; */
   z-index: 3;
   border-radius: 5px;
   /* border: 1px solid #000; */
-
 }
 
-.login-form-modal{
-  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+.modal-child-mobile,
+.modal-child-profile-dropdown-mobile {
+  font-size: 35px;
+  /* .header-modal-profile > .modal-profile-dropdown-container { */
+}
+
+.login-form-modal {
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   padding: 1px 18px 18px 18px;
   /* width: 360px; */
   /* height: 395px; */
@@ -38,14 +43,13 @@
   width: 100%;
   margin: 0;
 
-
   /* transform: translate(-50%, -50%); */
 }
 .modal-sign-in-h1 {
   padding-top: 5px;
 }
 
-.modal-sign-in-h1 > div{
+.modal-sign-in-h1 > div {
   font-size: 26px;
   font-weight: 500 !important;
   line-height: 1.4;
@@ -54,17 +58,17 @@
   margin: 0;
 }
 
-.modal-sign-in-h1 > p{
-  font-size: 14px;
+.modal-sign-in-h1 > p {
+  font-size: 20px;
   font-weight: 300 !important;
   line-height: 1.6;
   padding-bottom: 13px;
   /* display: block; */
   margin: 0;
-
 }
 
-.modal-email-address-title, .modal-email-password-title{
+.modal-email-address-title,
+.modal-email-password-title {
   margin-bottom: 6px;
   font-weight: 500;
   line-height: 1.6;
@@ -73,7 +77,8 @@
   width: 100%;
 }
 
-.modal-email-address-title input, .modal-email-password-title input{
+.modal-email-address-title input,
+.modal-email-password-title input {
   height: 48px;
   font-size: 16px;
   border-radius: 4px;
@@ -89,6 +94,10 @@
   background-color: white;
 }
 
+.modal-email-address-title-mobile input {
+  font-size: 30px;
+}
+
 .modal-button-action-container {
   display: block;
   box-sizing: border-box;
@@ -96,7 +105,7 @@
   width: 100%;
 }
 
-.modal-button-action-container button{
+.modal-button-action-container button {
   margin-top: 15px;
   background-color: #222;
   width: 100%;
@@ -104,23 +113,21 @@
   height: 48px;
   padding: 12px 28px;
   border-color: rgba(0, 0, 0, 0.1);
-  color: #FFF;
+  color: #fff;
   display: inline-block;
   font-weight: lighter;
-
 }
 
-
-.modal-child-slider{
-    /* top: 3vh;
+.modal-child-slider {
+  /* top: 3vh;
     left: 20vw;
     height: 90vh;
     width: 80vw;
     background: white; */
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
-.slider-image.modal-child-photo{
+.slider-image.modal-child-photo {
   height: 80vh;
   max-height: 80vh;
   margin-top: 10px;
@@ -151,10 +158,9 @@
   margin-top: 20px;
   margin-left: 20px;
   margin-bottom: 20px;
-
 }
 
-.far.fa-window-close{
+.far.fa-window-close {
   position: absolute;
   top: 5px;
   right: 10px;
@@ -162,6 +168,6 @@
   cursor: pointer;
 }
 
-.far.fa-window-close:hover{
+.far.fa-window-close:hover {
   opacity: 0.9;
 }

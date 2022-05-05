@@ -14,8 +14,15 @@ const UserDropdown = (props) => {
 
   const isAdmin = props.currentUser && props.currentUser.username === 'kee'
 
+  const headerButtonClassName = isMobile
+    ? 'header-button header-button-mobile'
+    : 'header-button'
+
+  const addMobileClassName = (className) =>
+    `${className} ${isMobile ? `${className}-mobile` : ''}`
+
   return (
-    <div className="header-modal-profile">
+    <div className={addMobileClassName('header-modal-profile')}>
       <ul className="modal-profile-dropdown-container">
         <li className="profile-dropdown-section1">
           <div className="header-modal-profile-picture">
@@ -26,16 +33,13 @@ const UserDropdown = (props) => {
 
         <li className="profile-dropdown-section2">
           {isAdmin && (
-            <Link
-              className="header-button"
-              to="/listings/new"
-            >
+            <Link className={`${headerButtonClassName}`} to="/listings/new">
               Sell on here
             </Link>
           )}
           {isAdmin && (
             <Link
-              className="header-button"
+              className={`${headerButtonClassName}`}
               to={`/users/${props.currentUser.id}/home`}
               onClick={() => props.closeModal()}
             >
@@ -43,14 +47,14 @@ const UserDropdown = (props) => {
             </Link>
           )}
           <Link
-            className="header-button"
+            className={`${headerButtonClassName}`}
             to={`/users/${props.currentUser.id}/reset`}
             onClick={() => props.closeModal()}
           >
             Reset password
           </Link>
 
-          <a className="header-button" onClick={handleSubmit}>
+          <a className={`${headerButtonClassName}`} onClick={handleSubmit}>
             Sign out
           </a>
         </li>
