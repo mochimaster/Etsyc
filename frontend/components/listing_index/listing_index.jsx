@@ -2,10 +2,8 @@ import React from 'react'
 
 import { isEqual } from 'lodash'
 
-import ListingIndexContainer from './listing_index_container'
 import ListingIndexItem from './listing_index_item'
 import ReactLoading from 'react-loading'
-import { Pagination } from 'semantic-ui-react'
 
 class ListingIndex extends React.Component {
   // need to arrive here from Index all.
@@ -18,7 +16,8 @@ class ListingIndex extends React.Component {
     super(props)
     this.state = {
       loading: true,
-      listings: []
+      listings: [],
+      queryTerm: ''
 
       // page: props.location.search ? props.location.search.slice(6) : undefined,
       // pages: undefined
@@ -39,6 +38,9 @@ class ListingIndex extends React.Component {
     const params = new URLSearchParams(this.props.location.search)
     const pageParams = params.get('page') || 1
     const queryParams = params.get('query') || ''
+
+    if (this.state.queryTerm != queryParams)
+      this.setState({ queryTerm: queryParams })
 
     if (match.url === '/listings/search' && !isEqual(prevProps, this.props)) {
       this.props.searchListing({ title: queryParams }, pageParams)
@@ -136,24 +138,40 @@ class ListingIndex extends React.Component {
     //     />
     //   </div>
     // }
+    const isOnSearchPage = this.props.match.path == '/listings/search'
+    const toAppendS = (string) =>
+      `${this.props.count > 1 ? `${string}s` : string}`
+
+    const displaySearchCount = this.state.queryTerm.length >= 1 && (
+      <div
+        className={`search-result-count ${
+          isMobile ? 'search-result-count-mobile' : ''
+        }`}
+      >
+        Search {toAppendS('result')} for "{this.state.queryTerm}" (
+        {this.props.count} {toAppendS('result')})
+      </div>
+    )
 
     return (
       <div>
-        <ul className={`index-wrapper ${deviceClassName}`}>
-          {this.props.listings.map((listing) => {
-            return (
-              <ListingIndexItem
-                key={listing.id}
-                listing={listing}
-                deleteListing={this.props.deleteListing}
-              />
-            )
-          })}
-        </ul>
+        {isOnSearchPage && displaySearchCount}
+        <div>
+          <ul className={`index-wrapper ${deviceClassName}`}>
+            {this.props.listings.map((listing) => {
+              return (
+                <ListingIndexItem
+                  key={listing.id}
+                  listing={listing}
+                  deleteListing={this.props.deleteListing}
+                />
+              )
+            })}
+          </ul>
+        </div>
       </div>
     )
   }
-  // {paginate}
 }
 
 export default ListingIndex

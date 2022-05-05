@@ -10,6 +10,7 @@ const paginationReducer = (oldState = {}, action) => {
 
       pagination['page'] = action.listings.page
       pagination['pages'] = action.listings.total_pages
+      pagination['count'] = action.listings.count
 
       return pagination
 

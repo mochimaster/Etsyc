@@ -1,6 +1,7 @@
 if (defined? @listings.current_page )
   json.page @listings.current_page 
   json.total_pages @listings.total_pages
+  json.count @listings.total_entries
 elsif (defined? @categories.current_page )
   json.page @categories.current_page 
   json.total_pages @categories.total_pages
