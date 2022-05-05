@@ -146,7 +146,8 @@ const Search = (props) => {
                 value={title}
                 onChange={updateTitle}
                 autoComplete="off"
-                ref={inputRef}
+                // ref={inputRef}
+                autoFocus
               ></input>
               <button
                 id="search-button-mobile"
