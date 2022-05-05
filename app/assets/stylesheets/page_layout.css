@@ -24,3 +24,8 @@
 
   /* background:#6cf; */
 }
+
+.app-container {
+  padding-left: constant(safe-area-inset-left);
+  padding-right: constant(safe-area-inset-right);
+}
