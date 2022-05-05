@@ -18,27 +18,13 @@ const Search = (props) => {
 
   const [displaySearchContainer, setDisplaySearchContainer] = useState(false)
 
-  let winX = null
-  let winY = null
-
-  // window.addEventListener('scroll', () => {
-  //   console.log('winX, winY', winX, winY)
-  //   if (winX !== null && winY !== null) {
-  //     window.scrollTo(winX, winY)
-  //   }
-  // })
-
-  // const disableWindowScroll = () => {
-  //   console.log('DISABLE WINDOW SCROLL')
-  //   winX = window.scrollX
-  //   winY = window.scrollY
-  // }
-
-  // const enableWindowScroll = () => {
-  //   console.log('ENABLE WINDOW SCROLL')
-  //   winX = null
-  //   winY = null
-  // }
+  window.onscroll = () => {
+    const distanceScrolled = document.documentElement.scrollTop
+    if (distanceScrolled) {
+      window.removeEventListener('click', clickListener)
+      setDisplaySearchContainer(false)
+    }
+  }
 
   const clickListener = (e) => {
     const coverElement = document.getElementById('search-text-input-mobile')
@@ -54,19 +40,19 @@ const Search = (props) => {
   }
 
   useEffect(() => {
-    console.log('useEffect displaySearchContainer', displaySearchContainer)
-    if (displaySearchContainer) {
-      window.addEventListener('click', clickListener)
-    }
+    displaySearchContainer
+      ? window.addEventListener('click', clickListener)
+      : window.removeEventListener('click', clickListener)
 
-    if (!displaySearchContainer) {
-      // enableWindowScroll()
-      window.removeEventListener('click', clickListener)
-    }
+    if (displaySearchContainer) focusOnSearchInputField()
   }, [displaySearchContainer])
 
   const updateTitle = ({ target: { value } }) => {
     setTitle(value)
+  }
+
+  const focusOnSearchInputField = () => {
+    document.getElementById('search-text-input-mobile').focus()
   }
 
   useEffect(() => {
@@ -127,17 +113,15 @@ const Search = (props) => {
     } else {
       props.searchListing({ title, isDisabled: isHome })
     }
+
+    setTitle('')
   }
 
   return isMobile ? (
     <div className="header-search-div-container">
       <button
         className="search-button-mobile"
-        onClick={() => {
-          console.log('clicked onclick search display container')
-          // disableWindowScroll()
-          setDisplaySearchContainer(true)
-        }}
+        onClick={() => setDisplaySearchContainer(true)}
       >
         <i
           className={`fas fa-search ${isMobile ? 'fa-search-mobile' : ''}`}
