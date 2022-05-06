@@ -296,12 +296,6 @@ class ListingShow extends React.Component {
       })
     }
 
-    isMobile &&
-      images.forEach((image, index) => ({
-        ...image
-        // originalHeight: 980,
-      }))
-
     const internalImages = []
     if (this.props.listing.internalPhotoUrls) {
       for (const internalPhotoUrl of this.props.listing.internalPhotoUrls) {
