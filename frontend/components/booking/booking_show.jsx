@@ -26,6 +26,11 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         <div>
           We love visitors! You are welcome to make an appointment to check out
           and verify condition of the listed items and complete your purchase.
+          <br />
+          <br />
+          Please note that we currently do not offer test sittings. The
+          appointment is set up for customers to verify the condition of the
+          listed item.
         </div>
         <br />
         <div>
