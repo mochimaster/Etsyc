@@ -291,3 +291,26 @@ MOBILE VIEW
 .overview-mobile {
   font-size: 30px;
 }
+
+.quantity-buttons-container-mobile {
+  display: flex;
+  /* justify-content: flex-start; */
+  height: 90px;
+  align-items: center;
+  text-align: center;
+}
+
+.quantity-button-mobile {
+  width: 100px;
+  font-size: 40px;
+  height: 90px;
+}
+
+.quantity-value-mobile {
+  width: 150px;
+  border: 1px solid gray;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

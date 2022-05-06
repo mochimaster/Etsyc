@@ -368,6 +368,28 @@ class ListingShow extends React.Component {
       </div>
     )
 
+    const displayQuantityMobile = (
+      <div className="listing-details listing-details-quantity quantity-buttons-container-mobile">
+        Quantity:{' '}
+        <button
+          className="quantity-button-mobile"
+          onClick={() => {
+            if (this.state.quantity <= 1) return
+            this.setState({ quantity: this.state.quantity - 1 })
+          }}
+        >
+          -
+        </button>
+        <div className="quantity-value-mobile">{this.state.quantity}</div>
+        <button
+          className="quantity-button-mobile"
+          onClick={() => this.setState({ quantity: this.state.quantity + 1 })}
+        >
+          +
+        </button>
+      </div>
+    )
+
     const displayCondition = (
       <div className="listing-details listing-details-condition">
         <label className="condition-label">Condition: </label>
@@ -518,7 +540,7 @@ class ListingShow extends React.Component {
             {displayItemNumber}
           </div>
 
-          <div className="quantity-mobile">{displayQuantity}</div>
+          <div className="quantity-mobile">{displayQuantityMobile}</div>
 
           <div className="add-to-cart-button-container-mobile">
             {displayAddToCartButton}
@@ -528,7 +550,7 @@ class ListingShow extends React.Component {
             <div className="phone-number-mobile">{displayPhoneNumber}</div>
             {displayDeliveryAndPickUp}
           </div>
-          <div className='overview-mobile'>{displayOverview}</div>
+          <div className="overview-mobile">{displayOverview}</div>
           {displayDescription}
           <br />
           {displayInternalNote}
