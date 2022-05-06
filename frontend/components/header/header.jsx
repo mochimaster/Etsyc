@@ -128,7 +128,6 @@ const Header = (props) => {
 
         <ul className={`account-nav ${isMobile ? 'account-nav-mobile' : ''}`}>
           {isAdmin && sellLink}
-          {isMobile && navBar}
           {isMobile && (
             <li>
               <div className="header-search-div-wrapper">
@@ -138,6 +137,7 @@ const Header = (props) => {
               </div>
             </li>
           )}
+          {isMobile && navBar}
           {!isMobile && sellLink}
           {!isMobile && manageListingsLink}
           {!isMobile && navBar}
