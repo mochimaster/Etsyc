@@ -379,8 +379,10 @@ class ListingShow extends React.Component {
 
     const displayOverview = (
       <div className="listing-details listing-details-overview">
-        <label className="title-label">Overview</label>
-        <p className="overview">{this.props.listing.overview}</p>
+        <label className={addMobileClassName('title-label')}>Overview</label>
+        <p className={addMobileClassName('overview')}>
+          {this.props.listing.overview}
+        </p>
       </div>
     )
 
@@ -415,7 +417,9 @@ class ListingShow extends React.Component {
       this.props.listing.internalPhotoUrls.length > 0 && (
         <div>
           <br />
-          <label className="title-label">Internal Photos</label>
+          <label className={addMobileClassName('title-label')}>
+            Internal Photos
+          </label>
           <br />
           <ImageGallery items={internalImages} showPlayButton={false} />
         </div>
@@ -434,8 +438,11 @@ class ListingShow extends React.Component {
 
     const displayDescription = (
       <div className="listing-description">
-        <label className="title-label">Description</label> <br />
-        <p>{this.props.listing.description}</p>
+        <label className={addMobileClassName('title-label')}>Description</label>{' '}
+        <br />
+        <p className={addMobileClassName('description')}>
+          {this.props.listing.description}
+        </p>
       </div>
     )
 
@@ -510,7 +517,7 @@ class ListingShow extends React.Component {
             {displayCondition}
             {displayItemNumber}
           </div>
-          
+
           <div className="quantity-mobile">{displayQuantity}</div>
 
           <div className="add-to-cart-button-container-mobile">
