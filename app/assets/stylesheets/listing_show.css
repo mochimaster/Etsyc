@@ -237,6 +237,7 @@ MOBILE VIEW
   font-size: 40px;
   grid-column-gap: 30px;
   text-transform: capitalize;
+  padding-bottom: 20px;
 }
 
 .quantity-mobile,

@@ -510,7 +510,7 @@ class ListingShow extends React.Component {
             {displayCondition}
             {displayItemNumber}
           </div>
-          <br />
+          
           <div className="quantity-mobile">{displayQuantity}</div>
 
           <div className="add-to-cart-button-container-mobile">
