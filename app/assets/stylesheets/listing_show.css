@@ -214,3 +214,53 @@
   margin-right: 5px;
   cursor: pointer;
 }
+
+/* 
+
+MOBILE VIEW
+
+*/
+
+.below-image-gallery-mobile {
+  padding: 0 20px 0 20px;
+}
+
+.title-price-container-mobile {
+  padding: 0 20px 0 20px;
+}
+
+.title-price-container-mobile,
+.item-number-condition-container-mobile {
+  display: flex;
+  justify-content: space-between;
+  font-size: 40px;
+  grid-column-gap: 30px;
+  text-transform: capitalize;
+}
+
+.quantity-mobile,
+.quantity-mobile .select-custom {
+  font-size: 35px;
+}
+
+.quantity-mobile .select-custom {
+  height: 75px;
+  width: 70px;
+}
+
+.add-to-cart-button-container-mobile {
+  width: 100%;
+}
+
+.btn-primary-mobile.add-to-cart {
+  width: 100%;
+  font-size: 35px;
+  height: 80px;
+  margin-top: 35px;
+}
+
+.phone-number-mobile {
+  text-align: center;
+  padding: 20px 0 20px 0;
+  text-decoration: none;
+}
