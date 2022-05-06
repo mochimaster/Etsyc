@@ -222,7 +222,7 @@ MOBILE VIEW
 */
 
 .below-image-gallery-mobile {
-  padding: 0 20px 0 20px;
+  padding: 0 40px 0 40px;
   font-size: 35px;
 }
 
@@ -235,7 +235,7 @@ MOBILE VIEW
   display: flex;
   justify-content: space-between;
   font-size: 40px;
-  grid-column-gap: 30px;
+  grid-column-gap: 50px;
   text-transform: capitalize;
   padding-bottom: 20px;
 }
@@ -246,7 +246,7 @@ MOBILE VIEW
 
 .quantity-mobile,
 .quantity-mobile .select-custom {
-  font-size: 35px;
+  font-size: 40px;
 }
 
 .quantity-mobile .select-custom {
