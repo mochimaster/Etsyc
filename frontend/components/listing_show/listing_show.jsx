@@ -528,7 +528,7 @@ class ListingShow extends React.Component {
             <div className="phone-number-mobile">{displayPhoneNumber}</div>
             {displayDeliveryAndPickUp}
           </div>
-          {displayOverview}
+          <div className='overview-mobile'>{displayOverview}</div>
           {displayDescription}
           <br />
           {displayInternalNote}

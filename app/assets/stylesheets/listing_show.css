@@ -227,7 +227,7 @@ MOBILE VIEW
 }
 
 .title-price-container-mobile {
-  padding: 0 20px 0 20px;
+  padding: 0 40px 0 40px;
 }
 
 .title-price-container-mobile,
@@ -273,6 +273,14 @@ MOBILE VIEW
   text-align: center;
   padding: 20px 0 20px 0;
   text-decoration: none;
+}
+
+.phone-number-delivery-tip-mobile {
+  border-bottom: #e1e3df 1px solid;
+}
+
+.overview-mobile {
+  padding-top: 10px;
 }
 
 .title-label-mobile {
