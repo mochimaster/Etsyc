@@ -233,11 +233,15 @@ MOBILE VIEW
 .title-price-container-mobile,
 .item-number-condition-container-mobile {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 40px;
   grid-column-gap: 30px;
   text-transform: capitalize;
   padding-bottom: 20px;
+}
+
+.item-number-condition-container-mobile {
+  padding-top: 20px;
 }
 
 .quantity-mobile,
@@ -250,8 +254,8 @@ MOBILE VIEW
   width: 70px;
 }
 
-.quantity-mobile > .listing-details.listing-details-quantity{
-  padding-left: 55px;
+.quantity-mobile > .listing-details.listing-details-quantity {
+  /* padding-left: 55px; */
 }
 
 .add-to-cart-button-container-mobile {
