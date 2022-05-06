@@ -14,6 +14,7 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
+import { addMobileClassName } from '../../../utils/helper'
 
 class ListingShow extends React.Component {
   constructor(props) {
@@ -141,12 +142,41 @@ class ListingShow extends React.Component {
     this.props.history.push(`/listings/new`)
   }
 
+  handleAddToCart() {
+    trackEvent({
+      eventName: EVENTS.ADD_TO_CART,
+      eventProperties: { title: this.props.listing.description }
+    })
+
+    if (!this.props.sessionId) {
+      const localStorageCartItems = window.localStorage.getItem('cartItems')
+      const existingCarts =
+        (localStorageCartItems && JSON.parse(localStorageCartItems)) || {}
+
+      const mergedCarts = merge(existingCarts, {
+        [this.props.listing.id]: {
+          quantity: this.state.quantity
+        }
+      })
+
+      window.localStorage.setItem('cartItems', JSON.stringify(mergedCarts))
+
+      return this.props.history.push(`/users/temp/carts`)
+    } else {
+      return this.props
+        .createCart({
+          quantity: this.state.quantity,
+          listing_id: this.props.listing.id,
+          user_id: this.props.sessionId
+        })
+        .then(() =>
+          this.props.history.push(`/users/${this.props.sessionId}/carts`)
+        )
+    }
+  }
+
   render() {
     if (this.state.isLoading) {
-      setTimeout(() => {
-        this.setState({ isLoading: false })
-      }, 7000)
-
       return (
         <div id="react-loading" className="react-loading">
           <ReactLoading tye="bubbles" color="black" />
@@ -179,66 +209,54 @@ class ListingShow extends React.Component {
 
     const isListingPending = title.includes('PENDING') ? true : false
 
-    let displayAuthorButton
-    if (isListingAuthor) {
-      displayAuthorButton = (
-        <div className="listing-show-author-buttons">
-          <Link
-            className="btn btn-primary listing-show-edit-button"
-            to={`/listings/${this.props.listing.id}/edit`}
-          >
-            Edit Listing
-          </Link>
-          <button
-            className="btn btn-primary listing-renew-listing-button"
-            onClick={() => this.handleRenewListing(this.props.listing)}
-          >
-            Renew Listing
-          </button>
-          <input
-            className="btn btn-primary listing-toggle-pending"
-            type="submit"
-            value={isListingPending ? 'Mark Non-pending' : 'Mark Pending'}
-            onClick={() => {
-              this.updateListing({
-                title: isListingPending
-                  ? `${this.props.listing.title.replaceAll('(PENDING) ', '')}`
-                  : `(PENDING) ${this.props.listing.title}`
-              })
-            }}
-          />
-          <input
-            className="btn btn-primary listing-toggle-listing-status-button"
-            type="submit"
-            value={`Mark ${this.getListingDisplayStatus(listingStatus)}`}
-            onClick={() =>
-              this.updateListing({ status: listingStatus ? false : true })
-            }
-          />
-          <input
-            className="btn btn-primary listing-duplicate-button"
-            type="submit"
-            value={`Duplicate this listing`}
-            onClick={() => this.handleDuplicateListing(this.props.listing)}
-          />
-          <input
-            className="btn btn-primary listing-show-delete-button"
-            type="submit"
-            value="Delete Listing"
-            onClick={this.confirmDelete.bind(this)}
-          />
-        </div>
-      )
-
-      // editButton = <Link className="btn btn-primary listing-show-edit-button"
-      //   to={`/listings/${this.props.listing.id}/edit`} >Edit Listing</Link>
-
-      // deleteButton = <input className="btn btn-primary listing-show-delete-button"
-      //   type="submit" value="Delete Listing"
-      //   onClick={() => this.props.deleteListing(this.props.listing.id)
-      //                     .then(()=>this.props.history.push("/listings"))
-      //   } />
-    }
+    const displayAuthorButton = isListingAuthor && (
+      <div className="listing-show-author-buttons">
+        <Link
+          className="btn btn-primary listing-show-edit-button"
+          to={`/listings/${this.props.listing.id}/edit`}
+        >
+          Edit Listing
+        </Link>
+        <button
+          className="btn btn-primary listing-renew-listing-button"
+          onClick={() => this.handleRenewListing(this.props.listing)}
+        >
+          Renew Listing
+        </button>
+        <input
+          className="btn btn-primary listing-toggle-pending"
+          type="submit"
+          value={isListingPending ? 'Mark Non-pending' : 'Mark Pending'}
+          onClick={() => {
+            this.updateListing({
+              title: isListingPending
+                ? `${this.props.listing.title.replaceAll('(PENDING) ', '')}`
+                : `(PENDING) ${this.props.listing.title}`
+            })
+          }}
+        />
+        <input
+          className="btn btn-primary listing-toggle-listing-status-button"
+          type="submit"
+          value={`Mark ${this.getListingDisplayStatus(listingStatus)}`}
+          onClick={() =>
+            this.updateListing({ status: listingStatus ? false : true })
+          }
+        />
+        <input
+          className="btn btn-primary listing-duplicate-button"
+          type="submit"
+          value={`Duplicate this listing`}
+          onClick={() => this.handleDuplicateListing(this.props.listing)}
+        />
+        <input
+          className="btn btn-primary listing-show-delete-button"
+          type="submit"
+          value="Delete Listing"
+          onClick={this.confirmDelete.bind(this)}
+        />
+      </div>
+    )
 
     let reviewForm
     if (this.props.sessionId) {
@@ -248,29 +266,6 @@ class ListingShow extends React.Component {
         <div className="review-input">Please sign in to leave a review.</div>
       )
     }
-
-    // let quantityDropdown="";
-    // for(let i=0; i<100; i++){
-    //   quantityDropdown += "<option value="+ i + ">+i+</option>"
-    // }
-    //
-    // quantityDropdown = quantityDropdown.slice(7,-8);
-    //
-    // let quantityDropdown2 = new Element(() => {
-    //   return (
-    //
-    //
-    //
-    //   )
-    // })
-
-    // let reviewComponent;
-    // if(this.props.sessionId){
-    //   <p>You must be signed in to leave a review.</p>
-    // } else {
-    //   reviewComponent = <ReviewForm listingId={this.props.listing.id}/>
-
-    // }
 
     const images = []
     if (this.props.listing.photoUrls && this.props.listing.photoUrls.length) {
@@ -282,6 +277,7 @@ class ListingShow extends React.Component {
         images.push({
           original: photoOrder,
           thumbnail: photoOrder
+          // originalHeight: isMobile ? 825 : undefined
         })
       })
 
@@ -315,201 +311,227 @@ class ListingShow extends React.Component {
       itemNumber = '0' + itemNumber
     }
 
-    return (
+    const displaySellerName = (
+      <div className="listing-header-seller-name">
+        <Link
+          className="listing-seller-name"
+          to={`/users/${this.props.listing.author_id}/listings`}
+        >
+          {this.props.listing.merchantName}
+        </Link>
+      </div>
+    )
+
+    const displayPhoneNumber = (
+      <div className="listing-seller-phone">{this.phoneNumberExist()}</div>
+    )
+
+    const displayDeliveryAndPickUp = (
+      <div className="delivery-estimate">
+        <div>
+          Delivery available through Lugg.{' '}
+          <a
+            target="_blank"
+            href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+          >
+            Calculate delivery
+          </a>{' '}
+          to different zip code.
+        </div>
+        <div>
+          Free pick up at our warehouse in Hayward.{' '}
+          <HashLink to="/visit#book-directions">Directions</HashLink>.
+        </div>
+      </div>
+    )
+
+    const displayAddToCartButton = (
+      <div className="listing-details add-to-cart">
+        <button
+          className={`btn ${addMobileClassName('btn-primary')} add-to-cart`}
+          onClick={this.handleAddToCart.bind(this)}
+        >
+          Add to cart
+        </button>
+      </div>
+    )
+
+    const displayQuantity = (
+      <div className="listing-details listing-details-quantity">
+        Quantity <br />
+        <input
+          className="input-quantity input-quantity-input"
+          onChange={this.updateQuantity.bind(this)}
+          className="select-custom"
+          placeholder="1"
+        />
+      </div>
+    )
+
+    const displayCondition = (
+      <div className="listing-details listing-details-condition">
+        <label className="condition-label">Condition: </label>
+        {this.props.listing.condition}
+      </div>
+    )
+
+    const displayItemNumber = <div>Item number: {itemNumber}</div>
+
+    const displayOverview = (
+      <div className="listing-details listing-details-overview">
+        <label className="title-label">Overview</label>
+        <p className="overview">{this.props.listing.overview}</p>
+      </div>
+    )
+
+    const displayInternalNote = isListingAuthor && (
+      <div className="listing-details listing-details-internal-note">
+        <label className="internal-note-label">Internal Note</label>
+        <p className="internal-note">{this.props.listing.internalNote}</p>
+      </div>
+    )
+
+    const displayPrice = (
+      <div className="listing-details listing-details-price">
+        ${this.props.listing.price}
+      </div>
+    )
+
+    const displayTitle = (
+      <div className="listing-details listing-details-title">
+        {this.props.listing.title} {isMobile ? '' : `  (${itemNumber})`}
+      </div>
+    )
+
+    const displayBrand = this.props.listing.brand && (
+      <div className="listing-details listing-details-brand">
+        <label className="condition-label">Brand: </label>
+        {this.props.listing.brand}
+      </div>
+    )
+
+    const displayInternalPhotos = isListingAuthor &&
+      this.props.listing.internalPhotoUrls &&
+      this.props.listing.internalPhotoUrls.length > 0 && (
+        <div>
+          <br />
+          <label className="title-label">Internal Photos</label>
+          <br />
+          <ImageGallery items={internalImages} showPlayButton={false} />
+        </div>
+      )
+
+    const displayPhotos = (
+      <div id="image-gallery">
+        <ImageGallery
+          items={images}
+          showPlayButton={false}
+          lazyLoad={true}
+          slideOnThumbnailOver={true}
+        />
+      </div>
+    )
+
+    const displayDescription = (
+      <div className="listing-description">
+        <label className="title-label">Description</label> <br />
+        <p>{this.props.listing.description}</p>
+      </div>
+    )
+
+    const displayReview = (
+      <>
+        <div>
+          <ReviewForm listingId={this.props.listing.id} />
+        </div>
+        <div />
+        <div className="listing-reviews">
+          <ReviewIndexContainer
+            createReview={this.props.createReview}
+            listing={this.props.listing}
+            sessionId={this.props.sessionId}
+            listingId={this.props.listing.listingId}
+          />
+        </div>
+      </>
+    )
+
+    const displayDesktopView = (
       <div className="listing-show-content-wrapper">
         {displayAuthorButton}
-        <div className="listing-show-seller-header">
-          <div className="listing-header-seller-left">
-            {/* <div className="listing-header-seller-rating"> */}
-            {/*Rating in stars (xx)*/}
-            {/* </div> */}
-          </div>
-          <div className="listing-header-seller-thumbnails">
-            {/*Other items in thumbnails...*/}
-          </div>
-        </div>
 
-        <div className="listing-show-body-wrapper">
+        <div className={addMobileClassName('listing-show-body-wrapper')}>
           <div className="listing-image listing-left-half">
-            {/* <img src={this.props.listing.photoUrl} /> */}
-            {/* <Slider images={images} /> */}
-            {/* {displayImages} */}
-            <div id="image-gallery">
-              <ImageGallery
-                items={images}
-                showPlayButton={false}
-                lazyLoad={true}
-                slideOnThumbnailOver={true}
-              />
-            </div>
+            {displayPhotos}
 
-            <div className="listing-description">
-              <label className="title-label">Description</label> <br />
-              <p>{this.props.listing.description}</p>
-            </div>
-            <div>
-              <ReviewForm listingId={this.props.listing.id} />
-            </div>
-            <div />
-            <div className="listing-reviews">
-              <ReviewIndexContainer
-                createReview={this.props.createReview}
-                listing={this.props.listing}
-                sessionId={this.props.sessionId}
-                listingId={this.props.listing.listingId}
-              />
-            </div>
-            {isListingAuthor &&
-              this.props.listing.internalPhotoUrls &&
-              this.props.listing.internalPhotoUrls.length > 0 && (
-                <div>
-                  <br />
-                  <label className="title-label">Internal Photos</label>
-                  <br />
-                  <ImageGallery items={internalImages} showPlayButton={false} />
-                </div>
-              )}
+            {displayDescription}
+            {displayReview}
+            {displayInternalPhotos}
           </div>
 
           <div className="listing-details listing-right-half">
-            <div className="listing-header-seller-name">
-              <Link
-                className="listing-seller-name"
-                to={`/users/${this.props.listing.author_id}/listings`}
-              >
-                {this.props.listing.merchantName}
-              </Link>
-              <div className="listing-seller-phone">
-                {this.phoneNumberExist()}
-              </div>
-            </div>
-            {this.props.listing.brand && (
-              <div className="listing-details listing-details-brand">
-                <label className="condition-label">Brand: </label>
-                {this.props.listing.brand}
-              </div>
-            )}
-            <div className="listing-details listing-details-title">
-              {this.props.listing.title} {`  (${itemNumber})`}
-            </div>
-            <div className="listing-details listing-details-price">
-              ${this.props.listing.price}
-            </div>
-            {/*
-            <div className="listing-details listing-details-shipping">
-              Shipping fee
-            </div>
-            */}
-            <div className="listing-details listing-details-quantity">
-              Quantity <br />
-              <input
-                className="input-quantity input-quantity-input"
-                onChange={this.updateQuantity.bind(this)}
-                className="select-custom"
-                placeholder="1"
-              />
-            </div>
+            {displaySellerName}
+            {displayPhoneNumber}
+            {displayBrand}
+            {displayTitle}
+            {displayPrice}
 
-            <tooltip
-              className="add-to-cart-button-tooltip"
-              onMouseEnter={() =>
-                this.setState({ displayAddToCartToolTip: true })
-              }
-              onMouseLeave={() =>
-                this.setState({ displayAddToCartToolTip: false })
-              }
-            >
-              <div className="listing-details add-to-cart">
-                <div className="delivery-estimate">
-                  <div>
-                    Delivery available through Lugg.{' '}
-                    <a
-                      target="_blank"
-                      href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
-                    >
-                      Calculate delivery
-                    </a>{' '}
-                    to different zip code.
-                  </div>
-                  <div>
-                    Free pick up at our warehouse in Hayward.{' '}
-                    <HashLink to="/visit#book-directions">Directions</HashLink>.
-                  </div>
-                </div>
-                <button
-                  className={this.props.sessionId ? '' : 'button-disabled'}
-                  onClick={() => {
-                    trackEvent({
-                      eventName: EVENTS.ADD_TO_CART,
-                      eventProperties: { title: this.props.listing.description }
-                    })
+            {displayQuantity}
+            {displayDeliveryAndPickUp}
 
-                    if (!this.props.sessionId) {
-                      const localStorageCartItems =
-                        window.localStorage.getItem('cartItems')
-                      const existingCarts =
-                        (localStorageCartItems &&
-                          JSON.parse(localStorageCartItems)) ||
-                        {}
-
-                      const mergedCarts = merge(existingCarts, {
-                        [this.props.listing.id]: {
-                          quantity: this.state.quantity
-                        }
-                      })
-
-                      window.localStorage.setItem(
-                        'cartItems',
-                        JSON.stringify(mergedCarts)
-                      )
-
-                      return this.props.history.push(`/users/temp/carts`)
-                    } else {
-                      return this.props
-                        .createCart({
-                          quantity: this.state.quantity,
-                          listing_id: this.props.listing.id,
-                          user_id: this.props.sessionId
-                        })
-                        .then(() =>
-                          this.props.history.push(
-                            `/users/${this.props.sessionId}/carts`
-                          )
-                        )
-                    }
-                  }}
-                >
-                  Add to cart
-                </button>
-              </div>
-            </tooltip>
-            <div>Item number: {itemNumber}</div>
+            {displayAddToCartButton}
+            {displayItemNumber}
             <br />
 
-            <div className="listing-details listing-details-condition">
-              <label className="condition-label">Condition: </label>
-              {this.props.listing.condition}
-            </div>
-            <br></br>
-
-            <div className="listing-details listing-details-overview">
-              <label className="title-label">Overview</label>
-              <p className="overview">{this.props.listing.overview}</p>
-            </div>
-
+            {displayCondition}
             <br />
-            {isListingAuthor && (
-              <div className="listing-details listing-details-internal-note">
-                <label className="internal-note-label">Internal Note</label>
-                <p className="internal-note">
-                  {this.props.listing.internalNote}
-                </p>
-              </div>
-            )}
+
+            {displayOverview}
+            <br />
+
+            {displayInternalNote}
           </div>
         </div>
       </div>
     )
+
+    const displayMobileView = (
+      <div className="listing-show-content-wrapper listing-show-content-wrapper-mobile">
+        {displayAuthorButton}
+        {/* <div className={addMobileClassName('listing-show-body-wrapper')}> */}
+        <div className="title-price-container-mobile">
+          {displayTitle}
+          {displayPrice}
+        </div>
+        <div className="image-gallery-mobile">{displayPhotos}</div>
+        {/* {displayBrand} */}
+        <div className="below-image-gallery-mobile">
+          <div className="item-number-condition-container-mobile">
+            {displayCondition}
+            {displayItemNumber}
+          </div>
+          
+          <div className="quantity-mobile">{displayQuantity}</div>
+
+          <div className="add-to-cart-button-container-mobile">
+            {displayAddToCartButton}
+          </div>
+
+          <div className="phone-number-delivery-tip-mobile">
+            <div className="phone-number-mobile">{displayPhoneNumber}</div>
+            {displayDeliveryAndPickUp}
+          </div>
+          {displayOverview}
+          {displayDescription}
+          <br />
+          {displayInternalNote}
+          {displayInternalPhotos}
+        </div>
+      </div>
+      // </div>
+    )
+
+    return isMobile ? displayMobileView : displayDesktopView
   }
 }
 // {<option dangerouslySetInnerHTML={{ __html: quantityDropdown}} />}

@@ -229,7 +229,7 @@ dir {
 
 .account-nav-mobile {
   font-size: 40px;
-  grid-column-gap: 20px;
+  grid-column-gap: 15px;
 }
 
 .account-nav li {
@@ -334,9 +334,9 @@ li {
 .fa-question-circle.fa-question-circle-mobile,
 .fa-shopping-cart.fa-shopping-cart-mobile,
 .fa-solid.fa-user.fa-user-mobile,
-.fas.fa-search-mobile,
 .fas.fa-user-plus,
-.fas.fa-sign-in-alt {
+.fas.fa-sign-in-alt,
+.fas.fa-search-mobile {
   font-size: 50px;
   padding-bottom: 10px;
   min-width: 50px;
