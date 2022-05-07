@@ -321,10 +321,9 @@ MOBILE VIEW
 .quantity-value-mobile {
   width: 150px;
   border: 1px solid gray;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 88px;
+  font-size: 35px;
+  text-align: center;
 }
 
 .btn-secondary {
@@ -337,9 +336,11 @@ MOBILE VIEW
 .quantity-button-left-mobile {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  touch-action: manipulation;
 }
 
 .quantity-button-right-mobile {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  touch-action: manipulation;
 }
