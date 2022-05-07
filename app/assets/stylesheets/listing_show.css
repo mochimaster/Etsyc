@@ -231,6 +231,10 @@ MOBILE VIEW
 
 */
 
+.image-gallery-mobile {
+  position: relative;
+}
+
 .below-image-gallery-mobile {
   padding: 0 40px 0 40px;
   font-size: 35px;
@@ -351,4 +355,24 @@ MOBILE VIEW
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   touch-action: manipulation;
+}
+
+.share-button-mobile {
+  position: absolute;
+  border: 2px solid gray;
+  border-radius: 50px;
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 100px;
+  width: 100px;
+}
+
+.fas.fa-share {
+  font-size: 70px;
+  border: 2px solid gray;
+  border-radius: 50px;
+  padding: 10px;
 }

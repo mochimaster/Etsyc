@@ -492,6 +492,25 @@ class ListingShow extends React.Component {
       </>
     )
 
+    const displayShareButton = navigator.share && (
+      <button
+        className="share-button-mobile"
+        onClick={() => {
+          try {
+            navigator.share({
+              title: this.props.listing.title,
+              url: `castleandchair.com/#${this.props.locations.pathname}`,
+              text: 'Check out what I found on Castle and Chair!'
+            })
+          } catch {
+            alert('Sorry, Share feature is not supported on your browser.')
+          }
+        }}
+      >
+        <i class="fas fa-share"></i>
+      </button>
+    )
+
     const displayDesktopView = (
       <div className="listing-show-content-wrapper">
         {displayAuthorButton}
@@ -539,7 +558,11 @@ class ListingShow extends React.Component {
           {displayTitle}
           {displayPrice}
         </div>
-        <div className="image-gallery-mobile">{displayPhotos}</div>
+
+        <div className="image-gallery-mobile">
+          {displayPhotos}
+          {displayShareButton}
+        </div>
         {/* {displayBrand} */}
         <div className="below-image-gallery-mobile">
           <div className="item-number-condition-container-mobile">
