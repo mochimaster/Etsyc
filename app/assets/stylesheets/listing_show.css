@@ -321,14 +321,16 @@ MOBILE VIEW
 .quantity-value-mobile {
   width: 150px;
   border: 1px solid gray;
-  height: 88px;
+  /* height: 88px; */
   font-size: 35px;
   text-align: center;
+  height: calc(100% - 4px);
 }
 
 .btn-secondary {
   background-color: #f8f8f8;
-  height: 92px;
+  /* height: 92px; */
+  height: 100%;
   border: 1px solid gray;
   color: black;
 }
