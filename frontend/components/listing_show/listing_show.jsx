@@ -372,7 +372,7 @@ class ListingShow extends React.Component {
       <div className="listing-details listing-details-quantity quantity-buttons-container-mobile">
         Quantity:{' '}
         <button
-          className="quantity-button-mobile"
+          className="btn-secondary quantity-button-mobile quantity-button-left-mobile"
           onClick={() => {
             if (this.state.quantity <= 1) return
             this.setState({ quantity: this.state.quantity - 1 })
@@ -382,7 +382,7 @@ class ListingShow extends React.Component {
         </button>
         <div className="quantity-value-mobile">{this.state.quantity}</div>
         <button
-          className="quantity-button-mobile"
+          className="btn-secondary quantity-button-mobile quantity-button-right-mobile"
           onClick={() => this.setState({ quantity: this.state.quantity + 1 })}
         >
           +
