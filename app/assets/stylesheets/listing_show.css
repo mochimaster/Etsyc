@@ -372,8 +372,8 @@ MOBILE VIEW
 
 .fas.fa-share {
   font-size: 70px;
-  border: 2px solid gray;
-  border-radius: 50px;
+  /* border: 2px solid gray; */
+  /* border-radius: 50px; */
   padding: 10px;
   color: black;
 }

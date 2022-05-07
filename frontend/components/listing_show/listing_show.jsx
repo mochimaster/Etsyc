@@ -499,7 +499,7 @@ class ListingShow extends React.Component {
           try {
             navigator.share({
               title: this.props.listing.title,
-              url: `https://www.castleandchair.com/#${this.props.locations.pathname}`,
+              url: `https://www.castleandchair.com/#${this.props.location.pathname}`,
               text: 'Check out what I found on Castle and Chair!'
             })
           } catch (err) {
