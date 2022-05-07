@@ -519,7 +519,9 @@ class ListingShow extends React.Component {
 
         <div className={addMobileClassName('listing-show-body-wrapper')}>
           <div className="listing-image listing-left-half">
-            {displayPhotos}
+            {displayPhotos}          
+            {displayShareButton}
+
 
             {displayDescription}
             {displayReview}
