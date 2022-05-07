@@ -308,7 +308,7 @@ MOBILE VIEW
 .quantity-buttons-container-mobile {
   display: flex;
   /* justify-content: flex-start; */
-  height: 100%;
+  height: 100% !important;
   align-items: center;
   text-align: center;
 }
