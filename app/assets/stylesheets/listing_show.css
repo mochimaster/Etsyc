@@ -257,6 +257,7 @@ MOBILE VIEW
 .quantity-mobile,
 .quantity-mobile .select-custom {
   font-size: 40px;
+  height: 90px;
 }
 
 .quantity-mobile .select-custom {
@@ -307,7 +308,7 @@ MOBILE VIEW
 .quantity-buttons-container-mobile {
   display: flex;
   /* justify-content: flex-start; */
-  height: 90px;
+  height: 100%;
   align-items: center;
   text-align: center;
 }
@@ -324,6 +325,7 @@ MOBILE VIEW
   /* height: 88px; */
   font-size: 35px;
   text-align: center;
+  /* height: 100%; */
   height: calc(100% - 4px);
 }
 
