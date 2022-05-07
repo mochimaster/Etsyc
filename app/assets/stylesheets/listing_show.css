@@ -49,6 +49,14 @@
   text-decoration: none;
 }
 
+.phone-number-mobile
+  > .listing-seller-phone
+  > .listing-seller-phone-number
+  > div
+  > a {
+  font-size: 35px;
+}
+
 .listing-header-seller-name a:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -267,7 +275,7 @@ MOBILE VIEW
 .btn-primary-mobile.add-to-cart {
   width: 100%;
   font-size: 35px;
-  height: 80px;
+  height: 90px;
   margin-top: 35px;
   border-radius: 15px;
 }
@@ -276,6 +284,7 @@ MOBILE VIEW
   text-align: center;
   padding: 20px 0 20px 0;
   text-decoration: none;
+  font-size: 30px;
 }
 
 .phone-number-delivery-tip-mobile {
@@ -322,6 +331,7 @@ MOBILE VIEW
   background-color: #f8f8f8;
   height: 92px;
   border: 1px solid gray;
+  color: black;
 }
 
 .quantity-button-left-mobile {
