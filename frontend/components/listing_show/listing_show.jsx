@@ -499,11 +499,13 @@ class ListingShow extends React.Component {
           try {
             navigator.share({
               title: this.props.listing.title,
-              url: `castleandchair.com/#${this.props.locations.pathname}`,
+              url: `https://www.castleandchair.com/#${this.props.locations.pathname}`,
               text: 'Check out what I found on Castle and Chair!'
             })
-          } catch {
-            alert('Sorry, Share feature is not supported on your browser.')
+          } catch (err) {
+            alert(
+              `Sorry, Share feature is not supported on your browser. Error ${err}`
+            )
           }
         }}
       >
