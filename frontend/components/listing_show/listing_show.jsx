@@ -380,13 +380,14 @@ class ListingShow extends React.Component {
         >
           -
         </button>
-        <input
+        {/* <input
           className="quantity-value-mobile"
           placeholder="QTY"
           value={this.state.quantity}
           type="number"
           onChange={(e) => this.setState({ quantity: e.target.value })}
-        ></input>
+        ></input> */}
+        <p className="quantity-value-mobile">{this.state.quantity}</p>
         <button
           className="btn-secondary quantity-button-mobile quantity-button-right-mobile"
           onClick={() => this.setState({ quantity: this.state.quantity + 1 })}

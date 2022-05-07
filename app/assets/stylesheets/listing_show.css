@@ -324,9 +324,13 @@ MOBILE VIEW
   border: 1px solid gray;
   /* height: 88px; */
   font-size: 35px;
-  text-align: center;
+  /* text-align: center; */
   /* height: 100%; */
-  height: calc(100% - 4px);
+  height: 88px;
+  /* height: calc(100% - 4px); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-secondary {
