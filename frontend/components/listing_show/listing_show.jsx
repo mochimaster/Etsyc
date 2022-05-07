@@ -461,6 +461,7 @@ class ListingShow extends React.Component {
           showPlayButton={false}
           lazyLoad={true}
           slideOnThumbnailOver={true}
+          showIndex={true}
         />
       </div>
     )
@@ -509,7 +510,7 @@ class ListingShow extends React.Component {
           }
         }}
       >
-        <i class="fas fa-share"></i>
+        <i class={`fas ${addMobileClassName('fa-share')}`}></i>
       </button>
     )
 
@@ -519,9 +520,8 @@ class ListingShow extends React.Component {
 
         <div className={addMobileClassName('listing-show-body-wrapper')}>
           <div className="listing-image listing-left-half">
-            {displayPhotos}          
+            {displayPhotos}
             {displayShareButton}
-
 
             {displayDescription}
             {displayReview}
