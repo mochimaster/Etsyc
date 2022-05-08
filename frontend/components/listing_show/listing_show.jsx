@@ -598,13 +598,9 @@ class ListingShow extends React.Component {
       <div>
         <Helmet>
           <title>{this.props.listing.title}</title>
+          <meta property="og:title" content={this.props.listing.title}></meta>
+          <meta name="description" content={this.props.listing.overview} />
           <meta
-            name="title"
-            property="og:title"
-            content={this.props.listing.title}
-          ></meta>
-          <meta
-            name="description"
             property="og:description"
             content={this.props.listing.overview}
           />
@@ -615,7 +611,14 @@ class ListingShow extends React.Component {
               `https://www.castleandchair.com${images[0].original}`
             }
           />
-          <meta property="og:url" content={`${window.location.href}`} />
+          <meta
+            property="og:url"
+            content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+          />
+          <link
+            rel="canonical"
+            href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+          />
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
       </div>
