@@ -73,7 +73,7 @@ class App extends React.Component {
       // <WindowScroller>
       <div className="app-container">
         <Helmet>
-          <meta charSet="utf-8" />
+          {/* <meta charSet="utf-8" /> */}
           <title>Castle and Chair</title>
           {/* <link rel="canonical" href="https://www.castleandchair.com" /> */}
         </Helmet>
