@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { InlineWidget } from 'react-calendly'
 import { Helmet } from 'react-helmet'
 
-const BookingShow = ({ carts, getCarts, currentUserId }) => {
+const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
   const [populatedNoteField, setPopulatedNoteField] = useState('')
 
   useEffect(() => {
@@ -39,11 +39,11 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
         />
         <meta
           property="og:url"
-          content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+          content={`https://www.castleandchair.com/#${location.pathname}`}
         />
         <link
           rel="canonical"
-          href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+          href={`https://www.castleandchair.com/#${location.pathname}`}
         />
       </Helmet>
       <h1 className="booking-header">Visit Our Warehouse</h1>

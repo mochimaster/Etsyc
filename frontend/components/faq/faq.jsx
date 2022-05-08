@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Helmet } from 'react-helmet'
 
-export const Faq = () => (
+export const Faq = (props) => (
   <div className="faq-page-container">
     <Helmet>
       <title>FAQ | Castle and Chair</title>
@@ -23,11 +23,11 @@ export const Faq = () => (
       />
       <meta
         property="og:url"
-        content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+        content={`https://www.castleandchair.com/#${props.location.pathname}`}
       />
       <link
         rel="canonical"
-        href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+        href={`https://www.castleandchair.com/#${props.location.pathname}`}
       />
     </Helmet>
     <h1 className="faq-title">Frequently Asked Questions</h1>
