@@ -22,7 +22,7 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
   return (
     <div className="booking-container">
       <Helmet>
-        <title>Visit Us | Castle and Chair"</title>
+        <title>Visit Us | Castle and Chair</title>
         <meta
           name="title"
           property="og:title"
