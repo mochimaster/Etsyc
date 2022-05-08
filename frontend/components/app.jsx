@@ -75,7 +75,7 @@ class App extends React.Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Castle and Chair</title>
-          <link rel="canonical" href="https://www.castleandchair.com" />
+          {/* <link rel="canonical" href="https://www.castleandchair.com" /> */}
         </Helmet>
         <Modal />
         <Route component={HeaderBannerContainer} />
