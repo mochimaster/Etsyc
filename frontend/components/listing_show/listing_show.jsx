@@ -616,6 +616,10 @@ class ListingShow extends React.Component {
               `https://www.castleandchair.com${images[0].original}`
             }
           />
+          <link
+            rel="canonical"
+            href={`https://www.castleandchair.com/#/listings/${this.props.listing.id}/${this.props.listing.title}`}
+          />
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
       </div>
