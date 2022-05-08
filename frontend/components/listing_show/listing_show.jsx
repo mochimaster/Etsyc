@@ -613,11 +613,13 @@ class ListingShow extends React.Component {
           />
           <meta
             property="og:url"
-            content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+            content={`https://www.castleandchair.com/#/listings/${
+              this.props.listing.id
+            }/${encodeURIComponent(this.props.listing.title)}`}
           />
           <link
             rel="canonical"
-            href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+            href={`https://www.castleandchair.com/#/listings/${this.props.listing.id}`}
           />
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
