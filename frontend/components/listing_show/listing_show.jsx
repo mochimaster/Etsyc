@@ -612,8 +612,7 @@ class ListingShow extends React.Component {
             name="image"
             property="og:image"
             content={
-              this.props.listing.photoUrls &&
-              `https://www.castleandchair.com${this.props.listing.photoUrls[0]}`
+              images.length > 0 && `https://www.castleandchair.com${images[0]}`
             }
           />
         </Helmet>
