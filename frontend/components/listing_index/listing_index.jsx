@@ -169,6 +169,14 @@ class ListingIndex extends React.Component {
             content="Shop Castle and Chair, furniture from West Elm, Restoration Hardware, Pottery Barn 
             and more. New, like new, and used condition furniture."
           />
+          <meta
+            property="og:url"
+            content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+          />
+          <link
+            rel="canonical"
+            href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+          />
         </Helmet>
         {isOnSearchPage && displaySearchCount}
         <div>

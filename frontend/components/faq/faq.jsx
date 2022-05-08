@@ -21,6 +21,14 @@ export const Faq = () => (
         content="Frequently asked questions - hours, directions, return policy, 
         reservation, hold, appointment, discount, payment types, delivery, pick up"
       />
+      <meta
+        property="og:url"
+        content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+      />
+      <link
+        rel="canonical"
+        href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+      />
     </Helmet>
     <h1 className="faq-title">Frequently Asked Questions</h1>
     <div className="faq-container">

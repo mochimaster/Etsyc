@@ -37,6 +37,14 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
           property="og:description"
           content="Visit our warehouse in Hayward, CA. We are open by appoinment - weekdays 10AM - 5PM."
         />
+        <meta
+          property="og:url"
+          content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+        />
       </Helmet>
       <h1 className="booking-header">Visit Our Warehouse</h1>
 
