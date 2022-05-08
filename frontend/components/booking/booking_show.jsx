@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+
 import { InlineWidget } from 'react-calendly'
-import { replace } from 'lodash'
+import { Helmet } from 'react-helmet'
 
 const BookingShow = ({ carts, getCarts, currentUserId }) => {
   const [populatedNoteField, setPopulatedNoteField] = useState('')
@@ -20,6 +21,24 @@ const BookingShow = ({ carts, getCarts, currentUserId }) => {
 
   return (
     <div className="booking-container">
+      <Helmet>
+        <title>Visit Us | Castle and Chair"</title>
+        <meta
+          name="title"
+          property="og:title"
+          content="Visit Us | Castle and Chair"
+        ></meta>
+        <meta
+          name="description"
+          content="Visit our warehouse in Hayward, CA. We are open by appoinment - weekdays 10AM - 5PM."
+        />
+
+        <meta
+          property="og:description"
+          content="Visit our warehouse in Hayward, CA. We are open by appoinment - weekdays 10AM - 5PM."
+        />
+        <link rel="canonical" href="https://www.castleandchair.com/#/visit" />
+      </Helmet>
       <h1 className="booking-header">Visit Our Warehouse</h1>
 
       <div className="booking-body">

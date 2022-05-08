@@ -5,6 +5,8 @@ import {
   WindowScroller,
   ElementScroller
 } from 'react-scroll-manager'
+import { Helmet } from 'react-helmet'
+
 import { createBrowserHistory as createHistory } from 'history'
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
@@ -70,6 +72,11 @@ class App extends React.Component {
       // <ScrollManager history={this.history}>
       // <WindowScroller>
       <div className="app-container">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Castle and Chair</title>
+          <link rel="canonical" href="https://www.castleandchair.com" />
+        </Helmet>
         <Modal />
         <Route component={HeaderBannerContainer} />
         <Route component={HeaderContainer} />

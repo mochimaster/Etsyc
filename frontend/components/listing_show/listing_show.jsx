@@ -3,6 +3,7 @@ import ReactLoading from 'react-loading'
 
 import { merge, pull } from 'lodash'
 import { animateScroll as scroll } from 'react-scroll'
+import { Helmet } from 'react-helmet'
 
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
@@ -593,7 +594,31 @@ class ListingShow extends React.Component {
       // </div>
     )
 
-    return isMobile ? displayMobileView : displayDesktopView
+    return (
+      <div>
+        <Helmet>
+          <title>{this.props.listing.title}</title>
+          <meta
+            name="title"
+            property="og:title"
+            content={this.props.listing.title}
+          ></meta>
+          <meta
+            name="description"
+            property="og:description"
+            content={this.props.listing.overview}
+          />
+          <meta
+            name="image"
+            property="og:image"
+            content={
+              images.length > 0 && `https://www.castleandchair.com${images[0]}`
+            }
+          />
+        </Helmet>
+        {isMobile ? displayMobileView : displayDesktopView}
+      </div>
+    )
   }
 }
 // {<option dangerouslySetInnerHTML={{ __html: quantityDropdown}} />}

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { isEqual } from 'lodash'
+import { Helmet } from 'react-helmet'
 
 import ListingIndexItem from './listing_index_item'
 import ReactLoading from 'react-loading'
@@ -155,6 +156,24 @@ class ListingIndex extends React.Component {
 
     return (
       <div>
+        <Helmet>
+          <title>All Furniture</title>
+          <meta
+            name="title"
+            property="og:title"
+            content="All furniture | Castle and Chair"
+          ></meta>
+          <meta
+            name="description"
+            property="og:description"
+            content="Shop Castle and Chair, furniture from West Elm, Restoration Hardware, Pottery Barn 
+            and more. New, like new, and used condition furniture."
+          />
+          <link
+            rel="canonical"
+            href="https://www.castleandchair.com/#/listings"
+          />
+        </Helmet>
         {isOnSearchPage && displaySearchCount}
         <div>
           <ul className={`index-wrapper ${deviceClassName}`}>

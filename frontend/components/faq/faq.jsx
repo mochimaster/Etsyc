@@ -1,7 +1,28 @@
 import React from 'react'
 
+import { Helmet } from 'react-helmet'
+
 export const Faq = () => (
   <div className="faq-page-container">
+    <Helmet>
+      <title>FAQ | Castle and Chair</title>
+      <meta
+        name="title"
+        property="og:title"
+        content="FAQ | Castle and Chair"
+      ></meta>
+      <meta
+        property="og:description"
+        content="Frequently asked questions - hours, directions, return policy, 
+        reservation, hold, appointment, discount, payment types, delivery, pick up"
+      />
+      <meta
+        name="description"
+        content="Frequently asked questions - hours, directions, return policy, 
+        reservation, hold, appointment, discount, payment types, delivery, pick up"
+      />
+      <link rel="canonical" href="https://www.castleandchair.com/#/faq" />
+    </Helmet>
     <h1 className="faq-title">Frequently Asked Questions</h1>
     <div className="faq-container">
       <div className="question-container">
@@ -169,8 +190,8 @@ export const Faq = () => (
         <div className="answer-left">A.</div>
         <div className="answer-right">
           We offer assistance in loading your items into your vehicle but we
-          cannot provide you with wrapping or rope to tie down your items, nor are we
-          responsible for securing items to your vehicle. We cannot be
+          cannot provide you with wrapping or rope to tie down your items, nor
+          are we responsible for securing items to your vehicle. We cannot be
           responsible for damage that occurs to your merchandise, your vehicle,
           or other vehicles when you transport your purchase.
         </div>
