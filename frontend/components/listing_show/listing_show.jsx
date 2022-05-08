@@ -609,13 +609,13 @@ class ListingShow extends React.Component {
             content={this.props.listing.overview}
           />
           <meta
-            name="image"
             property="og:image"
             content={
               images.length > 0 &&
               `https://www.castleandchair.com${images[0].original}`
             }
           />
+          <meta property="og:url" content={`${window.location.href}`} />
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
       </div>
