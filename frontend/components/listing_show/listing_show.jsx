@@ -2,7 +2,6 @@ import React from 'react'
 import ReactLoading from 'react-loading'
 
 import { merge, pull } from 'lodash'
-import { animateScroll as scroll } from 'react-scroll'
 import { Helmet } from 'react-helmet'
 
 import { Link } from 'react-router-dom'
@@ -11,6 +10,7 @@ import { HashLink } from 'react-router-hash-link'
 import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import ImageGallery from 'react-image-gallery'
+import { Collapsible } from '../collapsible/collapsible'
 
 import 'react-image-gallery/styles/css/image-gallery.css'
 
@@ -580,12 +580,48 @@ class ListingShow extends React.Component {
             {displayAddToCartButton}
           </div>
 
-          <div className="phone-number-delivery-tip-mobile">
-            <div className="phone-number-mobile">{displayPhoneNumber}</div>
-            {displayDeliveryAndPickUp}
-          </div>
-          <div className="overview-mobile">{displayOverview}</div>
-          {displayDescription}
+          {
+            <div className="phone-number-delivery-tip-mobile">
+              <div className="phone-number-mobile">{displayPhoneNumber}</div>
+            </div>
+          }
+
+          <Collapsible
+            title={'Overview'}
+            content={this.props.listing.overview}
+            expand={true}
+          />
+          <Collapsible
+            title={'Description'}
+            content={this.props.listing.description}
+          />
+          <Collapsible
+            title={'Self pick up'}
+            content={
+              <div>
+                Free pick up at our warehouse in Hayward.{' '}
+                <HashLink to="/visit#book-directions">Directions</HashLink>.
+              </div>
+            }
+          />
+
+          <Collapsible
+            title={'Get it delivered'}
+            content={
+              <div>
+                <div>
+                  Delivery available through Lugg.
+                  <a
+                    target="_blank"
+                    href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+                  >
+                    {'\n'}Calculate delivery
+                  </a>{' '}
+                  to your address.
+                </div>
+              </div>
+            }
+          />
           <br />
           {displayInternalNote}
           {displayInternalPhotos}

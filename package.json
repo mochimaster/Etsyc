@@ -12,6 +12,7 @@
     "mixpanel-browser": "^2.39.0",
     "postcss-loader": "^6.2.1",
     "prettier": "^2.0.5",
+    "prop-types": "^15.8.1",
     "react": "^16.13.1",
     "react-calendly": "^3.0.3",
     "react-dom": "^16.13.1",
