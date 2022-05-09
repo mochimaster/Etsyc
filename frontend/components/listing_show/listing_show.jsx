@@ -623,6 +623,7 @@ class ListingShow extends React.Component {
           />
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
+        {(window.prerenderReady = true)}
       </div>
     )
   }

@@ -192,6 +192,7 @@ class ListingIndex extends React.Component {
             })}
           </ul>
         </div>
+        {(window.prerenderReady = true)}
       </div>
     )
   }
