@@ -1,0 +1,77 @@
+.expandable-box-container {
+  background-color: white;
+  border-bottom: #e1e3df 1px solid;
+  border-bottom-color: rgb(225, 227, 223);
+  padding: 20px 0px 20px 0px;
+}
+.expandable-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  border: none;
+  height: 75px;
+  font-size: 35px;
+  align-items: center;
+}
+
+.collapsible-title {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.arrow-down-close {
+  padding-right: 20px;
+}
+
+.expandable-box-container .collapsible-content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 500ms ease-out;
+  font-size: 35px;
+  white-space: pre;
+}
+
+.expandable-box-container .collapsible-content.open {
+  max-height: 400px;
+}
+
+.arrow-down-close {
+  width: 100px;
+  height: 50px;
+  display: block;
+  position: relative;
+}
+
+.arrow-down-close:before,
+.arrow-down-close:after {
+  content: '';
+  display: inline-block;
+  height: 60px;
+  width: 10px;
+  background-color: black;
+  border-radius: 10px;
+  position: relative;
+  transition: 300ms ease-in-out transform;
+}
+
+.arrow-down-close:before {
+  transform: rotate(-45deg);
+  left: 13px;
+  top: -4px;
+}
+
+.arrow-down-close:after {
+  transform: rotate(45deg);
+  left: 38px;
+  top: -4px;
+}
+
+.arrow-down-close.open:before {
+  transform: translateX(17px) rotate(-45deg);
+}
+
+.arrow-down-close.open:after {
+  transform: translateX(-17px) rotate(45deg);
+}
