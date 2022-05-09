@@ -154,9 +154,11 @@ class ListingIndex extends React.Component {
       </div>
     )
 
+    // console.log('SETITNG HELMET listing_index: ', this.props.location.pathname)
+
     return (
       <div>
-        <Helmet>
+        {/* <Helmet>
           <title>Shop All Furniture | Castle and Chair</title>
           <meta
             name="title"
@@ -177,7 +179,7 @@ class ListingIndex extends React.Component {
             rel="canonical"
             href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
           />
-        </Helmet>
+        </Helmet> */}
         {isOnSearchPage && displaySearchCount}
         <div>
           <ul className={`index-wrapper ${deviceClassName}`}>
