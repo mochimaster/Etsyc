@@ -36,7 +36,7 @@ class ListingShow extends React.Component {
   }
 
   componentDidMount() {
-    scroll.scrollToTop()
+    window.scrollTo(0, 0)
 
     this.props
       .getListing(this.props.match.params.listingId, this.props.sessionId)
@@ -623,7 +623,6 @@ class ListingShow extends React.Component {
           />
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
-        {(window.prerenderReady = true)}
       </div>
     )
   }

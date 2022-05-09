@@ -147,7 +147,6 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      {(window.prerenderReady = true)}
     </div>
   )
 }

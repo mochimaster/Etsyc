@@ -204,6 +204,5 @@ export const Faq = (props) => (
         </div>
       </div>
     </div>
-    {(window.prerenderReady = true)}
   </div>
 )
