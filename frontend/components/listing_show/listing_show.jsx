@@ -117,13 +117,13 @@ class ListingShow extends React.Component {
       return (
         <div className={addMobileClassName('listing-seller-phone-number')}>
           <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
-            ☎️ : {this.props.listing.phoneNumber}
+            ☎️ Call
           </a>
 
           <a
             href={`sms:+15109361639&body=Hi, I would like to inquire about item number ${this.props.listing.id} - ${this.props.listing.title}`}
           >
-            💬 : Click here to text!
+            💬 Text
           </a>
         </div>
       )
