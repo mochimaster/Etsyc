@@ -381,8 +381,7 @@ MOBILE VIEW
 }
 
 .share-button:hover,
-.full-screen-button:hover,
-.image-gallery-icon.image-gallery-right-nav:hover {
+.full-screen-button:hover {
   background-color: #3c3c3c;
   border-color: rgba(0, 0, 0, 0.2);
 }
