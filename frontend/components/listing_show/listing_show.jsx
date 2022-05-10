@@ -515,7 +515,7 @@ class ListingShow extends React.Component {
       </>
     )
 
-    const displayShareButton = true && (
+    const displayShareButton = navigator.share && (
       <button
         className={addMobileClassName('share-button')}
         onClick={() => {
