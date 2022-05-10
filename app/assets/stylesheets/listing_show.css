@@ -57,6 +57,26 @@
   font-size: 35px;
 }
 
+.listing-seller-phone-number.listing-seller-phone-number-mobile {
+  display: flex;
+  justify-content: space-evenly;
+  grid-column-gap: 35px;
+}
+
+.listing-seller-phone-number.listing-seller-phone-number-mobile > a {
+  font-size: 35px;
+  height: 90px;
+  width: 100%;
+  border-radius: 25px;
+  border: 1px solid gray;
+  text-decoration: none;
+  color: black;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .listing-header-seller-name a:hover {
   cursor: pointer;
   text-decoration: underline;

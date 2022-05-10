@@ -112,6 +112,24 @@ class ListingShow extends React.Component {
     }
   }
 
+  displayMobilePhoneNumber() {
+    if (this.props.listing.phoneNumber) {
+      return (
+        <div className={addMobileClassName('listing-seller-phone-number')}>
+          <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
+            ☎️ : {this.props.listing.phoneNumber}
+          </a>
+
+          <a
+            href={`sms:+15109361639&body=Hi, I would like to inquire about item number ${this.props.listing.id} - ${this.props.listing.title}`}
+          >
+            💬 : Click here to text!
+          </a>
+        </div>
+      )
+    }
+  }
+
   confirmDelete() {
     const confirmed = confirm('Are you sure you want to delete this listing?')
     if (confirmed) {
@@ -326,7 +344,9 @@ class ListingShow extends React.Component {
     )
 
     const displayPhoneNumber = (
-      <div className="listing-seller-phone">{this.phoneNumberExist()}</div>
+      <div className="listing-seller-phone">
+        {isMobile ? this.displayMobilePhoneNumber() : this.phoneNumberExist()}
+      </div>
     )
 
     const displayDeliveryAndPickUp = (
