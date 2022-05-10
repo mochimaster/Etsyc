@@ -20,12 +20,14 @@ import { addMobileClassName } from '../../../utils/helper'
 class ListingShow extends React.Component {
   constructor(props) {
     super(props)
-    // debugger
+    this.myRef = React.createRef()
+
     this.state = {
       quantity: 1,
       isLoading: true,
       isTracked: false,
-      displayAddToCartToolTip: false
+      displayAddToCartToolTip: false,
+      isPhotoFullscreen: false
     }
 
     this.updateListing = this.updateListing.bind(this)
@@ -458,11 +460,30 @@ class ListingShow extends React.Component {
     const displayPhotos = (
       <div id="image-gallery">
         <ImageGallery
-          items={images}
+          ref={this.myRef}
           showPlayButton={false}
+          items={images}
           lazyLoad={true}
           slideOnThumbnailOver={true}
           showIndex={true}
+          showFullscreenButton={false}
+          showNav={isMobile ? false : true}
+          indexSeparator=" of "
+          onScreenChange={(isFullscreen) =>
+            this.setState({ isPhotoFullscreen: isFullscreen })
+          }
+          renderCustomControls={() => (
+            <button
+              className={addMobileClassName('full-screen-button')}
+              onClick={() => this.myRef.current.toggleFullScreen()}
+            >
+              {this.state.isPhotoFullscreen ? (
+                <i class="fas fa-compress"></i>
+              ) : (
+                <i class="fas fa-expand"></i>
+              )}
+            </button>
+          )}
         />
       </div>
     )
@@ -494,9 +515,9 @@ class ListingShow extends React.Component {
       </>
     )
 
-    const displayShareButton = navigator.share && (
+    const displayShareButton = true && (
       <button
-        className="share-button-mobile"
+        className={addMobileClassName('share-button')}
         onClick={() => {
           try {
             navigator.share({
@@ -510,7 +531,24 @@ class ListingShow extends React.Component {
           }
         }}
       >
-        <i class={`fas ${addMobileClassName('fa-share')}`}></i>
+        <div className="share-button-svg"></div>
+      </button>
+    )
+
+    const displayCustomFullScreenButton = () => (
+      <button
+        className="full-screen-button-mobile"
+        onClick={() => {
+          const isPhotoFullscreen = this.myRef.current.state.isFullscreen
+          this.setState({ isPhotoFullscreen })
+          this.myRef.current.toggleFullScreen()
+        }}
+      >
+        {this.state.isPhotoFullscreen ? (
+          <i class="fas fa-compress"></i>
+        ) : (
+          <i class="fas fa-expand"></i>
+        )}
       </button>
     )
 
