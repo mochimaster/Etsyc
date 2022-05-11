@@ -362,7 +362,7 @@ MOBILE VIEW
   justify-content: center;
 }
 
-.quantity-button-mobile:hover {
+.quantity-button-mobile:active {
   color: white;
   background-color: black;
 }
