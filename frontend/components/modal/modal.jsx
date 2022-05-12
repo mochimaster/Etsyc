@@ -9,6 +9,7 @@ import Slider from '../slider/slider_container'
 
 import { closeModal } from '../../actions/modal_actions'
 import { clearErrors } from '../../actions/session_actions'
+import { ConditionDetail } from '../condition_slider/condition_detail'
 
 const Modal = ({ modal: propsModal, closeModal }) => {
   if (!propsModal) {
@@ -34,6 +35,9 @@ const Modal = ({ modal: propsModal, closeModal }) => {
     case MODAL_TYPE.SLIDER:
       modalComponent = <Slider images={images} currentIndex={currentIndex} />
       break
+    case MODAL_TYPE.CONDITION_DETAIL:
+      modalComponent = <ConditionDetail />
+      break
 
     default:
       return null
@@ -50,11 +54,14 @@ const Modal = ({ modal: propsModal, closeModal }) => {
   } else if (modal === MODAL_TYPE.SLIDER) {
     backGroundModal = 'modal-background modal-background-slider'
     childModalType = 'modal-child modal-child-slider'
+  } else if (modal === MODAL_TYPE.CONDITION_DETAIL) {
+    backGroundModal = 'modal-background modal-background-condition-detail'
+    childModalType = 'modal-child modal-child-condition-detail'
   }
 
   return (
     <div className={backGroundModal} onClick={closeModal}>
-      <div className={childModalType} onClick={(e) => e.stopPropagation()}>
+      <div className={`${childModalType}`} onClick={(e) => e.stopPropagation()}>
         {modalComponent}
       </div>
     </div>

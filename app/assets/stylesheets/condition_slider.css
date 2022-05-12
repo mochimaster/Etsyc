@@ -1,0 +1,35 @@
+.condition-slider-container {
+  padding: 15px 0;
+  margin: 25px 0 5px;
+  border-top: 5px solid #e1e3df;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: darkgray;
+  font-size: 30px;
+}
+
+.condition-slider-item-selected::before {
+  color: black;
+  background-color: black;
+  content: '';
+  position: relative;
+  display: block;
+  width: 7px;
+  height: 40px;
+  top: -10px;
+  left: 0;
+  right: 0;
+  margin: -26px auto 0;
+}
+
+.condition-slider-item-selected {
+  color: black;
+}
+
+.condition-slider-question-mark {
+  border: none;
+  background-color: white;
+  font-size: 35px;
+}

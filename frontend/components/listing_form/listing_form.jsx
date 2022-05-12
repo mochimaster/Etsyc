@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import Compress from 'compress.js'
 
 import { BRANDS, CATEGORIES } from '../../../utils/constants'
+import { CONDITION } from '../condition_slider/condition_slider'
 
 const PHOTO_POSITION = {
   UP: 'up',
@@ -210,6 +211,7 @@ export const ListingForm = (props) => {
     // formData.append('category[category]', category)
     formData.append('user[phone_number]', listing.phoneNumber)
     formData.append('listing[condition]', listing.condition)
+    formData.append('listing[detailed_condition]', listing.detailedCondition)
     formData.append('listing[brand]', listing.brand)
     formData.append('listing[internal_note]', listing.internalNote)
 
@@ -625,6 +627,26 @@ export const ListingForm = (props) => {
               <option value="new">New</option>
               <option value="like new">Like New</option>
               <option value="used">Used</option>
+            </select>
+          </div>
+          <div className="create-listing-condition">
+            <label for="detailed condition">Detailed Condition: </label>
+
+            <select
+              name="detailed-condition"
+              id="detailed-condition"
+              onChange={({ target: { value } }) =>
+                setListing((listing) => ({
+                  ...listing,
+                  detailedCondition: value
+                }))
+              }
+              value={listing.detailedCondition}
+            >
+              {Object.keys(CONDITION).map((key) => (
+                <option value={key}>{CONDITION[key]}</option>
+              ))}
+              <option value=""></option>
             </select>
           </div>
           <div className="create-listing-brand">

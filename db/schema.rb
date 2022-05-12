@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_29_013632) do
+ActiveRecord::Schema.define(version: 2022_05_12_154549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2022_04_29_013632) do
     t.string "brand"
     t.string "internal_note"
     t.text "photos_order", default: [], array: true
+    t.string "detailed_condition"
     t.index ["status"], name: "index_listings_on_status"
   end
 
