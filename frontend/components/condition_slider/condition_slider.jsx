@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { MODAL_TYPE } from '../../../utils/constants'
+import { addMobileClassName } from '../../../utils/helper'
 
 export const CONDITION = {
   FAIR: 'Fair',
@@ -28,7 +29,7 @@ const ConditionSlider = ({ condition, openModal }) => {
           <i class="far fa-question-circle"></i>
         </button> */}
       </h1>
-      <ul className="condition-slider-container">
+      <ul className={addMobileClassName('condition-slider-container')}>
         {Object.keys(CONDITION).map((key) => {
           return (
             <li

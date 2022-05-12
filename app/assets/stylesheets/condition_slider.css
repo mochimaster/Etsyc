@@ -7,6 +7,10 @@
   justify-content: space-between;
   list-style: none;
   color: darkgray;
+  font-size: 15px;
+}
+
+.condition-slider-container-mobile {
   font-size: 30px;
 }
 

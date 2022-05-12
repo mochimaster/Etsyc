@@ -555,6 +555,12 @@ class ListingShow extends React.Component {
       </button>
     )
 
+    const displayDetailedCondition = (
+      <div>
+        <ConditionSlider condition={this.props.listing.detailedCondition} />
+      </div>
+    )
+
     const displayCustomFullScreenButton = () => (
       <button
         className="full-screen-button-mobile"
@@ -600,7 +606,9 @@ class ListingShow extends React.Component {
             {displayItemNumber}
             <br />
 
-            {displayCondition}
+            {this.props.listing.detailedCondition
+              ? displayDetailedCondition
+              : displayCondition}
             <br />
 
             {displayOverview}
@@ -631,11 +639,7 @@ class ListingShow extends React.Component {
             {!this.props.listing.detailedCondition && displayCondition}
             {displayItemNumber}
           </div>
-          <div>
-            {this.props.listing.detailedCondition && (
-              <ConditionSlider condition={this.props.listing.detailedCondition} />
-            )}
-          </div>
+          {this.props.listing.detailedCondition && displayDetailedCondition}
           <div className="quantity-mobile">{displayQuantityMobile}</div>
           <div className="add-to-cart-button-container-mobile">
             {displayAddToCartButton}
