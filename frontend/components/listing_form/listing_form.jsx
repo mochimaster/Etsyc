@@ -42,6 +42,7 @@ const defaultListing = {
   photo: '',
   imageUrl: '',
   condition: 'new',
+  detailedCondition: '',
   brand: '',
   photos: [],
   category: [],
