@@ -3,7 +3,8 @@ export const MODAL_TYPE = {
   SIGN_UP: 'signup',
   DEMO: 'demo',
   PROFILE_DROPDOWN: 'profileDropdown',
-  SLIDER: 'slider'
+  SLIDER: 'slider',
+  CONDITION_DETAIL: 'conditionDetail'
 }
 
 export const FORM_TYPE = {

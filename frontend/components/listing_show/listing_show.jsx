@@ -11,6 +11,8 @@ import ReviewIndexContainer from '../review/review_index_container'
 import ReviewForm from '../review/review_create_form_container'
 import ImageGallery from 'react-image-gallery'
 import { Collapsible } from '../collapsible/collapsible'
+import { CONDITION } from '../condition_slider/condition_slider'
+import ConditionSlider from '../condition_slider/condition_slider_container'
 
 import 'react-image-gallery/styles/css/image-gallery.css'
 
@@ -116,9 +118,7 @@ class ListingShow extends React.Component {
     if (this.props.listing.phoneNumber) {
       return (
         <div className={addMobileClassName('listing-seller-phone-number')}>
-          <a href={'tel: '.concat(this.props.listing.phoneNumber)}>
-            ☎️ Call
-          </a>
+          <a href={'tel: '.concat(this.props.listing.phoneNumber)}>☎️ Call</a>
 
           <a
             href={`sms:+15109361639&body=Hi, I would like to inquire about item number ${this.props.listing.id} - ${this.props.listing.title}`}
@@ -628,22 +628,23 @@ class ListingShow extends React.Component {
         {/* {displayBrand} */}
         <div className="below-image-gallery-mobile">
           <div className="item-number-condition-container-mobile">
-            {displayCondition}
+            {!this.props.listing.detailedCondition && displayCondition}
             {displayItemNumber}
           </div>
-
+          <div>
+            {this.props.listing.detailedCondition && (
+              <ConditionSlider condition={this.props.listing.detailedCondition} />
+            )}
+          </div>
           <div className="quantity-mobile">{displayQuantityMobile}</div>
-
           <div className="add-to-cart-button-container-mobile">
             {displayAddToCartButton}
           </div>
-
           {
             <div className="phone-number-delivery-tip-mobile">
               <div className="phone-number-mobile">{displayPhoneNumber}</div>
             </div>
           }
-
           <Collapsible
             title={'Overview'}
             content={this.props.listing.overview}
@@ -662,7 +663,6 @@ class ListingShow extends React.Component {
               </div>
             }
           />
-
           <Collapsible
             title={'Get it delivered'}
             content={

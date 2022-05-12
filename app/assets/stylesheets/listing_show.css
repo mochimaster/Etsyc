@@ -274,7 +274,7 @@ MOBILE VIEW
 .item-number-condition-container-mobile {
   display: flex;
   justify-content: space-between;
-  font-size: 40px;
+  font-size: 35px;
   grid-column-gap: 50px;
   text-transform: capitalize;
   padding-bottom: 20px;
@@ -286,7 +286,7 @@ MOBILE VIEW
 
 .quantity-mobile,
 .quantity-mobile .select-custom {
-  font-size: 40px;
+  font-size: 35;
   height: 90px;
 }
 

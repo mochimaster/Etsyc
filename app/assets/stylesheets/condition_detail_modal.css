@@ -1,0 +1,22 @@
+.modal-background-condition-detail {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-child.modal-child-condition-detail {
+  left: auto;
+  top: auto;
+  width: 90%;
+  height: calc(100vh - 40px);
+  font-size: 30px;
+  justify-content: center;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.condition-detail-modal-container {
+  background-color: white;
+  height: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
