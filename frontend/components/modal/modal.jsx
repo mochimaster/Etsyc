@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { MODAL_TYPE, FORM_TYPE } from '../../../utils/constants'
+import { addMobileClassName } from '../../../utils/helper'
 
 import LogInFormContainer from '../session_form/login_form_container'
 import UserDropdownContainer from '../user_dropdown/user_dropdown_container'
+import ConditionDetail from '../condition_slider/condition_detail'
 import Slider from '../slider/slider_container'
 
 import { closeModal } from '../../actions/modal_actions'
 import { clearErrors } from '../../actions/session_actions'
-import { ConditionDetail } from '../condition_slider/condition_detail'
 
 const Modal = ({ modal: propsModal, closeModal }) => {
   if (!propsModal) {
@@ -56,7 +57,9 @@ const Modal = ({ modal: propsModal, closeModal }) => {
     childModalType = 'modal-child modal-child-slider'
   } else if (modal === MODAL_TYPE.CONDITION_DETAIL) {
     backGroundModal = 'modal-background modal-background-condition-detail'
-    childModalType = 'modal-child modal-child-condition-detail'
+    childModalType = `modal-child ${addMobileClassName(
+      'modal-child-condition-detail'
+    )}`
   }
 
   return (
