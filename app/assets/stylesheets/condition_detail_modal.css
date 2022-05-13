@@ -1,19 +1,19 @@
 .modal-background-condition-detail {
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
     'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
 }
 
 .modal-child.modal-child-condition-detail {
-  left: auto;
-  top: auto;
+  /* left: auto; */
+  /* top: auto; */
   width: 90%;
   /* height: calc(100vh - 40px); */
   font-size: 25;
   justify-content: center;
-  margin-left: 0;
-  margin-top: 0;
+  /* margin-left: 0; */
+  /* margin-top: 0; */
   max-width: 800px;
 }
 

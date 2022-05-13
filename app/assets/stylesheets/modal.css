@@ -6,19 +6,24 @@
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-child {
   position: absolute;
-  top: 40vh; /* position */
-  left: 40vw;
+  /* top: 40vh;  */
+  /* position */
+  /* left: 40vw; */
   /* transform: translate(160%, 55%); */
   /* transform: translate(50%, 55%); */
   width: 600px;
-  height: 820px;
+  /* height: 820px; */
 
-  margin-top: -200px;
-  margin-left: -180px;
+  /* margin-top: -200px; */
+  /* margin-left: -180px; */
 
   /* background: #fff; */
   z-index: 3;
