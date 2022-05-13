@@ -10,6 +10,13 @@
   font-size: 15px;
 }
 
+.condition-slider-entire-button {
+  width: 100%;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
 .condition-slider-container-mobile {
   font-size: 30px;
 }

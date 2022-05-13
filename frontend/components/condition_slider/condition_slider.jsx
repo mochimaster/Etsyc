@@ -28,13 +28,20 @@ const ConditionSlider = ({ condition, openModal }) => (
         <i class="far fa-question-circle"></i>
       </button>
     </h1>
-    <ul className={addMobileClassName('condition-slider-container')}>
-      {Object.keys(CONDITION).map((key) => (
-        <li className={`condition-slider-item ${isSelected(key, condition)}`}>
-          {CONDITION[key]}
-        </li>
-      ))}
-    </ul>
+    <button
+      className="condition-slider-entire-button"
+      onClick={() => {
+        openModal(MODAL_TYPE.CONDITION_DETAIL)
+      }}
+    >
+      <ul className={addMobileClassName('condition-slider-container')}>
+        {Object.keys(CONDITION).map((key) => (
+          <li className={`condition-slider-item ${isSelected(key, condition)}`}>
+            {CONDITION[key]}
+          </li>
+        ))}
+      </ul>
+    </button>
   </div>
 )
 
