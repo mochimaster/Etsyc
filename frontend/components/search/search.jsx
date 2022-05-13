@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
+import { addMobileClassName } from '../../../utils/helper'
 
 import { trackEvent, EVENTS } from '../../../utils/track'
 
@@ -28,9 +29,15 @@ const Search = (props) => {
 
   const clickListener = (e) => {
     const coverElement = document.getElementById('search-text-input-mobile')
+    const clearInputSearchString = document.getElementById(
+      'search-text-input-clear'
+    )
 
-    if (coverElement) {
-      if (coverElement.contains(e.target)) {
+    if (coverElement || clearInputSearchString) {
+      if (
+        coverElement.contains(e.target) ||
+        clearInputSearchString.contains(e.target)
+      ) {
       } else {
         // enableWindowScroll()
         setDisplaySearchContainer(false)
@@ -137,17 +144,26 @@ const Search = (props) => {
                 autoComplete="off"
                 autoFocus
               ></input>
-              <button
-                id="search-button-mobile"
-                className="btn btn-primary search-button-mobile"
-                onClick={handleSubmit}
-              >
-                <i
-                  className={`fas fa-search ${
-                    isMobile ? 'fa-search-mobile' : ''
-                  }`}
-                ></i>
-              </button>
+              <div>
+                <button
+                  id="search-button-mobile"
+                  className="btn btn-primary search-button-mobile"
+                  onClick={handleSubmit}
+                >
+                  <i
+                    className={`fas fa-search ${
+                      isMobile ? 'fa-search-mobile' : ''
+                    }`}
+                  ></i>
+                </button>
+                <button
+                  id="search-text-input-clear"
+                  className={addMobileClassName('search-text-input-clear')}
+                  onClick={() => setTitle('')}
+                >
+                  <i class="far fa-times-circle"></i>
+                </button>
+              </div>
             </div>
             <div id="cover" className="cover"></div>
           </div>

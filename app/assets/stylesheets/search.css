@@ -124,3 +124,16 @@
 .search-result-count-mobile {
   font-size: 35px;
 }
+
+.search-text-input-clear {
+  position: absolute;
+  margin-top: 0;
+  font-size: 45px;
+  background-color: white;
+  border: none;
+  right: 215px;
+}
+
+.search-text-input-clear > i {
+  color: darkgray;
+}
