@@ -91,6 +91,7 @@
   /* overflow-y: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: default;
 }
 
 .listing-item-title {
