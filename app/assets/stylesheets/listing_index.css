@@ -168,6 +168,7 @@
   transition: all 0.5s ease;
   cursor: pointer;
   -webkit-border-radius: 50%;
+  -webkit-appearance: none;
 }
 
 .scroll-to-top:active {
