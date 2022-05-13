@@ -144,7 +144,7 @@ const Search = (props) => {
                 autoComplete="off"
                 autoFocus
               ></input>
-              <div>
+              <div className='search-button-and-clear'>
                 <button
                   id="search-button-mobile"
                   className="btn btn-primary search-button-mobile"

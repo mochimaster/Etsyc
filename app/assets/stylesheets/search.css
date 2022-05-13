@@ -125,10 +125,18 @@
   font-size: 35px;
 }
 
+.search-button-and-clear {
+  display: flex;
+  align-items: center;
+}
+
+.search-button-and-clear > .search-text-input-clear {
+  margin-top: 0;
+}
+
 .search-text-input-clear {
   position: absolute;
-  margin-top: 0;
-  font-size: 45px;
+  font-size: 55px;
   background-color: white;
   border: none;
   right: 215px;
