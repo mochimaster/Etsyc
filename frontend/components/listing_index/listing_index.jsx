@@ -178,13 +178,15 @@ class ListingIndex extends React.Component {
 
     const scrollToTopButton = (
       <button
-        className={`${addMobileClassName('scroll-to-top')} ${
-          this.state.isBottomHalfPage ? 'showButton' : ''
-        }`}
+        className={`${addMobileClassName('scroll-to-top')} `}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         {/* <i class="fas fa-chevron-up"></i> */}
-        <i class="fas fa-chevron-circle-up"></i>
+        <i
+          class={`fas ${addMobileClassName('fa-chevron-circle-up')} ${
+            this.state.isBottomHalfPage ? 'showButton' : ''
+          }`}
+        ></i>
       </button>
     )
 

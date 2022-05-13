@@ -153,34 +153,26 @@
   font-size: 25px;
 }
 
-.scroll-to-top {
+.fa-chevron-circle-up {
   font-size: 30px;
   position: fixed;
   bottom: 100px;
   right: 50px;
-  border-radius: 50%;
   opacity: 0;
-  background-color: white;
   border: none;
   color: darkgray;
 
   transform: translateY(100px);
   transition: all 0.5s ease;
   cursor: pointer;
-  -webkit-border-radius: 50%;
-  -webkit-appearance: none;
 }
 
-.scroll-to-top:active {
-  /* background-color: black; */
+.fa-chevron-circle-up:active {
   color: black;
-  /* background-color: darkgray; */
 }
 
-.scroll-to-top-mobile {
+.fa-chevron-circle-up-mobile {
   font-size: 60px;
-  /* bottom: 200px; */
-  /* transform: translateY(200px); */
 }
 
 .showButton {
