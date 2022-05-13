@@ -160,9 +160,9 @@
   right: 50px;
   border-radius: 50%;
   opacity: 0;
-  background-color: lightgray;
+  background-color: white;
   border: none;
-  color: black;
+  color: darkgray;
 
   transform: translateY(100px);
   transition: all 0.5s ease;
@@ -173,8 +173,8 @@
 
 .scroll-to-top:active {
   /* background-color: black; */
-  color: white;
-  background-color: black;
+  color: black;
+  /* background-color: darkgray; */
 }
 
 .scroll-to-top-mobile {

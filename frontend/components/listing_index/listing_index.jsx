@@ -183,7 +183,8 @@ class ListingIndex extends React.Component {
         }`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <i class="fas fa-chevron-up"></i>
+        {/* <i class="fas fa-chevron-up"></i> */}
+        <i class="fas fa-chevron-circle-up"></i>
       </button>
     )
 
