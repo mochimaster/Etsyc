@@ -1,22 +1,65 @@
 .modal-background-condition-detail {
   display: flex;
   justify-content: center;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Droid Sans', 'Segoe UI', 'Helvetica', Arial, sans-serif;
 }
 
 .modal-child.modal-child-condition-detail {
   left: auto;
   top: auto;
   width: 90%;
-  height: calc(100vh - 40px);
-  font-size: 30px;
+  /* height: calc(100vh - 40px); */
+  font-size: 25;
   justify-content: center;
   margin-left: 0;
   margin-top: 0;
 }
 
+.modal-child.modal-child-condition-detail-mobile {
+  font-size: 30px;
+}
+
 .condition-detail-modal-container {
   background-color: white;
-  height: 50%;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: 20px;
+}
+
+.condition-detail-modal-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.condition-detail-modal-header-mobile {
+  font-size: 35px;
+}
+
+.condition-detail-close {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.condition-detail-close:hover {
+  color: darkgray;
+}
+
+.condition-detail-close-mobile {
+  font-size: 45px;
+}
+
+.condition-detail-modal-h2 {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.condition-detail-modal-refer {
+  margin-top: 20px;
+  font-weight: bold;
 }

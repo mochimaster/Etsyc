@@ -35,5 +35,9 @@
 .condition-slider-question-mark {
   border: none;
   background-color: white;
+  font-size: 20px;
+}
+
+.condition-slider-question-mark-mobile {
   font-size: 35px;
 }
