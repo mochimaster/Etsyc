@@ -107,7 +107,8 @@ const ListingIndexItem = ({ listing }) => {
       <div className="listing-item-price-detailed-condition">
         <div className={`listing-item-price ${deviceClassName}`}>$ {price}</div>
         <div className={addMobileClassName('listing-item-detailed-condition')}>
-          {detailedCondition && `${CONDITION[detailedCondition]} condition`}
+          {detailedCondition !== 'null' &&
+            `${CONDITION[detailedCondition]} condition`}
         </div>
       </div>
     </li>
