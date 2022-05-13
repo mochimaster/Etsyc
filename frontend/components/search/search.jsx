@@ -144,7 +144,7 @@ const Search = (props) => {
                 autoComplete="off"
                 autoFocus
               ></input>
-              <div className='search-button-and-clear'>
+              <div className="search-button-and-clear">
                 <button
                   id="search-button-mobile"
                   className="btn btn-primary search-button-mobile"
@@ -159,7 +159,10 @@ const Search = (props) => {
                 <button
                   id="search-text-input-clear"
                   className={addMobileClassName('search-text-input-clear')}
-                  onClick={() => setTitle('')}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setTitle('')
+                  }}
                 >
                   <i class="far fa-times-circle"></i>
                 </button>
