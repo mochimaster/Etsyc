@@ -13,6 +13,7 @@ end
 json.listings @listings do |listing|
   json.extract! listing, :id, :title, :description, :author_id,:price, :merchant_name, :status, :brand
   json.photosOrder listing.photos_order.map { |photo_order| photo_order}
+  json.detailedCondition listing.detailed_condition
 
   if (listing.photos.attached?)
     json.photoUrls listing.photos.map { |photo| url_for(photo) }

@@ -137,3 +137,18 @@
 .index-wrapper .listing-item-price.device-mobile {
   font-size: 30px;
 }
+
+.listing-item-price-detailed-condition {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listing-item-detailed-condition {
+  color: darkgray;
+  font-size: 13px;
+}
+
+.listing-item-detailed-condition-mobile {
+  color: darkgray;
+  font-size: 25px;
+}

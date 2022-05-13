@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import { capitalize } from 'lodash'
 import { useInView } from 'react-intersection-observer'
 
+import { CONDITION } from '../condition_slider/condition_slider'
+import { addMobileClassName } from '../../../utils/helper'
+
 const ListingIndexItem = ({ listing }) => {
   const { ref, inView } = useInView({
     threshold: 0
@@ -56,7 +59,15 @@ const ListingIndexItem = ({ listing }) => {
     )
   }
 
-  const { id, title, author_id, merchant_name, price, brand } = listing
+  const {
+    id,
+    title,
+    author_id,
+    merchant_name,
+    price,
+    brand,
+    detailedCondition
+  } = listing
 
   let titleForUrl = title
 
@@ -93,7 +104,12 @@ const ListingIndexItem = ({ listing }) => {
           {brand || ''}
         </Link>
       </div> */}
-      <div className={`listing-item-price ${deviceClassName}`}>$ {price}</div>
+      <div className="listing-item-price-detailed-condition">
+        <div className={`listing-item-price ${deviceClassName}`}>$ {price}</div>
+        <div className={addMobileClassName('listing-item-detailed-condition')}>
+          {detailedCondition && `${CONDITION[detailedCondition]} condition`}
+        </div>
+      </div>
     </li>
   )
 }
