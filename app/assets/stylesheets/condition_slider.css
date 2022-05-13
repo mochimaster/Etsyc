@@ -37,6 +37,11 @@
   background-color: white;
   font-size: 20px;
   color: black;
+  cursor: pointer;
+}
+
+.condition-slider-question-mark:hover {
+  color: darkgray;
 }
 
 .condition-slider-question-mark-mobile {

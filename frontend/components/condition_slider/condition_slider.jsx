@@ -18,7 +18,7 @@ const isSelected = (conditionKey, condition) =>
 const ConditionSlider = ({ condition, openModal }) => (
   <div>
     <h1>
-      Condition{' '}
+      Condition
       <button
         className={addMobileClassName('condition-slider-question-mark')}
         onClick={() => {
