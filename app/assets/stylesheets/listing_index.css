@@ -160,15 +160,19 @@
   right: 50px;
   border-radius: 50px;
   opacity: 0;
+  background-color: lightgray;
+  border: none;
+  color: black;
 
   transform: translateY(100px);
   transition: all 0.5s ease;
   cursor: pointer;
 }
 
-.scroll-to-top:hover {
-  background-color: black;
+.scroll-to-top:active {
+  /* background-color: black; */
   color: white;
+  background-color: black;
 }
 
 .scroll-to-top-mobile {
