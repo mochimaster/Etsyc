@@ -152,3 +152,32 @@
   color: darkgray;
   font-size: 25px;
 }
+
+.scroll-to-top {
+  font-size: 30px;
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+  border-radius: 50px;
+  opacity: 0;
+
+  transform: translateY(100px);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.scroll-to-top:hover {
+  background-color: black;
+  color: white;
+}
+
+.scroll-to-top-mobile {
+  font-size: 60px;
+  bottom: 200px;
+  transform: translateY(200px);
+}
+
+.showButton {
+  opacity: 1;
+  transform: translateY(0);
+}

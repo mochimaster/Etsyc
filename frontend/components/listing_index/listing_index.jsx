@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 
 import ListingIndexItem from './listing_index_item'
 import ReactLoading from 'react-loading'
+import { addMobileClassName } from '../../../utils/helper'
 
 class ListingIndex extends React.Component {
   // need to arrive here from Index all.
@@ -18,7 +19,8 @@ class ListingIndex extends React.Component {
     this.state = {
       loading: true,
       listings: [],
-      queryTerm: ''
+      queryTerm: '',
+      isBottomHalfPage: false
 
       // page: props.location.search ? props.location.search.slice(6) : undefined,
       // pages: undefined
@@ -31,6 +33,16 @@ class ListingIndex extends React.Component {
     if (this.props.match.path == '/search') {
       return null
     }
+
+    window.addEventListener(
+      'scroll',
+      this.isBottomHalfPageEvent.bind(this),
+      true
+    )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.isBottomHalfPageEvent.bind(this))
   }
 
   componentDidUpdate(prevProps) {
@@ -64,6 +76,16 @@ class ListingIndex extends React.Component {
     ) {
       if (this.props.match.url.slice(0, 6) === '/users') return
       this.props.getListings(pageParams || page, sortOption, filters)
+    }
+  }
+
+  isBottomHalfPageEvent() {
+    const scrollTotal = $(window).height() + $(window).scrollTop()
+
+    if (scrollTotal / $(document).height() > 0.5) {
+      this.setState({ isBottomHalfPage: true })
+    } else {
+      this.setState({ isBottomHalfPage: false })
     }
   }
 
@@ -154,6 +176,17 @@ class ListingIndex extends React.Component {
       </div>
     )
 
+    const scrollToTopButton = (
+      <button
+        className={`${addMobileClassName('scroll-to-top')} ${
+          this.state.isBottomHalfPage ? 'showButton' : ''
+        }`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    )
+
     return (
       <div>
         <Helmet>
@@ -192,6 +225,7 @@ class ListingIndex extends React.Component {
             })}
           </ul>
         </div>
+        {scrollToTopButton}
       </div>
     )
   }
