@@ -159,13 +159,31 @@ const CartIndex = (props) => {
   const displayCartItemCountAndKeepShopping = (
     <div className="cart-item-count">
       {itemCountDisplay}
-      <Link className="keep-shopping-link btn btn-primary" to="/listings">
+      <Link
+        className={`${addMobileClassName(
+          'keep-shopping-link'
+        )} btn btn-primary`}
+        to="/listings"
+      >
         Keep Shopping
       </Link>
     </div>
   )
 
   const displayUserOrTempCart = isSignedIn ? displayUserCart : displayTempCart
+
+  const displayDeliveryOption = (
+    <div className="">
+      Delivery available through Lugg.{' '}
+      <a
+        target="_blank"
+        href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+      >
+        Calculate delivery
+      </a>{' '}
+      to your address.
+    </div>
+  )
 
   const displayPaymentType = (
     <div className="payment-container">
@@ -183,6 +201,9 @@ const CartIndex = (props) => {
         </a>
       </p>
       <p>Enrolled as Castle and Chair Inc.</p>
+      <br />
+      {displayDeliveryOption}
+      <br />
       <a
         href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
         target="_blank"
@@ -224,16 +245,7 @@ const CartIndex = (props) => {
                 @castleandchair
               </a> */}
 
-      <div className="">
-        Delivery available through Lugg.{' '}
-        <a
-          target="_blank"
-          href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
-        >
-          Calculate delivery
-        </a>{' '}
-        to different zip code.
-      </div>
+      {!isMobile && displayDeliveryOption}
     </div>
   )
 
@@ -291,6 +303,7 @@ const CartIndex = (props) => {
           {displayTotalAmount}
 
           {displayPaymentType}
+          {/* {displayDeliveryOption} */}
         </div>
       </div>
     </div>

@@ -78,7 +78,7 @@
 
 .cart-left-section-middle-section-wrapper-mobile {
   grid-template-columns: 1fr 2fr 1fr;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .cart-index-item .cart-index-merchant-name {
@@ -218,17 +218,22 @@
 
 .cart-index-checkout-mobile {
   font-size: 30px;
+  height: 600px;
 }
 
 .cart-index-item-price-mobile {
   justify-self: auto;
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .cart-index-item-title-mobile > a {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #quantityText-mobile {
-  font-size: 25px;
+  font-size: 20px;
+}
+
+.keep-shopping-link-mobile {
+  font-size: 30px;
 }

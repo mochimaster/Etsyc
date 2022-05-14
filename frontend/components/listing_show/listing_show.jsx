@@ -359,7 +359,7 @@ class ListingShow extends React.Component {
           >
             Calculate delivery
           </a>{' '}
-          to different zip code.
+          to your address.
         </div>
         <div>
           Free pick up at our warehouse in Hayward.{' '}
