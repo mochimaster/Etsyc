@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { pick, round } from 'lodash'
 
 import CartIndexItem from './cart_index_item'
+import { Collapsible } from '../collapsible/collapsible'
+import { addMobileClassName } from '../../../utils/helper'
 
 const CartIndex = (props) => {
   const [isSignedIn, setIsSignedIn] = useState(props.currentUserId)
@@ -154,87 +156,66 @@ const CartIndex = (props) => {
     )
   })
 
-  return (
-    <div className="cart-index-page-container">
-      <div className="sub-header-container">
-        <div className="cart-item-count">
-          {itemCountDisplay}
-          <Link className="keep-shopping-link btn btn-primary" to="/listings">
-            Keep Shopping
-          </Link>
-        </div>
-      </div>
-      <div className="cart-index-section-wrapper">
-        <ul className="cart-index-wrapper">
-          {isSignedIn ? displayUserCart : displayTempCart}
-        </ul>
+  const displayCartItemCountAndKeepShopping = (
+    <div className="cart-item-count">
+      {itemCountDisplay}
+      <Link className="keep-shopping-link btn btn-primary" to="/listings">
+        Keep Shopping
+      </Link>
+    </div>
+  )
 
-        <div className="cart-index-right-side">
-          <div className="cart-index-checkout">
-            <div className="total">
-              Item(s) sub-total: ${isSignedIn ? cartSum : tempCartsSum}
-            </div>
-            <div className="total">
-              Tax(10.75%): $
-              {round((isSignedIn ? cartSum : tempCartsSum) * 0.1075, 2).toFixed(
-                2
-              )}
-            </div>
-            <div className="total-amount">
-              Total: $
-              {round((isSignedIn ? cartSum : tempCartsSum) * 1.1075, 2).toFixed(
-                2
-              )}
-            </div>
+  const displayUserOrTempCart = isSignedIn ? displayUserCart : displayTempCart
 
-            <div className="payment-container">
-              <p>Accepted payments: Cash, Zelle, or Cashapp</p>
-              <p>Include item number when submitting payment.</p>
-              <br />
-              <p>Scan or Tap QR Code for Zelle payment</p>
-              <p>
-                Zelle:{' '}
-                <a
-                  href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
-                  target="_blank"
-                >
-                  castleandchair@gmail.com
-                </a>
-              </p>
-              <p>Enrolled as Castle and Chair Inc.</p>
-              <a
-                href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
-                target="_blank"
-              >
-                <img
-                  id="payment-zelle"
-                  className="payment-zelle"
-                  aria-label="Payment - Zelle"
-                ></img>
-              </a>
-              <br />
-              <br />
-              <br />
-              <p>Scan or Tap QR Code for Cash App payment</p>
-              <p>
-                Cashapp:{' '}
-                <a href="https://cash.app/$castleandchair" target="_blank">
-                  $castleandchair
-                </a>
-              </p>
-              <a href="https://cash.app/$castleandchair" target="_blank">
-                <img
-                  id="payment-cashapp"
-                  className="payment-cashapp"
-                  aria-label="Payment - Cashapp"
-                ></img>
-              </a>
-              <a href="https://cash.app/app/KVFFDRK" target="_blank">
-                Get $5 using my code: KVFFDRK
-              </a>
-              <br />
-              <br />
-              {/* <p>Scan or Tap QR Code for payment</p>
+  const displayPaymentType = (
+    <div className="payment-container">
+      <p>Accepted payments: Cash, Zelle, or Cashapp</p>
+      <p>Include item number when submitting payment.</p>
+      <br />
+      <p>Scan or Tap QR Code for Zelle payment</p>
+      <p>
+        Zelle:{' '}
+        <a
+          href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
+          target="_blank"
+        >
+          castleandchair@gmail.com
+        </a>
+      </p>
+      <p>Enrolled as Castle and Chair Inc.</p>
+      <a
+        href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
+        target="_blank"
+      >
+        <img
+          id={'payment-zelle'}
+          className={addMobileClassName('payment-zelle')}
+          aria-label="Payment - Zelle"
+        ></img>
+      </a>
+      <br />
+      <br />
+      <br />
+      <p>Scan or Tap QR Code for Cash App payment</p>
+      <p>
+        Cashapp:{' '}
+        <a href="https://cash.app/$castleandchair" target="_blank">
+          $castleandchair
+        </a>
+      </p>
+      <a href="https://cash.app/$castleandchair" target="_blank">
+        <img
+          id="payment-cashapp"
+          className="payment-cashapp"
+          aria-label="Payment - Cashapp"
+        ></img>
+      </a>
+      <a href="https://cash.app/app/KVFFDRK" target="_blank">
+        Get $5 using my code: KVFFDRK
+      </a>
+      <br />
+      <br />
+      {/* <p>Scan or Tap QR Code for payment</p>
               Venmo ID:{' '}
               <a
                 href="https://venmo.com/code?user_id=1631646868570112774"
@@ -243,22 +224,79 @@ const CartIndex = (props) => {
                 @castleandchair
               </a> */}
 
-              <div className="">
-                Delivery available through Lugg.{' '}
-                <a
-                  target="_blank"
-                  href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
-                >
-                  Calculate delivery
-                </a>{' '}
-                to different zip code.
-              </div>
-            </div>
+      <div className="">
+        Delivery available through Lugg.{' '}
+        <a
+          target="_blank"
+          href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+        >
+          Calculate delivery
+        </a>{' '}
+        to different zip code.
+      </div>
+    </div>
+  )
+
+  const displayTotalAmount = (
+    <>
+      <div className="total">
+        Item(s) sub-total: ${isSignedIn ? cartSum : tempCartsSum}
+      </div>
+      <div className="total">
+        Tax(10.75%): $
+        {round((isSignedIn ? cartSum : tempCartsSum) * 0.1075, 2).toFixed(2)}
+      </div>
+      <div className="total-amount">
+        Total: $
+        {round((isSignedIn ? cartSum : tempCartsSum) * 1.1075, 2).toFixed(2)}
+      </div>
+    </>
+  )
+
+  const displayDesktopView = (
+    <div className="cart-index-page-container">
+      <div className="sub-header-container">
+        {displayCartItemCountAndKeepShopping}
+      </div>
+      <div className="cart-index-section-wrapper">
+        <ul className="cart-index-wrapper">{displayUserOrTempCart}</ul>
+
+        <div className="cart-index-right-side">
+          <div className="cart-index-checkout">
+            {displayTotalAmount}
+
+            {displayPaymentType}
           </div>
         </div>
       </div>
     </div>
   )
+
+  const displayMobileView = (
+    <div className="cart-index-page-container">
+      <div className="sub-header-container">
+        {displayCartItemCountAndKeepShopping}
+      </div>
+      <div className={addMobileClassName('cart-index-cart-summary')}>
+        <Collapsible
+          title="Order Summary"
+          content={
+            <ul className={addMobileClassName('cart-index-wrapper')}>
+              {displayUserOrTempCart}
+            </ul>
+          }
+        />
+
+        <div className={addMobileClassName('cart-index-checkout')}>
+          {displayTotalAmount}
+
+          {displayPaymentType}
+        </div>
+      </div>
+    </div>
+  )
+
+  return isMobile ? displayMobileView : displayDesktopView
 }
 
 export default CartIndex
