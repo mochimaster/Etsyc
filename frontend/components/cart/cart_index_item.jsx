@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { addMobileClassName } from '../../../utils/helper'
 
 const getItemNumber = (listingId) => {
   while (listingId.length <= 4) {
@@ -27,56 +28,103 @@ const CartIndexItem = (props) => {
     )
   }
 
-  return (
+  const displayMerchantName = (
+    <div className="cart-index-merchant-name">
+      <Link
+        className="cart-index-merchant-name-link"
+        to={`/users/${props.cart.author_id}/listings`}
+      >
+        {props.cart.merchant_name || ''}
+      </Link>
+    </div>
+  )
+
+  const displayThumbnail = (
+    <div className="cart-index-item-photo">
+      <img src={getCartThumbnailImage()} />
+    </div>
+  )
+
+  const displayTitle = (
+    <div className={addMobileClassName('cart-index-item-title')}>
+      <Link
+        className="cart-index-item-title-link"
+        to={`/listings/${props.cart.listing_id}/${props.cart.title}`}
+      >
+        {props.cart.brand === 'null' ? '' : props.cart.brand}
+        <br />
+        {props.cart.title} ({getItemNumber(`${props.cart.listing_id}`)})
+      </Link>
+    </div>
+  )
+
+  const displayQuantity = (
+    <div className="cart-index-item-quantity-collapse">
+      <div>Quantity: </div>
+      <input
+        id={`${isMobile ? 'quantityText-mobile' : 'quantityText'}`}
+        value={props.cart.quantity}
+        onChange={updateQuantity}
+        className="select-custom"
+      />
+    </div>
+  )
+
+  const displayRemoveFromCart = (
+    <div className="cart-index-item-remove">
+      <a className="remove-link" onClick={() => props.deleteCart(props.cart)}>
+        Remove
+      </a>
+    </div>
+  )
+
+  const displayListingPrice = (
+    <div className={addMobileClassName('cart-index-item-price')}>
+      $ {props.cart.price}
+    </div>
+  )
+
+  const displayDesktopView = (
     <li className="cart-index-item">
-      <div className="cart-index-merchant-name">
-        <Link
-          className="cart-index-merchant-name-link"
-          to={`/users/${props.cart.author_id}/listings`}
-        >
-          {props.cart.merchant_name || ''}
-        </Link>
-      </div>
+      {displayMerchantName}
 
       <div className="cart-left-section-middle-section-wrapper">
-        <div className="cart-index-item-photo">
-          <img src={getCartThumbnailImage()} />
-        </div>
-        <div className="cart-index-item-title">
-          <Link
-            className="cart-index-item-title-link"
-            to={`/listings/${props.cart.listing_id}/${props.cart.title}`}
-          >
-            {props.cart.brand === 'null' ? '' : props.cart.brand}
-            <br />
-            {props.cart.title} ({getItemNumber(`${props.cart.listing_id}`)})
-          </Link>
-        </div>
+        {displayThumbnail}
+        {displayTitle}
 
         <div className="cart-index-item-quantity">
-          <div className="cart-index-item-quantity-collapse">
-            <p>Quantity:</p>
-            <input
-              id="quantityText"
-              value={props.cart.quantity}
-              onChange={updateQuantity}
-              className="select-custom"
-            />
-          </div>
+          {displayQuantity}
 
-          <div className="cart-index-item-remove">
-            <a
-              className="remove-link"
-              onClick={() => props.deleteCart(props.cart)}
-            >
-              Remove
-            </a>
-          </div>
+          {displayRemoveFromCart}
         </div>
-        <div className="cart-index-item-price">$ {props.cart.price}</div>
+        {displayListingPrice}
       </div>
     </li>
   )
+
+  const displayMobileView = (
+    <li className="cart-index-item">
+      {displayMerchantName}
+
+      <div
+        className={addMobileClassName(
+          'cart-left-section-middle-section-wrapper'
+        )}
+      >
+        {displayThumbnail}
+        {displayTitle}
+
+        <div className="cart-index-item-quantity">
+          {displayQuantity}
+
+          {displayRemoveFromCart}
+        </div>
+      </div>
+      {displayListingPrice}
+    </li>
+  )
+
+  return isMobile ? displayMobileView : displayDesktopView
 }
 
 export default CartIndexItem
