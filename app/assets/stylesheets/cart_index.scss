@@ -71,13 +71,17 @@
   grid-template-rows: 1fr 3fr 1fr;
 }
 
+.cart-index-item-remove {
+  align-self: flex-end;
+}
+
 .cart-left-section-middle-section-wrapper {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr;
 }
 
 .cart-left-section-middle-section-wrapper-mobile {
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 0.5fr;
   font-size: 25px;
 }
 
@@ -236,4 +240,9 @@
 
 .keep-shopping-link-mobile {
   font-size: 30px;
+}
+
+.btn-secondary.quantity-button-cart-mobile,
+.quantity-value-mobile.quantity-value-cart-mobile {
+  width: 50px;
 }

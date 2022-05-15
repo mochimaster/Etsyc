@@ -70,6 +70,38 @@ const CartIndexItem = (props) => {
     </div>
   )
 
+  const displayQuantityMobile = (
+    <div className="quantity-buttons-container-mobile">
+      <button
+        className="btn-secondary quantity-button-mobile quantity-button-cart-mobile quantity-button-left-mobile"
+        onClick={(e) =>
+          props.updateCart({
+            id: props.cart.id,
+            user_id: props.cart.user_id,
+            quantity: props.cart.quantity - 1
+          })
+        }
+      >
+        -
+      </button>
+      <p className="quantity-value-mobile quantity-value-cart-mobile">
+        {props.cart.quantity}
+      </p>
+      <button
+        className="btn-secondary quantity-button-mobile quantity-button-cart-mobile quantity-button-right-mobile"
+        onClick={(e) =>
+          props.updateCart({
+            id: props.cart.id,
+            user_id: props.cart.user_id,
+            quantity: props.cart.quantity + 1
+          })
+        }
+      >
+        +
+      </button>
+    </div>
+  )
+
   const displayRemoveFromCart = (
     <div className="cart-index-item-remove">
       <a className="remove-link" onClick={() => props.deleteCart(props.cart)}>
@@ -115,7 +147,8 @@ const CartIndexItem = (props) => {
         {displayTitle}
 
         <div className="cart-index-item-quantity">
-          {displayQuantity}
+          {/* {displayQuantity} */}
+          {displayQuantityMobile}
 
           {displayRemoveFromCart}
         </div>
