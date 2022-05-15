@@ -60,8 +60,20 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
         </div>
         <br />
         <div>
-          We are currently open by appointments weekdays 10AM - 5PM. To make an
-          appointment, use the scheduler below:
+          We are currently open by appointments weekdays 11AM - 5PM. To make an
+          appointment, use the scheduler below.
+          <br />
+          <br />
+          Weekend appointments are available only for customer pick up for paid
+          items. To make a weekend appointment or to make an appointment within
+          the next two hours, text us at{' '}
+          <a
+            href={`sms:+15109361639&body=Hi, I would like to set up an appointment. The items that I am interested are as following.`}
+          >
+            510-936-1639
+          </a>
+          .
+          <br />
         </div>
 
         <InlineWidget
@@ -101,17 +113,6 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
           </a>
           <br />
         </div> */}
-
-        <div>
-          If you have any questions or to make an appointment within the next
-          two hours, text us at{' '}
-          <a
-            href={`sms:+15109361639&body=Hi, I would like to set up an appointment. The items that I am interested are as following.`}
-          >
-            510-936-1639
-          </a>
-          .
-        </div>
 
         <div id="book-directions">
           <br />
