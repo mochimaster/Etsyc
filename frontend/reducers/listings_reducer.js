@@ -27,9 +27,9 @@ const listingsReducer = (oldState = {}, action) => {
       return { [action.listing.id]: action.listing }
 
     case REMOVE_LISTING:
-      let newState2 = merge({}, oldState)
-      delete newState2[action.listingId]
-      return newState2
+      return [...oldState].filter(
+        (listing) => action.listingId !== Object.values(listing)[0].id
+      )
 
     case RECEIVE_CARTS:
       if (Object.keys(action.carts).length < 1) {
