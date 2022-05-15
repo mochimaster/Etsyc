@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactLoading from 'react-loading'
 
-import { merge, pull } from 'lodash'
+import { merge, pull, omit } from 'lodash'
 import { Helmet } from 'react-helmet'
 
 import { Link } from 'react-router-dom'
@@ -157,7 +157,7 @@ class ListingShow extends React.Component {
 
   handleDuplicateListing(listing) {
     this.props.duplicateListing({
-      ...listing,
+      ...omit(listing, ['internalPhotoUrls', 'photoUrls', 'photosOrder']),
       title: listing.title.replaceAll('(PENDING)', '').trim()
     })
     this.props.history.push(`/listings/new`)
