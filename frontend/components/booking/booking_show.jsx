@@ -17,6 +17,8 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
     )
 
     setPopulatedNoteField(listingsIdAndTitle.join('\n\n'))
+
+    window.prerenderReady = true
   }, [carts])
 
   return (
