@@ -242,7 +242,10 @@
   font-size: 30px;
 }
 
-.btn-secondary.quantity-button-cart-mobile,
+.btn-secondary.quantity-button-cart-mobile {
+  width: 40px;
+}
+
 .quantity-value-mobile.quantity-value-cart-mobile {
   width: 50px;
 }
