@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match "/visit" => redirect("/#/visit"), :via => [:get]
   match "/faq" => redirect("/#/faq"), :via => [:get]
   match "/listings" => redirect("/#/listings"), :via => [:get]
+  match "/sitemap/sitemap.xml", :to => "sitemap#index", :via => [:get],  :defaults => {:format => :xml}
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show] do
