@@ -209,10 +209,10 @@ class ListingIndex extends React.Component {
             property="og:url"
             content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
           />
-          <link
+          {/* <link
             rel="canonical"
             href={`https://www.castleandchair.com/#${this.props.location.pathname}`}
-          />
+          /> */}
         </Helmet>
         {isOnSearchPage && displaySearchCount}
         <div>

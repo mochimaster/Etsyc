@@ -715,10 +715,10 @@ class ListingShow extends React.Component {
               this.props.listing.id
             }/${encodeURIComponent(this.props.listing.title)}`}
           />
-          <link
+          {/* <link
             rel="canonical"
             href={`https://www.castleandchair.com/#/listings/${this.props.listing.id}`}
-          />
+          /> */}
         </Helmet>
         {isMobile ? displayMobileView : displayDesktopView}
       </div>
