@@ -41,12 +41,9 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
         />
         <meta
           property="og:url"
-          content={`https://www.castleandchair.com/#${location.pathname}`}
+          content={`https://www.castleandchair.com/#/visit`}
         />
-        <link
-          rel="canonical"
-          href={`https://www.castleandchair.com/#${location.pathname}`}
-        />
+        <link rel="canonical" href={`https://www.castleandchair.com/#/visit`} />
       </Helmet>
       <h1 className="booking-header">Visit Our Warehouse</h1>
 
