@@ -203,7 +203,7 @@ class ListingIndex extends React.Component {
             name="description"
             property="og:description"
             content="Shop Castle and Chair, furniture from West Elm, Restoration Hardware, Pottery Barn 
-            and more. New, like new, and used condition furniture."
+            and more. New, like new, and used condition furniture in Bay Area California."
           />
           <meta
             property="og:url"

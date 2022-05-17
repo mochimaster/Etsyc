@@ -5,7 +5,6 @@ import {
   WindowScroller,
   ElementScroller
 } from 'react-scroll-manager'
-import { HelmetProvider } from 'react-helmet-async'
 import Helmet from 'react-helmet'
 
 import { createBrowserHistory as createHistory } from 'history'
@@ -72,7 +71,6 @@ class App extends React.Component {
     return (
       // <ScrollManager history={this.history}>
       // <WindowScroller>
-      <HelmetProvider>
         <div className="app-container">
           <Helmet>
             {/* <meta charSet="utf-8" /> */}
@@ -161,7 +159,6 @@ class App extends React.Component {
           </div>
           <Footer />
         </div>
-      </HelmetProvider>
       // </WindowScroller>
       // </ScrollManager>
     )
