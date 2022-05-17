@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :redirect_to_castleandchair if Rails.env == 'production'
+  # before_action :redirect_to_castleandchair if Rails.env == 'production'
 
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
