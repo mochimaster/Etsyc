@@ -207,7 +207,7 @@ class ListingIndex extends React.Component {
           />
           <meta
             property="og:url"
-            content={`https://www.castleandchair.com/#${this.props.location.pathname}`}
+            content={`https://www.castleandchair.com/%23${this.props.location.pathname}`}
           />
           {/* <link
             rel="canonical"

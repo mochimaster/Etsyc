@@ -711,7 +711,7 @@ class ListingShow extends React.Component {
           />
           <meta
             property="og:url"
-            content={`https://www.castleandchair.com/#/listings/${
+            content={`https://www.castleandchair.com/%23/listings/${
               this.props.listing.id
             }/${encodeURIComponent(this.props.listing.title)}`}
           />
