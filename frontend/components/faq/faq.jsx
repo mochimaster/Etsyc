@@ -26,11 +26,11 @@ export const Faq = (props) => {
           content="Frequently asked questions - hours, directions, return policy, 
         reservation, hold, appointment, discount, payment types, delivery, pick up"
         />
-        {/* <meta
+        <meta
           property="og:url"
-          content={`https://www.castleandchair.com/faq`}
-        /> */}
-        <link rel="canonical" href={`https://www.castleandchair.com/#/faq`} />
+          content={`/faq`}
+        />
+        <link rel="canonical" href={`/faq`} />
       </Helmet>
       <h1 className="faq-title">Frequently Asked Questions</h1>
       <div className="faq-container">
