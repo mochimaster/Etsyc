@@ -709,12 +709,12 @@ class ListingShow extends React.Component {
               `https://www.castleandchair.com${images[0].original}`
             }
           />
-          <meta
+          {/* <meta
             property="og:url"
             content={`https://www.castleandchair.com/%23/listings/${
               this.props.listing.id
             }/${encodeURIComponent(this.props.listing.title)}`}
-          />
+          /> */}
           {/* <link
             rel="canonical"
             href={`https://www.castleandchair.com/#/listings/${this.props.listing.id}`}
