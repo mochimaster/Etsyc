@@ -28,9 +28,9 @@ export const Faq = (props) => {
         />
         <meta
           property="og:url"
-          content={`/faq`}
+          content={`https://www.castleandchair.com/%23/faq`}
         />
-        <link rel="canonical" href={`/faq`} />
+        {/* <link rel="canonical" href={`/faq`} /> */}
       </Helmet>
       <h1 className="faq-title">Frequently Asked Questions</h1>
       <div className="faq-container">
