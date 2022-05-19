@@ -28,7 +28,7 @@ export const Faq = (props) => {
         />
         <meta
           property="og:url"
-          content={`https://www.castleandchair.com/%23/faq`}
+          content={`https://www.castleandchair.com/faq`}
         />
         {/* <link rel="canonical" href={`https://www.castleandchair.com/#/faq`} /> */}
       </Helmet>
