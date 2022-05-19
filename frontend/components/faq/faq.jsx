@@ -30,7 +30,7 @@ export const Faq = (props) => {
           property="og:url"
           content={`https://www.castleandchair.com/faq`}
         /> */}
-        {/* <link rel="canonical" href={`https://www.castleandchair.com/#/faq`} /> */}
+        <link rel="canonical" href={`https://www.castleandchair.com/#/faq`} />
       </Helmet>
       <h1 className="faq-title">Frequently Asked Questions</h1>
       <div className="faq-container">
