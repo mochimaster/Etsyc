@@ -52,11 +52,14 @@ class ListingIndex extends React.Component {
     const pageParams = params.get('page') || 1
     const queryParams = params.get('query') || ''
 
-    if (this.state.queryTerm != queryParams)
-      this.setState({ queryTerm: queryParams })
+    const prevParams = new URLSearchParams(prevProps.location.search)
+    const prevQueryParams = prevParams.get('query') || ''
+    const prevPageParams = prevParams.get('page') || 1
 
     if (match.url === '/listings/search' && !isEqual(prevProps, this.props)) {
-      this.props.searchListing({ title: queryParams }, pageParams)
+      if (prevQueryParams !== queryParams || prevPageParams != pageParams) {
+        this.props.searchListing({ title: queryParams }, pageParams)
+      }
     } else if (
       match.path === '/users/:userId/home' &&
       !isEqual(prevProps, this.props) &&
@@ -75,6 +78,7 @@ class ListingIndex extends React.Component {
       page != pageParams
     ) {
       if (this.props.match.url.slice(0, 6) === '/users') return
+      if (prevPageParams === pageParams) return
       this.props.getListings(pageParams || page, sortOption, filters)
     }
   }

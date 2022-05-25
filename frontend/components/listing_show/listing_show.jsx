@@ -630,8 +630,8 @@ class ListingShow extends React.Component {
         </div>
 
         <div className="image-gallery-mobile">
-          {displayPhotos}
-          {displayShareButton}
+          {images.length && displayPhotos}
+          {images.length && displayShareButton}
         </div>
         {/* {displayBrand} */}
         <div className="below-image-gallery-mobile">

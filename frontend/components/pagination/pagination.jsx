@@ -87,7 +87,7 @@ class PaginationAll extends React.Component {
     } else if (this.props.match.url === '/listings/search') {
       const title = this.props.location.search.slice(7)
       const pageParams = this.props.location.search
-      const pageNum = parseInt(pageParams.slice(6))
+      const pageNum = parseInt(pageParams.slice(6)) || 1
 
       this.props.searchListing({ title: title }, pageNum).then((response) => {
         this.setState({

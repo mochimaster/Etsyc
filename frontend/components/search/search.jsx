@@ -112,7 +112,7 @@ const Search = (props) => {
         title
       )
     } else {
-      props.searchListing({ title, isDisabled: isHome })
+      // props.searchListing({ title, isDisabled: isHome })
     }
 
     setTitle('')
