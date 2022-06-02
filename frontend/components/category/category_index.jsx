@@ -16,7 +16,8 @@ const CategoryIndex = (props) => {
     5: 'Dining',
     6: 'Outdoor',
     7: 'Miscellaneous',
-    8: 'Special'
+    8: 'Special',
+    9: 'Decor'
     // 9: 'Appliance'
   }
 
@@ -26,7 +27,7 @@ const CategoryIndex = (props) => {
         isMobile ? 'categories-wrapper-mobile' : ''
       }`}
     >
-      {Object.keys(categories).map((categoryId) => {
+      {[1, 9, 2, 3, 4, 5, 6, 7, 8].map((categoryId) => {
         return (
           <li
             className={`${isActive ? 'highlight' : ''} ${
