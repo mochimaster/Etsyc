@@ -103,11 +103,11 @@ class Api::ListingsController < ApplicationController
     if ids && ids.length > 0
       @listings = Listing.where(id: ids,status: [nil, true], condition: condition).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     elsif sort_order == 'asc' && sort_param == :price
-      @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+      @listings = Listing.where(status: [nil, true], condition: condition).where('category NOT IN (?)', '9').order(sort_param).paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     elsif sort_order == 'desc' && sort_param == :price
-      @listings = Listing.where(status: [nil, true], condition: condition).order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+      @listings = Listing.where(status: [nil, true], condition: condition).where('category NOT IN (?)', '9').order(sort_param).reverse_order.paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     else
-      @listings = Listing.where(status: [nil, true], condition: condition).order('renewed_at DESC').paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
+      @listings = Listing.where(status: [nil, true], condition: condition).where('category NOT IN (?)', '9').order('renewed_at DESC').paginate(:page => params[:page]).includes(:author).with_attached_photo.with_attached_photos
     end
     
     render :index    
