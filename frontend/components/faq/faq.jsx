@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Helmet } from 'react-helmet'
 
@@ -45,19 +46,8 @@ export const Faq = (props) => {
           <div className="answer-right">
             We meet customers by appointment generally on weekdays between the
             hours of 9.30AM - 5PM. Weekend hours are very limited and reserved
-            only for customer delivery pick ups. Give us a call or send us a
-            text between the hours of operation to schedule an appointment. We
-            are located at{' '}
-            {/* <a
-                   target="_blank"
-                   href="https://goo.gl/maps/pFnJSdTpH91D32nBA"
-                 >
-                   1273 Industrial Pkwy W Ste 750 Hayward, CA 94544
-                 </a> */}
-            <a target="_blank" href="https://goo.gl/maps/ZHrviBbQ2YwQQwiaA">
-              1273 Industrial Parkway West #750 Hayward CA 94544
-            </a>
-            .
+            only for customer delivery pick ups. To schedule an appointment, set
+            it up here: <Link to="/visit">BOOK APPOINTMENT.</Link>
           </div>
         </div>
 
@@ -97,6 +87,10 @@ export const Faq = (props) => {
             <br />
             Input Delivery Address under Destination field and you will see the
             available options and respective charges.
+            <br />
+            Lugg pick up times can be arranged for weekdays 11AM - 5PM. If you
+            need a weekend time slot, please call or text me to coordinate and
+            we will try to accommodate your schedule.
           </div>
         </div>
 
