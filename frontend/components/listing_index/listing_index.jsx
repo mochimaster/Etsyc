@@ -60,6 +60,7 @@ class ListingIndex extends React.Component {
       if (prevQueryParams !== queryParams || prevPageParams != pageParams) {
         this.props.searchListing({ title: queryParams }, pageParams)
       }
+      this.setState({ queryTerm: queryParams })
     } else if (
       match.path === '/users/:userId/home' &&
       !isEqual(prevProps, this.props) &&

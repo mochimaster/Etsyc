@@ -114,8 +114,6 @@ const Search = (props) => {
     } else {
       // props.searchListing({ title, isDisabled: isHome })
     }
-
-    setTitle('')
   }
 
   return isMobile ? (
