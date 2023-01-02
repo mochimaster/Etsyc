@@ -27,7 +27,7 @@ const CategoryIndex = (props) => {
         isMobile ? 'categories-wrapper-mobile' : ''
       }`}
     >
-      {[1, 9, 2, 3, 4, 5, 6, 7, 8].map((categoryId) => {
+      {[8, 1, 9, 2, 3, 4, 5, 6, 7].map((categoryId) => {
         return (
           <li
             className={`${isActive ? 'highlight' : ''} ${
