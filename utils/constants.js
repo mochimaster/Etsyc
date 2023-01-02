@@ -46,6 +46,6 @@ export const CATEGORIES = {
   5: 'Dining',
   6: 'Outdoor',
   7: 'Miscellaneous',
-  8: 'Appliance',
+  8: 'Clearance',
   9: 'Decor'
 }
