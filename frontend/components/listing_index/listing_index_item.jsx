@@ -66,7 +66,8 @@ const ListingIndexItem = ({ listing }) => {
     merchant_name,
     price,
     brand,
-    detailedCondition
+    detailedCondition,
+    msrp
   } = listing
 
   let titleForUrl = title
@@ -76,6 +77,17 @@ const ListingIndexItem = ({ listing }) => {
   } catch {
     console.log('replaceAll not supported for this browser.')
   }
+
+  const displayMsrp = (
+    <span className="listing-item-msrp-container">
+      <span className="listing-item-msrp-divider">|</span>
+      <span className="listing-item-msrp">${msrp}</span>
+      <span className="listing-item-msrp-divider">|</span>
+      <span className="listing-item-percentage">
+        {Math.round((1 - price / msrp) * 100, 2)}% Off
+      </span>
+    </span>
+  )
 
   return (
     <li className={`listing-item-wrapper ${deviceClassName}`}>
@@ -105,7 +117,9 @@ const ListingIndexItem = ({ listing }) => {
         </Link>
       </div> */}
       <div className="listing-item-price-detailed-condition">
-        <div className={`listing-item-price ${deviceClassName}`}>$ {price}</div>
+        <div className={`listing-item-price ${deviceClassName}`}>
+          $ {price} {msrp && displayMsrp}
+        </div>
         <div className={addMobileClassName('listing-item-detailed-condition')}>
           {detailedCondition &&
             detailedCondition !== 'null' &&

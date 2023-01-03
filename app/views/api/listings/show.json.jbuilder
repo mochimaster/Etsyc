@@ -1,4 +1,4 @@
-json.extract! @listing, :id, :title, :description, :author_id, :overview, :price, :merchant_name, :status, :condition, :brand
+json.extract! @listing, :id, :title, :description, :author_id, :overview, :price, :msrp, :merchant_name, :status, :condition, :brand
 json.photosOrder @listing.photos_order.map { |photo_order| photo_order}
 json.detailedCondition @listing.detailed_condition
 

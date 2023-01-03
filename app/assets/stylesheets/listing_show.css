@@ -152,6 +152,21 @@
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 12px;
+  color: #cc4639;
+}
+
+.listing-details .listing-details-msrp,
+.listing-details .listing-details-percentage {
+  font-weight: 200;
+}
+
+.listing-details .listing-details-price-container {
+  display: flex;
+}
+
+.listing-details .listing-details-divider {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .listing-details .listing-details-quantity {
@@ -278,6 +293,16 @@ MOBILE VIEW
   grid-column-gap: 50px;
   text-transform: capitalize;
   padding-bottom: 20px;
+}
+
+.listing-details-price-container > .listing-details-price{
+  color: #cc4639;
+}
+
+.title-price-container-mobile > 
+.listing-details-price-container > 
+.listing-details-percentage {
+  font-size: 25px;
 }
 
 .item-number-condition-container-mobile {

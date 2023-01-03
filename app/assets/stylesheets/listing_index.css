@@ -144,6 +144,16 @@
   justify-content: space-between;
 }
 
+.listing-item-msrp-divider{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.listing-item-msrp{
+  color: #cc4639;
+  text-decoration: line-through;
+}
+
 .listing-item-detailed-condition {
   color: darkgray;
   font-size: 13px;
