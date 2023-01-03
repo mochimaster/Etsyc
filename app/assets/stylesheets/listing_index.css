@@ -136,7 +136,7 @@
 }
 
 .index-wrapper .listing-item-price.device-mobile {
-  font-size: 30px;
+  font-size: 27px;
 }
 
 .listing-item-price-detailed-condition {
@@ -145,8 +145,8 @@
 }
 
 .listing-item-msrp-divider{
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .listing-item-msrp{

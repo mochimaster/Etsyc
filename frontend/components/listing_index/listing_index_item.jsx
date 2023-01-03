@@ -123,7 +123,7 @@ const ListingIndexItem = ({ listing }) => {
         <div className={addMobileClassName('listing-item-detailed-condition')}>
           {detailedCondition &&
             detailedCondition !== 'null' &&
-            `${CONDITION[detailedCondition]} condition`}
+            `${CONDITION[detailedCondition]}`}
         </div>
       </div>
     </li>
