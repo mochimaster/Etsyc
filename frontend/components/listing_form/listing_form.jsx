@@ -205,6 +205,7 @@ export const ListingForm = (props) => {
     formData.append('listing[title]', listing.title)
     formData.append('listing[overview]', listing.overview)
     formData.append('listing[price]', listing.price)
+    listing['msrp'] > 0 && formData.append('listing[msrp]', listing.msrp)
     formData.append('listing[description]', listing.description)
     formData.append('listing[author_id]', props.sessionId)
     formData.append('listing[merchant_name]', listing.merchantName)
@@ -681,6 +682,22 @@ export const ListingForm = (props) => {
                 setListing((listing) => ({ ...listing, price: value }))
               }
               value={listing.price}
+            />
+          </div>
+
+          <div className="create-listing-price">
+            <label>MSRP: </label>
+            <label className="dollar-margin"> $</label>
+            <input
+              className="create-list-price-input"
+              type="number"
+              min="0.00"
+              max="99999999.99"
+              step="0.01"
+              onChange={({ target: { value } }) =>
+                setListing((listing) => ({ ...listing, msrp: value }))
+              }
+              value={listing.msrp}
             />
           </div>
 

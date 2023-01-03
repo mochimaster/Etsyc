@@ -385,7 +385,7 @@ class ListingShow extends React.Component {
         <input
           className="input-quantity input-quantity-input"
           onChange={this.updateQuantity.bind(this)}
-          className="select-custom"
+          // className="select-custom"
           placeholder="1"
         />
       </div>
@@ -446,8 +446,32 @@ class ListingShow extends React.Component {
     )
 
     const displayPrice = (
-      <div className="listing-details listing-details-price">
-        ${this.props.listing.price}
+      <div className="listing-details-price-container">
+        <div className="listing-details listing-details-price">
+          ${this.props.listing.price}
+        </div>
+        {this.props.listing.msrp && (
+          <>
+            {!isMobile && (
+              <div className="listing-details listing-details-divider">|</div>
+            )}
+            <div
+              className="listing-details listing-details-msrp"
+              style={{ textDecoration: 'line-through' }}
+            >
+              ${this.props.listing.msrp}
+            </div>
+            {!isMobile && (
+              <div className="listing-details listing-details-divider">|</div>
+            )}
+            <div className="listing-details listing-details-percentage">
+              {Math.round(
+                (1 - this.props.listing.price / this.props.listing.msrp) * 100,
+                2
+              )}% Off
+            </div>
+          </>
+        )}
       </div>
     )
 
