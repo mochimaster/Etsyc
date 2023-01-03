@@ -135,6 +135,14 @@
   line-height: 25.6px;
 }
 
+.listing-item-price{
+  color: #cc4639;
+}
+
+.listing-item-msrp-container{
+  color: black;
+}
+
 .index-wrapper .listing-item-price.device-mobile {
   font-size: 27px;
 }
@@ -150,7 +158,6 @@
 }
 
 .listing-item-msrp{
-  color: #cc4639;
   text-decoration: line-through;
 }
 
