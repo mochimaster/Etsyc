@@ -158,6 +158,7 @@ const CartIndex = (props) => {
 
   const displayCartItemCountAndKeepShopping = (
     <div className="cart-item-count">
+      <div> </div>
       {itemCountDisplay}
       <Link
         className={`${addMobileClassName(
@@ -167,6 +168,7 @@ const CartIndex = (props) => {
       >
         Keep Shopping
       </Link>
+      <div> </div>
     </div>
   )
 
