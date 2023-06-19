@@ -13,6 +13,7 @@ import ImageGallery from 'react-image-gallery'
 import { Collapsible } from '../collapsible/collapsible'
 import { CONDITION } from '../condition_slider/condition_slider'
 import ConditionSlider from '../condition_slider/condition_slider_container'
+import DeliveryOption from '../delivery_option/delivery_option'
 
 import 'react-image-gallery/styles/css/image-gallery.css'
 
@@ -351,16 +352,7 @@ class ListingShow extends React.Component {
 
     const displayDeliveryAndPickUp = (
       <div className="delivery-estimate">
-        <div>
-          Delivery available through Lugg.{' '}
-          <a
-            target="_blank"
-            href="https://lugg.com/estimate?origin=Z2lkOi8vbHVnZy9Mb2NhdGlvbi9kYjUxM2I5ZS03NmNmLTQxN2UtODllYy00NDBhZGI0YWEyODI"
-          >
-            Calculate delivery
-          </a>{' '}
-          to your address.
-        </div>
+        <DeliveryOption />
         <div>
           Free pick up at our warehouse in Hayward.{' '}
           <HashLink to="/visit#book-directions">Directions</HashLink>.
@@ -468,7 +460,8 @@ class ListingShow extends React.Component {
               {Math.round(
                 (1 - this.props.listing.price / this.props.listing.msrp) * 100,
                 2
-              )}% Off
+              )}
+              % Off
             </div>
           </>
         )}
@@ -693,20 +686,7 @@ class ListingShow extends React.Component {
           />
           <Collapsible
             title={'Get it delivered'}
-            content={
-              <div>
-                <div>
-                  Delivery available through Lugg.
-                  <a
-                    target="_blank"
-                    href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
-                  >
-                    {'\n'}Calculate delivery
-                  </a>{' '}
-                  to your address.
-                </div>
-              </div>
-            }
+            content={<DeliveryOption />}
           />
           <br />
           {displayInternalNote}

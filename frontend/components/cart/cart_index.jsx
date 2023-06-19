@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import { pick, round } from 'lodash'
 
+import DeliveryOption from '../delivery_option/delivery_option'
+
 import CartIndexItem from './cart_index_item'
 import { Collapsible } from '../collapsible/collapsible'
 import { addMobileClassName } from '../../../utils/helper'
@@ -174,19 +176,6 @@ const CartIndex = (props) => {
 
   const displayUserOrTempCart = isSignedIn ? displayUserCart : displayTempCart
 
-  const displayDeliveryOption = (
-    <div className="">
-      Delivery available through Lugg.{' '}
-      <a
-        target="_blank"
-        href="https://lugg.com/estimate?origin=Z2lkOi8vbHVnZy9Mb2NhdGlvbi9kYjUxM2I5ZS03NmNmLTQxN2UtODllYy00NDBhZGI0YWEyODI"
-      >
-        Calculate delivery
-      </a>{' '}
-      to your address.
-    </div>
-  )
-
   const displayPaymentType = (
     <div className="payment-container">
       <p>Accepted payments: Cash, Zelle, or Cashapp</p>
@@ -204,7 +193,7 @@ const CartIndex = (props) => {
       </p>
       <p>Enrolled as Castle and Chair Inc.</p>
       <br />
-      {displayDeliveryOption}
+      <DeliveryOption />
       <br />
       <a
         href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQ0FTVExFIEFORCBDSEFJUiBJTkMiLCJhY3Rpb24iOiJwYXltZW50IiwidG9rZW4iOiJjYXN0bGVhbmRjaGFpckBnbWFpbC5jb20ifQ=="
@@ -247,7 +236,7 @@ const CartIndex = (props) => {
                 @castleandchair
               </a> */}
 
-      {!isMobile && displayDeliveryOption}
+      {!isMobile && <DeliveryOption />}
     </div>
   )
 
@@ -305,7 +294,6 @@ const CartIndex = (props) => {
           {displayTotalAmount}
 
           {displayPaymentType}
-          {/* {displayDeliveryOption} */}
         </div>
       </div>
     </div>
