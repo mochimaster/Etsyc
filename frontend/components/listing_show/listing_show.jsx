@@ -355,7 +355,7 @@ class ListingShow extends React.Component {
           Delivery available through Lugg.{' '}
           <a
             target="_blank"
-            href="https://lugg.com/estimate?destination_id=db513b9e-76cf-417e-89ec-440adb4aa282&origin_id=db513b9e-76cf-417e-89ec-440adb4aa282&use_case=store_delivery"
+            href="https://lugg.com/estimate?origin=Z2lkOi8vbHVnZy9Mb2NhdGlvbi9kYjUxM2I5ZS03NmNmLTQxN2UtODllYy00NDBhZGI0YWEyODI"
           >
             Calculate delivery
           </a>{' '}
