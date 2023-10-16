@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from 'react'
+import { Switch } from 'antd'
 
 import { InlineWidget } from 'react-calendly'
 import { Helmet } from 'react-helmet'
 
+const BookingCalendar = ({ calendarUrl, populatedNoteField }) => (
+  <InlineWidget
+    styles={{
+      minWidth: '320px',
+      height: window.isMobile ? '1300px' : '950px',
+      overflow: 'hidden'
+    }}
+    pageSettings={{
+      hideGdprBanner: true
+    }}
+    url={calendarUrl}
+  />
+)
+
 const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
   const [populatedNoteField, setPopulatedNoteField] = useState('')
+  const [isWeekdaySchedule, setIsWeekdaySchedule] = useState(true)
 
   useEffect(() => {
     currentUserId && getCarts(currentUserId)
@@ -59,59 +75,37 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
         </div>
         <br />
         <div>
-          We are currently open by appointments weekdays 11AM - 5PM. To make an
-          appointment, use the scheduler below.
+          We are currently open by <b>appointments</b> weekdays 11AM - 5PM and
+          limited time on weekends. To make an appointment, use the scheduler
+          below.
           <br />
           <br />
-          Weekend appointments are available only for customer pick up for paid
-          items. To make a weekend appointment or to make an appointment within
-          the next two hours, text us at{' '}
+          Weekend appointments can be made using the Weekend Appointment
+          calendar below by toggling the switch to Weekend Schedule. To make an
+          appointment within the next two hours, text us at{' '}
           <a
             href={`sms:+15109361639&body=Hi, I would like to set up an appointment. The items that I am interested are as following.`}
           >
             510-936-1639
           </a>
-          .
+          . We will be able to accept your appointment if schedule permits.
           <br />
         </div>
 
-        <InlineWidget
-          styles={{
-            minWidth: '320px',
-            height: window.isMobile ? '1300px' : '950px',
-            overflow: 'hidden'
-          }}
-          pageSettings={{
-            hideGdprBanner: true
-          }}
-          url={`https://calendly.com/castleandchair/visit?a2=${encodeURIComponent(
-            populatedNoteField
-          )}`}
-          // prefill={{
-          //   customAnswers: {
-          //     a2: populatedNoteField
-          //   }
-          // }}
+        <br />
+        <Switch
+          checkedChildren={'Weekday Schedule'}
+          unCheckedChildren={'Weekend Schedule'}
+          onChange={setIsWeekdaySchedule}
+          defaultChecked
         />
 
-        {/* <div id="booking-book-me-text">
-          <a
-            href="https://castleandchair.youcanbook.me/"
-            target="_blank"
-            data-ycbm-modal="true"
-          >
-            <i
-              class="fa-solid fa-calendar-days"
-              style={{
-                fontSize: '100px',
-                color: 'black'
-              }}
-            ></i>
-            <br />
-            BOOK ME
-          </a>
-          <br />
-        </div> */}
+        <BookingCalendar
+          populatedNoteField={populatedNoteField}
+          calendarUrl={`https://calendly.com/castleandchair/${
+            isWeekdaySchedule ? `visit` : `visit-weekend`
+          }?a3=${encodeURIComponent(populatedNoteField)}`}
+        />
 
         <div id="book-directions">
           <br />
