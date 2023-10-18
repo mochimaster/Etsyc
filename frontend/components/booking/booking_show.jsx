@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Switch } from 'antd'
+import { Radio } from 'antd'
 
 import { InlineWidget } from 'react-calendly'
 import { Helmet } from 'react-helmet'
@@ -93,12 +93,35 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
         </div>
 
         <br />
-        <Switch
-          checkedChildren={'Weekday Schedule'}
-          unCheckedChildren={'Weekend Schedule'}
-          onChange={setIsWeekdaySchedule}
-          defaultChecked
-        />
+
+        <Radio.Group
+          size="large"
+          value={isWeekdaySchedule}
+          onChange={(e) => setIsWeekdaySchedule(e.target.value)}
+        >
+          <Radio.Button
+            style={{
+              ...(isWeekdaySchedule
+                ? { backgroundColor: 'black', color: 'white' }
+                : {}),
+              ...(isMobile ? { fontSize: '35px' } : {})
+            }}
+            value={true}
+          >
+            Weekday Appointment
+          </Radio.Button>
+          <Radio.Button
+            style={{
+              ...(isWeekdaySchedule
+                ? {}
+                : { backgroundColor: 'black', color: 'white' }),
+              ...(isMobile ? { fontSize: '35px' } : {})
+            }}
+            value={false}
+          >
+            Weekend Appointment
+          </Radio.Button>
+        </Radio.Group>
 
         <BookingCalendar
           populatedNoteField={populatedNoteField}
