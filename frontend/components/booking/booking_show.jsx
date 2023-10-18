@@ -69,9 +69,9 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
           and verify condition of the listed items and complete your purchase.
           <br />
           <br />
-          Please note that we currently do not offer test sittings. The
-          appointment is set up for customers to verify the condition of the
-          listed item.
+          Please note that we currently do not offer test sittings for multiple
+          different couches. The appointment is set up for customers to verify
+          the condition of the listed item.
         </div>
         <br />
         <div>
@@ -80,9 +80,7 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
           below.
           <br />
           <br />
-          Weekend appointments can be made using the Weekend Appointment
-          calendar below by toggling the switch to Weekend Schedule. To make an
-          appointment within the next two hours, text us at{' '}
+          To make an appointment within the next two hours, text us at{' '}
           <a
             href={`sms:+15109361639&body=Hi, I would like to set up an appointment. The items that I am interested are as following.`}
           >
