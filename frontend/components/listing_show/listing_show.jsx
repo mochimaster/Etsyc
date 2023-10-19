@@ -372,7 +372,7 @@ class ListingShow extends React.Component {
     )
 
     const displayBookAppointmentButton = (
-      <div className="listing-details add-to-cart">
+      <div className="listing-details">
         <Link
           className={`btn ${addMobileClassName('btn-primary')} add-to-cart`}
           to="/visit"
