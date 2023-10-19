@@ -371,6 +371,21 @@ class ListingShow extends React.Component {
       </div>
     )
 
+    const displayBookAppointmentButton = (
+      <div className="listing-details add-to-cart">
+        <Link
+          className={`btn ${addMobileClassName('btn-primary')} add-to-cart`}
+          to="/visit"
+          style={{
+            width: '100%',
+            ...(isMobile && { paddingTop: '15px', marginTop: 0 })
+          }}
+        >
+          Book Appointment
+        </Link>
+      </div>
+    )
+
     const displayQuantity = (
       <div className="listing-details listing-details-quantity">
         Quantity <br />
@@ -619,6 +634,7 @@ class ListingShow extends React.Component {
             {displayQuantity}
             {displayDeliveryAndPickUp}
 
+            {displayBookAppointmentButton}
             {displayAddToCartButton}
             {displayItemNumber}
             <br />
@@ -660,6 +676,9 @@ class ListingShow extends React.Component {
           <div className="quantity-mobile">{displayQuantityMobile}</div>
           <div className="add-to-cart-button-container-mobile">
             {displayAddToCartButton}
+          </div>
+          <div className="add-to-cart-button-container-mobile">
+            {displayBookAppointmentButton}
           </div>
           {
             <div className="phone-number-delivery-tip-mobile">
