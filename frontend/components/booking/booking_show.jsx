@@ -4,6 +4,34 @@ import { Radio } from 'antd'
 import { InlineWidget } from 'react-calendly'
 import { Helmet } from 'react-helmet'
 
+const SCHEDULES = {
+  WEEKDAY: 'weekday',
+  SATURDAY: 'saturday',
+  SUNDAY: 'sunday'
+}
+
+const getCalendarUrl = (schedule) => {
+  switch (schedule) {
+    case SCHEDULES.WEEKDAY:
+      return 'visit'
+    case SCHEDULES.SATURDAY:
+      return 'visit-saturday'
+    case SCHEDULES.SUNDAY:
+      return 'visit-sunday'
+  }
+}
+
+const getScheduleDisplayValue = (schedule) => {
+  switch (schedule) {
+    case SCHEDULES.WEEKDAY:
+      return 'Weekdays Appointment'
+    case SCHEDULES.SATURDAY:
+      return 'Saturday'
+    case SCHEDULES.SUNDAY:
+      return 'Sunday'
+  }
+}
+
 const BookingCalendar = ({ calendarUrl, populatedNoteField }) => (
   <InlineWidget
     styles={{
@@ -20,7 +48,7 @@ const BookingCalendar = ({ calendarUrl, populatedNoteField }) => (
 
 const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
   const [populatedNoteField, setPopulatedNoteField] = useState('')
-  const [isWeekdaySchedule, setIsWeekdaySchedule] = useState(true)
+  const [selectedSchedule, setSelectedSchedule] = useState(SCHEDULES.WEEKDAY)
 
   useEffect(() => {
     currentUserId && getCarts(currentUserId)
@@ -94,38 +122,31 @@ const BookingShow = ({ carts, getCarts, currentUserId, location }) => {
 
         <Radio.Group
           size="large"
-          value={isWeekdaySchedule}
-          onChange={(e) => setIsWeekdaySchedule(e.target.value)}
+          value={selectedSchedule}
+          onChange={(e) => setSelectedSchedule(e.target.value)}
         >
-          <Radio.Button
-            style={{
-              ...(isWeekdaySchedule
-                ? { backgroundColor: 'black', color: 'white' }
-                : {}),
-              ...(isMobile ? { fontSize: '35px' } : {})
-            }}
-            value={true}
-          >
-            Weekday Appointment
-          </Radio.Button>
-          <Radio.Button
-            style={{
-              ...(isWeekdaySchedule
-                ? {}
-                : { backgroundColor: 'black', color: 'white' }),
-              ...(isMobile ? { fontSize: '35px' } : {})
-            }}
-            value={false}
-          >
-            Weekend Appointment
-          </Radio.Button>
+          {Object.values(SCHEDULES).map((schedule) => {
+            return (
+              <Radio.Button
+                style={{
+                  ...(schedule === selectedSchedule
+                    ? { backgroundColor: 'black', color: 'white' }
+                    : {}),
+                  ...(isMobile ? { fontSize: '35px' } : {})
+                }}
+                value={schedule}
+              >
+                {getScheduleDisplayValue(schedule)}
+              </Radio.Button>
+            )
+          })}
         </Radio.Group>
 
         <BookingCalendar
           populatedNoteField={populatedNoteField}
-          calendarUrl={`https://calendly.com/castleandchair/${
-            isWeekdaySchedule ? `visit` : `visit-weekend`
-          }?a3=${encodeURIComponent(populatedNoteField)}`}
+          calendarUrl={`https://calendly.com/castleandchair/${getCalendarUrl(
+            selectedSchedule
+          )}?a3=${encodeURIComponent(populatedNoteField)}`}
         />
 
         <div id="book-directions">
