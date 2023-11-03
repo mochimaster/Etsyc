@@ -68,7 +68,7 @@ class Listing < ApplicationRecord
     class_name: :Category,
     :dependent => :destroy
 
-  self.per_page = 40
+  self.per_page = 80
 
   def title_validation
     if title.length >= 255
