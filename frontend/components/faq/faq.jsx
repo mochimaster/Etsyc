@@ -103,7 +103,7 @@ export const Faq = (props) => {
           <div className="answer-right">
             Prices are firm as listed even if multiple is purchased. I list the
             prices as the best deal that I can offer and this streamlines the
-            sales process.
+            sales process. Please understand that we are a small business and do not have large margins.
           </div>
         </div>
 
